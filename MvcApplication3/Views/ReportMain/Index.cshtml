@@ -1,0 +1,145 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @*<meta name="viewport" content="width=device-width" />*@
+    <title>Index</title>
+
+    
+    
+<script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+@*<script src="/Scriptsjquery-ui-1.8.20.js">   </script>
+<script src="/Scripts/jquery.validate.js">   </script>*@
+
+<style type="text/css">
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: #2196F3;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+ .grid-item2 {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+}
+</style>
+
+</head>
+
+
+
+<body>
+
+<div class="container">
+    <div class="grid-container">  
+         <div class="grid-item">  
+             @Html.Action("ShowRptList")
+        </div>
+        <div class="grid-item" id = "filterview">  
+           @* @{Html.RenderAction("ShowRptFilter");}  *@
+            @Html.Partial("ShowRptFilter")
+
+        </div>
+        <div class="grid-item2">  
+                <input type="button" value="Submit"  id = "btncreate" class="btn btn-default"  />
+        </div>  
+       @* <div class="col-md-offset-2 col-md-10">  *@
+       <div class="grid-item2">  
+                <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-default"  />
+          </div>  
+      </div>
+</div>
+   @* <button onclick="myFunction()">Try it</button>
+    <p>Click on this paragraph.</p>*@
+
+</body>
+</html>
+    
+
+<script type="text/javascript">
+
+ 
+//       $("#btncreate").click(function (e) {
+//            $('#form').submit();
+//            $('#filterview').load('/ReportMain/Index');
+//        });
+
+    function loadfilter() {
+        alert("test");
+
+    }
+
+
+
+//    $("btncreate").click(function () {
+//        alert("sdfd")
+//        $.ajax({
+//            url: "/ReportMain/ShowRptFilter",
+//            type: "POST",
+//            data: $("form").serialize(), //if you need to post Model data, use this
+//            success: function (result) {
+//                $("filterview").html(result);
+//            }
+//        });
+//    })
+    
+    function myFunction() {
+  alert("I am an alert box!");
+}
+</script>
+
+<script type="text/javascript">
+
+    $("input#btncreate").click(function () {
+//        alert($("#ObjectID option:selected").val());
+        var res = $("#ObjectID option:selected").val();
+        var ee = res.replace(/ /g, "+");
+        //        alert(ee);
+        $("#filterview").load("/ReportMain/ShowNoRptFilter")
+        $("#filterview").load("/ReportMain/ShowRptFilter?ObjectID='" + ee + "'")
+    });
+
+    $("input#btnShowReport").click(function () {
+        // alert($("#fname").val());
+        setSelected();
+        var res = $("#ObjectID option:selected").val();
+        var ee = res.replace(/ /g, "+");
+        //var ea = res.replace(/ /g, "+");
+        //var ee = ea + "/" + ea;
+        //alert(ee);
+        $('#' + ee).attr("target", "_blank");
+        $('#' + ee).submit();
+
+    });
+
+//    $("#btnselected").click(function () {
+     function setSelected () {
+         var rr = [];
+
+         /// 'lstselect' nane of listbox in view SelectionList.cshtml
+        $("#lstselect :selected").each(function (i, selected) {
+            rr[i] = "'" + $(selected).val() + "'";
+        });
+        //alert(rr);
+        //alert(rr[0]);
+        var s = rr.toString();
+        $("#txtselected").val(s); /// 'txtselected' name of hidden textbox in your filterview
+        //alert(s);
+
+       }
+
+</script>

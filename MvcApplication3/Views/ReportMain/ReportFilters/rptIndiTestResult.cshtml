@@ -1,0 +1,27 @@
+﻿@*@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
+Individual test result filter
+<fieldset>  
+        <legend>Calculate Simple Interest</legend>  
+    @using (Ajax.BeginForm("Index", "rptIndiTestResult", null,
+                            new AjaxOptions { UpdateTargetId = "divInterestDeatils" }, new { id = "rptIndiTestResult" }))
+    {  
+        <div id="divInterestDeatils"></div>  
+        <ol>  
+            <li>  
+                @Html.Label("Amount")  
+                @Html.TextBox("txtAmount")  
+            </li>  
+            <li>  
+                @Html.Label("Rate")  
+                @Html.TextBox("txtRate")  
+            </li>  
+            <li>  
+                @Html.Label("Year")  
+                @Html.TextBox("txtYear")  
+            </li>  
+        </ol>  
+    <button>Calculate</button>  
+    }     
+</fieldset>  

@@ -1,0 +1,35 @@
+﻿@model MvcApplication3.Models.dropdownModel
+
+@{
+    Layout = null;
+}
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ShowRptList</title>
+</head>
+<body>*@
+    <div>
+      <h2>Report Selection</h2>
+       @using (Html.BeginForm("ShowRptFilter","ReportMain", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        { 
+            <div class="col-md-10">  
+               @*ViewBag.ReportList is holding all the Report values*@  
+               @Html.DropDownListFor(model => model.ObjectID, ViewBag.ReportList as SelectList, htmlAttributes: new { size = 20, @class = "form-control" })
+ 
+               @Html.ValidationMessageFor(model => model.ObjectID, "", new { @class = "text-danger" })  
+            </div>  
+    
+            @* <div class="form-group">  
+                    <div class="col-md-offset-2 col-md-10">  
+                        <input type="submit" value="Create"  id = "btncreate" class="btn btn-default"/>  
+                    </div>  
+                </div>  
+            *@
+        }
+    </div>
+@*</body>
+</html>*@

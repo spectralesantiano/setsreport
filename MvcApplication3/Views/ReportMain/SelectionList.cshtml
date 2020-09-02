@@ -1,0 +1,7 @@
+﻿
+@{
+    ViewBag.Title = "SelectionList";
+}
+
+<h2>SelectionList</h2>
+@Html.ListBox("ExamineeID", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "max-width:600px;width:100%;", size = 15 ,id = "lstselect"})
