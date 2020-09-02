@@ -8,6 +8,11 @@ using MvcApplication3.Models;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using DevExpress.DataAccess.Sql;
+using DevExpress.DataAccess.ConnectionParameters;
+using DevExpress.XtraReports.UI;
+using DevExpress.XtraReports.Configuration;
+
 
 
 namespace MvcApplication3.Controllers.ReportPS
@@ -148,7 +153,17 @@ namespace MvcApplication3.Controllers.ReportPS
             //MvcApplication3.Reports.XtraReport2 report = new MvcApplication3.Reports.XtraReport2();
             DevExpress.XtraReports.UI.XRLabel lbl = ((DevExpress.XtraReports.UI.XRLabel)report.FindControl("xrlabel1", true));
             lbl.Text = Session["amount"].ToString();
-            report.DataSource = "SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] where actualtestid in(" + Session["selected"] + ") ORDER BY LastFirstMiddle ASC"; //WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC";
+            //report.DataSource = "SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] ";// where actualtestid in(" + Session["selected"] + ") ORDER BY LastFirstMiddle ASC"; //WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC";
+
+            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            SqlConnection _con = new SqlConnection(constr);
+
+            SqlDataAdapter _da = new SqlDataAdapter("SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] where actualtestid in(" + Session["selected"] + ") ORDER BY LastFirstMiddle ASC", _con);
+            
+            DataSet ds = new DataSet();
+            _da.Fill(ds);
+            report.DataMember = ds.Tables[0].TableName;
+            report.DataSource = ds;
 
             //return PartialView("~/Views/rptIndiTestResult/_DocumentViewer1Partial.cshtml", report);
             //return PartialView("~/Views/ReportMain/ReportFilters/_DocumentViewerPartial.cshtml", report);
