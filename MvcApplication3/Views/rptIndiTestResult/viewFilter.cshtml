@@ -42,7 +42,7 @@ Individual test result filter
              <li>  
                <div>
                  @* @Html.DropDownList("SubjectID", ViewBag.SubjectList as SelectList, new { id = "subjects" })*@
-                    @Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects" })
+                    @Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects", style = "min-width: 250px;" })
                </div> 
             </li>  
         </ol>  
@@ -67,18 +67,42 @@ Individual test result filter
 
 <script type ="text/javascript">
 
+
+//    $("#subjectcat").change(function () {
+//        var ss = this.value;
+//        alert(ss);
+
+//        $("#subjects").empty();
+//        alert("test");
+
+//        $.getJSON("/rptIndiTestResult/GetSubjects?SubjCategoryID='" + ss + "'", null, function (data) {
+//            $("#subjects").addItems(data);
+//        });
+
     $("#subjectcat").change(function () {
         var ss = this.value;
-        alert(ss);
-
-        $("#subjects").empty();
-        alert("test");
-
-        $.getJSON("/rptIndiTestResult/GetSubjects?SubjCategoryID='" + ss + "'", null, function (data) {
-            $("#subjects").addItems(data);
+        $.ajax({
+            type: "POST",
+            url: "/rptIndiTestResult/GetSubjects?SubjCategoryID='" + ss + "'",
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (r) {
+                var lstsubjects = $("[id*=subjects]");
+                lstsubjects.empty();
+                //                    $.each(r.d, function () {
+                //                        lstCustomers.append($("<option></option>").val(this['Value']).html(this['Text']));
+                //                    });
+                $.each(r, function (index, itemData) {
+                    //alert(itemData.Text);                    
+                    var option = new Option(itemData.Text, itemData.Value);
+                    //lstsubjects.add(option);
+                    $("#subjects").append(option);
+                });
+            }
         });
-
     });
+    
 
     $.fn.addItems = function (data) {
         return this.each(function () {
