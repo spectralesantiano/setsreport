@@ -130,14 +130,14 @@
      function setSelected () {
          var rr = [];
 
-         /// 'lstselect' nane of listbox in view SelectionList.cshtml
+         /// 'lstselect' name of listbox in view SelectionList.cshtml ///////////
         $("#lstselect :selected").each(function (i, selected) {
             rr[i] = "'" + $(selected).val() + "'";
         });
         //alert(rr);
         //alert(rr[0]);
         var s = rr.toString();
-        $("#txtselected").val(s); /// 'txtselected' name of hidden textbox in your filterview
+        $("#txtselected").val(s); /// 'txtselected' name of hidden textbox in your viewFilter.cshtml ///////////
         //alert(s);
 
        }

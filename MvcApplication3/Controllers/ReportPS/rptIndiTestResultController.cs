@@ -22,7 +22,7 @@ namespace MvcApplication3.Controllers.ReportPS
         //
         // GET: /rptINdiTestResutl/
 
-        public ActionResult Index()
+        public ActionResult Index() 
         {
            // return RedirectToAction("Index", "Home");
            Session["amount"] = Request["txtAmount"].ToString();
@@ -125,9 +125,9 @@ namespace MvcApplication3.Controllers.ReportPS
             _da.Fill(_dt);
             ViewBag.RankList = ToSelectList(_dt, "PositionID", "Abbrv");
 
-             _da = new SqlDataAdapter("Select * From [tblexaminee]", constr);
+            _da = new SqlDataAdapter("Select * From [tblAdmSubjectCategory]", constr);
             _da.Fill(_dt);
-            ViewBag.ExamineeList = ToSelectList(_dt, "ExamineeID", "LName");
+            ViewBag.SubjectCat = ToSelectList(_dt, "SubjCategoryID", "SubjCategoryName");
 
             return PartialView();
            //return View();
@@ -143,6 +143,20 @@ namespace MvcApplication3.Controllers.ReportPS
              _da.Fill(_dt);
              ViewBag.selectionlist = ToSelectList(_dt, "ActualTestID", "DisplayField");
             return PartialView("~/Views/ReportMain/SelectionList.cshtml");
+        }
+
+        public JsonResult GetSubjects(string SubjCategoryID)
+        {
+            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            SqlConnection _con = new SqlConnection(constr);
+
+            SqlDataAdapter _da = new SqlDataAdapter("SELECT * from tblAdmSubject where SubjCategoryID =" + SubjCategoryID, constr);
+            DataTable _dt = new DataTable();
+            _da.Fill(_dt);
+            //ViewBag.SubjectList = ToSelectList(_dt, "SubjectID", "SubjectName");
+            var list = ToSelectList(_dt, "SubjectID", "SubjectName");
+            return Json(list);
+            //return View();
         }
 
         MvcApplication3.Reports.XtraReport2 report = new MvcApplication3.Reports.XtraReport2();
