@@ -48,7 +48,6 @@ C:\VUE\MvcApplication3\MvcApplication3\bin\DotNetOpenAuth.OAuth.Consumer.xml
 C:\VUE\MvcApplication3\MvcApplication3\bin\DotNetOpenAuth.OAuth.xml
 C:\VUE\MvcApplication3\MvcApplication3\bin\DotNetOpenAuth.OpenId.xml
 C:\VUE\MvcApplication3\MvcApplication3\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
-C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\MvcApplication3.csprojResolveAssemblyReference.cache
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\MvcApplication3.dll
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\MvcApplication3.pdb
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\MvcApplication3.dll.licenses

@@ -17,7 +17,9 @@ Individual test result filter
 
        @* ///// need to go back to index method..Page to call a report that must not be a partialview page. Like this page.
        ////// The sent button must be hide or do not add. Because theres already a generic button on the print selection(reportmain/index.cshtml) *@
-      @using (Ajax.BeginForm("Index", "rptIndiTestResult", null,
+       @* @using (Ajax.BeginForm("Index", "rptIndiTestResult", null,
+                            new AjaxOptions { UpdateTargetId = "divInterestDeatils" }, new { id = "rptIndiTestResult" }))*@
+      @using (Ajax.BeginForm("DocumentViewerPartial", "rptIndiTestResult", null,
                             new AjaxOptions { UpdateTargetId = "divInterestDeatils" }, new { id = "rptIndiTestResult" }))
       {  
         <div id="divInterestDeatils"></div>  

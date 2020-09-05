@@ -1,9 +1,23 @@
 
-@Html.DevExpress().DocumentViewer(settings =>
+@*@Html.DevExpress().DocumentViewer(settings =>
 {
     settings.Name = "DocumentViewer1";
     settings.CallbackRouteValues = new { Controller = "rptIndiTestResult", Action = "DocumentViewerPartial" };
     settings.ExportRouteValues = new { Controller = "rptIndiTestResult", Action = "DocumentViewerPartialExport" };
     settings.Report = (XtraReport)Model;
     settings.ToolbarMode = DocumentViewerToolbarMode.StandardToolbar;
-}).GetHtml()
+}).GetHtml()*@
+
+@Html.DevExpress().GetStyleSheets(
+    //new StyleSheet { ExtensionSuite = ExtensionSuite.Report },
+    new StyleSheet { ExtensionType = ExtensionType.WebDocumentViewer }  
+)  
+@Html.DevExpress().GetScripts(
+    //new Script { ExtensionSuite = ExtensionSuite.Report },
+    new Script { ExtensionType = ExtensionType.WebDocumentViewer }  
+)  
+
+@Html.DevExpress().WebDocumentViewer(settings =>  
+{  
+    settings.Name = "WebDocumentViewer";  
+}).Bind(Model).GetHtml()  
