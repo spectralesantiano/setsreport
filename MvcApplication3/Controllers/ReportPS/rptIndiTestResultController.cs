@@ -25,8 +25,8 @@ namespace MvcApplication3.Controllers.ReportPS
         public ActionResult Index() 
         {
            // return RedirectToAction("Index", "Home");
-           Session["amount"] = Request["txtAmount"].ToString();
-           Session["selected"] = Request["txtselected"].ToString();
+           //Session["amount"] = Request["txtAmount"].ToString();  //old not needed
+           //Session["selected"] = Request["txtselected"].ToString(); //old not needed
             return View();
         }
 

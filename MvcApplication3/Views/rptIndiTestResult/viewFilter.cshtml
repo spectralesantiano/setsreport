@@ -15,8 +15,7 @@ Individual test result filter
 <fieldset>  
         <legend>Calculate Simple Interest</legend>  
 
-       @* ///// need to go back to index method..Page to call a report that must not be a partialview page. Like this page.
-       ////// The sent button must be hide or do not add. Because theres already a generic button on the print selection(reportmain/index.cshtml) *@
+       @*////// The sent button must be hide or do not add. Because theres already a generic button on the print selection(reportmain/index.cshtml) *@
        @* @using (Ajax.BeginForm("Index", "rptIndiTestResult", null,
                             new AjaxOptions { UpdateTargetId = "divInterestDeatils" }, new { id = "rptIndiTestResult" }))*@
       @using (Ajax.BeginForm("DocumentViewerPartial", "rptIndiTestResult", null,
@@ -35,12 +34,12 @@ Individual test result filter
                 @Html.Label("Amount")  
                 @Html.TextBox("txtAmount")  
             </li>  
-              
+             <li>  
                <div>
                   @Html.DropDownList("SubjCategoryID", ViewBag.SubjectCat as SelectList,new { id = "subjectcat" })
                    
                </div> 
-              
+             </li>  
              <li>  
                <div>
                  @* @Html.DropDownList("SubjectID", ViewBag.SubjectList as SelectList, new { id = "subjects" })*@
