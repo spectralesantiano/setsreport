@@ -54,3 +54,5 @@ C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\MvcApplication3.dll.licenses
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\MvcApplication3.Reports.XtraReport1.resources
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\MvcApplication3.csproj.GenerateResource.Cache
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\MvcApplication3.Reports.XtraReport2.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\MvcApplication3.Reports.rptIndiTestResult.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\MvcApplication3.csprojResolveAssemblyReference.cache

@@ -14,7 +14,6 @@ using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.Configuration;
 
 
-
 namespace MvcApplication3.Controllers.ReportPS
 {
     public class rptIndiTestResultController : Controller
@@ -126,8 +125,16 @@ namespace MvcApplication3.Controllers.ReportPS
             ViewBag.RankList = ToSelectList(_dt, "PositionID", "Abbrv");
 
             _da = new SqlDataAdapter("Select * From [tblAdmSubjectCategory]", constr);
+            _dt.Clear();
+            _dt.Columns.Clear();
             _da.Fill(_dt);
             ViewBag.SubjectCat = ToSelectList(_dt, "SubjCategoryID", "SubjCategoryName");
+
+            _da = new SqlDataAdapter(Controllers.GlobalVar.TestNameQuery, constr);
+            _dt.Clear();
+            _dt.Columns.Clear();
+            _da.Fill(_dt);
+            ViewBag.TestName = ToSelectList(_dt, "TestName", "TestName");
 
             return PartialView();
            //return View();
@@ -142,7 +149,7 @@ namespace MvcApplication3.Controllers.ReportPS
             DataTable _dt = new DataTable();
              _da.Fill(_dt);
              ViewBag.selectionlist = ToSelectList(_dt, "ActualTestID", "DisplayField");
-            return PartialView("~/Views/ReportMain/SelectionList.cshtml");
+            return PartialView("~/Views/ReportMain/SelectionList.cshtml"); //--- REQUIRED View to redirect to ---//
         }
 
         public JsonResult GetSubjects(string SubjCategoryID)
@@ -159,13 +166,14 @@ namespace MvcApplication3.Controllers.ReportPS
             //return View();
         }
 
-        MvcApplication3.Reports.XtraReport2 report = new MvcApplication3.Reports.XtraReport2();
+        //MvcApplication3.Reports.XtraReport2 report = new MvcApplication3.Reports.XtraReport2();
+        MvcApplication3.Reports.rptIndiTestResult report = new MvcApplication3.Reports.rptIndiTestResult();
 
         [HttpPost]
         public ActionResult DocumentViewerPartial()
         {
             //MvcApplication3.Reports.XtraReport2 report = new MvcApplication3.Reports.XtraReport2();
-            DevExpress.XtraReports.UI.XRLabel lbl = ((DevExpress.XtraReports.UI.XRLabel)report.FindControl("xrlabel1", true));
+            //DevExpress.XtraReports.UI.XRLabel lbl = ((DevExpress.XtraReports.UI.XRLabel)report.FindControl("xrlabel1", true));
            // lbl.Text = Session["amount"].ToString();
             //report.DataSource = "SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] ";// where actualtestid in(" + Session["selected"] + ") ORDER BY LastFirstMiddle ASC"; //WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC";
 

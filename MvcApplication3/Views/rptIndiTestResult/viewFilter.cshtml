@@ -5,15 +5,41 @@
 @model MvcApplication3.Models.RankModel
 @*@model MvcApplication3.Models.ExamineeRankModel*@
 
-@*@{
+@{
     Layout = null;// "~/views/shared/_layout.cshtml";
-}*@
+}
 
+ <link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+<script type="text/javascript" src="/Scripts/jquery-ui-1.8.20.min.js">      </script>
+
+<style>
+    
+.row {
+    background: #f6f6f6;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    padding: 10px;
+}
+.col {
+    float: left;
+    text-align:left;
+    padding: 10px;
+    white-space: nowrap
+}
+.collabel {
+    float: left;
+    text-align:left;
+    padding: 10px;
+    font-size :large;
+    white-space: nowrap
+}
+
+</style>
 
 Individual test result filter
 <fieldset>  
-        <legend>Calculate Simple Interest</legend>  
+        @*<legend></legend>  *@
 
        @*////// The sent button must be hide or do not add. Because theres already a generic button on the print selection(reportmain/index.cshtml) *@
        @* @using (Ajax.BeginForm("Index", "rptIndiTestResult", null,
@@ -22,31 +48,91 @@ Individual test result filter
                             new AjaxOptions { UpdateTargetId = "divInterestDeatils" }, new { id = "rptIndiTestResult" }))
       {  
         <div id="divInterestDeatils"></div>  
-        <ol>  
-            <li>
-            <div>
-                   @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, new { id = "ranklist"})  
-                 
+          
+          <table class = collabel>
+            <tr>
+                    <td> @Html.Label("Test Name:")</td> 
+                    <td>
+                        @Html.DropDownList("TestName", ViewBag.TestName as SelectList, new { id = "testname" })  
+                    </td>
+                    <td> @Html.Label("1")</td>
+                    <td>
+                        @Html.DropDownList("SubjCategoryID", ViewBag.SubjectCat as SelectList,new { id = "subjectcat" })
+                    </td> 
+            </tr>
+            <tr>
+                   <td> @Html.Label("Rank:")</td>
+                   <td>
+                        @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, new { id = "ranklist"})  
+                  </td>
+                  <td> @Html.Label("2")</td>   
+                  <td>
+                        @* @Html.DropDownList("SubjectID", ViewBag.SubjectList as SelectList, new { id = "subjects" })*@
+                        @Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects", style = "min-width: 250px;" })
+                    </td>   
+            </tr>
+            <tr>
+                  <td> @Html.Label("From Date:")</td>
+                   <td>
+                       @Html.TextBox("deFromDate","", new { @class = "datepicker" })
+                  </td>
+                   <td> @Html.Label("3")</td>
+                  <td> </td>      
+                  
+            </tr>
+            <tr>
+                <td> @Html.Label("To Date:")</td>    
+                 <td>
+                       @Html.TextBox("deToDate","", new { @class = "datepicker" })
+                </td>
+                <td> @Html.Label("4")</td>      
+                   <td> </td>   
+                </tr>
+          </table>
+          
+       @*  <div class ="row">
+            <div class ="collabel">
+                <div> @Html.Label("Test Name:")</div>
+                <div> @Html.Label("Rank:")</div>   
+                <div> @Html.Label("From Date:")</div>   
+                <div> @Html.Label("To Date:")</div>               
             </div>
-                        
-            </li>
-            <li>  
-                @Html.Label("Amount")  
-                @Html.TextBox("txtAmount")  
-            </li>  
-             <li>  
-               <div>
-                  @Html.DropDownList("SubjCategoryID", ViewBag.SubjectCat as SelectList,new { id = "subjectcat" })
-                   
-               </div> 
-             </li>  
-             <li>  
-               <div>
-                 @* @Html.DropDownList("SubjectID", ViewBag.SubjectList as SelectList, new { id = "subjects" })*@
-                    @Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects", style = "min-width: 250px;" })
-               </div> 
-            </li>  
-        </ol>  
+             <div class="col">
+                  <div>
+                        @Html.DropDownList("TestName", ViewBag.RankList as SelectList, new { id = "ranklist" })  
+                 </div>
+                
+                 <div>
+                        @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, new { id = "ranklist"})  
+                 </div>
+                
+                 <div>
+                       @Html.TextBox("deFromDate","", new { @class = "datepicker" })
+                 </div>
+                
+                 <div>
+                       @Html.TextBox("deToDate","", new { @class = "datepicker" })
+                 </div>
+             </div>
+             <div class ="collabel">
+                <div> @Html.Label("1")</div>
+                <div> @Html.Label("2")</div>   
+                <div> @Html.Label("3")</div>   
+                <div> @Html.Label("4")</div>               
+            </div>
+             <div class="col">
+                    <div>
+                        @Html.DropDownList("SubjCategoryID", ViewBag.SubjectCat as SelectList,new { id = "subjectcat" })
+                    </div> 
+                    <div>
+                        @Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects", style = "min-width: 250px;" })
+                    </div> 
+                   <div> </div>     
+                   <div> </div>     
+             </div>
+
+         </div> *@
+       
           
           @* ///---- this div is required ------////*@
           <div id = "selectlist">
@@ -123,7 +209,8 @@ Individual test result filter
         $("#selectlist").load("/rptIndiTestResult/SelectionList?rankid='" + ss + "'")
     });
 
-
+    $("#deFromDate").datepicker();
+    $("#deToDate").datepicker();
 
 
 //    $("#btnselected").click(function () {
