@@ -14,12 +14,14 @@
 <script type="text/javascript" src="/Scripts/jquery-ui-1.8.20.min.js">      </script>
 
 <style>
-    
+ fieldset {
+  padding: 1px;
+}
 .row {
     background: #f6f6f6;
     border: 1px solid #ccc;
     overflow: hidden;
-    padding: 10px;
+    padding: 3px;
 }
 .col {
     float: left;
@@ -30,9 +32,10 @@
 .collabel {
     float: left;
     text-align:left;
-    padding: 10px;
-    font-size :large;
-    white-space: nowrap
+    padding: 5px;
+    font-size :medium;
+    white-space: nowrap;
+    padding-top:1px;
 }
 
 </style>
@@ -48,47 +51,118 @@ Individual test result filter
                             new AjaxOptions { UpdateTargetId = "divInterestDeatils" }, new { id = "rptIndiTestResult" }))
       {  
         <div id="divInterestDeatils"></div>  
-          
-          <table class = collabel>
+       
+         <table class ="collabel">
             <tr>
-                    <td> @Html.Label("Test Name:")</td> 
-                    <td>
-                        @Html.DropDownList("TestName", ViewBag.TestName as SelectList, new { id = "testname" })  
-                    </td>
-                    <td> @Html.Label("1")</td>
-                    <td>
-                        @Html.DropDownList("SubjCategoryID", ViewBag.SubjectCat as SelectList,new { id = "subjectcat" })
-                    </td> 
+             <td> 
+                   <table class = "collabel" border = "1">
+                    <tr><th colspan = "4">Criteria</th></tr>
+                    <tr>
+                            <td> @Html.Label("Test Name:")</td> 
+                            <td>
+                                @Html.DropDownList("TestName", ViewBag.TestName as SelectList, new { id = "testname" })  
+                            </td>
+                            <td> @Html.Label("First Name:")</td>
+                            <td>
+                                @*@Html.DropDownList("SubjCategoryID", ViewBag.SubjectCat as SelectList,new { id = "subjectcat" })*@
+                                @Html.TextBox("teFirstName", "", new { id = "teFirstName" })
+                            </td> 
+                    </tr>
+                    <tr>
+                           <td> @Html.Label("Rank:")</td>
+                           <td>
+                                @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, new { id = "ranklist"})  
+                          </td>
+                          <td> @Html.Label("Last Name:")</td>   
+                          <td>
+                                @* @Html.DropDownList("SubjectID", ViewBag.SubjectList as SelectList, new { id = "subjects" })*@
+                                @*@Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects", style = "min-width: 250px;" })*@
+                                @Html.TextBox("teLastName", "", new { id = "teLastName" })
+                            </td>   
+                    </tr>
+                    <tr>
+                          <td> @Html.Label("From Date:")</td>
+                           <td>
+                               @Html.TextBox("deFromDate","", new { @class = "datepicker" })
+                          </td>
+                           <td> @Html.Label("Nationality:")</td>
+                          <td> 
+                                @Html.DropDownList("lueNat", ViewBag.Nationality as SelectList, new { id = "lueNat" })
+                          </td>      
+                    </tr>
+                    <tr>
+                        <td> @Html.Label("To Date:")</td>    
+                         <td>
+                               @Html.TextBox("deToDate","", new { @class = "datepicker" })
+                        </td>
+                        <td> @Html.Label("Taken at:")</td>      
+                         <td>
+                             @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, new { id = "CompanyName" })
+                    
+                         </td>   
+                     </tr>
+                     <tr>
+                        <td rowspan = "4"> @Html.Label("Include:")</td> 
+                     </tr>
+                     <tr >
+                        <td colspan = "4">
+                            <div>
+                                <label>
+                                    @Html.RadioButton("Answers", "2")
+                                    Both
+                                </label>
+                    
+                                <label>
+                                    @Html.RadioButton("Answers","1" )
+                                    Rights Answers
+                                </label>
+                   
+                                <label>
+                                    @Html.RadioButton( "Answers","0")
+                                    Wrong Answers
+                                </label>
+                            </div> 
+                        </td>
+                     </tr>
+                  </table>
+              </td>
+              <td valign=top>
+                    <table class ="collabel" border ="1">
+                        <tr>
+                            <th>Sorting</th>
+                        </tr>
+                        <tr>
+                            <td style="font-size:small">
+                                Note: Criteria has effect on sorting and vice-versa
+                            </td>
+                        </tr>  
+                        <tr>
+                            <td>
+                                Sort Selection By: @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>
+                                    @Html.RadioButton("rgSortOrder", "Asc")
+                                    Ascending
+                                </label>
+                    
+                                <label>
+                                    @Html.RadioButton("rgSortOrder","Desc" )
+                                    Descending
+                                </label>
+                            </td> 
+                        </tr>
+                    </table>
+              </td>
             </tr>
             <tr>
-                   <td> @Html.Label("Rank:")</td>
-                   <td>
-                        @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, new { id = "ranklist"})  
-                  </td>
-                  <td> @Html.Label("2")</td>   
-                  <td>
-                        @* @Html.DropDownList("SubjectID", ViewBag.SubjectList as SelectList, new { id = "subjects" })*@
-                        @Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects", style = "min-width: 250px;" })
-                    </td>   
+                 <td colspan ="4" align ="center"><button id = "btnFilter" type ="button">Apply Filter</button>  </td>
             </tr>
-            <tr>
-                  <td> @Html.Label("From Date:")</td>
-                   <td>
-                       @Html.TextBox("deFromDate","", new { @class = "datepicker" })
-                  </td>
-                   <td> @Html.Label("3")</td>
-                  <td> </td>      
-                  
-            </tr>
-            <tr>
-                <td> @Html.Label("To Date:")</td>    
-                 <td>
-                       @Html.TextBox("deToDate","", new { @class = "datepicker" })
-                </td>
-                <td> @Html.Label("4")</td>      
-                   <td> </td>   
-                </tr>
+                
           </table>
+       
           
        @*  <div class ="row">
             <div class ="collabel">
@@ -154,17 +228,19 @@ Individual test result filter
 
 <script type ="text/javascript">
 
-
-//    $("#subjectcat").change(function () {
-//        var ss = this.value;
-//        alert(ss);
-
-//        $("#subjects").empty();
-//        alert("test");
-
-//        $.getJSON("/rptIndiTestResult/GetSubjects?SubjCategoryID='" + ss + "'", null, function (data) {
-//            $("#subjects").addItems(data);
-//        });
+    $("#btnFilter").click(
+    function () {
+        var ss = $("#testname option:selected").val();
+        alert(ss);
+        alert($("#teFirstName").val());
+        alert($("#ranklist option:selected").val());
+        alert($("#teLastName").val());
+        alert($("#deFromDate").val());
+        alert($("#deToDate").val());
+        alert($("#lueNat").val());
+        alert($("[name='Answers']:checked").val());
+    }
+    )
 
     $("#subjectcat").change(function () {
         var ss = this.value;
@@ -206,7 +282,7 @@ Individual test result filter
     $("#ranklist").change(function () {
         var ss = this.value;
         //alert(ss);
-        $("#selectlist").load("/rptIndiTestResult/SelectionList?rankid='" + ss + "'")
+            $("#selectlist").load("/rptIndiTestResult/SelectionList?rankid='" + ss + "'")
     });
 
     $("#deFromDate").datepicker();

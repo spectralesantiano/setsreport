@@ -116,13 +116,22 @@
     $("input#btnShowReport").click(function () {
         // alert($("#fname").val());
         setSelected();
-        var res = $("#ObjectID option:selected").val();
-        var ee = res.replace(/ /g, "+");
-        //var ea = res.replace(/ /g, "+");
-        //var ee = ea + "/" + ea;
-        //alert(ee);
-        $('#' + ee).attr("target", "_blank");
-        $('#' + ee).submit();
+
+        if ($("#txtselected").val() != "") { 
+              var res = $("#ObjectID option:selected").val();
+            var ee = res.replace(/ /g, "+");
+            //var ea = res.replace(/ /g, "+");
+            //var ee = ea + "/" + ea;
+            //alert(ee);
+            $('#' + ee).attr("target", "_blank");
+            $('#' + ee).submit();
+        }
+        else {
+                alert("You have not selected from the list yet!.")
+      
+         }
+
+      
 
     });
 

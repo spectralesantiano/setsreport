@@ -136,6 +136,26 @@ namespace MvcApplication3.Controllers.ReportPS
             _da.Fill(_dt);
             ViewBag.TestName = ToSelectList(_dt, "TestName", "TestName");
 
+            _da = new SqlDataAdapter(Controllers.GlobalVar.NationalityQuery, constr);
+            _dt.Clear();
+            _dt.Columns.Clear();
+            _da.Fill(_dt);
+            ViewBag.Nationality = ToSelectList(_dt, "PKey", "Nat");
+
+            _da = new SqlDataAdapter(Controllers.GlobalVar.CompanyNameQuery, constr);
+            _dt.Clear();
+            _dt.Columns.Clear();
+            _da.Fill(_dt);
+            ViewBag.CompanyName = ToSelectList(_dt, "CompanyName", "CompanyName");
+
+            var list = new SelectList(new [] 
+            {
+                new { cbeSortBy = "1", Text = "Name" },
+                new { cbeSortBy = "2", Text = "Date" },
+            }, "cbeSortBy", "Text", 1);
+            ViewBag.sortitems = list;
+
+
             return PartialView();
            //return View();
         }
@@ -191,6 +211,9 @@ namespace MvcApplication3.Controllers.ReportPS
             //return PartialView("~/Views/rptIndiTestResult/_DocumentViewer1Partial.cshtml", report);
             //return PartialView("~/Views/ReportMain/ReportFilters/_DocumentViewerPartial.cshtml", report);
             //return PartialView("_DocumentViewer1Partial", report);
+
+            ViewBag.selection = Request["teFirstName"];
+
             return PartialView("_DocumentViewer1Partial", report);
         }
 
