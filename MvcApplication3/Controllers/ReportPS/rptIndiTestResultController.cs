@@ -12,6 +12,7 @@ using DevExpress.DataAccess.Sql;
 using DevExpress.DataAccess.ConnectionParameters;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.Configuration;
+using MvcApplication3.Controllers;
 
 
 namespace MvcApplication3.Controllers.ReportPS
@@ -187,7 +188,7 @@ namespace MvcApplication3.Controllers.ReportPS
         }
 
         //MvcApplication3.Reports.XtraReport2 report = new MvcApplication3.Reports.XtraReport2();
-        MvcApplication3.Reports.rptIndiTestResult report = new MvcApplication3.Reports.rptIndiTestResult();
+        MvcApplication3.Reports.rptIndiTestResult MainReport = new MvcApplication3.Reports.rptIndiTestResult();
 
         [HttpPost]
         public ActionResult DocumentViewerPartial()
@@ -196,30 +197,62 @@ namespace MvcApplication3.Controllers.ReportPS
             //DevExpress.XtraReports.UI.XRLabel lbl = ((DevExpress.XtraReports.UI.XRLabel)report.FindControl("xrlabel1", true));
            // lbl.Text = Session["amount"].ToString();
             //report.DataSource = "SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] ";// where actualtestid in(" + Session["selected"] + ") ORDER BY LastFirstMiddle ASC"; //WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC";
+             string selectedIDs = Request["txtselected"].ToString();
+             string conditions = "";
+
+             if (Request["AnswerFilter"].ToString() != "2") // "" in sets desktop..empty space causes error in view
+             {
+                 conditions = String.Format("AND Answer {0} UserAns ", ((Request["AnswerFilter"].ToString()) == "0") ? "!=": "=");
+             }
+
+             string sql = String.Format("SELECT * FROM view_FullExamineeResultsWithQuestions WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
+
 
             string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             //SqlDataAdapter _da = new SqlDataAdapter("SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] where actualtestid in(" + Session["selected"] + ") ORDER BY LastFirstMiddle ASC", _con);
-            SqlDataAdapter _da = new SqlDataAdapter("SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] where actualtestid in(" + Request["txtselected"].ToString() + ") ORDER BY LastFirstMiddle ASC", _con);
+            //SqlDataAdapter _da = new SqlDataAdapter("SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] where actualtestid in(" + Request["txtselected"].ToString() + ") ORDER BY LastFirstMiddle ASC", _con);
+            SqlDataAdapter _da = new SqlDataAdapter(sql, _con);
             
             DataSet ds = new DataSet();
             _da.Fill(ds);
-            report.DataMember = ds.Tables[0].TableName;
-            report.DataSource = ds;
+            MainReport.DataMember = ds.Tables[0].TableName;
+            MainReport.DataSource = ds;
 
             //return PartialView("~/Views/rptIndiTestResult/_DocumentViewer1Partial.cshtml", report);
             //return PartialView("~/Views/ReportMain/ReportFilters/_DocumentViewerPartial.cshtml", report);
             //return PartialView("_DocumentViewer1Partial", report);
-
             ViewBag.selection = Request["teFirstName"];
+            MainReport.FindControl("txtPrintDate", true).Text = "Print Date: "   + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
 
-            return PartialView("_DocumentViewer1Partial", report);
+            
+            GroupField item = new GroupField();
+            item.FieldName = "ActualTestID";
+            item.SortOrder = XRColumnSortOrder.Ascending;
+            MainReport.ActualTestHeader.GroupFields.Add(item);
+            MainReport.SubjectName.DataBindings.Add("Text", null, "ActualTestID");
+
+            item = new GroupField();
+            item.FieldName = "SubjectName";
+            item.SortOrder = XRColumnSortOrder.Ascending;
+            MainReport.SubjectNameHeader.GroupFields.Add(item);
+            MainReport.SubjectName.DataBindings.Add("Text", null, "SubjectName");
+
+            DataTable dt =ds.Tables[0];
+             for(int i  = 0 ;i <= dt.Columns.Count - 1;i++){
+                XRControl cell   = MainReport.FindControl(dt.Columns[i].ColumnName,true);
+                if(cell != null) {
+                    cell.DataBindings.Add("Text", null, dt.Columns[i].ColumnName);
+                }
+             }
+
+            return PartialView("_DocumentViewer1Partial", MainReport);
         }
 
         public ActionResult DocumentViewerPartialExport()
         {
-            return DocumentViewerExtension.ExportTo(report, Request);
+            return DocumentViewerExtension.ExportTo(MainReport, Request);
         }
 
 

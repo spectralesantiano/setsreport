@@ -21,4 +21,6 @@ namespace MvcApplication3.Controllers
         public static readonly String CompanyNameQuery = "SELECT DISTINCT CompanyName FROM view_FullExamineeResults ORDER BY CompanyName ASC";
 
     }
+
+
 }
