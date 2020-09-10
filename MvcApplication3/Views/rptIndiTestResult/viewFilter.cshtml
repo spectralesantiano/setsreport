@@ -241,7 +241,7 @@ Individual test result filter
         dict["TestName"] = $("#lueTestName").val();
         dict["DateTaken"] = $("#deFromDate").val();
         dict["ToDate"] = $("#deToDate").val();
-        dict["AnswerFilter"] = $("[name='AnswerFilter']:checked").val();
+       // dict["AnswerFilter"] = $("[name='AnswerFilter']:checked").val();
         dict["Nat"] = $("#lueNat").val();
         dict["CompanyName"] = $("#lueCompany").val();
        
@@ -293,11 +293,11 @@ Individual test result filter
     };
 
     /// --- this is where you filter what will be displayed in selection list--- ////
-    $("#lueRank").change(function () {
-        var ss = this.value;
-        //alert(ss);
-            $("#selectlist").load("/rptIndiTestResult/SelectionList?rankid='" + ss + "'")
-    });
+//    $("#lueRank").change(function () {
+//        var ss = this.value;
+//        //alert(ss);
+//            $("#selectlist").load("/rptIndiTestResult/SelectionList?rankid='" + ss + "'")
+//    });
 
     $("#deFromDate").datepicker();
     $("#deToDate").datepicker();

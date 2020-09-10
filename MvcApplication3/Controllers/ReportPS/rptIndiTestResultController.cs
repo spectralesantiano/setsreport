@@ -170,7 +170,7 @@ namespace MvcApplication3.Controllers.ReportPS
             string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
-            SqlDataAdapter _da = new SqlDataAdapter("SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults where positionid=" + criteria, constr);
+            SqlDataAdapter _da = new SqlDataAdapter("SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults where " + filterCriteria, constr);
             DataTable _dt = new DataTable();
              _da.Fill(_dt);
              ViewBag.selectionlist = ToSelectList(_dt, "ActualTestID", "DisplayField");
@@ -262,7 +262,7 @@ namespace MvcApplication3.Controllers.ReportPS
             var filter = JsonConvert.DeserializeObject<dynamic>(filterlist);
 
             string namem = "";
-            var valuen = "";
+            var valuen="";
             foreach (var record in filter)
             {
                 namem = record.Name;
@@ -270,41 +270,40 @@ namespace MvcApplication3.Controllers.ReportPS
                 System.Diagnostics.Debug.WriteLine(namem);
                 System.Diagnostics.Debug.WriteLine(valuen);
 
-
-                  //  If (Not "AnswerFilter".Contains(filter.Key) AndAlso IsNotEmpty(filter.Value) Then
-                searchText = (searchText !="")? searchText += " AND ": "";
+                if (valuen != null && valuen != "")
+                {
+                     searchText = (searchText !="")? searchText += " AND ": "";
                         switch (namem) {
                             case "FName":
-                                searchText += String.Format("{0} LIKE '%{1}%'", filter.Key, filter.Value);
+                                searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
                                 break;
                             case "LName":
-                                searchText += String.Format("{0} LIKE '%{1}%'", filter.Key, filter.Value);
+                                searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
                                 break;
                             case "DateTaken":
-                                searchText += String.Format("{0} >= '{1}'", filter.Key, filter.Value);
+                                searchText += String.Format("{0} >= '{1}'", namem, valuen);
                                 break;
                             case "ToDate":
-                                DateTime toDate  = filter.Value;
+                                DateTime toDate  = Convert.ToDateTime(valuen);
                                 toDate = toDate.AddDays(1);
                                 searchText += String.Format("DateTaken <= '{0}'", toDate);
                                     break;
                             case "PositionID":
+                                    searchText += String.Format("{0} = '{1}'", namem, valuen);
                                     break;
                             case "TestName":
+                                    searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
                                     break;
-
-                            case "AnswerFilter":
-                                    break;
-
                             case "Nat":
+                                    searchText += String.Format("{0} = '{1}'", namem, valuen);
                                     break;
-
                             case "CompanyName":
+                                    searchText += String.Format("{0} = '{1}'", namem, valuen);
                                     break;
-
                             default:
-                                    searchText &= String.Format("{0} = '{1}'", filter.Key, filter.Value);
+                                    searchText += String.Format("{0} = '{1}'", namem, valuen);
                                     break;
+                      }
                   }
                  //   End If
             }
