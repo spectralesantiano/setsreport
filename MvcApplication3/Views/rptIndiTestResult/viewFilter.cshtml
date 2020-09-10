@@ -33,9 +33,10 @@
     float: left;
     text-align:left;
     padding: 5px;
-    font-size :medium;
+    font-size :small;
     white-space: nowrap;
     padding-top:1px;
+    font-family:Arial
 }
 
 </style>
@@ -60,7 +61,7 @@ Individual test result filter
                     <tr>
                             <td> @Html.Label("Test Name:")</td> 
                             <td>
-                                @Html.DropDownList("TestName", ViewBag.TestName as SelectList, new { id = "testname" })  
+                                @Html.DropDownList("TestName", ViewBag.TestName as SelectList, new { id = "lueTestName" })  
                             </td>
                             <td> @Html.Label("First Name:")</td>
                             <td>
@@ -71,7 +72,7 @@ Individual test result filter
                     <tr>
                            <td> @Html.Label("Rank:")</td>
                            <td>
-                                @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, new { id = "ranklist"})  
+                                @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, new { id = "lueRank"})  
                           </td>
                           <td> @Html.Label("Last Name:")</td>   
                           <td>
@@ -97,15 +98,14 @@ Individual test result filter
                         </td>
                         <td> @Html.Label("Taken at:")</td>      
                          <td>
-                             @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, new { id = "CompanyName" })
+                             @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, new { id = "lueCompany" })
                     
                          </td>   
                      </tr>
                      <tr>
-                        <td rowspan = "4"> @Html.Label("Include:")</td> 
-                     </tr>
-                     <tr >
-                        <td colspan = "4">
+                        <td colspan = "1"> @Html.Label("Include:")</td> 
+                    
+                        <td colspan = "3">
                             <div>
                                 <label>
                                     @Html.RadioButton("AnswerFilter", "2", true)
@@ -123,6 +123,9 @@ Individual test result filter
                                 </label>
                             </div> 
                         </td>
+                     </tr>
+                     <tr>
+                         <td colspan ="4" align ="center"><button id = "btnFilter" type ="button">Apply Criteria</button>  </td>
                      </tr>
                   </table>
               </td>
@@ -157,9 +160,7 @@ Individual test result filter
                     </table>
               </td>
             </tr>
-            <tr>
-                 <td colspan ="4" align ="center"><button id = "btnFilter" type ="button">Apply Filter</button>  </td>
-            </tr>
+           
                 
           </table>
        
@@ -173,11 +174,11 @@ Individual test result filter
             </div>
              <div class="col">
                   <div>
-                        @Html.DropDownList("TestName", ViewBag.RankList as SelectList, new { id = "ranklist" })  
+                        @Html.DropDownList("TestName", ViewBag.RankList as SelectList, new { id = "lueRank" })  
                  </div>
                 
                  <div>
-                        @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, new { id = "ranklist"})  
+                        @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, new { id = "lueRank"})  
                  </div>
                 
                  <div>
@@ -230,16 +231,29 @@ Individual test result filter
 
     $("#btnFilter").click(
     function () {
-        var ss = $("#testname option:selected").val();
-        alert(ss);
-        alert($("#teFirstName").val());
-        alert($("#ranklist option:selected").val());
-        alert($("#teLastName").val());
-        alert($("#deFromDate").val());
-        alert($("#deToDate").val());
-        alert($("#lueNat").val());
-        alert($("[name='Answers']:checked").val());
-    }
+        //        var ss = $("#testname option:selected").val();
+
+        var dict = new Object();
+
+        dict["FName"] = $("#teFirstName").val();
+        dict["LName"] = $("#teLastName").val();
+        dict["PositionID"] = $("#lueRank").val();
+        dict["TestName"] = $("#lueTestName").val();
+        dict["DateTaken"] = $("#deFromDate").val();
+        dict["ToDate"] = $("#deToDate").val();
+        dict["AnswerFilter"] = $("[name='AnswerFilter']:checked").val();
+        dict["Nat"] = $("#lueNat").val();
+        dict["CompanyName"] = $("#lueCompany").val();
+       
+//        for (var key in dict) {
+//            var value = dict[key];
+//            alert(value);
+//        }
+
+        alert(JSON.stringify(dict));
+
+        $("#selectlist").load("/rptIndiTestResult/SelectionList?criteria='" + encodeURIComponent(JSON.stringify(dict)) + "'")
+        }
     )
 
     $("#subjectcat").change(function () {
@@ -279,7 +293,7 @@ Individual test result filter
     };
 
     /// --- this is where you filter what will be displayed in selection list--- ////
-    $("#ranklist").change(function () {
+    $("#lueRank").change(function () {
         var ss = this.value;
         //alert(ss);
             $("#selectlist").load("/rptIndiTestResult/SelectionList?rankid='" + ss + "'")

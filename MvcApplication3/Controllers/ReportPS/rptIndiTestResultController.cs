@@ -13,6 +13,7 @@ using DevExpress.DataAccess.ConnectionParameters;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.Configuration;
 using MvcApplication3.Controllers;
+using Newtonsoft.Json;
 
 
 namespace MvcApplication3.Controllers.ReportPS
@@ -161,12 +162,15 @@ namespace MvcApplication3.Controllers.ReportPS
            //return View();
         }
 
-        public ActionResult SelectionList(string rankid)
+        public ActionResult SelectionList(string criteria)
         {
+
+            string filterCriteria = ApplyCriteria(criteria);
+
             string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
-            SqlDataAdapter _da = new SqlDataAdapter("SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults where positionid=" + rankid, constr);
+            SqlDataAdapter _da = new SqlDataAdapter("SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults where positionid=" + criteria, constr);
             DataTable _dt = new DataTable();
              _da.Fill(_dt);
              ViewBag.selectionlist = ToSelectList(_dt, "ActualTestID", "DisplayField");
@@ -248,6 +252,65 @@ namespace MvcApplication3.Controllers.ReportPS
              }
 
             return PartialView("_DocumentViewer1Partial", MainReport);
+        }
+
+        private String ApplyCriteria(string AllCriteria)
+        {  
+            string searchText = "";
+            AllCriteria.Trim(new Char[] { '\'' });
+            string filterlist = AllCriteria.Trim(new Char[] { '\'' });  // "{\"FName\":\"ghdfd\",\"LName\":\"dfdf\",\"PositionID\":\"SYSR1E\",\"TestName\":\"2nd Officer Test for cargo ships\",\"DateTaken\":\"09/10/2020\",\"ToDate\":\"09/11/2020\",\"AnswerFilter\":\"2\",\"Nat\":\"SYSCNAX\",\"CompanyName\":\"Spectral Technologies. Inc.\"}";
+            var filter = JsonConvert.DeserializeObject<dynamic>(filterlist);
+
+            string namem = "";
+            var valuen = "";
+            foreach (var record in filter)
+            {
+                namem = record.Name;
+                valuen = record.Value;
+                System.Diagnostics.Debug.WriteLine(namem);
+                System.Diagnostics.Debug.WriteLine(valuen);
+
+
+                  //  If (Not "AnswerFilter".Contains(filter.Key) AndAlso IsNotEmpty(filter.Value) Then
+                searchText = (searchText !="")? searchText += " AND ": "";
+                        switch (namem) {
+                            case "FName":
+                                searchText += String.Format("{0} LIKE '%{1}%'", filter.Key, filter.Value);
+                                break;
+                            case "LName":
+                                searchText += String.Format("{0} LIKE '%{1}%'", filter.Key, filter.Value);
+                                break;
+                            case "DateTaken":
+                                searchText += String.Format("{0} >= '{1}'", filter.Key, filter.Value);
+                                break;
+                            case "ToDate":
+                                DateTime toDate  = filter.Value;
+                                toDate = toDate.AddDays(1);
+                                searchText += String.Format("DateTaken <= '{0}'", toDate);
+                                    break;
+                            case "PositionID":
+                                    break;
+                            case "TestName":
+                                    break;
+
+                            case "AnswerFilter":
+                                    break;
+
+                            case "Nat":
+                                    break;
+
+                            case "CompanyName":
+                                    break;
+
+                            default:
+                                    searchText &= String.Format("{0} = '{1}'", filter.Key, filter.Value);
+                                    break;
+                  }
+                 //   End If
+            }
+          
+
+            return searchText;
         }
 
         public ActionResult DocumentViewerPartialExport()

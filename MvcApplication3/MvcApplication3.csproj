@@ -209,6 +209,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\criteriaModel.cs" />
     <Compile Include="Models\dropdownModel.cs" />
     <Compile Include="Models\ExamineeRankModel.cs" />
     <Compile Include="Models\PrintSelectionModels.cs" />
