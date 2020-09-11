@@ -61,7 +61,8 @@ Individual test result filter
                     <tr>
                             <td> @Html.Label("Test Name:")</td> 
                             <td>
-                                @Html.DropDownList("TestName", ViewBag.TestName as SelectList, new { id = "lueTestName" })  
+                                @Html.DropDownList("TestName", ViewBag.TestName as SelectList,"" , new { id = "lueTestName" })  
+                                  <button id = "clearlueTestName" type ="button">x</button>  
                             </td>
                             <td> @Html.Label("First Name:")</td>
                             <td>
@@ -72,7 +73,8 @@ Individual test result filter
                     <tr>
                            <td> @Html.Label("Rank:")</td>
                            <td>
-                                @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, new { id = "lueRank"})  
+                                @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, "", new { id = "lueRank"})  
+                                 <button id = "clearlueRank" type ="button">x</button>  
                           </td>
                           <td> @Html.Label("Last Name:")</td>   
                           <td>
@@ -88,7 +90,8 @@ Individual test result filter
                           </td>
                            <td> @Html.Label("Nationality:")</td>
                           <td> 
-                                @Html.DropDownList("lueNat", ViewBag.Nationality as SelectList, new { id = "lueNat" })
+                                @Html.DropDownList("lueNat", ViewBag.Nationality as SelectList,"", new { id = "lueNat" })
+                                <button id = "clearlueNat" type ="button">x</button>  
                           </td>      
                     </tr>
                     <tr>
@@ -98,8 +101,8 @@ Individual test result filter
                         </td>
                         <td> @Html.Label("Taken at:")</td>      
                          <td>
-                             @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, new { id = "lueCompany" })
-                    
+                             @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList,"", new { id = "lueCompany" })
+                                <button id = "clearlueCompany" type ="button">x</button>                              
                          </td>   
                      </tr>
                      <tr>
@@ -135,7 +138,7 @@ Individual test result filter
                             <th>Sorting</th>
                         </tr>
                         <tr>
-                            <td style="font-size:small">
+                            <td style="font-size:smaller">
                                 Note: Criteria has effect on sorting and vice-versa
                             </td>
                         </tr>  
@@ -250,7 +253,7 @@ Individual test result filter
 //            alert(value);
 //        }
 
-        alert(JSON.stringify(dict));
+        //alert(JSON.stringify(dict));
 
         $("#selectlist").load("/rptIndiTestResult/SelectionList?criteria='" + encodeURIComponent(JSON.stringify(dict)) + "'")
         }
@@ -291,6 +294,38 @@ Individual test result filter
             });
         });
     };
+
+    $("#clearlueTestName").click(
+        function () {
+//            alert($("#lueTestName option:selected").val());
+            $("#lueTestName").val("");
+//            $("#lueTestName option:selected").removeAttr('selected');
+        }
+    )
+
+    $("#clearlueRank").click(
+        function () {
+            //            alert($("#lueTestName option:selected").val());
+            $("#lueRank").val("");
+            //            $("#lueTestName option:selected").removeAttr('selected');
+        }
+    )
+
+    $("#clearlueNat").click(
+        function () {
+            //            alert($("#lueTestName option:selected").val());
+            $("#lueNat").val("");
+            //            $("#lueTestName option:selected").removeAttr('selected');
+        }
+    )
+
+        $("#clearlueCompany").click(
+        function () {
+            //            alert($("#lueTestName option:selected").val());
+            $("#lueCompany").val("");
+            //            $("#lueTestName option:selected").removeAttr('selected');
+        }
+    )
 
     /// --- this is where you filter what will be displayed in selection list--- ////
 //    $("#lueRank").change(function () {

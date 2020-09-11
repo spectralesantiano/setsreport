@@ -166,11 +166,17 @@ namespace MvcApplication3.Controllers.ReportPS
         {
 
             string filterCriteria = ApplyCriteria(criteria);
+            if (filterCriteria != "")
+            {
+                filterCriteria = " where " + filterCriteria;
+            }
 
             string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
-            SqlDataAdapter _da = new SqlDataAdapter("SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults where " + filterCriteria, constr);
+            String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults " + filterCriteria;
+
+            SqlDataAdapter _da = new SqlDataAdapter(sql, constr);
             DataTable _dt = new DataTable();
              _da.Fill(_dt);
              ViewBag.selectionlist = ToSelectList(_dt, "ActualTestID", "DisplayField");
@@ -281,7 +287,8 @@ namespace MvcApplication3.Controllers.ReportPS
                                 searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
                                 break;
                             case "DateTaken":
-                                searchText += String.Format("{0} >= '{1}'", namem, valuen);
+                                DateTime frDate  = Convert.ToDateTime(valuen);
+                                searchText += String.Format("{0} >= '{1}'", namem, frDate);
                                 break;
                             case "ToDate":
                                 DateTime toDate  = Convert.ToDateTime(valuen);

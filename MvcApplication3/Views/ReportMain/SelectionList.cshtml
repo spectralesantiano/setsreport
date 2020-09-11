@@ -3,5 +3,35 @@
     ViewBag.Title = "SelectionList";
 }
 
-<h2>SelectionList</h2>
-@Html.ListBox("ExamineeID", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "max-width:600px;width:100%;", size = 15 ,id = "lstselect"})
+<script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+
+@*<h3>Selection List</h3>*@
+<table border="1" align="center"">
+    <tr>
+        <th>Selection List</th>
+    </tr>
+    <tr>
+        <td>
+            <div>
+              @Html.ListBox("ExamineeID", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "max-width:600px;width:100%;", size = 15 ,id = "lstselect"})            
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td align ="center"><button id = "btnSelAll" type ="button">Select All</button> <button id = "btnDeSelAll" type ="button">De-Select All</button>   </td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+
+    $("#btnSelAll").click(function () {
+        $("option","#lstselect").prop("selected", true);
+    }
+    );
+
+    $("#btnDeSelAll").click(function () {
+        $("option", "#lstselect").prop("selected", false);
+    }
+    );
+
+</script>
