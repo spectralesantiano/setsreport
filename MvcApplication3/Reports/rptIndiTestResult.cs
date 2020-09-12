@@ -16,7 +16,8 @@ namespace MvcApplication3.Reports
         private void ActualTestHeader_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
            if(RowCount > 0) {
-               txtTimeTaken.Text = string.Format("hh\\:mm\\:ss", TimeSpan.FromSeconds(double.Parse(GetCurrentColumnValue("TimeTakenSec").ToString()))) + " (hr:min:sec)";
+               //txtTimeTaken.Text = string.Format("hh:mm:ss", TimeSpan.FromSeconds(double.Parse(GetCurrentColumnValue("TimeTakenSec").ToString()))) + " (hr:min:sec)";
+               txtTimeTaken.Text = TimeSpan.FromSeconds(double.Parse(GetCurrentColumnValue("TimeTakenSec").ToString())) + " (hr:min:sec)";
            }
         }
 
@@ -28,6 +29,16 @@ namespace MvcApplication3.Reports
 
                  IsContested.WidthF = (Convert.ToBoolean(GetCurrentColumnValue("IsContested")))? ContestedIcon.WidthF: 0;
              }
+        }
+
+        private void DateTaken_EvaluateBinding(object sender, BindingEventArgs e)
+        {
+             try{ 
+                 if (e.Value != null) {
+                     e.Value = Convert.ToDateTime(e.Value).ToString("dd-MMM-yyyy hh:mm tt");
+                 }
+             }
+               catch (Exception ex){}
         }
 
     }

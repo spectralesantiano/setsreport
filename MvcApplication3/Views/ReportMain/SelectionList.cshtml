@@ -6,14 +6,14 @@
 <script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
 
 @*<h3>Selection List</h3>*@
-<table border="1" align="center"">
+<table border="1" align="center" width = "100%">
     <tr>
         <th>Selection List</th>
     </tr>
     <tr>
         <td>
             <div>
-              @Html.ListBox("ExamineeID", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "max-width:600px;width:100%;", size = 15 ,id = "lstselect"})            
+              @Html.ListBox("-No Data-", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "max-width:600px;width:100%;", size = 15 ,id = "lstselect"})            
             </div>
         </td>
     </tr>

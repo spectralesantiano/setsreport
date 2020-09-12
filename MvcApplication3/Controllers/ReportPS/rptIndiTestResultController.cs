@@ -152,8 +152,8 @@ namespace MvcApplication3.Controllers.ReportPS
 
             var list = new SelectList(new [] 
             {
-                new { cbeSortBy = "1", Text = "Name" },
-                new { cbeSortBy = "2", Text = "Date" },
+                new { cbeSortBy = "LName", Text = "Name" },
+                new { cbeSortBy = "DateTaken", Text = "Date" },
             }, "cbeSortBy", "Text", 1);
             ViewBag.sortitems = list;
 
@@ -162,7 +162,7 @@ namespace MvcApplication3.Controllers.ReportPS
            //return View();
         }
 
-        public ActionResult SelectionList(string criteria)
+        public ActionResult SelectionList(string criteria, string sortbyname ,string sortby)
         {
 
             string filterCriteria = ApplyCriteria(criteria);
@@ -176,11 +176,23 @@ namespace MvcApplication3.Controllers.ReportPS
 
             String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults " + filterCriteria;
 
+            sql += " order by " + sortbyname + " " + sortby;
+
             SqlDataAdapter _da = new SqlDataAdapter(sql, constr);
             DataTable _dt = new DataTable();
              _da.Fill(_dt);
-             ViewBag.selectionlist = ToSelectList(_dt, "ActualTestID", "DisplayField");
-            return PartialView("~/Views/ReportMain/SelectionList.cshtml"); //--- REQUIRED View to redirect to ---//
+
+            //// ----- required
+            // ViewBag.selectionlist = ToSelectList(_dt, "ActualTestID", "DisplayField");
+            // return PartialView("~/Views/ReportMain/SelectionList.cshtml"); //--- REQUIRED View to redirect to ---//
+
+            //this does not work. gets null 
+            //SelectList slist = ToSelectList(_dt, "actualtestid", "displayfield");
+             //return RedirectToAction("showSelectionList", "ReportMain", new { dt = _dt}); //slist });
+
+             //// ----- required : to send the selectionlist ----///////////////
+             TempData["SelecionLIst"] = _dt; //get the value in the reportmain/showSelectionlist , should be datatable
+             return RedirectToAction("showSelectionList", "ReportMain", new { fieldname = "DisplayField", fieldvalue = "ActualTestID" }); 
         }
 
         public JsonResult GetSubjects(string SubjCategoryID)
@@ -234,8 +246,9 @@ namespace MvcApplication3.Controllers.ReportPS
             //return PartialView("~/Views/ReportMain/ReportFilters/_DocumentViewerPartial.cshtml", report);
             //return PartialView("_DocumentViewer1Partial", report);
             ViewBag.selection = Request["teFirstName"];
-            MainReport.FindControl("txtPrintDate", true).Text = "Print Date: "   + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
-
+            MainReport.txtPrintDate.Text = "Print Date: "   + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
+            MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
+            MainReport.pbLogo.ImageUrl = "~/images/heroAccent.png";
             
             GroupField item = new GroupField();
             item.FieldName = "ActualTestID";
@@ -256,6 +269,7 @@ namespace MvcApplication3.Controllers.ReportPS
                     cell.DataBindings.Add("Text", null, dt.Columns[i].ColumnName);
                 }
              }
+
 
             return PartialView("_DocumentViewer1Partial", MainReport);
         }

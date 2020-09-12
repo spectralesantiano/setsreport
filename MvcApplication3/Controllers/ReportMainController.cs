@@ -14,6 +14,14 @@ namespace MvcApplication3.Controllers
     public class ReportMainController : Controller
     {
 
+        public ActionResult showSelectionList(string fieldname,string fieldvalue)
+        {
+
+            DataTable _dt = TempData["SelecionLIst"] as DataTable; //ToSelectList(dt, "actualtestid", "displayfield");
+            ViewBag.selectionlist = ToSelectList(_dt, fieldvalue, fieldname); 
+            return PartialView("~/Views/ReportMain/SelectionList.cshtml"); 
+        }
+
         [ChildActionOnly]
         public ActionResult ShowRptList()
         {
@@ -24,6 +32,7 @@ namespace MvcApplication3.Controllers
             _da.Fill(_dt);
             ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
 
+         
             return PartialView();
         }
 
@@ -78,6 +87,14 @@ namespace MvcApplication3.Controllers
 
         public ActionResult Index()
         {
+            List<SelectListItem> dummylist = new List<SelectListItem>();
+            dummylist.Add(new SelectListItem()
+            {
+                Text = "- No Data -",
+                Value = ""
+            });
+            ViewBag.selectionlist = new SelectList(dummylist, "Value", "Text"); 
+            
             return View();
         }
 

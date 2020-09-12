@@ -18,7 +18,7 @@
 <style type="text/css">
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 30% auto;
   background-color: #2196F3;
   padding: 10px;
 }
@@ -40,23 +40,26 @@
 
 </head>
 
-
-
 <body>
 
 <div class="container">
     <div class="grid-container">  
-         <div class="grid-item">  
+         <div class="grid-item" style="max-width:400px">  
              @Html.Action("ShowRptList")
         </div>
-        <div class="grid-item" id = "filterview" style="float:right">  
-           @* @{Html.RenderAction("ShowRptFilter");}  *@
-            @Html.Partial("ShowRptFilter")
-
+        <div>
+            <div class="grid-item" id = "filterview" >  
+               @* @{Html.RenderAction("ShowRptFilter");}  *@
+               @Html.Partial("ShowRptFilter")
+            </div>
+            <div class="grid-item" id = "SelectionView" style="height:auto">
+               @Html.Partial("SelectionList")
+            </div>
         </div>
         <div class="grid-item2">  
-                <input type="button" value="Submit"  id = "btncreate" class="btn btn-default"  />
+                <input type="button" value="Submit"  id = "btnShowFilter" class="btn btn-default"  />
         </div>  
+
        @* <div class="col-md-offset-2 col-md-10">  *@
        <div class="grid-item2">  
                 <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-default"  />
@@ -104,11 +107,12 @@
 
 <script type="text/javascript">
 
-    $("input#btncreate").click(function () {
-//        alert($("#ObjectID option:selected").val());
+    $("input#btnShowFilter").click(function () {
+        //        alert($("#ObjectID option:selected").val());
         var res = $("#ObjectID option:selected").val();
         var ee = res.replace(/ /g, "+");
         //        alert(ee);
+        $("#lstselect").empty();
         $("#filterview").load("/ReportMain/ShowNoRptFilter")
         $("#filterview").load("/ReportMain/ShowRptFilter?ObjectID='" + ee + "'")
     });
@@ -127,7 +131,7 @@
             $('#' + ee).submit();
         }
         else {
-                alert("You have not selected from the list yet!.")
+                alert("You have not selected any from the list yet!.")
       
          }
 

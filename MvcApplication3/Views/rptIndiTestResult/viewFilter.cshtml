@@ -127,12 +127,10 @@ Individual test result filter
                             </div> 
                         </td>
                      </tr>
-                     <tr>
-                         <td colspan ="4" align ="center"><button id = "btnFilter" type ="button">Apply Criteria</button>  </td>
-                     </tr>
+                    
                   </table>
               </td>
-              <td valign=top>
+              <td valign="top">
                     <table class ="collabel" border ="1">
                         <tr>
                             <th>Sorting</th>
@@ -150,7 +148,7 @@ Individual test result filter
                         <tr>
                             <td>
                                 <label>
-                                    @Html.RadioButton("rgSortOrder", "Asc")
+                                    @Html.RadioButton("rgSortOrder", "Asc",true)
                                     Ascending
                                 </label>
                     
@@ -163,11 +161,11 @@ Individual test result filter
                     </table>
               </td>
             </tr>
-           
-                
+            <tr>
+                    <td colspan ="4" align ="center"><button id = "btnFilter" type ="button">Apply Criteria</button>  </td>
+                </tr>
           </table>
        
-          
        @*  <div class ="row">
             <div class ="collabel">
                 <div> @Html.Label("Test Name:")</div>
@@ -210,14 +208,13 @@ Individual test result filter
              </div>
 
          </div> *@
-       
           
           @* ///---- this div is required ------////*@
-          <div id = "selectlist">
+          @*  <div id = "selectlist">*@
                 @* ///---- the SelectionList.cshtml will appear here ------////*@
                 @* @Html.Partial("~/Views/ReportMain/SelectionList.cshtml")*@
                 @*@Html.Action("SelectionList", "rptIndiTestResult");*@
-          </div>
+          @* </div>*@
           
           @* ////---- this div is required ----------/////*@
           <div>
@@ -244,19 +241,23 @@ Individual test result filter
         dict["TestName"] = $("#lueTestName").val();
         dict["DateTaken"] = $("#deFromDate").val();
         dict["ToDate"] = $("#deToDate").val();
-       // dict["AnswerFilter"] = $("[name='AnswerFilter']:checked").val();
+        // dict["AnswerFilter"] = $("[name='AnswerFilter']:checked").val();
         dict["Nat"] = $("#lueNat").val();
         dict["CompanyName"] = $("#lueCompany").val();
-       
-//        for (var key in dict) {
-//            var value = dict[key];
-//            alert(value);
-//        }
 
-        //alert(JSON.stringify(dict));
+        //        for (var key in dict) {
+        //            var value = dict[key];
+        //            alert(value);
+        //        }
 
-        $("#selectlist").load("/rptIndiTestResult/SelectionList?criteria='" + encodeURIComponent(JSON.stringify(dict)) + "'")
-        }
+//        alert(JSON.stringify(dict));
+        //        alert(encodeURIComponent(JSON.stringify(dict)));
+       // $("#selectlist").load("/rptIndiTestResult/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) )
+      
+        // --- required ---//
+        $("#SelectionView").load("/rptIndiTestResult/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
+    
+    }
     )
 
     $("#subjectcat").change(function () {

@@ -360,6 +360,7 @@
             this.DateTaken.Name = "DateTaken";
             this.DateTaken.StylePriority.UseFont = false;
             this.DateTaken.Weight = 3.6922008338221057D;
+            this.DateTaken.EvaluateBinding += new DevExpress.XtraReports.UI.BindingEventHandler(this.DateTaken_EvaluateBinding);
             // 
             // XrTableCell19
             // 
