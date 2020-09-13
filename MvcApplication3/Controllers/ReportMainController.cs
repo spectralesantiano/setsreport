@@ -27,12 +27,16 @@ namespace MvcApplication3.Controllers
         {
             string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
-            SqlDataAdapter _da = new SqlDataAdapter("Select * From [view_ReportGroups]", constr);
+            //SqlDataAdapter _da = new SqlDataAdapter("Select * From [view_ReportGroups]", constr);
             DataTable _dt = new DataTable();
-            _da.Fill(_dt);
-            ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
+            //_da.Fill(_dt);
+            //ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
 
-         
+            SqlDataAdapter _da = new SqlDataAdapter("Select GroupName, ObjectID,Caption From [view_ReportGroups] where RowType ='REPORT' order by groupsortcode asc, SortCode ASC", constr);
+            _dt.Clear();
+            _dt.Columns.Clear();
+            _da.Fill(_dt);
+            ViewBag.rptlistdt = _dt;
             return PartialView();
         }
 

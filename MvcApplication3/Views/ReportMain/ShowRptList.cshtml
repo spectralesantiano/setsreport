@@ -1,5 +1,5 @@
-﻿@model MvcApplication3.Models.dropdownModel
-
+﻿@*@model MvcApplication3.Models.dropdownModel*@
+@model System.Data.DataSet
 @{
     Layout = null;
 }
@@ -12,17 +12,51 @@
     <title>ShowRptList</title>
 </head>
 <body>*@
+<script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
     <div>
       <h3>Report List</h3>
-       @using (Html.BeginForm("ShowRptFilter","ReportMain", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-        { 
+       @using (Html.BeginForm("ShowRptFilter", "ReportMain", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+       { 
             <div class="col-md-10">  
                @*ViewBag.ReportList is holding all the Report values*@  
-               @Html.DropDownListFor(model => model.ObjectID, ViewBag.ReportList as SelectList, htmlAttributes: new { size = 20, @class = "form-control" })
+         @*      @Html.DropDownListFor(model => model.ObjectID, ViewBag.ReportList as SelectList, htmlAttributes: new { size = 20, @class = "form-control" })
  
-               @Html.ValidationMessageFor(model => model.ObjectID, "", new { @class = "text-danger" })  
+               @Html.ValidationMessageFor(model => model.ObjectID, "", new { @class = "text-danger" })  *@
             </div>  
     
+           <div> 
+            
+            @* <option value="@dr["ObjectID"].ToString()">@dr["Caption"].ToString()</option>*@
+          
+           @Html.Raw("<select class='report' size='20' id ='ObjectID'>")
+            @{   
+               var dt = ViewBag.rptlistdt as System.Data.DataTable;
+               var grpname = "<dummy>";
+               Boolean started = false;
+
+                   foreach (System.Data.DataRow dr in dt.Rows)
+                   {
+                       if (grpname != dr["GroupName"].ToString())
+                       { 
+                           if (started){
+                                 @Html.Raw("</optgroup>");
+                                 started =false;
+                           }
+
+                           if (dr["GroupName"].ToString() != "" ) // if no group
+                           {
+                             @Html.Raw("<optgroup label='") @dr["GroupName"].ToString(); @Html.Raw("'>");
+                             started = true;
+                           }
+                       }
+                       grpname = dr["GroupName"].ToString();
+                       @Html.Raw("<option value='") @dr["ObjectID"].ToString();  @Html.Raw("'>"); @dr["Caption"].ToString();  @Html.Raw("</option>");
+                   }
+               }
+            @Html.Raw("</select>")
+
+           </div>
+           @*<div><input type="button" value="Create"  id = "btnselect" class="btn btn-default"/>  </div>*@
             @* <div class="form-group">  
                     <div class="col-md-offset-2 col-md-10">  
                         <input type="submit" value="Create"  id = "btncreate" class="btn btn-default"/>  
@@ -31,5 +65,14 @@
             *@
         }
     </div>
+                
 @*</body>
 </html>*@
+
+<script type ="text/javascript">
+
+    $("#btnselect").click(function () {
+        alert($("#ObjectID").val())
+    });
+
+</script>
