@@ -28,7 +28,7 @@
             
             @* <option value="@dr["ObjectID"].ToString()">@dr["Caption"].ToString()</option>*@
           
-           @Html.Raw("<select class='report' size='20' id ='ObjectID'>")
+           @Html.Raw("<select class='report' size='25' id ='ObjectID' overflow='scroll' style='height: 100%; width: 100%; object-fit: contain; overflow:scroll'>")
             @{   
                var dt = ViewBag.rptlistdt as System.Data.DataTable;
                var grpname = "<dummy>";
