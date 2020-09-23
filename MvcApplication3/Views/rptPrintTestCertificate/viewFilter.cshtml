@@ -1,0 +1,137 @@
+﻿@{
+    Layout = null;// "~/views/shared/_layout.cshtml";
+}
+
+<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+<script type="text/javascript" src="/Scripts/jquery-ui-1.8.20.min.js">      </script>
+
+<style type="text/css">
+     fieldset {
+      padding: 1px;
+    }
+    .row {
+        background: #f6f6f6;
+        border: 1px solid #ccc;
+        overflow: hidden;
+        padding: 3px;
+    }
+    .col {
+        float: left;
+        text-align:left;
+        padding: 10px;
+        white-space: nowrap
+    }
+    .collabel {
+        float: left;
+        text-align:left;
+        padding: 5px;
+        font-size :small;
+        white-space: nowrap;
+        padding-top:1px;
+        font-family:Arial
+    }
+
+</style>
+
+Individual Test Result - Test Certficate
+
+<fieldset>
+  @using (Ajax.BeginForm("DocumentViewerPartial", "rptPrintTestCertificate", null,
+                            null, new { id = "rptPrintTestCertificate" }))
+  {
+      
+       <table class ="collabel">
+        <tr>
+            <td>
+                <table border ="1" class ="collabel">
+                    <tr><th colspan="2">Criteria</th></tr>
+                    <tr>
+                        <td> @Html.Label("Company Name:")</td>
+                        <td>
+                             @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList,"", new { id = "lueCompany" })         
+                             <button id = "clearlueCompany" type ="button">x</button>                 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> @Html.Label("Set Signatory:")</td>
+                        <td>
+                             @Html.DropDownList("Signatory", ViewBag.Signatory as SelectList,"", new { id = "lueSignatory" })         
+                             <button id = "clearlueSignatory" type ="button">x</button>                 
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                 <table class ="collabel" border ="1">
+                        <tr>
+                            <th colspan="2">Sorting</th>
+                        </tr>
+                        <tr>
+                            <td style="font-size:smaller">
+                                Note: Criteria has effect on sorting and vice-versa
+                            </td>
+                        </tr>  
+                        <tr>
+                            <td>
+                                Sort Selection By: @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>
+                                    @Html.RadioButton("rgSortOrder", "Asc",true)
+                                    Ascending
+                                </label>
+                    
+                                <label>
+                                    @Html.RadioButton("rgSortOrder","Desc" )
+                                    Descending
+                                </label>
+                            </td> 
+                        </tr>
+                 </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan ="4" align ="center"><button id = "btnFilter" type ="button">Apply Criteria</button>  </td>
+        </tr>
+       </table>
+      
+      <div>
+            @* ////---- 'txtselected' name is required ----------/////*@
+            @Html.Hidden("txtselected", "", new { id = "txtselected" })  
+      </div>
+  }
+</fieldset>
+
+
+<script type="text/javascript">
+
+    $("#btnFilter").click(
+    function () {
+        //        var ss = $("#testname option:selected").val();
+
+        var dict = new Object();
+
+        dict["CompanyName"] = $("#lueCompany").val();
+        //dict["CompanyName"] = $("#lueSignatory").val();
+
+        // --- required ---//
+        $("#SelectionView").load("/rptPrintTestCertificate/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
+
+    }
+    )
+
+    $("#clearlueCompany").click(
+        function () {
+            $("#lueCompany").val("");
+        }
+    )
+
+        $("#clearlueSignatory").click(
+        function () {
+            $("#lueSignatory").val("");
+        }
+    )
+</script>

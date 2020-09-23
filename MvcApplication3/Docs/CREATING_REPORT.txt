@@ -1,0 +1,20 @@
+In the Controllers\ReportPS folder
+	create controller. name the controller as the objecid of the report plus 'Controller'
+	add code for the controller. You may reference the first report rptIndiTestResult
+		required procedures: viewFilter(), DocumentViewerPartial, SelectionList
+
+In the Reports folder
+	add the report. Report should name after the objectid as well. Make the declaration of controls public instead of private in the designer.cs file of the report
+
+
+In the Views\*objectID* folder
+	add the viewFilter.cshtml file. This is a requied file. 
+	add the _DocumentViewer1Partial.cshtml. This is also a required file.
+
+SOME NOTE IN WEB.CONFIG FILE
+ 	<!--<bindingRedirect oldVersion="0.0.0.0-2.0.0.0" newVersion="2.0.0.0" />-->
+        <bindingRedirect oldVersion="1.0.0.0-2.0.0.0" newVersion="2.0.0.0" />
+
+	<!--<settings doctypeMode="Html5" rightToLeft="false" embedRequiredClientLibraries="false" ieCompatibilityVersion="edge" />-->
+ 	<settings doctypeMode="Html5" rightToLeft="false" embedRequiredClientLibraries="true" ieCompatibilityVersion="edge" />
+

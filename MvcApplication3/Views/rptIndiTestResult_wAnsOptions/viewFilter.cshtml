@@ -47,10 +47,10 @@ Individual Test Result filter
        @*////// The sent button must be hide or do not add. Because theres already a generic button on the print selection(reportmain/index.cshtml) *@
        @* @using (Ajax.BeginForm("Index", "rptIndiTestResult", null,
                             new AjaxOptions { UpdateTargetId = "divInterestDeatils" }, new { id = "rptIndiTestResult" }))*@
-      @using (Ajax.BeginForm("DocumentViewerPartial", "rptIndiTestResult", null,
-                            null , new { id = "rptIndiTestResult" }))
+      @using (Ajax.BeginForm("DocumentViewerPartial", "rptIndiTestResult_wAnsOptions", null,
+                            null, new { id = "rptIndiTestResult_wAnsOptions" }))
       {  
-      
+        <div id="divInterestDeatils"></div>  
        
          <table class ="collabel">
             <tr>
@@ -161,59 +161,10 @@ Individual Test Result filter
               </td>
             </tr>
             <tr>
-                    <td colspan ="4" align ="center"><button id = "btnFilter" type ="button">Apply Criteria</button>  </td>
-            </tr>
+                 <td colspan ="4" align ="center"><button id = "btnFilter" type ="button">Apply Criteria</button>  </td>
+             </tr>
           </table>
        
-       @*  <div class ="row">
-            <div class ="collabel">
-                <div> @Html.Label("Test Name:")</div>
-                <div> @Html.Label("Rank:")</div>   
-                <div> @Html.Label("From Date:")</div>   
-                <div> @Html.Label("To Date:")</div>               
-            </div>
-             <div class="col">
-                  <div>
-                        @Html.DropDownList("TestName", ViewBag.RankList as SelectList, new { id = "lueRank" })  
-                 </div>
-                
-                 <div>
-                        @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, new { id = "lueRank"})  
-                 </div>
-                
-                 <div>
-                       @Html.TextBox("deFromDate","", new { @class = "datepicker" })
-                 </div>
-                
-                 <div>
-                       @Html.TextBox("deToDate","", new { @class = "datepicker" })
-                 </div>
-             </div>
-             <div class ="collabel">
-                <div> @Html.Label("1")</div>
-                <div> @Html.Label("2")</div>   
-                <div> @Html.Label("3")</div>   
-                <div> @Html.Label("4")</div>               
-            </div>
-             <div class="col">
-                    <div>
-                        @Html.DropDownList("SubjCategoryID", ViewBag.SubjectCat as SelectList,new { id = "subjectcat" })
-                    </div> 
-                    <div>
-                        @Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects", style = "min-width: 250px;" })
-                    </div> 
-                   <div> </div>     
-                   <div> </div>     
-             </div>
-
-         </div> *@
-          
-          @* ///---- this div is required ------////*@
-          @*  <div id = "selectlist">*@
-                @* ///---- the SelectionList.cshtml will appear here ------////*@
-                @* @Html.Partial("~/Views/ReportMain/SelectionList.cshtml")*@
-                @*@Html.Action("SelectionList", "rptIndiTestResult");*@
-          @* </div>*@
           
           @* ////---- this div is required ----------/////*@
           <div>
@@ -254,7 +205,7 @@ Individual Test Result filter
        // $("#selectlist").load("/rptIndiTestResult/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) )
       
         // --- required ---//
-        $("#SelectionView").load("/rptIndiTestResult/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
+        $("#SelectionView").load("/rptIndiTestResult_wAnsOptions/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
     
     }
     )
@@ -263,7 +214,7 @@ Individual Test Result filter
         var ss = this.value;
         $.ajax({
             type: "POST",
-            url: "/rptIndiTestResult/GetSubjects?SubjCategoryID='" + ss + "'",
+            url: "/IndiTestResult_wAnsOptions/GetSubjects?SubjCategoryID='" + ss + "'",
             data: '{}',
             contentType: "application/json; charset=utf-8",
             dataType: "json",

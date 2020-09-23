@@ -49,8 +49,8 @@ C:\VUE\MvcApplication3\testwebdocviewer\bin\DotNetOpenAuth.OAuth.xml
 C:\VUE\MvcApplication3\testwebdocviewer\bin\DotNetOpenAuth.OpenId.xml
 C:\VUE\MvcApplication3\testwebdocviewer\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\VUE\MvcApplication3\testwebdocviewer\obj\Debug\testwebdocviewer.Reports.XtraReport1.resources
+C:\VUE\MvcApplication3\testwebdocviewer\obj\Debug\testwebdocviewer.Reports.XtraReport2.resources
 C:\VUE\MvcApplication3\testwebdocviewer\obj\Debug\testwebdocviewer.csproj.GenerateResource.Cache
 C:\VUE\MvcApplication3\testwebdocviewer\obj\Debug\testwebdocviewer.dll.licenses
 C:\VUE\MvcApplication3\testwebdocviewer\obj\Debug\testwebdocviewer.dll
 C:\VUE\MvcApplication3\testwebdocviewer\obj\Debug\testwebdocviewer.pdb
-C:\VUE\MvcApplication3\testwebdocviewer\obj\Debug\testwebdocviewer.Reports.XtraReport2.resources

@@ -7,6 +7,8 @@ using System.Configuration;
 using System.Data.SqlClient;
 using DevExpress.DataAccess.Sql;
 using DevExpress.DataAccess.ConnectionParameters;
+using System.Web.Mvc;
+using MvcApplication3.Controllers;
 
 namespace MvcApplication3.Controllers
 {
@@ -47,5 +49,21 @@ namespace MvcApplication3.Controllers
               return defaultvalue;
           }
 
+
+          public static SelectList ToSelectList(DataTable table, string valueField, string textField)
+          {
+              List<SelectListItem> list = new List<SelectListItem>();
+
+              foreach (DataRow row in table.Rows)
+              {
+                  list.Add(new SelectListItem()
+                  {
+                      Text = row[textField].ToString(),
+                      Value = row[valueField].ToString()
+                  });
+              }
+
+              return new SelectList(list, "Value", "Text");
+          }
     }
 }

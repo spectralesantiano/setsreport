@@ -15,24 +15,20 @@ using DevExpress.XtraReports.Configuration;
 using MvcApplication3.Controllers;
 using Newtonsoft.Json;
 
-
 namespace MvcApplication3.Controllers.ReportPS
 {
-    public class rptIndiTestResultController : Controller
+    public class rptIndiTestResult_wAnsOptionsController : Controller
     {
         //
-        // GET: /rptINdiTestResutl/
+        // GET: /rptIndiTestResult_wAnsOptions/
 
-        public ActionResult Index() 
+        public ActionResult Index()
         {
-           // return RedirectToAction("Index", "Home");
-           //Session["amount"] = Request["txtAmount"].ToString();  //old not needed
-           //Session["selected"] = Request["txtselected"].ToString(); //old not needed
             return View();
         }
 
         //
-        // GET: /rptINdiTestResutl/Details/5
+        // GET: /rptIndiTestResult_wAnsOptions/Details/5
 
         public ActionResult Details(int id)
         {
@@ -40,7 +36,7 @@ namespace MvcApplication3.Controllers.ReportPS
         }
 
         //
-        // GET: /rptINdiTestResutl/Create
+        // GET: /rptIndiTestResult_wAnsOptions/Create
 
         public ActionResult Create()
         {
@@ -48,7 +44,7 @@ namespace MvcApplication3.Controllers.ReportPS
         }
 
         //
-        // POST: /rptINdiTestResutl/Create
+        // POST: /rptIndiTestResult_wAnsOptions/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -66,7 +62,7 @@ namespace MvcApplication3.Controllers.ReportPS
         }
 
         //
-        // GET: /rptINdiTestResutl/Edit/5
+        // GET: /rptIndiTestResult_wAnsOptions/Edit/5
 
         public ActionResult Edit(int id)
         {
@@ -74,7 +70,7 @@ namespace MvcApplication3.Controllers.ReportPS
         }
 
         //
-        // POST: /rptINdiTestResutl/Edit/5
+        // POST: /rptIndiTestResult_wAnsOptions/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -92,7 +88,7 @@ namespace MvcApplication3.Controllers.ReportPS
         }
 
         //
-        // GET: /rptINdiTestResutl/Delete/5
+        // GET: /rptIndiTestResult_wAnsOptions/Delete/5
 
         public ActionResult Delete(int id)
         {
@@ -100,7 +96,7 @@ namespace MvcApplication3.Controllers.ReportPS
         }
 
         //
-        // POST: /rptINdiTestResutl/Delete/5
+        // POST: /rptIndiTestResult_wAnsOptions/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
@@ -150,7 +146,7 @@ namespace MvcApplication3.Controllers.ReportPS
             _da.Fill(_dt);
             ViewBag.CompanyName = ToSelectList(_dt, "CompanyName", "CompanyName");
 
-            var list = new SelectList(new [] 
+            var list = new SelectList(new[] 
             {
                 new { cbeSortBy = "LName", Text = "Name" },
                 new { cbeSortBy = "DateTaken", Text = "Date" },
@@ -159,10 +155,10 @@ namespace MvcApplication3.Controllers.ReportPS
 
 
             return PartialView();
-           //return View();
+            //return View();
         }
 
-        public ActionResult SelectionList(string criteria, string sortbyname ,string sortby)
+        public ActionResult SelectionList(string criteria, string sortbyname, string sortby)
         {
 
             string filterCriteria = ApplyCriteria(criteria);
@@ -180,7 +176,7 @@ namespace MvcApplication3.Controllers.ReportPS
 
             SqlDataAdapter _da = new SqlDataAdapter(sql, constr);
             DataTable _dt = new DataTable();
-             _da.Fill(_dt);
+            _da.Fill(_dt);
 
             //// ----- required
             // ViewBag.selectionlist = ToSelectList(_dt, "ActualTestID", "DisplayField");
@@ -188,11 +184,11 @@ namespace MvcApplication3.Controllers.ReportPS
 
             //this does not work. gets null 
             //SelectList slist = ToSelectList(_dt, "actualtestid", "displayfield");
-             //return RedirectToAction("showSelectionList", "ReportMain", new { dt = _dt}); //slist });
+            //return RedirectToAction("showSelectionList", "ReportMain", new { dt = _dt}); //slist });
 
-             //// ----- required : to send the selectionlist ----///////////////
-             TempData["SelecionLIst"] = _dt; //get the value in the reportmain/showSelectionlist , should be datatable
-             return RedirectToAction("showSelectionList", "ReportMain", new { fieldname = "DisplayField", fieldvalue = "ActualTestID" }); 
+            //// ----- required : to send the selectionlist ----///////////////
+            TempData["SelecionLIst"] = _dt; //get the value in the reportmain/showSelectionlist , should be datatable
+            return RedirectToAction("showSelectionList", "ReportMain", new { fieldname = "DisplayField", fieldvalue = "ActualTestID" });
         }
 
         public JsonResult GetSubjects(string SubjCategoryID)
@@ -217,17 +213,17 @@ namespace MvcApplication3.Controllers.ReportPS
         {
             //MvcApplication3.Reports.XtraReport2 report = new MvcApplication3.Reports.XtraReport2();
             //DevExpress.XtraReports.UI.XRLabel lbl = ((DevExpress.XtraReports.UI.XRLabel)report.FindControl("xrlabel1", true));
-           // lbl.Text = Session["amount"].ToString();
+            // lbl.Text = Session["amount"].ToString();
             //report.DataSource = "SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] ";// where actualtestid in(" + Session["selected"] + ") ORDER BY LastFirstMiddle ASC"; //WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC";
-             string selectedIDs = Request["txtselected"].ToString();
-             string conditions = "";
+            string selectedIDs = Request["txtselected"].ToString();
+            string conditions = "";
 
-             if (Request["AnswerFilter"].ToString() != "2") // "" in sets desktop..empty space causes error in view
-             {
-                 conditions = String.Format("AND Answer {0} UserAns ", ((Request["AnswerFilter"].ToString()) == "0") ? "!=": "=");
-             }
+            if (Request["AnswerFilter"].ToString() != "2") // "" in sets desktop..empty space causes error in view
+            {
+                conditions = String.Format("AND Answer {0} UserAns ", ((Request["AnswerFilter"].ToString()) == "0") ? "!=" : "=");
+            }
 
-             string sql = String.Format("SELECT * FROM view_FullExamineeResultsWithQuestions WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
+            string sql = String.Format("SELECT * FROM view_FullExamineeResultsWithQuestions WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
 
 
             string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
@@ -236,7 +232,7 @@ namespace MvcApplication3.Controllers.ReportPS
             //SqlDataAdapter _da = new SqlDataAdapter("SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] where actualtestid in(" + Session["selected"] + ") ORDER BY LastFirstMiddle ASC", _con);
             //SqlDataAdapter _da = new SqlDataAdapter("SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] where actualtestid in(" + Request["txtselected"].ToString() + ") ORDER BY LastFirstMiddle ASC", _con);
             SqlDataAdapter _da = new SqlDataAdapter(sql, _con);
-            
+
             DataSet ds = new DataSet();
             _da.Fill(ds);
             MainReport.DataMember = ds.Tables[0].TableName;
@@ -246,10 +242,10 @@ namespace MvcApplication3.Controllers.ReportPS
             //return PartialView("~/Views/ReportMain/ReportFilters/_DocumentViewerPartial.cshtml", report);
             //return PartialView("_DocumentViewer1Partial", report);
             ViewBag.selection = Request["teFirstName"];
-            MainReport.txtPrintDate.Text = "Print Date: "   + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
+            MainReport.txtPrintDate.Text = "Print Date: " + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
             MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
             MainReport.pbLogo.ImageUrl = "~/images/heroAccent.png";
-            
+
             GroupField item = new GroupField();
             item.FieldName = "ActualTestID";
             item.SortOrder = XRColumnSortOrder.Ascending;
@@ -262,27 +258,29 @@ namespace MvcApplication3.Controllers.ReportPS
             MainReport.SubjectNameHeader.GroupFields.Add(item);
             MainReport.SubjectName.DataBindings.Add("Text", null, "SubjectName");
 
-            DataTable dt =ds.Tables[0];
-             for(int i  = 0 ;i <= dt.Columns.Count - 1;i++){
-                XRControl cell   = MainReport.FindControl(dt.Columns[i].ColumnName,true);
-                if(cell != null) {
+            DataTable dt = ds.Tables[0];
+            for (int i = 0; i <= dt.Columns.Count - 1; i++)
+            {
+                XRControl cell = MainReport.FindControl(dt.Columns[i].ColumnName, true);
+                if (cell != null)
+                {
                     cell.DataBindings.Add("Text", null, dt.Columns[i].ColumnName);
                 }
-             }
+            }
 
 
             return PartialView("_DocumentViewer1Partial", MainReport);
         }
 
         private String ApplyCriteria(string AllCriteria)
-        {  
+        {
             string searchText = "";
-            //AllCriteria.Trim(new Char[] { '\'' });
+            AllCriteria.Trim(new Char[] { '\'' });
             string filterlist = AllCriteria.Trim(new Char[] { '\'' });  // "{\"FName\":\"ghdfd\",\"LName\":\"dfdf\",\"PositionID\":\"SYSR1E\",\"TestName\":\"2nd Officer Test for cargo ships\",\"DateTaken\":\"09/10/2020\",\"ToDate\":\"09/11/2020\",\"AnswerFilter\":\"2\",\"Nat\":\"SYSCNAX\",\"CompanyName\":\"Spectral Technologies. Inc.\"}";
             var filter = JsonConvert.DeserializeObject<dynamic>(filterlist);
 
             string namem = "";
-            var valuen="";
+            var valuen = "";
             foreach (var record in filter)
             {
                 namem = record.Name;
@@ -292,43 +290,44 @@ namespace MvcApplication3.Controllers.ReportPS
 
                 if (valuen != null && valuen != "")
                 {
-                     searchText = (searchText !="")? searchText += " AND ": "";
-                        switch (namem) {
-                            case "FName":
-                                searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
-                                break;
-                            case "LName":
-                                searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
-                                break;
-                            case "DateTaken":
-                                DateTime frDate  = Convert.ToDateTime(valuen);
-                                searchText += String.Format("{0} >= '{1}'", namem, frDate);
-                                break;
-                            case "ToDate":
-                                DateTime toDate  = Convert.ToDateTime(valuen);
-                                toDate = toDate.AddDays(1);
-                                searchText += String.Format("DateTaken <= '{0}'", toDate);
-                                    break;
-                            case "PositionID":
-                                    searchText += String.Format("{0} = '{1}'", namem, valuen);
-                                    break;
-                            case "TestName":
-                                    searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
-                                    break;
-                            case "Nat":
-                                    searchText += String.Format("{0} = '{1}'", namem, valuen);
-                                    break;
-                            case "CompanyName":
-                                    searchText += String.Format("{0} = '{1}'", namem, valuen);
-                                    break;
-                            default:
-                                    searchText += String.Format("{0} = '{1}'", namem, valuen);
-                                    break;
-                      }
-                  }
-                 //   End If
+                    searchText = (searchText != "") ? searchText += " AND " : "";
+                    switch (namem)
+                    {
+                        case "FName":
+                            searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
+                            break;
+                        case "LName":
+                            searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
+                            break;
+                        case "DateTaken":
+                            DateTime frDate = Convert.ToDateTime(valuen);
+                            searchText += String.Format("{0} >= '{1}'", namem, frDate);
+                            break;
+                        case "ToDate":
+                            DateTime toDate = Convert.ToDateTime(valuen);
+                            toDate = toDate.AddDays(1);
+                            searchText += String.Format("DateTaken <= '{0}'", toDate);
+                            break;
+                        case "PositionID":
+                            searchText += String.Format("{0} = '{1}'", namem, valuen);
+                            break;
+                        case "TestName":
+                            searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
+                            break;
+                        case "Nat":
+                            searchText += String.Format("{0} = '{1}'", namem, valuen);
+                            break;
+                        case "CompanyName":
+                            searchText += String.Format("{0} = '{1}'", namem, valuen);
+                            break;
+                        default:
+                            searchText += String.Format("{0} = '{1}'", namem, valuen);
+                            break;
+                    }
+                }
+                //   End If
             }
-          
+
 
             return searchText;
         }

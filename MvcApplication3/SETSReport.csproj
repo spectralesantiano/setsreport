@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MvcApplication3</RootNamespace>
-    <AssemblyName>MvcApplication3</AssemblyName>
+    <RootNamespace>SETSReport</RootNamespace>
+    <AssemblyName>SETSReport</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
@@ -200,7 +200,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrintSelectionController.cs" />
     <Compile Include="Controllers\ReportMainController.cs" />
+    <Compile Include="Controllers\ReportPS\rptIndiTestResult_wAnsOptionsController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResultController.cs" />
+    <Compile Include="Controllers\ReportPS\rptPrintTestCertificateController.cs" />
     <Compile Include="Controllers\ReportPS\testController.cs" />
     <Compile Include="Controllers\ShowReportController.cs" />
     <Compile Include="Controllers\Util.cs" />
@@ -216,11 +218,23 @@
     <Compile Include="Models\RankModel.cs" />
     <Compile Include="Models\SubjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\rptIndiTestResult_wAnsOptions.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptIndiTestResult_wAnsOptions.Designer.cs">
+      <DependentUpon>rptIndiTestResult_wAnsOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\rptIndiTestResult.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\rptIndiTestResult.Designer.cs">
       <DependentUpon>rptIndiTestResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptPrintTestCertificate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPrintTestCertificate.Designer.cs">
+      <DependentUpon>rptPrintTestCertificate.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\XtraReport1.cs">
       <SubType>Component</SubType>
@@ -237,6 +251,37 @@
     <Compile Include="Controllers\GlobalVar.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\anime.min.js" />
+    <Content Include="Scripts\autocomplete.js" />
+    <Content Include="Scripts\buttons.js" />
+    <Content Include="Scripts\cards.js" />
+    <Content Include="Scripts\carousel.js" />
+    <Content Include="Scripts\cash.js" />
+    <Content Include="Scripts\characterCounter.js" />
+    <Content Include="Scripts\chips.js" />
+    <Content Include="Scripts\collapsible.js" />
+    <Content Include="Scripts\component.js" />
+    <Content Include="Scripts\datepicker.js" />
+    <Content Include="Scripts\dropdown.js" />
+    <Content Include="Scripts\forms.js" />
+    <Content Include="Scripts\global.js" />
+    <Content Include="Scripts\materialbox.js" />
+    <Content Include="Scripts\materialize.js" />
+    <Content Include="Scripts\materialize.min.js" />
+    <Content Include="Scripts\modal.js" />
+    <Content Include="Scripts\parallax.js" />
+    <Content Include="Scripts\pushpin.js" />
+    <Content Include="Scripts\range.js" />
+    <Content Include="Scripts\scrollspy.js" />
+    <Content Include="Scripts\select.js" />
+    <Content Include="Scripts\sidenav.js" />
+    <Content Include="Scripts\slider.js" />
+    <Content Include="Scripts\tabs.js" />
+    <Content Include="Scripts\tapTarget.js" />
+    <Content Include="Scripts\timepicker.js" />
+    <Content Include="Scripts\toasts.js" />
+    <Content Include="Scripts\tooltip.js" />
+    <Content Include="Scripts\waves.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -356,8 +401,14 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\rptIndiTestResult_wAnsOptions.resx">
+      <DependentUpon>rptIndiTestResult_wAnsOptions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptIndiTestResult.resx">
       <DependentUpon>rptIndiTestResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPrintTestCertificate.resx">
+      <DependentUpon>rptPrintTestCertificate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\XtraReport1.resx">
       <DependentUpon>XtraReport1.cs</DependentUpon>
@@ -397,15 +448,6 @@
     <Content Include="Views\ReportMain\ReportFilters\NoReportFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\ReportMain\ReportFilters\rptIndiTestResult.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\ReportMain\ReportFilters\rptAvgScoring.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\ReportMain\ReportFilters\_DocumentViewerPartial.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\rptIndiTestResult\viewFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -416,6 +458,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\ReportMain\SelectionList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptIndiTestResult_wAnsOptions\viewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptIndiTestResult_wAnsOptions\_DocumentViewer1Partial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptPrintTestCertificate\viewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptPrintTestCertificate\_DocumentViewer1Partial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

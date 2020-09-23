@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApplication3", "MvcApplication3\MvcApplication3.csproj", "{DFD26396-9B29-44BC-A536-7FCAFA11FD89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SETSReport", "MvcApplication3\SETSReport.csproj", "{DFD26396-9B29-44BC-A536-7FCAFA11FD89}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testwebdocviewer", "testwebdocviewer\testwebdocviewer.csproj", "{06619BA3-7D69-4459-B2AC-206F8EDBD404}"
 EndProject

@@ -1,9 +1,0 @@
-@Html.DevExpress().DocumentViewer(settings =>
-{
-    settings.Name = "DocumentViewer";
-    settings.CallbackRouteValues = new { Controller = "rptIndiTestResult", Action = "DocumentViewerPartial" };
-    settings.ExportRouteValues = new { Controller = "rptIndiTestResult", Action = "DocumentViewerPartialExport" };
-    settings.Report = (XtraReport)Model;
-    settings.ToolbarMode = DocumentViewerToolbarMode.StandardToolbar;
-}).GetHtml()
-    
