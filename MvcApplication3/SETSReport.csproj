@@ -251,37 +251,6 @@
     <Compile Include="Controllers\GlobalVar.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\anime.min.js" />
-    <Content Include="Scripts\autocomplete.js" />
-    <Content Include="Scripts\buttons.js" />
-    <Content Include="Scripts\cards.js" />
-    <Content Include="Scripts\carousel.js" />
-    <Content Include="Scripts\cash.js" />
-    <Content Include="Scripts\characterCounter.js" />
-    <Content Include="Scripts\chips.js" />
-    <Content Include="Scripts\collapsible.js" />
-    <Content Include="Scripts\component.js" />
-    <Content Include="Scripts\datepicker.js" />
-    <Content Include="Scripts\dropdown.js" />
-    <Content Include="Scripts\forms.js" />
-    <Content Include="Scripts\global.js" />
-    <Content Include="Scripts\materialbox.js" />
-    <Content Include="Scripts\materialize.js" />
-    <Content Include="Scripts\materialize.min.js" />
-    <Content Include="Scripts\modal.js" />
-    <Content Include="Scripts\parallax.js" />
-    <Content Include="Scripts\pushpin.js" />
-    <Content Include="Scripts\range.js" />
-    <Content Include="Scripts\scrollspy.js" />
-    <Content Include="Scripts\select.js" />
-    <Content Include="Scripts\sidenav.js" />
-    <Content Include="Scripts\slider.js" />
-    <Content Include="Scripts\tabs.js" />
-    <Content Include="Scripts\tapTarget.js" />
-    <Content Include="Scripts\timepicker.js" />
-    <Content Include="Scripts\toasts.js" />
-    <Content Include="Scripts\tooltip.js" />
-    <Content Include="Scripts\waves.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />

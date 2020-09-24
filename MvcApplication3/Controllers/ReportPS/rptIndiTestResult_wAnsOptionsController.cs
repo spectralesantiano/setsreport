@@ -205,8 +205,7 @@ namespace MvcApplication3.Controllers.ReportPS
             //return View();
         }
 
-        //MvcApplication3.Reports.XtraReport2 report = new MvcApplication3.Reports.XtraReport2();
-        MvcApplication3.Reports.rptIndiTestResult MainReport = new MvcApplication3.Reports.rptIndiTestResult();
+        SETSReport.Reports.rptIndiTestResult_wAnsOptions MainReport = new SETSReport.Reports.rptIndiTestResult_wAnsOptions();
 
         [HttpPost]
         public ActionResult DocumentViewerPartial()
