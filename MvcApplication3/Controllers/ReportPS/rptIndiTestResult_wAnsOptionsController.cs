@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DevExpress.Web.Mvc;
-using MvcApplication3.Models;
+using SETSReport.Models;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,10 +12,10 @@ using DevExpress.DataAccess.Sql;
 using DevExpress.DataAccess.ConnectionParameters;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.Configuration;
-using MvcApplication3.Controllers;
+using SETSReport.Controllers;
 using Newtonsoft.Json;
 
-namespace MvcApplication3.Controllers.ReportPS
+namespace SETSReport.Controllers.ReportPS
 {
     public class rptIndiTestResult_wAnsOptionsController : Controller
     {
@@ -120,31 +120,31 @@ namespace MvcApplication3.Controllers.ReportPS
             SqlDataAdapter _da = new SqlDataAdapter("Select * From [tbladmrank]", constr);
             DataTable _dt = new DataTable();
             _da.Fill(_dt);
-            ViewBag.RankList = ToSelectList(_dt, "PositionID", "Abbrv");
+            ViewBag.RankList = Util.ToSelectList(_dt, "PositionID", "Abbrv");
 
             _da = new SqlDataAdapter("Select * From [tblAdmSubjectCategory]", constr);
             _dt.Clear();
             _dt.Columns.Clear();
             _da.Fill(_dt);
-            ViewBag.SubjectCat = ToSelectList(_dt, "SubjCategoryID", "SubjCategoryName");
+            ViewBag.SubjectCat = Util.ToSelectList(_dt, "SubjCategoryID", "SubjCategoryName");
 
             _da = new SqlDataAdapter(Controllers.GlobalVar.TestNameQuery, constr);
             _dt.Clear();
             _dt.Columns.Clear();
             _da.Fill(_dt);
-            ViewBag.TestName = ToSelectList(_dt, "TestName", "TestName");
+            ViewBag.TestName = Util.ToSelectList(_dt, "TestName", "TestName");
 
             _da = new SqlDataAdapter(Controllers.GlobalVar.NationalityQuery, constr);
             _dt.Clear();
             _dt.Columns.Clear();
             _da.Fill(_dt);
-            ViewBag.Nationality = ToSelectList(_dt, "PKey", "Nat");
+            ViewBag.Nationality = Util.ToSelectList(_dt, "PKey", "Nat");
 
             _da = new SqlDataAdapter(Controllers.GlobalVar.CompanyNameQuery, constr);
             _dt.Clear();
             _dt.Columns.Clear();
             _da.Fill(_dt);
-            ViewBag.CompanyName = ToSelectList(_dt, "CompanyName", "CompanyName");
+            ViewBag.CompanyName = Util.ToSelectList(_dt, "CompanyName", "CompanyName");
 
             var list = new SelectList(new[] 
             {
@@ -200,7 +200,7 @@ namespace MvcApplication3.Controllers.ReportPS
             DataTable _dt = new DataTable();
             _da.Fill(_dt);
             //ViewBag.SubjectList = ToSelectList(_dt, "SubjectID", "SubjectName");
-            var list = ToSelectList(_dt, "SubjectID", "SubjectName");
+            var list = Util.ToSelectList(_dt, "SubjectID", "SubjectName");
             return Json(list);
             //return View();
         }
@@ -210,7 +210,7 @@ namespace MvcApplication3.Controllers.ReportPS
         [HttpPost]
         public ActionResult DocumentViewerPartial()
         {
-            //MvcApplication3.Reports.XtraReport2 report = new MvcApplication3.Reports.XtraReport2();
+            //SETSReport.Reports.XtraReport2 report = new SETSReport.Reports.XtraReport2();
             //DevExpress.XtraReports.UI.XRLabel lbl = ((DevExpress.XtraReports.UI.XRLabel)report.FindControl("xrlabel1", true));
             // lbl.Text = Session["amount"].ToString();
             //report.DataSource = "SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] ";// where actualtestid in(" + Session["selected"] + ") ORDER BY LastFirstMiddle ASC"; //WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC";
@@ -243,7 +243,7 @@ namespace MvcApplication3.Controllers.ReportPS
             ViewBag.selection = Request["teFirstName"];
             MainReport.txtPrintDate.Text = "Print Date: " + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
             MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
-            MainReport.pbLogo.ImageUrl = "~/images/heroAccent.png";
+            MainReport.pbLogo.ImageUrl = Util.GetReportLogoPath();
 
             GroupField item = new GroupField();
             item.FieldName = "ActualTestID";
@@ -337,21 +337,6 @@ namespace MvcApplication3.Controllers.ReportPS
         }
 
 
-        [NonAction]
-        public SelectList ToSelectList(DataTable table, string valueField, string textField)
-        {
-            List<SelectListItem> list = new List<SelectListItem>();
-
-            foreach (DataRow row in table.Rows)
-            {
-                list.Add(new SelectListItem()
-                {
-                    Text = row[textField].ToString(),
-                    Value = row[valueField].ToString()
-                });
-            }
-
-            return new SelectList(list, "Value", "Text");
-        }
+       
     }
 }

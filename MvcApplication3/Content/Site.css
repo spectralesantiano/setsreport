@@ -754,3 +754,9 @@ tr.pager td {
             margin: 0;
         }
 }
+.testclass
+{
+    font-family:Batang;
+        font-size:large;
+        font-weight:bold
+}

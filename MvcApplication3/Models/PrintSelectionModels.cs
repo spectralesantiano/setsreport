@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MvcApplication3.Models
+namespace SETSReport.Models
 {
     public class PrintSelection
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MvcApplication3.Controllers.ReportPS
+namespace SETSReport.Controllers.ReportPS
 {
     public class testController : Controller
     {

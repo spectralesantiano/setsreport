@@ -1,4 +1,4 @@
-﻿namespace MvcApplication3.Reports
+﻿namespace SETSReport.Reports
 {
     partial class XtraReport2
     {

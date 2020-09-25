@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MvcApplication3.Models;
+using SETSReport.Models;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace MvcApplication3.Controllers
+namespace SETSReport.Controllers
 {
     public class dropdownController : Controller
     {

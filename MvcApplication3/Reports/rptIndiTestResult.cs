@@ -4,7 +4,7 @@ using System.Collections;
 using System.ComponentModel;
 using DevExpress.XtraReports.UI;
 
-namespace MvcApplication3.Reports
+namespace SETSReport.Reports
 {
     public partial class rptIndiTestResult : DevExpress.XtraReports.UI.XtraReport
     {

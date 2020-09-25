@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MvcApplication3.Controllers
+namespace SETSReport.Controllers
 {
     public class PrintSelectionController : Controller
     {
@@ -16,17 +16,17 @@ namespace MvcApplication3.Controllers
             string rpts = "jkljkljk";
             ViewBag.rptsname = rpts;
 
-            var rptlist = new List<MvcApplication3.Models.PrintSelection>
+            var rptlist = new List<SETSReport.Models.PrintSelection>
             {
-                new MvcApplication3.Models.PrintSelection() { rptID = 1, rptName="ako"},
-                new MvcApplication3.Models.PrintSelection() { rptID = 2, rptName="ikaw"}
+                new SETSReport.Models.PrintSelection() { rptID = 1, rptName="ako"},
+                new SETSReport.Models.PrintSelection() { rptID = 2, rptName="ikaw"}
             };
 
             ViewData["myreports"] = rptlist;
             
            
             
-            return View(); //new MvcApplication3.Models.PrintSelection());
+            return View(); //new SETSReport.Models.PrintSelection());
         }
 
 

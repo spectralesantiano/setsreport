@@ -1,8 +1,8 @@
 ﻿@*//////// ---------------- name 'viewFilter.cshtml' is mandatory --------------/// *@
 @*//////// ---------------- as well as _DocumentViewer1Partial.cshtml --------------/// *@
 
-@model MvcApplication3.Models.RankModel
-@*@model MvcApplication3.Models.ExamineeRankModel*@
+@model SETSReport.Models.RankModel
+@*@model SETSReport.Models.ExamineeRankModel*@
 
 @{
     Layout = null;// "~/views/shared/_layout.cshtml";
@@ -40,15 +40,19 @@
 
 </style>
 
-Individual Test Result filter
+<h4 style="font:arial" class="FIlterHeader">Individual Test Results - Individual Test Results with Answer Options</h4>  
+
 <fieldset>  
         @*<legend></legend>  *@
 
        @*////// The sent button must be hide or do not add. Because theres already a generic button on the print selection(reportmain/index.cshtml) *@
        @* @using (Ajax.BeginForm("Index", "rptIndiTestResult", null,
                             new AjaxOptions { UpdateTargetId = "divInterestDeatils" }, new { id = "rptIndiTestResult" }))*@
-      @using (Ajax.BeginForm("DocumentViewerPartial", "rptIndiTestResult_wAnsOptions", null,
-                            null, new { id = "rptIndiTestResult_wAnsOptions" }))
+     
+      @{string rptname = "rptIndiTestResult_wAnsOptions";} 
+     
+      @using (Ajax.BeginForm("DocumentViewerPartial", rptname, null,
+                            null, new { id = rptname }))
       {  
         <div id="divInterestDeatils"></div>  
        
@@ -179,6 +183,8 @@ Individual Test Result filter
 
 <script type ="text/javascript">
 
+    var rpt = 'rptIndiTestResult_wAnsOptions';
+
     $("#btnFilter").click(
     function () {
         //        var ss = $("#testname option:selected").val();
@@ -205,7 +211,7 @@ Individual Test Result filter
        // $("#selectlist").load("/rptIndiTestResult/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) )
       
         // --- required ---//
-        $("#SelectionView").load("/rptIndiTestResult_wAnsOptions/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
+        $("#SelectionView").load("/"+ rpt +"/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
     
     }
     )
@@ -214,7 +220,7 @@ Individual Test Result filter
         var ss = this.value;
         $.ajax({
             type: "POST",
-            url: "/IndiTestResult_wAnsOptions/GetSubjects?SubjCategoryID='" + ss + "'",
+            url: "/"+ rpt +"/GetSubjects?SubjCategoryID='" + ss + "'",
             data: '{}',
             contentType: "application/json; charset=utf-8",
             dataType: "json",

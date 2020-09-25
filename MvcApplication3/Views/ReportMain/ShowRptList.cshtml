@@ -1,7 +1,8 @@
-﻿@*@model MvcApplication3.Models.dropdownModel*@
+﻿@*@model SETSReport.Models.dropdownModel*@
 @model System.Data.DataSet
 @{
     Layout = null;
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @*<!DOCTYPE html>
@@ -12,9 +13,20 @@
     <title>ShowRptList</title>
 </head>
 <body>*@
+
+<style type="text/css">
+    .headlabel
+    {
+        font-family:Arial;
+        font-size:large;
+        font-weight:bold
+    }
+</style>
+
 <script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+
     <div>
-      <h3>Report List</h3>
+      <div class="headlabel">List of Repots</div>
        @using (Html.BeginForm("ShowRptFilter", "ReportMain", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
        { 
             <div class="col-md-10">  

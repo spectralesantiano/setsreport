@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DevExpress.Web.Mvc;
-using MvcApplication3.Models;
+using SETSReport.Models;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,7 +12,7 @@ using DevExpress.DataAccess.Sql;
 using DevExpress.DataAccess.ConnectionParameters;
 using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.Configuration;
-using MvcApplication3.Controllers;
+using SETSReport.Controllers;
 using Newtonsoft.Json;
 
 namespace SETSReport.Controllers.ReportPS
@@ -143,8 +143,8 @@ namespace SETSReport.Controllers.ReportPS
             MainReport.txtSigName.Text = Request["Signatory"].Split(new string[] { " - " }, StringSplitOptions.None)[0];
             MainReport.txtJobTitle.Text = Request["Signatory"].Split(new string[] { " - " }, StringSplitOptions.None)[1];
         }
-        
-        MainReport.pbLogo.ImageUrl = "~/images/heroAccent.png";
+
+        MainReport.pbLogo.ImageUrl = Util.GetReportLogoPath();
 
 
         MainReport.Position.DataBindings.Add("Text", null, "RankName");

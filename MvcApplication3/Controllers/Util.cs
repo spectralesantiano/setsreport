@@ -8,9 +8,9 @@ using System.Data.SqlClient;
 using DevExpress.DataAccess.Sql;
 using DevExpress.DataAccess.ConnectionParameters;
 using System.Web.Mvc;
-using MvcApplication3.Controllers;
+using SETSReport.Controllers;
 
-namespace MvcApplication3.Controllers
+namespace SETSReport.Controllers
 {
     public static class Util
     {
@@ -65,5 +65,24 @@ namespace MvcApplication3.Controllers
 
               return new SelectList(list, "Value", "Text");
           }
+
+          public static string GetReportLogoPath()
+          {
+              string path = "";
+
+
+              path = "~/images/heroAccent.png";
+              return path;
+          }
+
+          public static string GetMEDIA_PATH()
+          {
+              string path = "";
+
+
+              path = "~/images/heroAccent.png";
+              return path;
+          }
+
     }
 }

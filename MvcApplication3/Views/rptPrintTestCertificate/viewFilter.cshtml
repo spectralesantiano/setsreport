@@ -7,6 +7,7 @@
 <script type="text/javascript" src="/Scripts/jquery-ui-1.8.20.min.js">      </script>
 
 <style type="text/css">
+    
      fieldset {
       padding: 1px;
     }
@@ -31,17 +32,29 @@
         padding-top:1px;
         font-family:Arial
     }
+    
+  .FilterHeader
+  {
+      font-family:Arial;
+      text-align:left;
+      border:1px solid;
+      font-size:medium;
+      font-weight:bold;
+      padding: 5px;
+  } 
 
 </style>
 
-Individual Test Result - Test Certficate
-
+<div class="FilterHeader">Individual Test Results - Test Certificates</div>
 <fieldset>
-  @using (Ajax.BeginForm("DocumentViewerPartial", "rptPrintTestCertificate", null,
-                            null, new { id = "rptPrintTestCertificate" }))
+
+   @{string rptname = "rptPrintTestCertificate";}
+
+  @using (Ajax.BeginForm("DocumentViewerPartial", rptname, null,
+                            null, new { id = rptname }))
   {
-      
        <table class ="collabel">
+       @* <tr><td colspan ="2"><h4 class="FilterHeader">Individual Test Results - Test Certificates</h4></td></tr>*@
         <tr>
             <td>
                 <table border ="1" class ="collabel">
@@ -49,14 +62,14 @@ Individual Test Result - Test Certficate
                     <tr>
                         <td> @Html.Label("Company Name:")</td>
                         <td>
-                             @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList,"", new { id = "lueCompany" })         
+                             @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "", new { id = "lueCompany" })         
                              <button id = "clearlueCompany" type ="button">x</button>                 
                         </td>
                     </tr>
                     <tr>
                         <td> @Html.Label("Set Signatory:")</td>
                         <td>
-                             @Html.DropDownList("Signatory", ViewBag.Signatory as SelectList,"", new { id = "lueSignatory" })         
+                             @Html.DropDownList("Signatory", ViewBag.Signatory as SelectList, "", new { id = "lueSignatory" })         
                              <button id = "clearlueSignatory" type ="button">x</button>                 
                         </td>
                     </tr>
@@ -80,12 +93,12 @@ Individual Test Result - Test Certficate
                         <tr>
                             <td>
                                 <label>
-                                    @Html.RadioButton("rgSortOrder", "Asc",true)
+                                    @Html.RadioButton("rgSortOrder", "Asc", true)
                                     Ascending
                                 </label>
                     
                                 <label>
-                                    @Html.RadioButton("rgSortOrder","Desc" )
+                                    @Html.RadioButton("rgSortOrder", "Desc")
                                     Descending
                                 </label>
                             </td> 
@@ -108,6 +121,8 @@ Individual Test Result - Test Certficate
 
 <script type="text/javascript">
 
+    var rpt = 'rptPrintTestCertificate';
+
     $("#btnFilter").click(
     function () {
         //        var ss = $("#testname option:selected").val();
@@ -118,7 +133,7 @@ Individual Test Result - Test Certficate
         //dict["CompanyName"] = $("#lueSignatory").val();
 
         // --- required ---//
-        $("#SelectionView").load("/rptPrintTestCertificate/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
+        $("#SelectionView").load("/"+ rpt +"/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
 
     }
     )

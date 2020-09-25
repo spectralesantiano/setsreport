@@ -200,10 +200,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrintSelectionController.cs" />
     <Compile Include="Controllers\ReportMainController.cs" />
+    <Compile Include="Controllers\ReportPS\rptIndiTestResult_wAnsOptionsAndPicsController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResult_wAnsOptionsController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResultController.cs" />
     <Compile Include="Controllers\ReportPS\rptPrintTestCertificateController.cs" />
     <Compile Include="Controllers\ReportPS\testController.cs" />
+    <Compile Include="Controllers\SETSReportFunction.cs" />
     <Compile Include="Controllers\ShowReportController.cs" />
     <Compile Include="Controllers\Util.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -218,6 +220,12 @@
     <Compile Include="Models\RankModel.cs" />
     <Compile Include="Models\SubjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\rptIndiTestResult_wAnsOptionsAndPics.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptIndiTestResult_wAnsOptionsAndPics.Designer.cs">
+      <DependentUpon>rptIndiTestResult_wAnsOptionsAndPics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\rptIndiTestResult_wAnsOptions.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -370,6 +378,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\rptIndiTestResult_wAnsOptionsAndPics.resx">
+      <DependentUpon>rptIndiTestResult_wAnsOptionsAndPics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptIndiTestResult_wAnsOptions.resx">
       <DependentUpon>rptIndiTestResult_wAnsOptions.cs</DependentUpon>
     </EmbeddedResource>
@@ -439,6 +450,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\rptPrintTestCertificate\_DocumentViewer1Partial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptIndiTestResult_wAnsOptionsAndPics\viewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptIndiTestResult_wAnsOptionsAndPics\_DocumentViewer1Partial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

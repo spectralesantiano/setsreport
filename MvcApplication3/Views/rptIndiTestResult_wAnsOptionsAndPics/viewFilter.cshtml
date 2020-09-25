@@ -40,21 +40,20 @@
 
 </style>
 
-<h4 style="font:arial" class="FIlterHeader">Individual Test Results - Individual Test Results</h4>  
+<h4 style="font:arial" class="FIlterHeader">Individual Test Results - Individual Test Results with Answer Options + Pictures</h4> 
 
 <fieldset>  
-        @*<legend></legend>  *@
+       @*<legend></legend>  *@
 
+       @{string rptname = "rptIndiTestResult_wAnsOptionsAndPics";}
+    
        @*////// The sent button must be hide or do not add. Because theres already a generic button on the print selection(reportmain/index.cshtml) *@
        @* @using (Ajax.BeginForm("Index", "rptIndiTestResult", null,
                             new AjaxOptions { UpdateTargetId = "divInterestDeatils" }, new { id = "rptIndiTestResult" }))*@
-      
-      @{string rptname = "rptIndiTestResult";}
-      
       @using (Ajax.BeginForm("DocumentViewerPartial", rptname, null,
-                            null , new { id = rptname }))
+                            null, new { id = rptname }))
       {  
-      
+        <div id="divInterestDeatils"></div>  
        
          <table class ="collabel">
             <tr>
@@ -165,59 +164,10 @@
               </td>
             </tr>
             <tr>
-                    <td colspan ="4" align ="center"><button id = "btnFilter" type ="button">Apply Criteria</button>  </td>
-            </tr>
+                 <td colspan ="4" align ="center"><button id = "btnFilter" type ="button">Apply Criteria</button>  </td>
+             </tr>
           </table>
        
-       @*  <div class ="row">
-            <div class ="collabel">
-                <div> @Html.Label("Test Name:")</div>
-                <div> @Html.Label("Rank:")</div>   
-                <div> @Html.Label("From Date:")</div>   
-                <div> @Html.Label("To Date:")</div>               
-            </div>
-             <div class="col">
-                  <div>
-                        @Html.DropDownList("TestName", ViewBag.RankList as SelectList, new { id = "lueRank" })  
-                 </div>
-                
-                 <div>
-                        @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, new { id = "lueRank"})  
-                 </div>
-                
-                 <div>
-                       @Html.TextBox("deFromDate","", new { @class = "datepicker" })
-                 </div>
-                
-                 <div>
-                       @Html.TextBox("deToDate","", new { @class = "datepicker" })
-                 </div>
-             </div>
-             <div class ="collabel">
-                <div> @Html.Label("1")</div>
-                <div> @Html.Label("2")</div>   
-                <div> @Html.Label("3")</div>   
-                <div> @Html.Label("4")</div>               
-            </div>
-             <div class="col">
-                    <div>
-                        @Html.DropDownList("SubjCategoryID", ViewBag.SubjectCat as SelectList,new { id = "subjectcat" })
-                    </div> 
-                    <div>
-                        @Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects", style = "min-width: 250px;" })
-                    </div> 
-                   <div> </div>     
-                   <div> </div>     
-             </div>
-
-         </div> *@
-          
-          @* ///---- this div is required ------////*@
-          @*  <div id = "selectlist">*@
-                @* ///---- the SelectionList.cshtml will appear here ------////*@
-                @* @Html.Partial("~/Views/ReportMain/SelectionList.cshtml")*@
-                @*@Html.Action("SelectionList", "rptIndiTestResult");*@
-          @* </div>*@
           
           @* ////---- this div is required ----------/////*@
           <div>
@@ -225,23 +175,24 @@
              @Html.Hidden("txtselected", "", new { id = "txtselected" })  
           </div>
           
-    @*<button id = "btncalc">Calculate</button>  *@
+            @*<button id = "btncalc">Calculate</button>  *@
       }     
-   @*   <button id = "btnselected">selected</button>  *@
+
+    @*<button id = "btnselected">selected</button>  *@
+
 </fieldset>  
 
 <script type ="text/javascript">
 
-    var rpt = 'rptIndiTestResult';
+    var rpt = 'rptIndiTestResult_wAnsOptionsAndPics';
 
     $("#btnFilter").click(
     function () {
         //        var ss = $("#testname option:selected").val();
-
         var dict = new Object();
 
         dict["FName"] = $("#teFirstName").val();
-        dict["LName"] = $("#teLastName").val();
+        dict["LName"] = $("#teLastName").val(); 
         dict["PositionID"] = $("#lueRank").val();
         dict["TestName"] = $("#lueTestName").val();
         dict["DateTaken"] = $("#deFromDate").val();
@@ -250,18 +201,9 @@
         dict["Nat"] = $("#lueNat").val();
         dict["CompanyName"] = $("#lueCompany").val();
 
-        //        for (var key in dict) {
-        //            var value = dict[key];
-        //            alert(value);
-        //        }
-
-//        alert(JSON.stringify(dict));
-        //        alert(encodeURIComponent(JSON.stringify(dict)));
-       // $("#selectlist").load("/rptIndiTestResult/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) )
-      
         // --- required ---//
-        $("#SelectionView").load("/"+ rpt + "/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
-    
+        $("#SelectionView").load("/" + rpt + "/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
+
     }
     )
 
@@ -269,7 +211,7 @@
         var ss = this.value;
         $.ajax({
             type: "POST",
-            url: "/"+ rpt +"/GetSubjects?SubjCategoryID='" + ss + "'",
+            url: "/" + rpt + "/GetSubjects?SubjCategoryID='" + ss + "'",
             data: '{}',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -333,40 +275,8 @@
         }
     )
 
-    /// --- this is where you filter what will be displayed in selection list--- ////
-//    $("#lueRank").change(function () {
-//        var ss = this.value;
-//        //alert(ss);
-//            $("#selectlist").load("/rptIndiTestResult/SelectionList?rankid='" + ss + "'")
-//    });
-
     $("#deFromDate").datepicker();
     $("#deToDate").datepicker();
-
-
-//    $("#btnselected").click(function () {
-//        //alert("selected");
-//        var s = $("#lstselect option:selected").val();
-//        //alert(s);
-//        var table = s.split(',');
-//        //alert(table[0]);
-
-//        for (i = 0; i < table.length; i++) {
-//            alert(table[i]);
-//        }
-//    });
-
-//    $("#btnselected").click(function () {
-//        var rr = [];
-//        $("#lstselect :selected").each(function (i, selected) {
-//            rr[i] = "'" + $(selected).val() + "'";
-//        });
-//        //alert(rr);
-//        //alert(rr[0]);
-//        var s = rr.toString();
-//        alert(s);
-
-//    });
  
 </script>
 

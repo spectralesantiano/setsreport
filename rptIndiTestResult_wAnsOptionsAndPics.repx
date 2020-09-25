@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="15.2.4.0" Ref="0" Name="rptIndiTestResult_wAnsOptionsAndPics" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" DisplayName="Individual Test Result Form" Version="15.2" Bookmark="Individual Test Result Form" PageWidth="827" PageHeight="1169" ScriptLanguage="VisualBasic" Margins="40, 40, 40, 40" PaperKind="A4">
+  <Bands>
+    <Item1 Ref="1" ControlType="DetailBand" Name="Detail" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="158.237">
+      <Controls>
+        <Item1 Ref="2" ControlType="XRPictureBox" Name="pbQuestionImg" LocationFloat="478, 3.000005" SizeF="264,152" Borders="All" Sizing="Squeeze" ImageAlignment="MiddleCenter">
+          <StylePriority Ref="3" UseBorders="false" />
+        </Item1>
+        <Item2 Ref="4" ControlType="XRTable" Name="XrTable6" SizeF="475.2914,158.237" LocationFloat="0, 0">
+          <Rows>
+            <Item1 Ref="5" Name="XrTableRow20" ControlType="XRTableRow" Weight="1">
+              <Cells>
+                <Item1 Ref="6" ControlType="XRTableCell" Name="QuestionCode" Weight="4.7529138183593762" TextAlignment="MiddleLeft" Padding="5,0,0,0,100" Font="Arial, 7pt">
+                  <StylePriority Ref="7" UseFont="false" UseTextAlignment="false" UsePadding="false" />
+                </Item1>
+              </Cells>
+            </Item1>
+            <Item2 Ref="8" Name="XrTableRow14" ControlType="XRTableRow" Weight="1" TextAlignment="MiddleLeft" Padding="5,0,0,0,100">
+              <Cells>
+                <Item1 Ref="9" ControlType="XRTableCell" Name="XrTableCell149" Weight="0.27824081420898422" Font="Arial, 7pt">
+                  <StylePriority Ref="10" UseFont="false" />
+                </Item1>
+                <Item2 Ref="11" ControlType="XRTableCell" Name="txtMark" Weight="0.20000000000000018" TextAlignment="MiddleRight" ForeColor="Green" Font="Arial, 9.75pt" Text="✔ ✘">
+                  <StylePriority Ref="12" UseFont="false" UseTextAlignment="false" UseForeColor="false" />
+                </Item2>
+                <Item3 Ref="13" ControlType="XRTableCell" Name="txtQuestionNo" Weight="0.19999999999999973" TextAlignment="MiddleRight" Padding="0,2,0,0,100" Font="Arial, 8pt">
+                  <StylePriority Ref="14" UseFont="false" UseTextAlignment="false" UseForeColor="false" UsePadding="false" />
+                  <Summary Ref="15" FormatString="{0:#,#}." Running="Group" Func="RecordNumber" />
+                </Item3>
+                <Item4 Ref="16" ControlType="XRTableCell" Name="IsContested" Weight="0.19999998445756617" Padding="0,0,0,0,100" BorderWidth="0" Font="Arial, 8pt">
+                  <Controls>
+                    <Item1 Ref="17" ControlType="XRPictureBox" Name="ContestedIcon" LocationFloat="0, 0" SizeF="20,26.37" Padding="4,4,7,7,100" Sizing="Squeeze" Image="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAXraVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0MiA3OS4xNjA5MjQsIDIwMTcvMDcvMTMtMDE6MDY6MzkgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDE5LTA0LTAxVDEzOjU5OjA2KzA4OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAxOS0wNC0wMVQxNToxODoyOSswODowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAxOS0wNC0wMVQxNToxODoyOSswODowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyOTcyN2UxYi03MTlmLTUyNDYtYTcxNS05ZjgzZjM3YTY5YzEiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo4NTFkYjY1OC1jYTNhLTZmNDQtODA3MS1lNGI0ODNlYWJmZGQiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo4NDNjMWZhNS0xZGFmLWUzNDAtYTU2Mi03YzVmYTk2NjEyMzUiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjg0M2MxZmE1LTFkYWYtZTM0MC1hNTYyLTdjNWZhOTY2MTIzNSIgc3RFdnQ6d2hlbj0iMjAxOS0wNC0wMVQxMzo1OTowNiswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6Mjk3MjdlMWItNzE5Zi01MjQ2LWE3MTUtOWY4M2YzN2E2OWMxIiBzdEV2dDp3aGVuPSIyMDE5LTA0LTAxVDE1OjE4OjI5KzA4OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgKFdpbmRvd3MpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PskjXzAAAAJISURBVDhPjVRLaFNREB1qG1RciSDSTaEoolQFCVQNVVyIImI3grh24cJtXbiTghuRVjFqa7UfTSq0tkQTkxoailqKUvBT7EejhCJoSoglDUm0xeOZ++7Dp6teOC/3zZw5d+68mQiKn4m0YGFCkBkSvL9ci+Sxi4g0JBCqXiByeLxnFKMnLmGypR6ZAUGW3MIc476IYImbX3kaKDR26gJ6ayroEuAO0UF0Wuh7TxWQOtmK/JTgJ2OWPlKgkhX8XmFwcxduKIl4QDxcC0QbgNgu7tcD92nrJYLEyMFBLBd58A8KrJQFk+dbcJ0OJYUJPTHGYHeNHABuW5+KK3f89BVUVGB+eDO6abhnCSFCU/9HIOAIqE85mqVeM92zTfDiTCtuWocSFJpBdKeN5krsc0Rdv3JvEamjfEa2vjRqrnM1AgrN+FHtO0G/b9Hc3etcjYDWIrymIAhXF82L12lqsNtGcz1r+lsDF0agqiQYrntt0vE69ZtHtwPl70QWiPudrLwcLeTgphlB6nibKYi3iLrXb67os7//+zUmeZiXn26vNxkoySWY/QYg0w/MD7GRNjonun6tmWY00+4X01HPm9twzUNQ9fheWwCu1BGnA12/NlKyKYxS1rZyJSd46k8Ykqob+IDpq8BckEHrnKuoXTmRHa9Q+mZmiEM0SwsEOU7Yk8aguc5dQrtTM1GoTXtF7bFAH/JvOT/LZhD5+CQof+WIjglmKT9+thGx/R0Y2PIGoZpFhHwF7qcQD3Rj4twhM875D85fQDEtfwC2s8JeiKhT6QAAAABJRU5ErkJggg==" ImageAlignment="MiddleCenter">
+                      <StylePriority Ref="18" UsePadding="false" />
+                    </Item1>
+                  </Controls>
+                  <StylePriority Ref="19" UseBorderWidth="false" UseFont="false" UsePadding="false" />
+                </Item4>
+                <Item5 Ref="20" ControlType="XRTableCell" Name="QuestionDesc" Weight="3.8746730196928252" Font="Arial, 8pt">
+                  <StylePriority Ref="21" UseFont="false" />
+                </Item5>
+              </Cells>
+              <StylePriority Ref="22" UseTextAlignment="false" UsePadding="false" />
+            </Item2>
+            <Item3 Ref="23" Name="XrTableRow15" ControlType="XRTableRow" Weight="1">
+              <Cells>
+                <Item1 Ref="24" ControlType="XRTableCell" Name="XrTableCell9" Weight="0.94194082291135539" Font="Arial, 7pt">
+                  <StylePriority Ref="25" UseFont="false" />
+                </Item1>
+                <Item2 Ref="26" ControlType="XRTableCell" Name="lblOpt1" Weight="0.099999917285245488" TextAlignment="MiddleRight" Font="Arial, 8.25pt, style=Bold, charSet=0" Text="&gt;">
+                  <StylePriority Ref="27" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="28" ControlType="XRTableCell" Name="lblOption1" Weight="0.19999999021926823" TextAlignment="MiddleCenter" Font="Arial, 8.25pt, style=Bold, charSet=0" Text="(A)">
+                  <StylePriority Ref="29" UseFont="false" UseTextAlignment="false" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="30" ControlType="XRTableCell" Name="Option1" Weight="3.5109730879435075" TextAlignment="MiddleLeft" Padding="5,0,0,0,100" Font="Arial, 8pt">
+                  <StylePriority Ref="31" UseFont="false" UseTextAlignment="false" UsePadding="false" />
+                </Item4>
+              </Cells>
+            </Item3>
+            <Item4 Ref="32" Name="XrTableRow17" ControlType="XRTableRow" Weight="1">
+              <Cells>
+                <Item1 Ref="33" ControlType="XRTableCell" Name="XrTableCell12" Weight="0.94194082291135539" Font="Arial, 7pt">
+                  <StylePriority Ref="34" UseFont="false" />
+                </Item1>
+                <Item2 Ref="35" ControlType="XRTableCell" Name="lblOpt2" Weight="0.099999917285245488" TextAlignment="MiddleRight" Font="Arial, 8.25pt, style=Bold, charSet=0" Text="&gt;">
+                  <StylePriority Ref="36" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="37" ControlType="XRTableCell" Name="lblOption2" Weight="0.19999999021926823" TextAlignment="MiddleCenter" Font="Arial, 8.25pt, style=Bold, charSet=0" Text="(B)">
+                  <StylePriority Ref="38" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="39" ControlType="XRTableCell" Name="Option2" Weight="3.5109730879435075" TextAlignment="MiddleLeft" Padding="5,0,0,0,100" Font="Arial, 8pt">
+                  <StylePriority Ref="40" UseFont="false" UseTextAlignment="false" UsePadding="false" />
+                </Item4>
+              </Cells>
+            </Item4>
+            <Item5 Ref="41" Name="XrTableRow18" ControlType="XRTableRow" Weight="1">
+              <Cells>
+                <Item1 Ref="42" ControlType="XRTableCell" Name="XrTableCell22" Weight="0.94194082291135539" Font="Arial, 7pt">
+                  <StylePriority Ref="43" UseFont="false" />
+                </Item1>
+                <Item2 Ref="44" ControlType="XRTableCell" Name="lblOpt3" Weight="0.099999917285245488" TextAlignment="MiddleRight" Font="Arial, 8.25pt, style=Bold, charSet=0" Text="&gt;">
+                  <StylePriority Ref="45" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="46" ControlType="XRTableCell" Name="lblOption3" Weight="0.19999999021926823" TextAlignment="MiddleCenter" Font="Arial, 8.25pt, style=Bold, charSet=0" Text="(C)">
+                  <StylePriority Ref="47" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="48" ControlType="XRTableCell" Name="Option3" Weight="3.5109730879435075" TextAlignment="MiddleLeft" Padding="5,0,0,0,100" Font="Arial, 8pt">
+                  <StylePriority Ref="49" UseFont="false" UseTextAlignment="false" UsePadding="false" />
+                </Item4>
+              </Cells>
+            </Item5>
+            <Item6 Ref="50" Name="XrTableRow19" ControlType="XRTableRow" Weight="1">
+              <Cells>
+                <Item1 Ref="51" ControlType="XRTableCell" Name="XrTableCell30" Weight="0.94194082291135539" Font="Arial, 7pt">
+                  <StylePriority Ref="52" UseFont="false" />
+                </Item1>
+                <Item2 Ref="53" ControlType="XRTableCell" Name="lblOpt4" Weight="0.099999917285245488" TextAlignment="MiddleRight" Font="Arial, 8.25pt, style=Bold, charSet=0" Text="&gt;">
+                  <StylePriority Ref="54" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="55" ControlType="XRTableCell" Name="lblOption4" Weight="0.19999999021926823" TextAlignment="MiddleCenter" Font="Arial, 8.25pt, style=Bold, charSet=0" Text="(D)">
+                  <StylePriority Ref="56" UseFont="false" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="57" ControlType="XRTableCell" Name="Option4" Weight="3.5109730879435075" TextAlignment="MiddleLeft" Padding="5,0,0,0,100" Font="Arial, 8pt">
+                  <StylePriority Ref="58" UseFont="false" UseTextAlignment="false" UsePadding="false" />
+                </Item4>
+              </Cells>
+            </Item6>
+          </Rows>
+        </Item2>
+      </Controls>
+    </Item1>
+    <Item2 Ref="59" ControlType="TopMarginBand" Name="TopMargin" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="40" />
+    <Item3 Ref="60" ControlType="BottomMarginBand" Name="BottomMargin" TextAlignment="TopLeft" Padding="0,0,0,0,100" HeightF="40" />
+    <Item4 Ref="61" ControlType="PageHeaderBand" Name="PageHeader" HeightF="163.3298">
+      <Controls>
+        <Item1 Ref="62" ControlType="XRLabel" Name="XrLabel2" LocationFloat="0, 160.3298" SizeF="747,3" BorderWidth="3" Borders="Top" Padding="2,2,0,0,100">
+          <StylePriority Ref="63" UseBorderWidth="false" UseBorders="false" />
+        </Item1>
+        <Item2 Ref="64" ControlType="XRPictureBox" Name="pbLogo" LocationFloat="0, 10" SizeF="78,78" Sizing="Squeeze" />
+        <Item3 Ref="65" ControlType="XRLabel" Name="XrLabel1" LocationFloat="0, 0" SizeF="747,3" BorderWidth="3" Borders="Top" Padding="2,2,0,0,100">
+          <StylePriority Ref="66" UseBorderWidth="false" UseBorders="false" />
+        </Item3>
+        <Item4 Ref="67" ControlType="XRTable" Name="XrTable3" SizeF="745.9166,60.32989" LocationFloat="0, 99.99995">
+          <Rows>
+            <Item1 Ref="68" Name="XrTableRow3" ControlType="XRTableRow" Weight="1.25">
+              <Cells>
+                <Item1 Ref="69" ControlType="XRTableCell" Name="XrTableCell3" Weight="1" TextAlignment="MiddleLeft" Padding="3,0,0,0,100" Font="Arial, 7pt, style=Bold, Italic" Multiline="true" Text="IMPORTANT NOTES:&#xD;&#xA;">
+                  <StylePriority Ref="70" UseFont="false" UseTextAlignment="false" UsePadding="false" />
+                </Item1>
+              </Cells>
+            </Item1>
+            <Item2 Ref="71" Name="XrTableRow4" ControlType="XRTableRow" Weight="1.25">
+              <Cells>
+                <Item1 Ref="72" ControlType="XRTableCell" Name="XrTableCell4" Weight="1" TextAlignment="MiddleLeft" Padding="3,0,0,0,100" Font="Arial, 7pt, style=Bold, Italic" Multiline="true" Text="(1) Questions are grouped by subject&#xD;&#xA;">
+                  <StylePriority Ref="73" UseFont="false" UseTextAlignment="false" UsePadding="false" />
+                </Item1>
+              </Cells>
+            </Item2>
+            <Item3 Ref="74" Name="XrTableRow5" ControlType="XRTableRow" Weight="1.25">
+              <Cells>
+                <Item1 Ref="75" ControlType="XRTableCell" Name="XrTableCell5" Weight="1" TextAlignment="MiddleLeft" Padding="3,0,0,0,100" Font="Arial, 7pt, style=Bold, Italic" Multiline="true" Text="(2) Questions answered correctly will have a check-mark, OR a &quot;Y&quot; (yes) mark&#xD;&#xA;">
+                  <StylePriority Ref="76" UseFont="false" UseTextAlignment="false" UsePadding="false" />
+                </Item1>
+              </Cells>
+            </Item3>
+            <Item4 Ref="77" Name="XrTableRow6" ControlType="XRTableRow" Weight="1.25">
+              <Cells>
+                <Item1 Ref="78" ControlType="XRTableCell" Name="XrTableCell6" Weight="1" TextAlignment="MiddleLeft" Padding="3,0,0,0,100" Font="Arial, 7pt, style=Bold, Italic" Multiline="true" Text="(3) The user's answer will have a square border around the option letter&#xD;&#xA;">
+                  <StylePriority Ref="79" UseFont="false" UseTextAlignment="false" UsePadding="false" />
+                </Item1>
+              </Cells>
+            </Item4>
+            <Item5 Ref="80" Name="XrTableRow7" ControlType="XRTableRow" Weight="1.25">
+              <Cells>
+                <Item1 Ref="81" ControlType="XRTableCell" Name="XrTableCell8" Weight="0.72838688230356485" TextAlignment="MiddleLeft" Padding="3,0,0,0,100" Font="Arial, 7pt, style=Bold, Italic" Text="(4) The right answer will have a &quot;&gt;&quot; to the left of the option letter">
+                  <StylePriority Ref="82" UseFont="false" UseTextAlignment="false" UsePadding="false" />
+                </Item1>
+                <Item2 Ref="83" ControlType="XRTableCell" Name="txtPrintDate" Weight="0.27161311769643509" TextAlignment="MiddleRight" Padding="0,3,0,0,100" Font="Arial, 8pt" Text="Datenow">
+                  <StylePriority Ref="84" UseFont="false" UseTextAlignment="false" UsePadding="false" />
+                </Item2>
+              </Cells>
+            </Item5>
+          </Rows>
+        </Item4>
+        <Item5 Ref="85" ControlType="XRTable" Name="XrTable1" SizeF="551.0975,47.22222" LocationFloat="100, 10">
+          <Rows>
+            <Item1 Ref="86" Name="XrTableRow1" ControlType="XRTableRow" Weight="1.25">
+              <Cells>
+                <Item1 Ref="87" ControlType="XRTableCell" Name="txtCompanyName" Weight="1" TextAlignment="MiddleCenter" Font="Arial, 15.75pt, style=Bold" Text="(Company Name)">
+                  <StylePriority Ref="88" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+              </Cells>
+            </Item1>
+            <Item2 Ref="89" Name="XrTableRow16" ControlType="XRTableRow" Weight="1.25">
+              <Cells>
+                <Item1 Ref="90" ControlType="XRTableCell" Name="XrTableCell18" Weight="1" TextAlignment="MiddleCenter" Font="Arial, 14pt, style=Bold" Text="SETS Test Result">
+                  <StylePriority Ref="91" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+              </Cells>
+            </Item2>
+          </Rows>
+        </Item5>
+      </Controls>
+    </Item4>
+    <Item5 Ref="92" ControlType="GroupHeaderBand" Name="ActualTestHeader" Level="1" HeightF="123" PageBreak="BeforeBand">
+      <Controls>
+        <Item1 Ref="93" ControlType="XRTable" Name="XrTable4" SizeF="747,120" LocationFloat="0, 3" Padding="5,0,0,0,100" TextAlignment="MiddleLeft">
+          <Rows>
+            <Item1 Ref="94" Name="XrTableRow8" ControlType="XRTableRow" Weight="1" TextAlignment="MiddleLeft" Padding="5,0,0,0,100">
+              <Cells>
+                <Item1 Ref="95" ControlType="XRTableCell" Name="XrTableCell7" Weight="0.67105042420670835" Borders="Left, Top" Font="Arial, 8pt" Text="Name: ">
+                  <StylePriority Ref="96" UseFont="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="97" ControlType="XRTableCell" Name="LastFirstMiddle" Weight="3.69216697011243" Borders="Top" Font="Arial, 8pt, style=Bold">
+                  <StylePriority Ref="98" UseFont="false" UseBorders="false" />
+                </Item2>
+                <Item3 Ref="99" ControlType="XRTableCell" Name="XrTableCell11" Weight="1.4684070386016974" Borders="Top" Font="Arial, 8pt" Text="Score: ">
+                  <StylePriority Ref="100" UseFont="false" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="101" ControlType="XRTableCell" Name="TestScore" Weight="1.5858752619033822" Borders="Top, Right" Font="Arial, 8pt, style=Bold" Text="0.00 %">
+                  <StylePriority Ref="102" UseFont="false" UseBorders="false" />
+                </Item4>
+              </Cells>
+              <StylePriority Ref="103" UseTextAlignment="false" UsePadding="false" />
+            </Item1>
+            <Item2 Ref="104" Name="XrTableRow9" ControlType="XRTableRow" Weight="1">
+              <Cells>
+                <Item1 Ref="105" ControlType="XRTableCell" Name="XrTableCell13" Weight="0.67105042420670835" Borders="Left" Font="Arial, 8pt" Text="Position: ">
+                  <StylePriority Ref="106" UseFont="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="107" ControlType="XRTableCell" Name="RankName" Weight="3.69216697011243" Font="Arial, 8pt, style=Bold" NullValueText="NON APPLICABLE">
+                  <StylePriority Ref="108" UseFont="false" />
+                </Item2>
+                <Item3 Ref="109" ControlType="XRTableCell" Name="XrTableCell15" Weight="1.4684070386016974" Font="Arial, 8pt" Text="Average Score for this Test:">
+                  <StylePriority Ref="110" UseFont="false" />
+                </Item3>
+                <Item4 Ref="111" ControlType="XRTableCell" Name="Average" Weight="1.5858752619033825" Borders="Right" Font="Arial, 8pt, style=Bold">
+                  <StylePriority Ref="112" UseFont="false" UseBorders="false" />
+                </Item4>
+              </Cells>
+            </Item2>
+            <Item3 Ref="113" Name="XrTableRow10" ControlType="XRTableRow" Weight="1">
+              <Cells>
+                <Item1 Ref="114" ControlType="XRTableCell" Name="XrTableCell17" Weight="0.67105042420670835" Borders="Left" Font="Arial, 8pt" Text="Test Date: ">
+                  <StylePriority Ref="115" UseFont="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="116" ControlType="XRTableCell" Name="DateTaken" Weight="3.69216697011243" Font="Arial, 8pt, style=Bold">
+                  <StylePriority Ref="117" UseFont="false" />
+                </Item2>
+                <Item3 Ref="118" ControlType="XRTableCell" Name="XrTableCell19" Weight="1.4684070386016974" Font="Arial, 8pt" Text="Time Taken: ">
+                  <StylePriority Ref="119" UseFont="false" />
+                </Item3>
+                <Item4 Ref="120" ControlType="XRTableCell" Name="txtTimeTaken" Weight="1.5858752619033825" Borders="Right" Font="Arial, 8pt, style=Bold">
+                  <StylePriority Ref="121" UseFont="false" UseBorders="false" />
+                </Item4>
+              </Cells>
+            </Item3>
+            <Item4 Ref="122" Name="XrTableRow11" ControlType="XRTableRow" Weight="1">
+              <Cells>
+                <Item1 Ref="123" ControlType="XRTableCell" Name="XrTableCell21" Weight="0.67105042420670835" Borders="Left" Font="Arial, 8pt" Text="Test Name: ">
+                  <StylePriority Ref="124" UseFont="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="125" ControlType="XRTableCell" Name="TestName" Weight="3.69216697011243" Font="Arial, 8pt, style=Bold">
+                  <StylePriority Ref="126" UseFont="false" />
+                </Item2>
+                <Item3 Ref="127" ControlType="XRTableCell" Name="XrTableCell23" Weight="1.4684070386016974" Font="Arial, 8pt" Text="Company ID:">
+                  <StylePriority Ref="128" UseFont="false" />
+                </Item3>
+                <Item4 Ref="129" ControlType="XRTableCell" Name="RefID" Weight="1.5858752619033825" Borders="Right" Font="Arial, 8pt, style=Bold">
+                  <StylePriority Ref="130" UseFont="false" UseBorders="false" />
+                </Item4>
+              </Cells>
+            </Item4>
+            <Item5 Ref="131" Name="XrTableRow12" ControlType="XRTableRow" Weight="1">
+              <Cells>
+                <Item1 Ref="132" ControlType="XRTableCell" Name="XrTableCell25" Weight="0.67105042420670835" Borders="Left" Font="Arial, 8pt" Text="Test Status: ">
+                  <StylePriority Ref="133" UseFont="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="134" ControlType="XRTableCell" Name="TestStatusName" Weight="3.69216697011243" Font="Arial, 8pt, style=Bold">
+                  <StylePriority Ref="135" UseFont="false" UseBorders="false" />
+                </Item2>
+                <Item3 Ref="136" ControlType="XRTableCell" Name="XrTableCell27" Weight="1.4684070386016974" Font="Arial, 8pt" Text="Result ID (RID):">
+                  <StylePriority Ref="137" UseFont="false" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="138" ControlType="XRTableCell" Name="ActualTestID" Weight="1.5858752619033825" Borders="Right" Font="Arial, 8pt, style=Bold">
+                  <StylePriority Ref="139" UseFont="false" UseBorders="false" />
+                </Item4>
+              </Cells>
+            </Item5>
+            <Item6 Ref="140" Name="XrTableRow21" ControlType="XRTableRow" Weight="1">
+              <Cells>
+                <Item1 Ref="141" ControlType="XRTableCell" Name="XrTableCell10" Weight="0.67105042420670835" Borders="Left, Bottom" Font="Arial, 8pt" Text="Taken At:">
+                  <StylePriority Ref="142" UseFont="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="143" ControlType="XRTableCell" Name="CompanyName" Weight="3.69216697011243" Borders="Bottom" Font="Arial, 8pt, style=Bold">
+                  <StylePriority Ref="144" UseFont="false" UseBorders="false" />
+                </Item2>
+                <Item3 Ref="145" ControlType="XRTableCell" Name="XrTableCell16" Weight="1.4684070386016974" Borders="Bottom" Font="Arial, 8pt">
+                  <StylePriority Ref="146" UseFont="false" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="147" ControlType="XRTableCell" Name="XrTableCell20" Weight="1.5858752619033825" Borders="Right, Bottom" Font="Arial, 8pt, style=Bold">
+                  <StylePriority Ref="148" UseFont="false" UseBorders="false" />
+                </Item4>
+              </Cells>
+            </Item6>
+          </Rows>
+          <StylePriority Ref="149" UseTextAlignment="false" UseBorders="false" UsePadding="false" />
+        </Item1>
+      </Controls>
+    </Item5>
+    <Item6 Ref="150" ControlType="GroupHeaderBand" Name="SubjectNameHeader" HeightF="35.53922">
+      <Controls>
+        <Item1 Ref="151" ControlType="XRTable" Name="XrTable5" SizeF="746.9999,35.53922" LocationFloat="0, 0">
+          <Rows>
+            <Item1 Ref="152" Name="XrTableRow13" ControlType="XRTableRow" Weight="1.25">
+              <Cells>
+                <Item1 Ref="153" ControlType="XRTableCell" Name="SubjectName" Weight="1" TextAlignment="MiddleCenter" Font="Arial, 11pt, style=Bold">
+                  <StylePriority Ref="154" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+              </Cells>
+            </Item1>
+            <Item2 Ref="155" Name="XrTableRow2" ControlType="XRTableRow" Weight="1.25">
+              <Cells>
+                <Item1 Ref="156" ControlType="XRTableCell" Name="XrTableCell2" Weight="0.14725572297675618" TextAlignment="MiddleCenter" Font="Arial, 8.25pt, style=Italic, charSet=0" Text="Question Code">
+                  <StylePriority Ref="157" UseFont="false" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="158" ControlType="XRTableCell" Name="XrTableCell1" Weight="0.85274427702324385" TextAlignment="MiddleCenter" Font="Arial, 8.25pt, style=Italic, charSet=0" Text="Question">
+                  <StylePriority Ref="159" UseFont="false" UseTextAlignment="false" />
+                </Item2>
+              </Cells>
+            </Item2>
+          </Rows>
+        </Item1>
+      </Controls>
+    </Item6>
+    <Item7 Ref="160" ControlType="PageFooterBand" Name="PageFooter" HeightF="15.31482">
+      <Controls>
+        <Item1 Ref="161" ControlType="XRPageInfo" Name="XrPageInfo1" LocationFloat="0, 0" SizeF="100,15.31482" Font="Arial, 9pt" Padding="2,2,0,0,100" RunningBand="#Ref-92" Format="Page {0} of {1}">
+          <StylePriority Ref="162" UseFont="false" />
+        </Item1>
+      </Controls>
+    </Item7>
+  </Bands>
+</XtraReportsLayoutSerializer>
