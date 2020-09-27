@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testwebdocviewer", "testweb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testFoundUI_2", "testFoundUI_2\testFoundUI_2.csproj", "{94CDDD83-8620-4B54-9274-BFE051465320}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testBootStrapUI", "testBootStrapUI\testBootStrapUI.csproj", "{DD37B6C8-3902-4D36-8F71-840E6655A3A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{94CDDD83-8620-4B54-9274-BFE051465320}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94CDDD83-8620-4B54-9274-BFE051465320}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94CDDD83-8620-4B54-9274-BFE051465320}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD37B6C8-3902-4D36-8F71-840E6655A3A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD37B6C8-3902-4D36-8F71-840E6655A3A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD37B6C8-3902-4D36-8F71-840E6655A3A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD37B6C8-3902-4D36-8F71-840E6655A3A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
