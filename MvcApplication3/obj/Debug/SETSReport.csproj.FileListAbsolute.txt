@@ -1,10 +1,3 @@
-C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptIndiTestResult_wAnsOptions.resources
-C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptPrintTestCertificate.resources
-C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.csproj.GenerateResource.Cache
-C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.dll.licenses
-C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSREport.Reports.rptIndiTestResult.resources
-C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSREport.Reports.XtraReport1.resources
-C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSREport.Reports.XtraReport2.resources
 C:\VUE\MvcApplication3\MvcApplication3\bin\SETSReport.dll
 C:\VUE\MvcApplication3\MvcApplication3\bin\SETSReport.pdb
 C:\VUE\MvcApplication3\MvcApplication3\bin\Antlr3.Runtime.dll
@@ -55,6 +48,13 @@ C:\VUE\MvcApplication3\MvcApplication3\bin\DotNetOpenAuth.OAuth.Consumer.xml
 C:\VUE\MvcApplication3\MvcApplication3\bin\DotNetOpenAuth.OAuth.xml
 C:\VUE\MvcApplication3\MvcApplication3\bin\DotNetOpenAuth.OpenId.xml
 C:\VUE\MvcApplication3\MvcApplication3\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptIndiTestResult_wAnsOptionsAndPics.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptIndiTestResult_wAnsOptions.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptIndiTestResult.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptPrintTestCertificate.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.XtraReport1.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.XtraReport2.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.csproj.GenerateResource.Cache
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.dll.licenses
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.dll
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.pdb
-C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptIndiTestResult_wAnsOptionsAndPics.resources

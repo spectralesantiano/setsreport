@@ -62,7 +62,7 @@
                     <tr>
                         <td> @Html.Label("Company Name:")</td>
                         <td>
-                             @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "", new { id = "lueCompany" })         
+                             @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "",  new { id = "lueCompany", @class="dropdown" })         
                              <button id = "clearlueCompany" type ="button">x</button>                 
                         </td>
                     </tr>

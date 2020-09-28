@@ -1,12 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+  @Styles.Render("~/Content/bootstrapcss")
     <head>
         <meta charset="utf-8" />
         <title>@ViewBag.Title - SETS Report Selection</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
       @*  @Styles.Render("~/Content/css")*@
-        @Scripts.Render("~/bundles/modernizr")
+       @* @Scripts.Render("~/bundles/modernizr")*@
 
        @* added below 2 paragraphs code*@
         @Html.DevExpress().GetStyleSheets( 
@@ -76,7 +77,11 @@
             </div>
         </footer>
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
+      @*  @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)*@
+
+        @* BS *@
+         @Scripts.Render("~/bundles/jquery")
+         @Scripts.Render("~/bundles/bootstrapjs")
     </body>
 </html>
