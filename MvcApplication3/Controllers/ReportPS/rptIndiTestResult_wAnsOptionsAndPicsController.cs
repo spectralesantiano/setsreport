@@ -300,13 +300,12 @@ namespace SETSReport.Controllers.ReportPS
                             searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
                             break;
                         case "DateTaken":
-                            DateTime frDate = Convert.ToDateTime(valuen);
-                            searchText += String.Format("{0} >= '{1}'", namem, frDate);
+                            searchText += String.Format("{0} >= '{1}'", namem, valuen);
                             break;
                         case "ToDate":
-                            DateTime toDate = Convert.ToDateTime(valuen);
+                            DateTime toDate  = Convert.ToDateTime(valuen);
                             toDate = toDate.AddDays(1);
-                            searchText += String.Format("DateTaken <= '{0}'", toDate);
+                            searchText += String.Format("DateTaken <= '{0}'", toDate.ToString("dd-MMM-yyyy"));
                             break;
                         case "PositionID":
                             searchText += String.Format("{0} = '{1}'", namem, valuen);

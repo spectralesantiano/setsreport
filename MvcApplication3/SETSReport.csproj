@@ -203,6 +203,7 @@
     <Compile Include="Controllers\ReportPS\rptIndiTestResult_wAnsOptionsAndPicsController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResult_wAnsOptionsController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResultController.cs" />
+    <Compile Include="Controllers\ReportPS\rptIndividualTestStatisticController.cs" />
     <Compile Include="Controllers\ReportPS\rptPrintTestCertificateController.cs" />
     <Compile Include="Controllers\ReportPS\testController.cs" />
     <Compile Include="Controllers\SETSReportFunction.cs" />
@@ -237,6 +238,12 @@
     </Compile>
     <Compile Include="Reports\rptIndiTestResult.Designer.cs">
       <DependentUpon>rptIndiTestResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptIndividualTestStatistic.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptIndividualTestStatistic.Designer.cs">
+      <DependentUpon>rptIndividualTestStatistic.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptPrintTestCertificate.cs">
       <SubType>Component</SubType>
@@ -344,6 +351,9 @@
     <EmbeddedResource Include="Reports\rptIndiTestResult.resx">
       <DependentUpon>rptIndiTestResult.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptIndividualTestStatistic.resx">
+      <DependentUpon>rptIndividualTestStatistic.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPrintTestCertificate.resx">
       <DependentUpon>rptPrintTestCertificate.cs</DependentUpon>
     </EmbeddedResource>
@@ -413,6 +423,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\rptIndiTestResult_wAnsOptionsAndPics\_DocumentViewer1Partial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptIndividualTestStatistic\_DocumentViewer1Partial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptIndividualTestStatistic\viewFilter.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
