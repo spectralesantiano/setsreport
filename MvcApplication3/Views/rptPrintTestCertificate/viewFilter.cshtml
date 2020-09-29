@@ -2,46 +2,22 @@
     //Layout = null;// "~/views/shared/_layout.cshtml";
 }
 
-<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+@*<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />*@
 <script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
-<script type="text/javascript" src="/Scripts/jquery-ui-1.8.20.min.js">      </script>
+@*<script type="text/javascript" src="/Scripts/jquery-ui-1.8.20.min.js">      </script>*@
 
 <style type="text/css">
     
-     fieldset {
-      padding: 1px;
-    }
-    .row {
-        background: #f6f6f6;
-        @*border: 1px solid #ccc;*@
-        overflow: hidden;
-        padding: 3px;
-    }
-    .col {
-        float: left;
-        text-align:left;
-        padding: 10px;
-        white-space: nowrap
-    }
-    .collabel {
-        float: left;
-        text-align:left;
-        padding: 5px;
-        font-size :small;
-        white-space: nowrap;
-        padding-top:1px;
-        font-family:Arial
-    }
-    
-  .FilterHeader
-  {
-      font-family:Arial;
-      text-align:left;
-      border:1px solid;
-      font-size:medium;
-      font-weight:bold;
-      padding: 5px;
-  } 
+
+.FilterHeader
+{
+    font-family:Arial;
+    text-align:left;
+    border:1px solid;
+    font-size:medium;
+    font-weight:bold;
+    padding: 5px;
+} 
 
 </style>
 
@@ -53,40 +29,44 @@
   @using (Ajax.BeginForm("DocumentViewerPartial", rptname, null,
                             null, new { id = rptname }))
   {
-       <table class ="collabel">
+       <table>
        @* <tr><td colspan ="2"><h4 class="FilterHeader">Individual Test Results - Test Certificates</h4></td></tr>*@
         <tr>
-            <td>
-                <table border ="1" class ="collabel">
+            <td class="tblTDcontent">
+                <table>
                     <tr><th colspan="2">Criteria</th></tr>
                     <tr>
                         <td> @Html.Label("Company Name:")</td>
                         <td>
-                             @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "",  new { id = "lueCompany", @class="dropdown" })         
-                             <button id = "clearlueCompany" type ="button">x</button>                 
+                            <div class="input-append">
+                             @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "",  new { id = "lueCompany" })    
+                             <button id = "clearlueCompany" type ="button" class="btn">x</button>                 
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td> @Html.Label("Set Signatory:")</td>
                         <td>
+                             <div class="input-append">
                              @Html.DropDownList("Signatory", ViewBag.Signatory as SelectList, "", new { id = "lueSignatory" })         
-                             <button id = "clearlueSignatory" type ="button">x</button>                 
+                             <button id = "clearlueSignatory" type ="button" class="btn">x</button> 
+                             </div>                
                         </td>
                     </tr>
                 </table>
             </td>
             <td>
-                 <table class ="collabel" border ="1">
+                 <table>
                         <tr>
                             <th colspan="2">Sorting</th>
                         </tr>
                         <tr>
-                            <td style="font-size:smaller">
+                            <td style="font-size:smaller" colspan="2">
                                 Note: Criteria has effect on sorting and vice-versa
                             </td>
                         </tr>  
                         <tr>
-                            <td>
+                            <td colspan ="2">
                                 Sort Selection By: @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
                             </td>
                         </tr>
@@ -96,7 +76,8 @@
                                     @Html.RadioButton("rgSortOrder", "Asc", true)
                                     Ascending
                                 </label>
-                    
+                            </td>
+                            <td>
                                 <label>
                                     @Html.RadioButton("rgSortOrder", "Desc")
                                     Descending
@@ -107,7 +88,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan ="4" align ="center"><button id = "btnFilter" type ="button">Apply Criteria</button>  </td>
+            <td colspan ="4" align ="center"><button id = "btnFilter" type ="button" class="btn btn-small">Apply Criteria</button>  </td>
         </tr>
        </table>
       

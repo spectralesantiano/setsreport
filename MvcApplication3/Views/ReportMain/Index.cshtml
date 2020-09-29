@@ -25,7 +25,7 @@
 }
 .grid-item {
   @*background-color: rgba(255, 255, 255, 0.8);*@
-  border: 1px solid rgba(0, 0, 0, 0.8);
+ @* border: 1px solid rgba(0, 0, 0, 0.8);*@
   padding: 10px;
   font-size: 20px;
   text-align: center;
@@ -33,6 +33,7 @@
 .item1 {
   grid-column: 1;
   grid-row: 1 / span 2;
+  min-width: 400px;
 }
 .item2 {
   grid-column: 2 / span 3;
@@ -50,6 +51,40 @@
   grid-column: 2 / span 3;
   grid-row: 3;
 }
+
+
+.definetbC    {
+        font-size:small;
+        text-align:center;
+        padding: 10px;
+    }
+
+.definetbL    {
+        font-size:small;
+        text-align:left;
+    }
+
+@*#filterview td{
+   padding-right: 5px;
+   vertical-align: text-top;
+   font-size:small;
+   text-align:left;
+}*@
+
+
+@*
+#filterview select{
+    height:25px;
+}
+
+#filterview label{
+   font-size: small;
+}
+
+#filterview button{
+   height: 25px;
+}*@
+
 </style>
 
 </head>
@@ -61,28 +96,25 @@
          <div class="grid-item item1">  
              @Html.Action("ShowRptList")
          </div>
-         <div class="grid-item item2" id = "filterview" >  
+         <div class="grid-item item2 definetbL" id = "filterview" >  
             @* @{Html.RenderAction("ShowRptFilter");}  *@
             @Html.Partial("ShowRptFilter")
          </div>
-         <div class="grid-item item3" id = "SelectionView">
+         <div class="grid-item item3 definetC" id = "SelectionView">
             @Html.Partial("SelectionList")
          </div>
           <div class="grid-item item4">  
-                @*<input type="button" value="Submit"  id = "btnShowFilter" class="btn btn-default"  />*@
-                <input type="button" value="Submit"  id = "btnShowFilter" class="btn btn-primary"  />
+                <input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />
           </div>  
 
           @* <div class="col-md-offset-2 col-md-10">  *@
           <div class="grid-item item5">  
-                <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-default"  />
+                <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-primary"  />
           </div>  
       </div>
 </div>
    @* <button onclick="myFunction()">Try it</button>
     <p>Click on this paragraph.</p>*@
-
-     <input type="button" value="Submit"  id = "btnShowFilter" class="btn btn-primary"  />
 
 </body>
 </html>

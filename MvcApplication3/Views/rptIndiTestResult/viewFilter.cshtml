@@ -8,9 +8,16 @@
     Layout = null;// "~/views/shared/_layout.cshtml";
 }
 
- <link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+ @*<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />*@
+  @*<link href="@Url.Content("~/Content/bootstrap-glyphicons.css")" rel="stylesheet" type="text/css" />*@
+  <link href="@Url.Content("~/Content/bootstrap-datepicker.css")" rel="stylesheet" type="text/css" />
+  <link href="@Url.Content("~/Content/bootstrap-datepicker.min.css")" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
-<script type="text/javascript" src="/Scripts/jquery-ui-1.8.20.min.js">      </script>
+<script type="text/javascript" src="/Scripts/bootstrap.js">      </script>
+<script type="text/javascript" src="/Scripts/bootstrap-datepicker.js">      </script>
+<script type="text/javascript" src="/Scripts/bootstrap-datepicker.min.js">      </script>
+
 
 <style>
  fieldset {
@@ -55,11 +62,10 @@
                             null , new { id = rptname }))
       {  
       
-       
-         <table class ="collabel">
+         <table>
             <tr>
              <td> 
-                   <table class = "collabel" border = "1">
+                   <table  border = "1">
                     <tr><th colspan = "4">Criteria</th></tr>
                     <tr>
                             <td> @Html.Label("Test Name:")</td> 
@@ -90,6 +96,27 @@
                           <td> @Html.Label("From Date:")</td>
                            <td>
                                @Html.TextBox("deFromDate","", new { @class = "datepicker" })
+
+                            @* <div class="input-append date"  data-date-format="dd-M-yyyy"  id="deFromDate">
+                              <input class="span2" size="16" type="text">
+                              <span class="add-on"><i class="icon-th"></i></span>
+                            </div>*@
+
+@* <div class='input-group date datepicker'>
+  <input type='text' class="form-control"  id="deFromDate"/>
+  <span class="input-group-addon">
+   <span class="glyphicon glyphicon-calendar"></span>
+  </span>
+ </div>*@
+
+                            @*<div class="input-group date" id="deFromDate">
+                                <input type="text" class="form-control"  />
+                                    <div class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </div>
+                            </div>*@
+                             @*<input type="date" id="deFromDate"  placeholder="dd-M-yyyy" name="fromdate">*@       
+                        
                           </td>
                            <td> @Html.Label("Nationality:")</td>
                           <td> 
@@ -255,13 +282,13 @@
         //            alert(value);
         //        }
 
-//        alert(JSON.stringify(dict));
+        //        alert(JSON.stringify(dict));
         //        alert(encodeURIComponent(JSON.stringify(dict)));
-       // $("#selectlist").load("/rptIndiTestResult/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) )
-      
+        // $("#selectlist").load("/rptIndiTestResult/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) )
+
         // --- required ---//
-        $("#SelectionView").load("/"+ rpt + "/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
-    
+        $("#SelectionView").load("/" + rpt + "/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
+
     }
     )
 
@@ -340,8 +367,30 @@
 //            $("#selectlist").load("/rptIndiTestResult/SelectionList?rankid='" + ss + "'")
 //    });
 
-    $("#deFromDate").datepicker();
-    $("#deToDate").datepicker();
+
+// $("#deFromDate").datepicker();
+
+        $("#deFromDate").datepicker(
+             {
+             format: 'dd-M-yyyy',
+              todayHighlight: 1,
+              autoclose: true,
+             todayBtn:true,
+             todayBtn: "linked"
+         }
+        );
+
+         $("#deToDate").datepicker(
+             {
+                 format: 'dd-M-yyyy',
+                 todayHighlight: 1,
+                 autoclose: true,
+                 todayBtn: true,
+                 todayBtn: "linked"
+             }
+        );
+
+ //   $("#deToDate").datepicker();
 
 
 //    $("#btnselected").click(function () {
