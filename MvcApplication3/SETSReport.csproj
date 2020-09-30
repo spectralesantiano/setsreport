@@ -201,6 +201,7 @@
     <Compile Include="Controllers\PrintSelectionController.cs" />
     <Compile Include="Controllers\ReportMainController.cs" />
     <Compile Include="Controllers\ReportPS\rptAvgScoringController.cs" />
+    <Compile Include="Controllers\ReportPS\rptAvgScoringPerNatController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResult_wAnsOptionsAndPicsController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResult_wAnsOptionsController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResultController.cs" />
@@ -227,6 +228,12 @@
     </Compile>
     <Compile Include="Reports\rptAvgScoring.Designer.cs">
       <DependentUpon>rptAvgScoring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptAvgScoringPerNat.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAvgScoringPerNat.Designer.cs">
+      <DependentUpon>rptAvgScoringPerNat.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptIndiTestResult_wAnsOptionsAndPics.cs">
       <SubType>Component</SubType>
@@ -355,6 +362,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Reports\rptAvgScoring.resx">
       <DependentUpon>rptAvgScoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAvgScoringPerNat.resx">
+      <DependentUpon>rptAvgScoringPerNat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptIndiTestResult_wAnsOptionsAndPics.resx">
       <DependentUpon>rptIndiTestResult_wAnsOptionsAndPics.cs</DependentUpon>

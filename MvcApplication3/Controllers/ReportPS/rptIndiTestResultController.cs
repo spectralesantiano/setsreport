@@ -125,31 +125,31 @@ namespace SETSReport.Controllers.ReportPS
             SqlDataAdapter _da = new SqlDataAdapter("Select * From [tbladmrank]", constr);
             DataTable _dt = new DataTable();
             _da.Fill(_dt);
-            ViewBag.RankList = ToSelectList(_dt, "PositionID", "Abbrv");
+            ViewBag.RankList = Util.ToSelectList(_dt, "PositionID", "Abbrv");
 
             _da = new SqlDataAdapter("Select * From [tblAdmSubjectCategory]", constr);
             _dt.Clear();
             _dt.Columns.Clear();
             _da.Fill(_dt);
-            ViewBag.SubjectCat = ToSelectList(_dt, "SubjCategoryID", "SubjCategoryName");
+            ViewBag.SubjectCat = Util.ToSelectList(_dt, "SubjCategoryID", "SubjCategoryName");
 
             _da = new SqlDataAdapter(Controllers.GlobalVar.TestNameQuery, constr);
             _dt.Clear();
             _dt.Columns.Clear();
             _da.Fill(_dt);
-            ViewBag.TestName = ToSelectList(_dt, "TestName", "TestName");
+            ViewBag.TestName = Util.ToSelectList(_dt, "TestName", "TestName");
 
             _da = new SqlDataAdapter(Controllers.GlobalVar.NationalityQuery, constr);
             _dt.Clear();
             _dt.Columns.Clear();
             _da.Fill(_dt);
-            ViewBag.Nationality = ToSelectList(_dt, "PKey", "Nat");
+            ViewBag.Nationality = Util.ToSelectList(_dt, "PKey", "Nat");
 
             _da = new SqlDataAdapter(Controllers.GlobalVar.CompanyNameQuery, constr);
             _dt.Clear();
             _dt.Columns.Clear();
             _da.Fill(_dt);
-            ViewBag.CompanyName = ToSelectList(_dt, "CompanyName", "CompanyName");
+            ViewBag.CompanyName = Util.ToSelectList(_dt, "CompanyName", "CompanyName");
 
             var list = new SelectList(new [] 
             {
@@ -185,11 +185,11 @@ namespace SETSReport.Controllers.ReportPS
              _da.Fill(_dt);
 
             //// ----- required
-            // ViewBag.selectionlist = ToSelectList(_dt, "ActualTestID", "DisplayField");
+            // ViewBag.selectionlist = Util.ToSelectList(_dt, "ActualTestID", "DisplayField");
             // return PartialView("~/Views/ReportMain/SelectionList.cshtml"); //--- REQUIRED View to redirect to ---//
 
             //this does not work. gets null 
-            //SelectList slist = ToSelectList(_dt, "actualtestid", "displayfield");
+            //SelectList slist = Util.ToSelectList(_dt, "actualtestid", "displayfield");
              //return RedirectToAction("showSelectionList", "ReportMain", new { dt = _dt}); //slist });
 
              //// ----- required : to send the selectionlist ----///////////////
@@ -205,8 +205,8 @@ namespace SETSReport.Controllers.ReportPS
             SqlDataAdapter _da = new SqlDataAdapter("SELECT * from tblAdmSubject where SubjCategoryID =" + SubjCategoryID, constr);
             DataTable _dt = new DataTable();
             _da.Fill(_dt);
-            //ViewBag.SubjectList = ToSelectList(_dt, "SubjectID", "SubjectName");
-            var list = ToSelectList(_dt, "SubjectID", "SubjectName");
+            //ViewBag.SubjectList = Util.ToSelectList(_dt, "SubjectID", "SubjectName");
+            var list = Util.ToSelectList(_dt, "SubjectID", "SubjectName");
             return Json(list);
             //return View();
         }
@@ -345,21 +345,21 @@ namespace SETSReport.Controllers.ReportPS
         }
 
 
-        [NonAction]
-        public SelectList ToSelectList(DataTable table, string valueField, string textField)
-        {
-            List<SelectListItem> list = new List<SelectListItem>();
+        //[NonAction]
+        //public SelectList ToSelectList(DataTable table, string valueField, string textField)
+        //{
+        //    List<SelectListItem> list = new List<SelectListItem>();
 
-            foreach (DataRow row in table.Rows)
-            {
-                list.Add(new SelectListItem()
-                {
-                    Text = row[textField].ToString(),
-                    Value = row[valueField].ToString()
-                });
-            }
+        //    foreach (DataRow row in table.Rows)
+        //    {
+        //        list.Add(new SelectListItem()
+        //        {
+        //            Text = row[textField].ToString(),
+        //            Value = row[valueField].ToString()
+        //        });
+        //    }
 
-            return new SelectList(list, "Value", "Text");
-        }
+        //    return new SelectList(list, "Value", "Text");
+        //}
     }
 }
