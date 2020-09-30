@@ -1,15 +1,20 @@
 In the Controllers\ReportPS folder
-	create controller. name the controller as the objecid of the report plus 'Controller'
+	Add controller. name the controller as the objectid of the report plus 'Controller'
 	add code for the controller. You may reference the first report rptIndiTestResult
-		required procedures: viewFilter(), DocumentViewerPartial, SelectionList
+		required procedures: viewFilter() -> where the initialization of filters data of printselection is encoded,
+				     DocumentViewerPartial() -> where reports data and manipulation of what will appear is encoded, 
+				     SelectionList() -> where the return of printselection is process and return the filtered selection list.
+		optional procedures: Applyfilter() -> where the return of printselection is process to create a where clause. Usually this function
+					is called inside SelectionList()
 
 In the Reports folder
-	add the report. Report should name after the objectid as well. Make the declaration of controls public instead of private in the designer.cs file of the report
-
+	add report here. Report should name after the objectid as well. Make the declaration of controls public instead of private in the designer.cs file of the report
 
 In the Views\*objectID* folder
-	add the viewFilter.cshtml file. This is a requied file. 
-	add the _DocumentViewer1Partial.cshtml. This is also a required file.
+	to automatically create this folder, in the reports controller, right click the function viewfilter and select add view from the menu.
+		viewFilter.cshtml file will also be created inside of this folder
+	viewFilter.cshtml file is a required.
+	add the _DocumentViewer1Partial.cshtml. This is also a required file. You can simply copy this file from other reports
 
 SOME NOTE IN WEB.CONFIG FILE
  	<!--<bindingRedirect oldVersion="0.0.0.0-2.0.0.0" newVersion="2.0.0.0" />-->

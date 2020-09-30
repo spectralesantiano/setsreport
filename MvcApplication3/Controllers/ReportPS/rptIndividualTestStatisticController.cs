@@ -147,7 +147,7 @@ namespace SETSReport.Controllers.ReportPS
             _da.Fill(_dt);
             ViewBag.CompanyName = Util.ToSelectList(_dt, "CompanyName", "CompanyName");
 
-            var list = new SelectList(new[] 
+            var list = new SelectList(new[]     
             {
                 new { cbeSortBy = "LName", Text = "Name" },
                 new { cbeSortBy = "DateTaken", Text = "Date" },
@@ -214,7 +214,7 @@ namespace SETSReport.Controllers.ReportPS
             string selectedIDs = Request["txtselected"].ToString();
             string conditions = "";
 
-            if (Request["AnswerFilter"].ToString() != "2") // "" in sets desktop..empty space causes error in view
+            if (Request["AnswerFilter"].ToString() != "2") // "" in sets desktop..empty space causes error in view. therefore 2 is use here
             {
                 conditions = String.Format("AND Answer {0} UserAns ", ((Request["AnswerFilter"].ToString()) == "0") ? "!=" : "=");
             }
@@ -270,7 +270,6 @@ namespace SETSReport.Controllers.ReportPS
         private String ApplyCriteria(string AllCriteria)
         {
             string searchText = "";
-            AllCriteria.Trim(new Char[] { '\'' });
             string filterlist = AllCriteria.Trim(new Char[] { '\'' });  // "{\"FName\":\"ghdfd\",\"LName\":\"dfdf\",\"PositionID\":\"SYSR1E\",\"TestName\":\"2nd Officer Test for cargo ships\",\"DateTaken\":\"09/10/2020\",\"ToDate\":\"09/11/2020\",\"AnswerFilter\":\"2\",\"Nat\":\"SYSCNAX\",\"CompanyName\":\"Spectral Technologies. Inc.\"}";
             var filter = JsonConvert.DeserializeObject<dynamic>(filterlist);
 

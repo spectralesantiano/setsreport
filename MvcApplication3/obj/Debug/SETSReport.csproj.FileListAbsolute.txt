@@ -59,3 +59,4 @@ C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.dll.licenses
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.dll
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.pdb
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptIndividualTestStatistic.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAvgScoring.resources

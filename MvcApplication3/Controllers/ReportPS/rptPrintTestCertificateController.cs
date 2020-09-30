@@ -212,7 +212,6 @@ namespace SETSReport.Controllers.ReportPS
         private String ApplyCriteria(string AllCriteria)
         {
             string searchText = "";
-            //AllCriteria.Trim(new Char[] { '\'' });
             string filterlist = AllCriteria.Trim(new Char[] { '\'' });  // "{\"FName\":\"ghdfd\",\"LName\":\"dfdf\",\"PositionID\":\"SYSR1E\",\"TestName\":\"2nd Officer Test for cargo ships\",\"DateTaken\":\"09/10/2020\",\"ToDate\":\"09/11/2020\",\"AnswerFilter\":\"2\",\"Nat\":\"SYSCNAX\",\"CompanyName\":\"Spectral Technologies. Inc.\"}";
             var filter = JsonConvert.DeserializeObject<dynamic>(filterlist);
 

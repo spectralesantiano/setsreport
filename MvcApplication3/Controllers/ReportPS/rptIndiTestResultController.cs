@@ -117,6 +117,7 @@ namespace SETSReport.Controllers.ReportPS
             }
         }
 
+        // set filter data
         public ActionResult viewFilter()
         {
             string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
@@ -162,6 +163,7 @@ namespace SETSReport.Controllers.ReportPS
            //return View();
         }
 
+        // this where filter data is used to filter what will appear in the selection list
         public ActionResult SelectionList(string criteria, string sortbyname ,string sortby)
         {
 
@@ -245,6 +247,8 @@ namespace SETSReport.Controllers.ReportPS
             //return PartialView("~/Views/rptIndiTestResult/_DocumentViewer1Partial.cshtml", report);
             //return PartialView("~/Views/ReportMain/ReportFilters/_DocumentViewerPartial.cshtml", report);
             //return PartialView("_DocumentViewer1Partial", report);
+
+            //--- !Declaration of controls in report's designer.cs should all be public change from private
             ViewBag.selection = Request["teFirstName"];
             MainReport.txtPrintDate.Text = "Print Date: "   + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
             MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");

@@ -12,6 +12,8 @@
   @*<link href="@Url.Content("~/Content/bootstrap-glyphicons.css")" rel="stylesheet" type="text/css" />*@
   <link href="@Url.Content("~/Content/bootstrap-datepicker.css")" rel="stylesheet" type="text/css" />
   <link href="@Url.Content("~/Content/bootstrap-datepicker.min.css")" rel="stylesheet" type="text/css" />
+  <link href="@Url.Content("~/Content/font-awesome.css")" rel="stylesheet" type="text/css" />
+   <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
 <script type="text/javascript" src="/Scripts/bootstrap.js">      </script>
@@ -43,8 +45,15 @@
     white-space: nowrap;
     padding-top:1px;
     font-family:Arial
+    
 }
-
+@*
+.datepicker  
+{
+    margin-left: 100px;
+    z-index: 1000 !important;
+}
+	*@
 </style>
 
 <h4 style="font:arial" class="FIlterHeader">Individual Test Results - Individual Test Results</h4>  
@@ -64,7 +73,7 @@
       
          <table>
             <tr>
-             <td> 
+             <td style = "padding-right:8px"> 
                    <table  border = "1">
                     <tr><th colspan = "4">Criteria</th></tr>
                     <tr>
@@ -95,12 +104,12 @@
                     <tr>
                           <td> @Html.Label("From Date:")</td>
                            <td>
-                               @Html.TextBox("deFromDate","", new { @class = "datepicker" })
+                              @* @Html.TextBox("deFromDate","",new { @class = "datepicker", autocomplete="off" })*@
 
-                            @* <div class="input-append date"  data-date-format="dd-M-yyyy"  id="deFromDate">
+                             <div class="input-append date"  data-date-format="dd-M-yyyy"  id="deFromDate">
                               <input class="span2" size="16" type="text">
                               <span class="add-on"><i class="icon-th"></i></span>
-                            </div>*@
+                            </div>
 
 @* <div class='input-group date datepicker'>
   <input type='text' class="form-control"  id="deFromDate"/>
@@ -127,7 +136,11 @@
                     <tr>
                         <td> @Html.Label("To Date:")</td>    
                          <td>
-                               @Html.TextBox("deToDate","", new { @class = "datepicker" })
+                              @* @Html.TextBox("deToDate", "", new { @class = "datepicker", autocomplete = "off" })*@
+                               <div class="input-append date"  id="deToDate">
+                              <input class="span2" size="16" type="text" />
+                              <span class="add-on"><i class="icon-th"></i></span>
+                            </div>
                         </td>
                         <td> @Html.Label("Taken at:")</td>      
                          <td>
@@ -377,7 +390,7 @@
               autoclose: true,
              todayBtn:true,
              todayBtn: "linked"
-         }
+            }
         );
 
          $("#deToDate").datepicker(

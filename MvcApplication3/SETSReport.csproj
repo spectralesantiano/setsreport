@@ -200,6 +200,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrintSelectionController.cs" />
     <Compile Include="Controllers\ReportMainController.cs" />
+    <Compile Include="Controllers\ReportPS\rptAvgScoringController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResult_wAnsOptionsAndPicsController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResult_wAnsOptionsController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResultController.cs" />
@@ -221,6 +222,12 @@
     <Compile Include="Models\RankModel.cs" />
     <Compile Include="Models\SubjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\rptAvgScoring.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAvgScoring.Designer.cs">
+      <DependentUpon>rptAvgScoring.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\rptIndiTestResult_wAnsOptionsAndPics.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -273,6 +280,10 @@
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome-ie7.css" />
+    <Content Include="Content\font-awesome-ie7.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="favicon.ico" />
@@ -342,6 +353,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\rptAvgScoring.resx">
+      <DependentUpon>rptAvgScoring.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptIndiTestResult_wAnsOptionsAndPics.resx">
       <DependentUpon>rptIndiTestResult_wAnsOptionsAndPics.cs</DependentUpon>
     </EmbeddedResource>
@@ -429,6 +443,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\rptIndividualTestStatistic\viewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptAvgScoring\viewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptAvgScoring\_DocumentViewer1Partial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

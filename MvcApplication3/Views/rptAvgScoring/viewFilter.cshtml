@@ -1,0 +1,140 @@
+﻿@{
+    Layout = null;
+}
+
+<script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+<script type="text/javascript" src="/Scripts/bootstrap.js">      </script>
+<script type="text/javascript" src="/Scripts/bootstrap-datepicker.js">      </script>
+<script type="text/javascript" src="/Scripts/bootstrap-datepicker.min.js">      </script>
+
+<h4 style="font:arial" class="FIlterHeader">Average Scoring - Average Scoring</h4>  
+
+<fieldset>  
+
+      
+      @{string rptname = "rptAvgScoring";}
+      
+      @using (Ajax.BeginForm("DocumentViewerPartial", rptname, null,
+                            null, new { id = rptname }))
+      {
+      
+            <table>
+                <tr style="padding:5px">
+                    <td style = "padding-right:8px ; vertical-align:top">                         <!-- criteria -->
+
+                        <div> 
+                            <table>
+                                <tr><th style ="border-bottom:1px solid black">Criteria</th></tr>
+                                <tr><td style="padding-left:8px">
+                                    <table>
+                                        <tr><td>Taken at:</td>
+                                            <td>
+                                                <div class="input-append">
+                                                 @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList,  new { id = "lueCompany" })    
+                                                 <button id = "clearlueCompany" type ="button" class="btn">x</button>                 
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td></tr>
+                            </table>
+                        </div>
+
+                    </td>
+                    <td style="vertical-align:top">                            <!-- sorting -->
+                        <table>
+                            <tr><th  style ="border-bottom:1px solid black">Sorting</th></tr>
+                            <tr>
+                                <td style="padding-left:8px">
+                                    <table>
+                                        <tr><th colspan="2">Report Sorting</th></tr>
+                                        <tr><td>Taken at:</td>
+                                            <td>
+                                                <div class="input-append">
+                                                 @Html.DropDownList("SortReportBy", ViewBag.SortReportBy as SelectList, new { id = "lueSortReportBy" })    
+                                                 <button id = "clearlueSortReportBy" type ="button" class="btn">x</button>                 
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> @Html.RadioButton("rgSortReportOrder", "Asc", true)
+                                                     Ascending
+                                            </td>
+                                            <td> @Html.RadioButton("rgSortReportOrder", "Desc")
+                                                    Descending
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-left:8px">
+                                    <table>
+                                          <tr><th>Selection Sorting</th></tr>
+                                          <tr>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td> @Html.RadioButton("rgSortOrder", "Asc", true)
+                                                                  Ascending
+                                                        </td>
+                                                        <td> @Html.RadioButton("rgSortOrder", "Desc")
+                                                                Descending
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            
+                                          </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr><td><br /></td></tr>
+                <tr>
+                    <td colspan ="4" align ="center"><button id = "btnFilter" type ="button" class="btn btn-small">Apply Criteria</button>  </td>
+                </tr>
+            </table>
+          
+           <div>
+                @* ////---- 'txtselected' name is required ----------/////*@
+                @Html.Hidden("txtselected", "", new { id = "txtselected" })  
+          </div>
+      }
+      </fieldset>
+
+
+<script type="text/javascript">
+
+    var rpt = 'rptAvgScoring';
+
+    $("#btnFilter").click(
+    function () {
+        //        var ss = $("#testname option:selected").val();
+
+        var dict = new Object();
+
+        dict["CompanyName"] = $("#lueCompany").val();
+        //dict["CompanyName"] = $("#lueSignatory").val();
+
+        // --- required ---//
+        $("#SelectionView").load("/" + rpt + "/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
+
+    }
+    )
+
+    $("#clearlueCompany").click(
+        function () {
+            $("#lueCompany").val("");
+        }
+    )
+
+    $("#clearlueSortReportBy").click(
+        function () {
+            $("#lueSortReportBy").val("");
+        }
+    )
+
+</script>
