@@ -70,6 +70,10 @@
     <Reference Include="DevExpress.XtraReports.v15.2.Web, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v15.2.Core, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcCheckBoxList, Version=1.4.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcCheckBoxList.1.4.5\lib\net40\MvcCheckBoxList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -265,6 +269,12 @@
     <Compile Include="Reports\rptPrintTestCertificate.Designer.cs">
       <DependentUpon>rptPrintTestCertificate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\rptDummy.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptDummy.Designer.cs">
+      <DependentUpon>rptDummy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\XtraReport1.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -459,6 +469,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\rptAvgScoring\_DocumentViewer1Partial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptAvgScoringPerNat\viewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptAvgScoringPerNat\_DocumentViewer1Partial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

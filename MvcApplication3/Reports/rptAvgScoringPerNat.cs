@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
+using System.Data;
 using DevExpress.XtraReports.UI;
 
 namespace SETSReport.Reports
@@ -13,5 +14,9 @@ namespace SETSReport.Reports
             InitializeComponent();
         }
 
+        public void SetChartDataSource(string name , DataTable table )
+        {
+            MainChart.Series[name].DataSource = table;
+        } 
     }
 }

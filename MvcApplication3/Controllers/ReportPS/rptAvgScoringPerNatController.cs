@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Drawing.Printing;
 using DevExpress.Web.Mvc;
 using SETSReport.Models;
 using System.Configuration;
@@ -14,6 +15,7 @@ using DevExpress.XtraReports.UI;
 using DevExpress.XtraReports.Configuration;
 using SETSReport.Controllers;
 using Newtonsoft.Json;
+using SETSReport.Reports;
 
 namespace SETSReport.Controllers.ReportPS
 {
@@ -170,7 +172,10 @@ namespace SETSReport.Controllers.ReportPS
 
         }
 
-        SETSReport.Reports.rptAvgScoringPerNat MainReport = new SETSReport.Reports.rptAvgScoringPerNat();
+        //SETSReport.Reports.rptAvgScoringPerNat MainReport = new SETSReport.Reports.rptAvgScoringPerNat();
+
+        rptDummy MainReport = new rptDummy();
+        rptAvgScoringPerNat tempReport = new rptAvgScoringPerNat();
 
         [HttpPost]
         public ActionResult DocumentViewerPartial()
@@ -178,40 +183,82 @@ namespace SETSReport.Controllers.ReportPS
             string selectedIDs = Request["txtselected"].ToString();
             string conditions = "";
 
-            conditions = " AND t.CompanyName = '" + Request["CompanyName"] + "' ";
+            //conditions = " AND t.CompanyName = '" + Request["CompanyName"] + "' ";
 
-            string sql = String.Format("SELECT DISTINCT TestNameDate, TestName, DateCreated, t.* " +
-                "FROM view_TestScoreStatistics t " +
-                "INNER JOIN view_ExamineeResults er ON er.TestID=t.TestID AND er.CompanyName = t.CompanyName " +
-                "WHERE t.TestID IN ({0}) {1}" +
-                "ORDER BY {2}", selectedIDs, conditions, Request["SortReportBy"] + " " + Request["rgSortReportOrder"]);
+            //XtraReport MainReport = new XtraReport();
+            MainReport.DisplayName = "Average Scoring per Nationality";
+            MainReport.Bookmark = "Average Scoring per Nationality";
+            MainReport.Landscape = true;
+            MainReport.Margins = new Margins(50, 50, 50, 50);
+            MainReport.PageHeight = 827;
+            MainReport.PageWidth = 1169;
+            MainReport.PaperKind = PaperKind.A4;
+            MainReport.CreateDocument();
+            MainReport.PrintingSystem.ContinuousPageNumbering = true;
+
+            string comName = Util.GetConfig("COMPANY_NAME");
+            string logoPath = Util.GetReportLogoPath();
+            string dateNow = DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
 
             string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
+              
+            String selectedsql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM view_ExamineeResults r INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
 
-            SqlDataAdapter _da = new SqlDataAdapter(sql, _con);
+            selectedsql = "select * from (" + selectedsql + ") tb where TestID in (" + selectedIDs + ")";
+            selectedsql += " order by TestName " + Request["rgSortReportOrder"] + ", DateCreated DESC ";
 
-            DataSet ds = new DataSet();
-            _da.Fill(ds);
-            MainReport.DataMember = ds.Tables[0].TableName;
-            MainReport.DataSource = ds;
+            SqlDataAdapter _da = new SqlDataAdapter(selectedsql, constr);
+            DataTable _dt = new DataTable();
+            _da.Fill(_dt);
 
-            MainReport.txtPrintDate.Text = DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
-            MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
-            MainReport.pbLogo.ImageUrl = Util.GetReportLogoPath();
+            DataTable dt = _dt;
 
-            MainReport.lblTakenFrom.Text = String.Format(MainReport.lblTakenFrom.Text, Request["CompanyName"]);
+            string selectedNat = Request["lueNat"] != null? " WHERE a.Pkey IN ('" + Request["lueNat"].ToString().Replace(",","','") +"')" : "";
+            
+            foreach(DataRow row in dt.Rows){
+                tempReport = new rptAvgScoringPerNat();
+                string testID = row["TestID"].ToString();
 
-            DataTable dt = ds.Tables[0];
-            for (int i = 0; i <= dt.Columns.Count - 1; i++)
-            {
-                XRControl cell = MainReport.FindControl(dt.Columns[i].ColumnName, true);
-                if (cell != null)
+                 foreach (var item in new Dictionary<string, string>() { { "Lowest", "MIN(MinScore) / MIN(MinTotal)" },
+                                                                        { "Average", "AVG(AvgScore) / AVG(AvgTotal)" },
+                                                                        { "Highest", "MAX(MaxScore) / MAX(MaxTotal)" } })
                 {
-                    cell.DataBindings.Add("Text", null, dt.Columns[i].ColumnName);
-                }
-            }
+                     string sql = String.Format("SELECT CASE WHEN NoOfTimesTaken IS NULL THEN a.Nat ELSE CONCAT(a.Nat, ' (', NoOfTimesTaken, ')') END Argument, " +
+                            "ROUND(({0}) * 100, 2) Value " +
+                            "FROM view_AllTestNationality a " +
+                            "LEFT JOIN view_TestScoreStatisticsPerNat b ON b.NatID = a.PKey AND TestID = '{1}' AND CompanyName = '{2}' {3}" +
+                            "GROUP BY a.Nat, NoOfTimesTaken", item.Value, testID, Request["CompanyName"].ToString(), selectedNat);
 
+                    _da = new SqlDataAdapter(sql,_con);
+                    DataSet ds = new DataSet();
+                    _da.Fill(ds);
+                    //MainReport.DataMember = ds.Tables[0].TableName;
+                    //MainReport.DataSource = ds;
+
+                    //tempReport.MainChart.DataMember = ds.Tables[0].TableName;
+                    //tempReport.MainChart.DataSource = ds;
+                   
+                    //tempReport.SetChartDataSource(item.Key,ds.Tables[0]);
+                    tempReport.MainChart.DataMember = ds.Tables[0].TableName;
+                    tempReport.MainChart.Series[item.Key].DataSource = ds;
+                 }
+
+                tempReport.txtCompanyName.Text = comName;
+                tempReport.pbLogo.ImageUrl = logoPath;
+                tempReport.txtPrintDate.Text = dateNow;
+                tempReport.TestName.Text = row["TestNameDate"].ToString();
+                tempReport.NoOfTimesTaken.Text = row["NoOfTimesTaken"].ToString();
+                tempReport.Lowest.Text = row["Lowest"].ToString();
+                tempReport.Highest.Text = row["Highest"].ToString();
+                tempReport.Average.Text = row["Average"].ToString();
+                tempReport.CompanyName.Text = row["CompanyName"].ToString();
+                tempReport.CreateDocument();
+
+                MainReport.Pages.AddRange(tempReport.Pages);
+               // MainReport = tempReport;
+            }
+           
             return PartialView("_DocumentViewer1Partial", MainReport);
         }
 
