@@ -269,11 +269,11 @@
     <Compile Include="Reports\rptPrintTestCertificate.Designer.cs">
       <DependentUpon>rptPrintTestCertificate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\rptDummy.cs">
+    <Compile Include="Reports\rptAvgScoringPerNatDummy.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\rptDummy.Designer.cs">
-      <DependentUpon>rptDummy.cs</DependentUpon>
+    <Compile Include="Reports\rptAvgScoringPerNatDummy.Designer.cs">
+      <DependentUpon>rptAvgScoringPerNatDummy.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\XtraReport1.cs">
       <SubType>Component</SubType>
@@ -375,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptAvgScoringPerNat.resx">
       <DependentUpon>rptAvgScoringPerNat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAvgScoringPerNatDummy.resx">
+      <DependentUpon>rptAvgScoringPerNatDummy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptIndiTestResult_wAnsOptionsAndPics.resx">
       <DependentUpon>rptIndiTestResult_wAnsOptionsAndPics.cs</DependentUpon>

@@ -63,3 +63,4 @@ C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAvgScorin
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAvgScoringPerNat.resources
 C:\VUE\MvcApplication3\MvcApplication3\bin\MvcCheckBoxList.dll
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.csprojResolveAssemblyReference.cache
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAvgScoringPerNatDummy.resources
