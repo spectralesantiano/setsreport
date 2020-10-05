@@ -211,6 +211,7 @@
     <Compile Include="Controllers\ReportPS\rptIndiTestResultController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndividualTestStatisticController.cs" />
     <Compile Include="Controllers\ReportPS\rptPrintTestCertificateController.cs" />
+    <Compile Include="Controllers\ReportPS\rptTestResultSummaryFormController.cs" />
     <Compile Include="Controllers\ReportPS\testController.cs" />
     <Compile Include="Controllers\SETSReportFunction.cs" />
     <Compile Include="Controllers\ShowReportController.cs" />
@@ -274,6 +275,12 @@
     </Compile>
     <Compile Include="Reports\rptAvgScoringPerNatDummy.Designer.cs">
       <DependentUpon>rptAvgScoringPerNatDummy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptTestResultSummaryForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptTestResultSummaryForm.Designer.cs">
+      <DependentUpon>rptTestResultSummaryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\XtraReport1.cs">
       <SubType>Component</SubType>
@@ -394,6 +401,9 @@
     <EmbeddedResource Include="Reports\rptPrintTestCertificate.resx">
       <DependentUpon>rptPrintTestCertificate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptTestResultSummaryForm.resx">
+      <DependentUpon>rptTestResultSummaryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\XtraReport1.resx">
       <DependentUpon>XtraReport1.cs</DependentUpon>
     </EmbeddedResource>
@@ -478,6 +488,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\rptAvgScoringPerNat\_DocumentViewer1Partial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptTestResultSummaryForm\viewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptTestResultSummaryForm\_DocumentViewer1Partial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

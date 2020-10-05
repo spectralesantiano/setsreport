@@ -115,17 +115,17 @@
             </table>*@
  
           <div class="row-fluid">
-                <div class="col">
+                <div class="span6">
                       <div><h5>Criteria</h5></div>
                       <div class="control-group">
-                          <div>Taken at:</div>
+                          <div><strong>Taken at:</strong></div>
                           <div class="controls">
                           @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList,  new { id = "lueCompany" })  
                           </div>
                       </div>    
 
                       <div class="control-group">
-                      <div>Nationality:</div>
+                      <div><strong>Nationality:</strong></div>
                       <div class="controls">
                           <div class="input-append">
                               @Html.DropDownList("lueNat", ViewBag.Nationality as SelectList, new { id = "lueNat", @size = "8", @multiple = "multiple", @class = "Listbox" })
@@ -134,40 +134,41 @@
                       </div>     
                       </div>      
                 </div>
-                <div class="col">
+                <div class="span6">
                     <div><h5>Sorting</h5></div>
-                    <div>Report Sorting</div>
+                    <div><strong>Report Sorting</strong></div>
 
                     <div class="control-group">
-                        Sort by:
+                       <strong>Sort by:</strong>
                        <div class="controls">
                          @Html.DropDownList("SortReportBy", ViewBag.SortReportBy as SelectList, new { id = "lueSortReportBy" })
-                        </div>
-                    </div>
-                    
-                     <div class="control-group">
-                         <div class="controls">
-                            <label>@Html.RadioButton("rgSortReportOrder", "Asc", true) Ascending
-                            </label>
-                            <label>@Html.RadioButton("rgSortReportOrder", "Desc") Descending
-                            </label>
+                             <div class="row-fluid">
+                                <div class="span3">
+                                   <label >@Html.RadioButton("rgSortReportOrder", "Asc", true) Ascending</label>
+                                </div>
+                                <div class="span3">
+                                    <label>@Html.RadioButton("rgSortReportOrder", "Desc") Descending</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <div>Selection Sorting</div>
+                        <div><strong>Selection Sorting</strong></div>
                         <div class="controls">
-                            <label>@Html.RadioButton("rgSortOrder", "Asc", true) Ascending 
-                            </label>
-                            <label>
-                                @Html.RadioButton("rgSortOrder", "Desc") Descending
-                            </label>
+                         <div class="row-fluid">
+                             <div class="span3">
+                                <label>@Html.RadioButton("rgSortOrder", "Asc", true) Ascending</label>
+                             </div>
+                             <div class="span3">
+                                 <label>@Html.RadioButton("rgSortOrder", "Desc") Descending</label>
+                             </div>
                         </div>
                     </div>
                 </div>
           </div>
 
-              <div class="row-fluid">
+              <div class="row-fluid span12">
                  <button id = "btnFilter" type ="button" class="btn btn-small">Fill Selection</button>
               </div>
 
