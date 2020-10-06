@@ -176,6 +176,7 @@ namespace SETSReport.Controllers.ReportPS
             string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
+            // sql come from db [view_ReportGroups].SelctionSource
             String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults " + filterCriteria;
 
             sql += " order by " + sortbyname + " " + sortby;
@@ -229,6 +230,7 @@ namespace SETSReport.Controllers.ReportPS
                  conditions = String.Format("AND Answer {0} UserAns ", ((Request["AnswerFilter"].ToString()) == "0") ? "!=": "=");
              }
 
+            //sql from report class. which from desktop sets
              string sql = String.Format("SELECT * FROM view_FullExamineeResultsWithQuestions WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
 
 

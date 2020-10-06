@@ -1,0 +1,281 @@
+﻿@*//////// ---------------- name 'viewFilter.cshtml' is mandatory --------------/// *@
+@*//////// ---------------- as well as _DocumentViewer1Partial.cshtml --------------/// *@
+
+@model SETSReport.Models.RankModel
+@*@model SETSReport.Models.ExamineeRankModel*@
+
+@{
+    Layout = null;// "~/views/shared/_layout.cshtml";
+}
+
+   <link href="@Url.Content("~/Content/bootstrap-datepicker.css")" rel="stylesheet" type="text/css" />
+  <link href="@Url.Content("~/Content/bootstrap-datepicker.min.css")" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+<script type="text/javascript" src="/Scripts/bootstrap.js">      </script>
+<script type="text/javascript" src="/Scripts/bootstrap-datepicker.js">      </script>
+<script type="text/javascript" src="/Scripts/bootstrap-datepicker.min.js">      </script>
+
+<style>
+ fieldset {
+  padding: 1px;
+}
+.row {
+    background: #f6f6f6;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    padding: 3px;
+}
+.col {
+    float: left;
+    text-align:left;
+    padding: 10px;
+    white-space: nowrap
+}
+.collabel {
+    float: left;
+    text-align:left;
+    padding: 5px;
+    font-size :small;
+    white-space: nowrap;
+    padding-top:1px;
+    font-family:Arial
+}
+
+#filterview select{
+    width: 160px;
+   @* float: right;
+    clear: both;*@
+}
+
+#filterview input{
+   @*width: 180px;
+ float: right;
+  clear: both;*@
+}
+
+
+</style>
+
+<h4 style="font:arial" class="FIlterHeader">Individual Test Results - Test Result Summary</h4> 
+
+
+       @*<legend></legend>  *@
+
+       @{string rptname = "rptSubjectResultSummary";}
+    
+          
+      @using (Ajax.BeginForm("DocumentViewerPartial", rptname, null,
+                            null, new { id = rptname, @class = "form-inline"}))
+      {  
+        <fieldset>  
+            <div class="row-fluid">
+                      <div class="span6">
+                             <div class="row-fluid">Criteria</div>
+
+                                <div>
+                                   @Html.Label("Rank:")
+                                   <div class="input-append">
+                                       @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, "", new { id = "lueRank" })  
+                                   <button id = "clearlueRank" type ="button" class="btn">x</button>  
+                                </div></div>
+
+                                <div>
+                                   @Html.Label("Vessel Type:")
+                                   <div class="input-append">
+                                       @Html.DropDownList("VesselTypeID", ViewBag.VesselType as SelectList, "", new { id = "lueVesselType" })  
+                                   <button id = "clearlueVesselType" type ="button" class="btn">x</button>  
+                                </div></div>
+
+                               <div>
+                                    @Html.Label("Test Name:", new { style="font-size:12px" })
+                                   <div class="input-append" >
+                                        @Html.DropDownList("TestName", ViewBag.TestName as SelectList, "", new { id = "lueTestName"})  
+                                    <button id = "clearlueTestName" type ="button" class="btn">x</button>
+                                </div></div>
+                           
+                                <div>
+                                @Html.Label("Taken at:")      
+                   
+                                 <div class="input-append">
+                                     @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "", new { id = "lueCompany" })
+                                  <button id = "clearlueCompany" type ="button" class="btn">x</button>                              
+                               </div></div>
+                            
+                               <div>
+                                   @Html.Label("From Date:")@Html.TextBox("deFromDate", "", new { @class = "datepicker", autocomplete = "off" })
+                               </div>
+
+                               <div>
+                                   @Html.Label("To Date:")@Html.TextBox("deToDate", "", new { @class = "datepicker", autocomplete = "off" })
+                               </div>
+                              
+
+                         </div>  
+                         <div class="span6">
+                                
+                                @Html.Label("Include:") 
+                    
+                                <div class="control-group">
+                                       @Html.DropDownList("SortReportBy", ViewBag.SortReportBy as SelectList, new { id = "lueSortReportBy" })
+                                </div>
+
+                                <div>
+                                    <label>
+                                        @Html.RadioButton("rptSortdOrder", "Asc", true) Ascending
+                                    </label>
+                    
+                                    <label>
+                                        @Html.RadioButton("rptSortdOrder", "Desc") Descending
+                                    </label>
+                                 </div>
+                       
+
+                               Sorting
+                       
+                                Note: Criteria has effect on sorting and vice-versa
+                           
+                                <div>
+                                                          
+                                <label>
+                                    @Html.RadioButton("rgSortOrder", "Asc", true) Ascending
+                                </label>
+                    
+                                <label>
+                                    @Html.RadioButton("rgSortOrder", "Desc") Descending
+                                </label></div>
+                            
+                        </div>
+
+                        <div>
+                        <button id = "btnFilter" type ="button" class="btn btn-small">Fetch List</button> 
+                        </div>
+
+                        @Html.Hidden("SortedDesc", "", new { id = "SortedDesc" }) 
+
+          
+                        @* ////---- this div is required ----------/////*@
+                        <div>
+                            @* ////---- 'txtselected' name is required ----------/////*@
+                            @Html.Hidden("txtselected", "", new { id = "txtselected" })  
+                            @Html.Hidden("PreviewCriteria", "", new { id = "PreviewCriteria" })  
+                        </div>
+          
+          </div>
+
+            </fieldset>  
+      }     
+
+    @*<button id = "btnselected">selected</button>  *@
+
+
+
+<script type ="text/javascript">
+
+    var rpt = 'rptSubjectResultSummary';
+
+    $("#btnFilter").click(
+    function () {
+        //        var ss = $("#testname option:selected").val();
+        var dict = new Object();
+        var dictP = new Object();
+
+        dictP["VesselTypeID"] = $("#lueVesselType").val();
+        dictP["PositionID"] = $("#lueRank").val();
+        dictP["TestName"] = $("#lueTestName").val();
+        dictP["DateTaken"] = $("#deFromDate").val();
+        dictP["ToDate"] = $("#deToDate").val();
+        dictP["CompanyName"] = $("#lueCompany").val();
+        //alert(dictP);
+        $("#PreviewCriteria").val(JSON.stringify(dictP));
+
+        // --- required ---//
+        $("#SelectionView").load("/" + rpt + "/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
+
+    }
+    )
+
+
+    $("input[name='rgSortedBy']").click(
+    function () {
+        //        alert("test");
+        var SortedDesc = $("input[name='rgSortedBy']:checked").parent().text();
+        $("#SortedDesc").val($.trim(SortedDesc));
+    }
+    )
+
+//    $("input[type='button']").click(function () {
+//        var radioValue = $("input[name='gender']:checked").val();
+//        if (radioValue) {
+//            alert("Your are a - " + radioValue);
+//        }
+//    });
+
+    $.fn.addItems = function (data) {
+        return this.each(function () {
+            var list = this;
+            $.each(data, function (index, itemData) {
+                alert(itemData);
+                var option = new Option(itemData.Text, itemData.Value);
+                list.add(option);
+            });
+        });
+    };
+
+    $("#clearlueTestName").click(
+        function () {
+//            alert($("#lueTestName option:selected").val());
+            $("#lueTestName").val("");
+//            $("#lueTestName option:selected").removeAttr('selected');
+        }
+    )
+
+    $("#clearlueRank").click(
+        function () {
+            //            alert($("#lueTestName option:selected").val());
+            $("#lueRank").val("");
+            //            $("#lueTestName option:selected").removeAttr('selected');
+        }
+    )
+
+    $("#clearlueNat").click(
+        function () {
+            //            alert($("#lueTestName option:selected").val());
+            $("#lueNat").val("");
+            //            $("#lueTestName option:selected").removeAttr('selected');
+        }
+    )
+
+        $("#clearlueCompany").click(
+        function () {
+            //            alert($("#lueTestName option:selected").val());
+            $("#lueCompany").val("");
+            //            $("#lueTestName option:selected").removeAttr('selected');
+        }
+    )
+
+//    $("#deFromDate").datepicker();
+//    $("#deToDate").datepicker();
+
+        $("#deFromDate").datepicker(
+             {
+                 format: 'dd-M-yyyy',
+                 todayHighlight: 1,
+                 autoclose: true,
+                 todayBtn: true,
+                 todayBtn: "linked"
+             }
+        );
+
+        $("#deToDate").datepicker(
+             {
+                 format: 'dd-M-yyyy',
+                 todayHighlight: 1,
+                 autoclose: true,
+                 todayBtn: true,
+                 todayBtn: "linked"
+             }
+        );
+
+</script>
+

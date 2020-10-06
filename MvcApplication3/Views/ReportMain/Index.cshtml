@@ -73,18 +73,15 @@
 }*@
 
 
-@*
-#filterview select{
-    height:25px;
-}
+@*#filterview select{
+    width: 160px;
+    float: right;
 
-#filterview label{
-   font-size: small;
+#filterview input {
+  width: 180px;
+  float: right;
 }
-
-#filterview button{
-   height: 25px;
-}*@
+*@
 
 </style>
 
@@ -183,6 +180,7 @@
             //var ea = res.replace(/ /g, "+");
             //var ee = ea + "/" + ea;
             //alert(ee);
+            //alert($("#PreviewCriteria").val());
             $('#' + ee).attr("target", "_blank");
             $('#' + ee).submit();
         }

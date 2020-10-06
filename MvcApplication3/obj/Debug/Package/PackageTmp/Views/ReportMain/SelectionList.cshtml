@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "SelectionList";
+}
+
+
+<script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+
+@*<h3>Selection List</h3>*@
+<table border="1"  width = "100%" class ="list">
+    <tr>
+        <th>Selection List</th>
+    </tr>
+    <tr>
+        <td>
+            <div>
+              @Html.ListBox("-No Data-", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "width:70%;overflow:scroll;", size = 15, id = "lstselect" })            
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><button id = "btnSelAll" type ="button" class ="btn">Select All</button> <button id = "btnDeSelAll" type ="button" class ="btn">De-Select All</button>   </td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+
+    $("#btnSelAll").click(function () {
+        $("option","#lstselect").prop("selected", true);
+    }
+    );
+
+    $("#btnDeSelAll").click(function () {
+        $("option", "#lstselect").prop("selected", false);
+    }
+    );
+
+</script>

@@ -65,3 +65,4 @@ C:\VUE\MvcApplication3\MvcApplication3\bin\MvcCheckBoxList.dll
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.csprojResolveAssemblyReference.cache
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAvgScoringPerNatDummy.resources
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptTestResultSummaryForm.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptSubjectResultSummary.resources
