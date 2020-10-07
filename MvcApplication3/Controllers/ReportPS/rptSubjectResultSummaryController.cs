@@ -189,12 +189,13 @@ namespace SETSReport.Controllers.ReportPS
             string selectedIDs = Request["txtselected"].ToString();
 
             IDictionary<string, string> previewcriteria = new Dictionary<string, string>();
+            previewcriteria.Add("PositionID", Request["PositionID"].ToString());
             previewcriteria.Add("VesselTypeID"        ,  Request[  "VesselTypeID" ] .ToString()   );
-            previewcriteria.Add("PositionID"          ,  Request[  "PositionID" ]   .ToString()   );
             previewcriteria.Add("TestName"            ,  Request[  "TestName" ]     .ToString()   );
+            previewcriteria.Add("CompanyName"         , Request["CompanyName"].ToString());
             previewcriteria.Add("FromDate"            ,  Request[  "deFromDate" ]     .ToString()   );
             previewcriteria.Add("ToDate"              ,  Request[  "deToDate" ]       .ToString()   );
-            previewcriteria.Add("CompanyName"         ,  Request["CompanyName"].ToString());
+           
 
             string filterCriteria = ApplyCriteria(previewcriteria);
 
@@ -223,7 +224,7 @@ namespace SETSReport.Controllers.ReportPS
             MainReport.pbLogo.ImageUrl = Util.GetReportLogoPath();
 
             MainReport.SubjectHeader.GroupFields.Add(new GroupField("SubjectName", Request["rgSortOrder"] == "ASC" ? XRColumnSortOrder.Ascending : XRColumnSortOrder.Descending));
-            MainReport.Detail.SortFields.Add(new GroupField(Request["SortReportBy"], Request["rptSortdOrder"] == "ASC" ? XRColumnSortOrder.Ascending : XRColumnSortOrder.Descending));
+            MainReport.Detail.SortFields.Add(new GroupField(Request["SortReportBy"], Request["rptSortdOrder"] ==  "ASC" ? XRColumnSortOrder.Ascending : XRColumnSortOrder.Descending));
 
             MainReport.SubjectName.DataBindings.Add("Text", null, "SubjectName");
             MainReport.txtAvgScore.DataBindings.Add("Text", null, "TotalPercent");

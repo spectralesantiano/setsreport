@@ -102,19 +102,32 @@
                                   <button id = "clearlueCompany" type ="button" class="btn">x</button>                              
                                </div></div>
                             
-                               <div>
+                               <div class="input-append">
                                    @Html.Label("From Date:")@Html.TextBox("deFromDate", "", new { @class = "datepicker", autocomplete = "off" })
+                                  <button id = "cleardeFromDate" type ="button" class="btn">x</button>                              
                                </div>
 
-                               <div>
+                               <div class="input-append">
                                    @Html.Label("To Date:")@Html.TextBox("deToDate", "", new { @class = "datepicker", autocomplete = "off" })
+                                  <button id = "cleardeToDate" type ="button" class="btn">x</button>                                                                  
                                </div>
                               
 
                          </div>  
                          <div class="span6">
                                 
-                                @Html.Label("Include:") 
+                                <div>Sorting</div>
+                       
+                                <div>Subject Name</div>   
+                                <div>
+                                <label>
+                                    @Html.RadioButton("rgSortOrder", "ASC", true) Ascending
+                                </label>
+                                <label>
+                                    @Html.RadioButton("rgSortOrder", "DESC") Descending
+                                </label></div>
+
+                                @Html.Label("Subject Contents") 
                     
                                 <div class="control-group">
                                        @Html.DropDownList("SortReportBy", ViewBag.SortReportBy as SelectList, new { id = "lueSortReportBy" })
@@ -122,32 +135,20 @@
 
                                 <div>
                                     <label>
-                                        @Html.RadioButton("rptSortdOrder", "Asc", true) Ascending
+                                        @Html.RadioButton("rptSortdOrder", "ASC", true) Ascending
                                     </label>
                     
                                     <label>
-                                        @Html.RadioButton("rptSortdOrder", "Desc") Descending
+                                        @Html.RadioButton("rptSortdOrder", "DESC") Descending
                                     </label>
                                  </div>
                        
 
-                               Sorting
-                       
-                                Note: Criteria has effect on sorting and vice-versa
-                           
-                                <div>
-                                                          
-                                <label>
-                                    @Html.RadioButton("rgSortOrder", "Asc", true) Ascending
-                                </label>
-                    
-                                <label>
-                                    @Html.RadioButton("rgSortOrder", "Desc") Descending
-                                </label></div>
+                              
                             
                         </div>
 
-                        <div>
+                        <div  class="span12" style="text-align:center">
                         <button id = "btnFilter" type ="button" class="btn btn-small">Fetch List</button> 
                         </div>
 
@@ -269,6 +270,24 @@
         }
     )
 
+        $("#clearlueVesselType").click(
+        function () {
+            $("#lueVesselType").val("");
+        }
+    )
+
+        $("#cleardeFromDate").click(
+        function () {
+            $("#deFromDate").val("");
+        }
+    )
+
+        $("#cleardeToDate").click(
+        function () {
+            $("#deToDate").val("");
+        }
+    )
+
 //    $("#deFromDate").datepicker();
 //    $("#deToDate").datepicker();
 
@@ -292,7 +311,7 @@
              }
         );
 
-           
 
+             
 </script>
 
