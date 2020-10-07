@@ -143,8 +143,8 @@ namespace SETSReport.Controllers.ReportPS
 
             var list = new SelectList(new[] 
             {
-               new { Text = "Examinee Name", SortReportBy = "LastFirstMiddle" },
                new { Text = "Rank", SortReportBy = "RankName" },
+               new { Text = "Examinee Name", SortReportBy = "LastFirstMiddle" },
                new { Text = "Date Taken", SortReportBy = "DateTaken" },
                new { Text = "Test Name", SortReportBy = "TestName" },
                new { Text = "Score", SortReportBy = "TotalPercent" },
@@ -188,7 +188,15 @@ namespace SETSReport.Controllers.ReportPS
         {
             string selectedIDs = Request["txtselected"].ToString();
 
-            string filterCriteria = ApplyCriteria(Request["PreviewCriteria"]);
+            IDictionary<string, string> previewcriteria = new Dictionary<string, string>();
+            previewcriteria.Add("VesselTypeID"        ,  Request[  "VesselTypeID" ] .ToString()   );
+            previewcriteria.Add("PositionID"          ,  Request[  "PositionID" ]   .ToString()   );
+            previewcriteria.Add("TestName"            ,  Request[  "TestName" ]     .ToString()   );
+            previewcriteria.Add("FromDate"            ,  Request[  "deFromDate" ]     .ToString()   );
+            previewcriteria.Add("ToDate"              ,  Request[  "deToDate" ]       .ToString()   );
+            previewcriteria.Add("CompanyName"         ,  Request["CompanyName"].ToString());
+
+            string filterCriteria = ApplyCriteria(previewcriteria);
 
             string sql = String.Format(
             "SELECT *, CAST((CAST(UserScore AS FLOAT) / TotalScore) * 100 AS FLOAT) TotalPercent, " +
@@ -197,7 +205,7 @@ namespace SETSReport.Controllers.ReportPS
                 "SELECT SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName, COUNT(CASE WHEN IsCorrect = 1 THEN 1 ELSE NULL END) UserScore, COUNT(Answer) TotalScore " +
                 "FROM view_FullExamineeResultsWithQuestions " +
                 "GROUP BY SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName" +
-            ") T WHERE SubjectID IN ({0}) {1}", selectedIDs, filterCriteria); //SubjectName to SubjectID...
+                ") T WHERE SubjectID IN ({0}) {1}", selectedIDs, filterCriteria !=""? " And " + filterCriteria:""); //SubjectName to SubjectID...
 
             string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
@@ -236,56 +244,50 @@ namespace SETSReport.Controllers.ReportPS
             return PartialView("_DocumentViewer1Partial", MainReport);
         }
 
-        private String ApplyCriteria(string AllCriteria)
+        private String ApplyCriteria(IDictionary<string, string> AllCriteria)
         {
+            
             string searchText = "";
-            string filterlist = AllCriteria.Trim(new Char[] { '\'' });  // "{\"FName\":\"ghdfd\",\"LName\":\"dfdf\",\"PositionID\":\"SYSR1E\",\"TestName\":\"2nd Officer Test for cargo ships\",\"DateTaken\":\"09/10/2020\",\"ToDate\":\"09/11/2020\",\"AnswerFilter\":\"2\",\"Nat\":\"SYSCNAX\",\"CompanyName\":\"Spectral Technologies. Inc.\"}";
-            var filter = JsonConvert.DeserializeObject<dynamic>(filterlist);
 
-            string namem = "";
-            var valuen = "";
-            foreach (var record in filter)
-            {
-                namem = record.Name;
-                valuen = record.Value;
-                System.Diagnostics.Debug.WriteLine(namem);
-                System.Diagnostics.Debug.WriteLine(valuen);
+            //if (AllCriteria != "")
+            //{
 
-                if (valuen != null && valuen != "")
+            //string filterlist = AllCriteria.Trim(new Char[] { '\'' });  // "{\"FName\":\"ghdfd\",\"LName\":\"dfdf\",\"PositionID\":\"SYSR1E\",\"TestName\":\"2nd Officer Test for cargo ships\",\"DateTaken\":\"09/10/2020\",\"ToDate\":\"09/11/2020\",\"AnswerFilter\":\"2\",\"Nat\":\"SYSCNAX\",\"CompanyName\":\"Spectral Technologies. Inc.\"}";
+            //    var filter = JsonConvert.DeserializeObject<dynamic>(filterlist);
+
+                string namem = "";
+                var valuen = "";
+                foreach (var criteria in AllCriteria)
                 {
-                    searchText = (searchText != "") ? searchText += " AND " : "";
-                    switch (namem)
+                    namem = criteria.Key;
+                    valuen = criteria.Value;
+                    System.Diagnostics.Debug.WriteLine(namem);
+                    System.Diagnostics.Debug.WriteLine(valuen);
+
+                    if (valuen != null && valuen != "")
                     {
-                        case "DateTaken":
-                            searchText += String.Format("{0} >= '{1}'", namem, valuen);
-                            break;
-                        case "ToDate":
-                            DateTime toDate = Convert.ToDateTime(valuen);
-                            toDate = toDate.AddDays(1);
-                            searchText += String.Format("DateTaken <= '{0}'", toDate.ToString("dd-MMM-yyyy"));
-                            break;
-                        case "PositionID":
-                            searchText += String.Format("{0} = '{1}'", namem, valuen);
-                            break;
-                        case "TestName":
-                            searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
-                            break;
-                        case "Nat":
-                            searchText += String.Format("{0} = '{1}'", namem, valuen);
-                            break;
-                        case "CompanyName":
-                            searchText += String.Format("{0} = '{1}'", namem, valuen);
-                            break;
-                        case "VesselTypeID":
-                            searchText += String.Format("{0} LIKE '%{1}%'", namem, valuen);
-                            break;
-                        default:
-                            searchText += String.Format("{0} = '{1}'", namem, valuen);
-                            break;
+                        searchText = (searchText != "") ? searchText += " AND " : "";
+                        switch (namem)
+                        {
+                            case "FromDate":
+                                searchText += String.Format("{0} >= '{1}'", "DateTaken", valuen);
+                                break;
+                            case "ToDate":
+                                DateTime toDate = Convert.ToDateTime(valuen);
+                                toDate = toDate.AddDays(1);
+                                searchText += String.Format("DateTaken <= '{0}'", toDate.ToString("dd-MMM-yyyy"));
+                                break;
+                            case "VesselTypeID":
+                                searchText += String.Format("{0} LIKE '%{1}%'", "[dbo].[GetVesselTypes](TestID)", valuen);
+                                break;
+                            default:
+                                searchText += String.Format("{0} = '{1}'", namem, valuen);
+                                break;
+                        }
                     }
-                }
-                //   End If
-            }
+                    //   End If
+                  //}
+              }
 
 
             return searchText;

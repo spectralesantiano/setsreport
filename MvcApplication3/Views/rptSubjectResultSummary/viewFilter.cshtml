@@ -178,16 +178,16 @@
     function () {
         //        var ss = $("#testname option:selected").val();
         var dict = new Object();
-        var dictP = new Object();
+//        var dictP = new Object();
 
-        dictP["VesselTypeID"] = $("#lueVesselType").val();
-        dictP["PositionID"] = $("#lueRank").val();
-        dictP["TestName"] = $("#lueTestName").val();
-        dictP["DateTaken"] = $("#deFromDate").val();
-        dictP["ToDate"] = $("#deToDate").val();
-        dictP["CompanyName"] = $("#lueCompany").val();
-        //alert(dictP);
-        $("#PreviewCriteria").val(JSON.stringify(dictP));
+//        dictP["VesselTypeID"] = $("#lueVesselType").val();
+//        dictP["PositionID"] = $("#lueRank").val();
+//        dictP["TestName"] = $("#lueTestName").val();
+//        dictP["DateTaken"] = $("#deFromDate").val();
+//        dictP["ToDate"] = $("#deToDate").val();
+//        dictP["CompanyName"] = $("#lueCompany").val();
+//        //alert(dictP);
+//        $("#PreviewCriteria").val(JSON.stringify(dictP));
 
         // --- required ---//
         $("#SelectionView").load("/" + rpt + "/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
@@ -195,6 +195,21 @@
     }
     )
 
+    $("input#txtselected").change(
+        function () {
+            var dictP = new Object();
+            alert("dfdf");
+            dictP["VesselTypeID"] = $("#lueVesselType").val();
+            dictP["PositionID"] = $("#lueRank").val();
+            dictP["TestName"] = $("#lueTestName").val();
+            dictP["FromDate"] = $("#deFromDate").val();
+            dictP["ToDate"] = $("#deToDate").val();
+            dictP["CompanyName"] = $("#lueCompany").val();
+            alert(dictP);
+            $("#PreviewCriteria").val(JSON.stringify(dictP));
+
+        }
+    )
 
     $("input[name='rgSortedBy']").click(
     function () {
@@ -276,6 +291,8 @@
                  todayBtn: "linked"
              }
         );
+
+           
 
 </script>
 
