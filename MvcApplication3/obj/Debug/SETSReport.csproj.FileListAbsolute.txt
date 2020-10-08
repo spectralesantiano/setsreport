@@ -66,3 +66,4 @@ C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.csprojResolveAssembl
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAvgScoringPerNatDummy.resources
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptTestResultSummaryForm.resources
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptSubjectResultSummary.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAdmQCountPerSubject.resources

@@ -1,0 +1,165 @@
+﻿@{
+    //Layout = null;// "~/views/shared/_layout.cshtml";
+}
+
+@*<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />*@
+<script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+@*<script type="text/javascript" src="/Scripts/jquery-ui-1.8.20.min.js">      </script>*@
+
+<style type="text/css">
+    
+
+.FilterHeader
+{
+    font-family:Arial;
+    text-align:left;
+    border:1px solid;
+    font-size:medium;
+    font-weight:bold;
+    padding: 5px;
+} 
+
+</style>
+
+<div class="FilterHeader">Individual Test Results - Test Certificates</div>
+<fieldset>
+
+   @{string rptname = "rptAdmQCountPerSubject";}
+
+  @using (Ajax.BeginForm("DocumentViewerPartial", rptname, null,
+                            null, new { id = rptname }))
+  {
+       <table>
+       @* <tr><td colspan ="2"><h4 class="FilterHeader">Individual Test Results - Test Certificates</h4></td></tr>*@
+        <tr>
+            <td class="tblTDcontent">
+                <table>
+                    <tr><th colspan="2">Criteria</th></tr>
+                    <tr>
+                        <td> @Html.Label("Subject Catergory:")</td>
+                        <td>
+                            <div class="input-append">
+                             @Html.DropDownList("SubjCategory", ViewBag.SubjCategory as SelectList, "", new { id = "lueSubjCategory" })    
+                             <button id = "clearlueSubjCategory" type ="button" class="btn">x</button>                 
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> @Html.Label("Subject Group:")</td>
+                        <td>
+                             <div class="input-append">
+                             @Html.DropDownList("SubjGroup", ViewBag.SubjGroup as SelectList, "", new { id = "lueSubjGroup" })         
+                             <button id = "clearlueSubjGroup" type ="button" class="btn">x</button> 
+                             </div>                
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> @Html.Label("Subject Leve:")</td>
+                        <td>
+                             <div class="input-append">
+                             @Html.DropDownList("SubjLevel", ViewBag.Signatory as SelectList, "", new { id = "lueSubjLevel" })         
+                             <button id = "clearlueSubjLevel" type ="button" class="btn">x</button> 
+                             </div>                
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                 <table>
+                        <tr>
+                            <th colspan="2">Sorting</th>
+                        </tr>
+                        <tr>
+                            <td style="font-size:smaller" colspan="2">
+                                Note: Criteria has effect on sorting and vice-versa
+                            </td>
+                        </tr>  
+                        <tr>
+                            <td colspan ="2">
+                                Sort Result by: @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>
+                                    @Html.RadioButton("rgSortOrder", "Asc", true)
+                                    Ascending
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    @Html.RadioButton("rgSortOrder", "Desc")
+                                    Descending
+                                </label>
+                            </td> 
+                        </tr>
+                 </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan ="4" align ="center"><button id = "btnFilter" type ="button" class="btn btn-small">Apply Criteria</button>  </td>
+        </tr>
+       </table>
+      
+      <div>
+            @* ////---- 'txtselected' name is required ----------/////*@
+            @Html.Hidden("txtselected", "", new { id = "txtselected" })  
+      </div>
+  }
+</fieldset>
+
+
+<script type="text/javascript">
+
+    var rpt = 'rptAdmQCountPerSubject';
+
+    $("#btnFilter").click(
+    function () {
+        //        var ss = $("#testname option:selected").val();
+
+        var dict = new Object();
+
+        dict["SubjCategoryID"] = $("#lueSubjCategory").val();
+        dict["SubjGroupID"] = $("#lueSubjGroup").val();
+        dict["SubjLevelID"] = $("#lueSubjLevel").val();
+        //dict["CompanyName"] = $("#lueSignatory").val();
+
+        // --- required ---//
+        $("#SelectionView").load("/"+ rpt +"/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
+
+    }
+    )
+
+    $("#clearlueSubjCategory").click(
+        function () {
+            $("#lueSubjCategory").val("");
+        }
+    )
+
+        $("#clearlueSubjGroup").click(
+        function () {
+            $("#lueSubjGroup").val("");
+        }
+    )
+
+        $("#clearlueSubjLevel").click(
+        function () {
+            $("#lueSubjLevel").val("");
+        }
+    )
+
+//        $('form').submit(function () {
+//            alert("Dfdfd");
+//            $("#sortbytext").val("test before submit");
+//            $('input#sorttext').val($('input#rgSortOrder').text());
+//            return true;
+//        });
+
+//        $("#cbeSortBy").change(
+//        function () {
+//            alert("change");
+//            $("#sortbytext").val("test buang");
+//        }
+//        )
+
+</script>
