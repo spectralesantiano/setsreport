@@ -67,3 +67,5 @@ C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAvgScorin
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptTestResultSummaryForm.resources
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptSubjectResultSummary.resources
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAdmQCountPerSubject.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAdmQCountPerTest.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptSubRevisionDate.resources

@@ -205,6 +205,7 @@
     <Compile Include="Controllers\PrintSelectionController.cs" />
     <Compile Include="Controllers\ReportMainController.cs" />
     <Compile Include="Controllers\ReportPS\rptAdmQCountPerSubjectController.cs" />
+    <Compile Include="Controllers\ReportPS\rptAdmQCountPerTestController.cs" />
     <Compile Include="Controllers\ReportPS\rptAvgScoringController.cs" />
     <Compile Include="Controllers\ReportPS\rptAvgScoringPerNatController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResult_wAnsOptionsAndPicsController.cs" />
@@ -235,6 +236,12 @@
     </Compile>
     <Compile Include="Reports\rptAdmQCountPerSubject.Designer.cs">
       <DependentUpon>rptAdmQCountPerSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptAdmQCountPerTest.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAdmQCountPerTest.Designer.cs">
+      <DependentUpon>rptAdmQCountPerTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptAvgScoring.cs">
       <SubType>Component</SubType>
@@ -283,6 +290,12 @@
     </Compile>
     <Compile Include="Reports\rptAvgScoringPerNatDummy.Designer.cs">
       <DependentUpon>rptAvgScoringPerNatDummy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptSubRevisionDate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptSubRevisionDate.Designer.cs">
+      <DependentUpon>rptSubRevisionDate.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptTestResultSummaryForm.cs">
       <SubType>Component</SubType>
@@ -394,6 +407,9 @@
     <EmbeddedResource Include="Reports\rptAdmQCountPerSubject.resx">
       <DependentUpon>rptAdmQCountPerSubject.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAdmQCountPerTest.resx">
+      <DependentUpon>rptAdmQCountPerTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptAvgScoring.resx">
       <DependentUpon>rptAvgScoring.cs</DependentUpon>
     </EmbeddedResource>
@@ -417,6 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptPrintTestCertificate.resx">
       <DependentUpon>rptPrintTestCertificate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptSubRevisionDate.resx">
+      <DependentUpon>rptSubRevisionDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptTestResultSummaryForm.resx">
       <DependentUpon>rptTestResultSummaryForm.cs</DependentUpon>
@@ -526,6 +545,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\rptAdmQCountPerSubject\_DocumentViewer1Partial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptAdmQCountPerTest\viewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptAdmQCountPerTest\_DocumentViewer1Partial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
