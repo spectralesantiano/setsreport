@@ -166,6 +166,7 @@
         var ee = res.replace(/ /g, "+");
         //        alert(ee);
         $("#lstselect").empty();
+        $("#reccount").text("0 Record(s)");
         $("#filterview").load("/ReportMain/ShowNoRptFilter")
         $("#filterview").load("/ReportMain/ShowRptFilter?ObjectID='" + ee + "'")
     }

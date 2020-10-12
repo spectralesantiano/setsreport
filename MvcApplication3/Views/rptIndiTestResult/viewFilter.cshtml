@@ -71,39 +71,38 @@
                             null , new { id = rptname }))
       {  
       
-         <table>
-            <tr>
-             <td style = "padding-right:8px"> 
-                   <table  border = "1">
-                    <tr><th colspan = "4">Criteria</th></tr>
-                    <tr>
-                            <td> @Html.Label("Test Name:")</td> 
-                            <td>
+        
+                          @Html.Label("Criteria")
+                  
+          
+                             @Html.Label("Test Name:")
+                            <div class="input-append">
                                 @Html.DropDownList("TestName", ViewBag.TestName as SelectList,"" , new { id = "lueTestName" })  
-                                  <button id = "clearlueTestName" type ="button">x</button>  
-                            </td>
-                            <td> @Html.Label("First Name:")</td>
-                            <td>
+                                  <button id = "clearlueTestName" type ="button" class="btn">x</button>  
+                            </div>
+          
+                            @Html.Label("First Name:")
+                            
                                 @*@Html.DropDownList("SubjCategoryID", ViewBag.SubjectCat as SelectList,new { id = "subjectcat" })*@
                                 @Html.TextBox("teFirstName", "", new { id = "teFirstName" })
-                            </td> 
-                    </tr>
-                    <tr>
-                           <td> @Html.Label("Rank:")</td>
-                           <td>
+                            
+                    
+                    
+                           @Html.Label("Rank:")
+                           
                                 @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, "", new { id = "lueRank"})  
-                                 <button id = "clearlueRank" type ="button">x</button>  
-                          </td>
-                          <td> @Html.Label("Last Name:")</td>   
-                          <td>
+                                 <button id = "clearlueRank" type ="button" class="btn">x</button>  
+                          
+                          @Html.Label("Last Name:")  
+                          
                                 @* @Html.DropDownList("SubjectID", ViewBag.SubjectList as SelectList, new { id = "subjects" })*@
                                 @*@Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects", style = "min-width: 250px;" })*@
                                 @Html.TextBox("teLastName", "", new { id = "teLastName" })
-                            </td>   
-                    </tr>
-                    <tr>
-                          <td> @Html.Label("From Date:")</td>
-                           <td>
+                              
+                    
+                    
+                          @Html.Label("From Date:")
+                           
                                @Html.TextBox("deFromDate","",new { @class = "datepicker", autocomplete="off" })
 
                            @*  <div class="input-append date"  data-date-format="dd-M-yyyy"  id="deFromDate">
@@ -126,32 +125,32 @@
                             </div>*@
                              @*<input type="date" id="deFromDate"  placeholder="dd-M-yyyy" name="fromdate">*@       
                         
-                          </td>
-                           <td> @Html.Label("Nationality:")</td>
-                          <td> 
+                          
+                            @Html.Label("Nationality:")
+                           
                                 @Html.DropDownList("lueNat", ViewBag.Nationality as SelectList,"", new { id = "lueNat" })
-                                <button id = "clearlueNat" type ="button">x</button>  
-                          </td>      
-                    </tr>
-                    <tr>
-                        <td> @Html.Label("To Date:")</td>    
-                         <td>
+                                <button id = "clearlueNat" type ="button" class="btn">x</button>  
+                                
+                    
+                    
+                         @Html.Label("To Date:")    
+                         
                                @Html.TextBox("deToDate", "", new { @class = "datepicker", autocomplete = "off" })
                               @* <div class="input-append date"  id="deToDate">
                               <input class="span2" size="16" type="text" />
                               <span class="add-on"><i class="icon-th"></i></span>
                             </div>*@
-                        </td>
-                        <td> @Html.Label("Taken at:")</td>      
-                         <td>
+                        
+                         @Html.Label("Taken at:")      
+                         
                              @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList,"", new { id = "lueCompany" })
-                                <button id = "clearlueCompany" type ="button">x</button>                              
-                         </td>   
-                     </tr>
-                     <tr>
-                        <td colspan = "1"> @Html.Label("Include:")</td> 
+                                <button id = "clearlueCompany" type ="button" class="btn">x</button>                              
+                            
+                     
+                     
+                         @Html.Label("Include:") 
                     
-                        <td colspan = "3">
+   
                             <div>
                                 <label>
                                     @Html.RadioButton("AnswerFilter", "2", true)
@@ -168,28 +167,24 @@
                                     Wrong Answers
                                 </label>
                             </div> 
-                        </td>
-                     </tr>
+                        
+
+              
+ 
+                        
+                            @Html.Label("Sorting")
+                        
                     
-                  </table>
-              </td>
-              <td valign="top">
-                    <table class ="collabel" border ="1">
-                        <tr>
-                            <th>Sorting</th>
-                        </tr>
-                        <tr>
-                            <td style="font-size:smaller">
-                                Note: Criteria has effect on sorting and vice-versa
-                            </td>
-                        </tr>  
-                        <tr>
-                            <td>
-                                Sort Selection By: @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
+                               @Html.Label("Note: Criteria has effect on sorting and vice-versa")
+                            
+                          
+                        
+                            
+                                @Html.Label("Sort Selection By:") @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
+                            
+                        
+                        
+                            
                                 <label>
                                     @Html.RadioButton("rgSortOrder", "Asc",true)
                                     Ascending
@@ -199,15 +194,10 @@
                                     @Html.RadioButton("rgSortOrder","Desc" )
                                     Descending
                                 </label>
-                            </td> 
-                        </tr>
-                    </table>
-              </td>
-            </tr>
-            <tr>
-                    <td colspan ="4" align ="center"><button id = "btnFilter" type ="button">Apply Criteria</button>  </td>
-            </tr>
-          </table>
+            
+                    <button id = "btnFilter" type ="button" class="btn">Apply Criteria</button>  
+            
+          
        
        @*  <div class ="row">
             <div class ="collabel">
