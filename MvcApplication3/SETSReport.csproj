@@ -204,8 +204,10 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrintSelectionController.cs" />
     <Compile Include="Controllers\ReportMainController.cs" />
+    <Compile Include="Controllers\ReportPS\rptAdmDetailedQStatsController.cs" />
     <Compile Include="Controllers\ReportPS\rptAdmQCountPerSubjectController.cs" />
     <Compile Include="Controllers\ReportPS\rptAdmQCountPerTestController.cs" />
+    <Compile Include="Controllers\ReportPS\rptAdmQStatSummaryController.cs" />
     <Compile Include="Controllers\ReportPS\rptAvgScoringController.cs" />
     <Compile Include="Controllers\ReportPS\rptAvgScoringPerNatController.cs" />
     <Compile Include="Controllers\ReportPS\rptIndiTestResult_wAnsOptionsAndPicsController.cs" />
@@ -231,6 +233,12 @@
     <Compile Include="Models\RankModel.cs" />
     <Compile Include="Models\SubjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\rptAdmDetailedQStats.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAdmDetailedQStats.Designer.cs">
+      <DependentUpon>rptAdmDetailedQStats.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\rptAdmQCountPerSubject.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -242,6 +250,12 @@
     </Compile>
     <Compile Include="Reports\rptAdmQCountPerTest.Designer.cs">
       <DependentUpon>rptAdmQCountPerTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptAdmQStatSummary.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAdmQStatSummary.Designer.cs">
+      <DependentUpon>rptAdmQStatSummary.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\rptAvgScoring.cs">
       <SubType>Component</SubType>
@@ -404,11 +418,17 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\rptAdmDetailedQStats.resx">
+      <DependentUpon>rptAdmDetailedQStats.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptAdmQCountPerSubject.resx">
       <DependentUpon>rptAdmQCountPerSubject.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptAdmQCountPerTest.resx">
       <DependentUpon>rptAdmQCountPerTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAdmQStatSummary.resx">
+      <DependentUpon>rptAdmQStatSummary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptAvgScoring.resx">
       <DependentUpon>rptAvgScoring.cs</DependentUpon>
@@ -551,6 +571,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\rptAdmQCountPerTest\_DocumentViewer1Partial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptAdmDetailedQStats\viewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptAdmDetailedQStats\_DocumentViewer1Partial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptAdmQStatSummary\viewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptAdmQStatSummary\_DocumentViewer1Partial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

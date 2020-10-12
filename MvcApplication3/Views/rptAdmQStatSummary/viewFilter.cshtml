@@ -1,0 +1,155 @@
+﻿@{
+    //Layout = null;// "~/views/shared/_layout.cshtml";
+}
+
+@*<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />*@
+<script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+@*<script type="text/javascript" src="/Scripts/jquery-ui-1.8.20.min.js">      </script>*@
+
+<style type="text/css">
+    
+
+.FilterHeader
+{
+    font-family:Arial;
+    text-align:left;
+    border:1px solid;
+    font-size:medium;
+    font-weight:bold;
+    padding: 5px;
+} 
+
+</style>
+
+<div class="FilterHeader">Individual Test Results - Question Statistics Summary</div>
+<fieldset>
+
+   @{string rptname = "rptAdmQStatSummary";}
+
+  @using (Ajax.BeginForm("DocumentViewerPartial", rptname, null,
+                            null, new { id = rptname }))
+  {
+       <table>
+       @* <tr><td colspan ="2"><h4 class="FilterHeader">Individual Test Results - Test Certificates</h4></td></tr>*@
+        <tr>
+            <td class="tblTDcontent">
+                <table>
+                    <tr><th colspan="2">Criteria</th></tr>
+                    <tr>
+                        <td> @Html.Label("Test Name:")</td>
+                        <td>
+                            <div class="input-append">
+                             @Html.DropDownList("TestName", ViewBag.TestNameQuery as SelectList, "", new { id = "lueTestName" })    
+                             <button id = "clearlueTestName" type ="button" class="btn">x</button>                 
+                            </div>
+                        </td>
+                    </tr>
+                   @* <tr>
+                        <td> @Html.Label("Subject:")</td>
+                        <td>
+                             <div class="input-append">
+                             @Html.DropDownList("SubjectName", ViewBag.SubjectName as SelectList, "", new { id = "lueSubjectName" })         
+                             <button id = "clearlueSubjectName" type ="button" class="btn">x</button> 
+                             </div>                
+                        </td>
+                    </tr>*@
+                    <tr>
+                       <td colspan="2"> @Html.Label("Display only Questions that has been correctly answered by")</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            @Html.TextBox("Min",0 , new {type = "number", min = "0", step = "1" ,id="Min", style ="width:50px"})  
+                            %   
+                        to 
+                            @Html.TextBox("Max", 100, new { type = "number", max = "100" , step = "1", id = "Max", style = "width:50px" })
+                            % 
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                 <table>
+                        <tr>
+                            <th colspan="2">Sorting</th>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan ="2">
+                                Sort Detail By: @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>
+                                    @Html.RadioButton("rgSortOrder", "Asc", true)
+                                    Ascending
+                                </label>
+                            </td>
+                            <td>
+                                <label>
+                                    @Html.RadioButton("rgSortOrder", "Desc")
+                                    Descending
+                                </label>
+                            </td> 
+                        </tr>
+                 </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan ="4" align ="center"><button id = "btnFilter" type ="button" class="btn btn-small">Apply Criteria</button>  </td>
+        </tr>
+       </table>
+      
+      <div>
+            @* ////---- 'txtselected' name is required ----------/////*@
+            @Html.Hidden("SortedByText", "", new { id = "SortedByText" })  
+            @Html.Hidden("txtselected", "", new { id = "txtselected" })  
+      </div>
+  }
+</fieldset>
+
+
+<script type="text/javascript">
+
+    var rpt = 'rptAdmQStatSummary';
+
+    $("#btnFilter").click(
+    function () {
+        //        var ss = $("#testname option:selected").val();
+
+        var dict = new Object();
+
+        dict["TestName"] = $("#lueTestName").val();
+        dict["SubjectName"] = $("#lueSubjectName").val();
+        //dict["CompanyName"] = $("#lueSignatory").val();
+
+        // --- required ---//
+        $("#SelectionView").load("/"+ rpt +"/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
+
+    }
+    )
+
+    $("#cbeSortBy").change (
+    function () {
+//        alert($("#cbeSortBy option:selected").text());
+        $("#SortedByText").val($("#cbeSortBy option:selected").text());
+    }
+    )
+
+    $(document).ready(function () {
+        $("#SortedByText").val($("#cbeSortBy option:selected").text());
+    }
+    )
+
+    $("#clearlueTestName").click(
+        function () {
+            $("#lueTestName").val("");
+        }
+    )
+
+        $("#clearlueSubjectName").click(
+        function () {
+            $("#lueSubjectName").val("");
+        }
+    )
+</script>

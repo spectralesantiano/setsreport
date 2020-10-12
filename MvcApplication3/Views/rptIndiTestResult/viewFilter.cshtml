@@ -104,13 +104,13 @@
                     <tr>
                           <td> @Html.Label("From Date:")</td>
                            <td>
-                              @* @Html.TextBox("deFromDate","",new { @class = "datepicker", autocomplete="off" })*@
+                               @Html.TextBox("deFromDate","",new { @class = "datepicker", autocomplete="off" })
 
-                             <div class="input-append date"  data-date-format="dd-M-yyyy"  id="deFromDate">
+                           @*  <div class="input-append date"  data-date-format="dd-M-yyyy"  id="deFromDate">
                               <input class="span2" size="16" type="text">
                               <span class="add-on"><i class="icon-th"></i></span>
                             </div>
-
+*@
 @* <div class='input-group date datepicker'>
   <input type='text' class="form-control"  id="deFromDate"/>
   <span class="input-group-addon">
@@ -136,11 +136,11 @@
                     <tr>
                         <td> @Html.Label("To Date:")</td>    
                          <td>
-                              @* @Html.TextBox("deToDate", "", new { @class = "datepicker", autocomplete = "off" })*@
-                               <div class="input-append date"  id="deToDate">
+                               @Html.TextBox("deToDate", "", new { @class = "datepicker", autocomplete = "off" })
+                              @* <div class="input-append date"  id="deToDate">
                               <input class="span2" size="16" type="text" />
                               <span class="add-on"><i class="icon-th"></i></span>
-                            </div>
+                            </div>*@
                         </td>
                         <td> @Html.Label("Taken at:")</td>      
                          <td>

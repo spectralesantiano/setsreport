@@ -69,3 +69,5 @@ C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptSubjectRe
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAdmQCountPerSubject.resources
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAdmQCountPerTest.resources
 C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptSubRevisionDate.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAdmDetailedQStats.resources
+C:\VUE\MvcApplication3\MvcApplication3\obj\Debug\SETSReport.Reports.rptAdmQStatSummary.resources
