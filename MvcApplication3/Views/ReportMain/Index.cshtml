@@ -32,7 +32,7 @@
 }
 .item1 {
   grid-column: 1;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 3;
  @* min-width: 300px;*@
 }
 .item2 {
@@ -93,6 +93,7 @@
     <div class="grid-container">  
          <div class="grid-item item1">  
              @Html.Action("ShowRptList")
+              <input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />
          </div>
          <div class="grid-item item2 definetbL" id = "filterview" >  
             @* @{Html.RenderAction("ShowRptFilter");}  *@
@@ -100,9 +101,11 @@
          </div>
          <div class="grid-item item3 definetC" id = "SelectionView">
             @Html.Partial("SelectionList")
+            @*<br />
+             <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-primary"  />*@
          </div>
           <div class="grid-item item4">  
-                <input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />
+              @*  <input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />*@
           </div>  
 
           @* <div class="col-md-offset-2 col-md-10">  *@

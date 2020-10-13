@@ -1,0 +1,12 @@
+*publish as file
+*add apppool with .net framewrk version 4
+	add setsreport web to this pool
+	OR select .net framework 4 from the start when creatin the website
+
+*Port should not be 80 as this is already taken
+
+*Error encountered
+	"Handler "ExtensionlessUrlHandler-Integrated-4.0" has a bad module "ManagedPipelineHandler" in its module list"
+
+	open cmd as administrator -> go to "C:\Windows\Microsoft.NET\Framework\v4.0.30319" (depending on installation path)
+	type aspnet_regiis -i then enter
