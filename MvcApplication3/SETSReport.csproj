@@ -513,7 +513,7 @@
     <Content Include="Views\ReportMain\SelectionList.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\rptIndiTestResult_wAnsOptions\viewFilter.cshtml" />
+    <Content Include="Views\rptIndiTestResult_wAnsOptions\xxxviewFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\rptIndiTestResult_wAnsOptions\_DocumentViewer1Partial.cshtml" />
@@ -525,7 +525,7 @@
     <Content Include="Views\rptPrintTestCertificate\_DocumentViewer1Partial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\rptIndiTestResult_wAnsOptionsAndPics\viewFilter.cshtml" />
+    <Content Include="Views\rptIndiTestResult_wAnsOptionsAndPics\xxxviewFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\rptIndiTestResult_wAnsOptionsAndPics\_DocumentViewer1Partial.cshtml" />
@@ -534,7 +534,7 @@
     <Content Include="Views\rptIndividualTestStatistic\_DocumentViewer1Partial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\rptIndividualTestStatistic\viewFilter.cshtml" />
+    <Content Include="Views\rptIndividualTestStatistic\xxxviewFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\rptAvgScoring\viewFilter.cshtml" />
@@ -583,6 +583,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\rptAdmQStatSummary\_DocumentViewer1Partial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptIndiTestResult_wAnsOptions\viewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptIndiTestResult_wAnsOptionsAndPics\viewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptIndividualTestStatistic\viewFilter.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
