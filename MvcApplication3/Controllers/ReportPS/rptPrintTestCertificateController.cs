@@ -146,12 +146,13 @@ namespace SETSReport.Controllers.ReportPS
 
         MainReport.pbLogo.ImageUrl = Util.GetReportLogoPath();
 
-
         MainReport.Position.DataBindings.Add("Text", null, "RankName");
         MainReport.FullName.DataBindings.Add("Text", null, "Fullname");
         MainReport.DateTaken.DataBindings.Add("Html", null, "DateTaken");
         MainReport.TestName.DataBindings.Add("Text", null, "TestName");
         MainReport.Score.DataBindings.Add("Text", null, "ScoreRating");
+
+        MainReport.DateTaken.EvaluateBinding += FormatDate;
 
             return PartialView("_DocumentViewer1Partial", MainReport);
         }
@@ -242,5 +243,18 @@ namespace SETSReport.Controllers.ReportPS
 
             return searchText;
         }
+
+         private void FormatDate(Object sender,BindingEventArgs e ){
+            try {
+                if(e.Value != null) {
+                    e.Value = String.Format("<div style='font-size:25px;font-family:Times New Roman;'><center><i>has on <b>{0}</b></i></center></dib>", e.Value);
+                }
+            }
+            catch(Exception ex ){
+               
+          }
+         }
+
+
     }
 }

@@ -19,85 +19,71 @@
     padding: 5px;
 } 
 
+h5 {
+   border-bottom: 1px solid #000;
+   width:100%;
+}
 </style>
 
-<div class="FilterHeader">Individual Test Results - Test Certificates</div>
-<fieldset>
+<h4 style="font:arial">Individual Test Results - Test Certificates</h4>
+
 
    @{string rptname = "rptPrintTestCertificate";}
 
   @using (Ajax.BeginForm("DocumentViewerPartial", rptname, null,
                             null, new { id = rptname }))
   {
-       <table>
-       @* <tr><td colspan ="2"><h4 class="FilterHeader">Individual Test Results - Test Certificates</h4></td></tr>*@
-        <tr>
-            <td class="tblTDcontent">
-                <table>
-                    <tr><th colspan="2">Criteria</th></tr>
-                    <tr>
-                        <td> @Html.Label("Company Name:")</td>
-                        <td>
+      <fieldset>
+          <div class="row-fluid">
+                    <div class="span6" style="">
+                           <div><h5>Selection Filter / Sorting</h5></div>
+                    
+                            @Html.Label("Company Name:")
+                             <div class="controls">  
                             <div class="input-append">
                              @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "",  new { id = "lueCompany" })    
                              <button id = "clearlueCompany" type ="button" class="btn">x</button>                 
+                            </div></div>
+
+                            <br />
+
+                            @Html.Label("Sort Selection By:", new { @class = "control-label" })
+                            <label class="control-label" style="font-size:smaller" >(Result sorting also affected.)</label>
+
+                            @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
+                            <div class="controls">
+                            <label>
+                                @Html.RadioButton("rgSortOrder", "Asc", true)
+                                Ascending
+                            </label>
+                            <label>
+                                @Html.RadioButton("rgSortOrder", "Desc")
+                                Descending
+                            </label>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> @Html.Label("Set Signatory:")</td>
-                        <td>
-                             <div class="input-append">
-                             @Html.DropDownList("Signatory", ViewBag.Signatory as SelectList, "", new { id = "lueSignatory" })         
-                             <button id = "clearlueSignatory" type ="button" class="btn">x</button> 
-                             </div>                
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                 <table>
-                        <tr>
-                            <th colspan="2">Sorting</th>
-                        </tr>
-                        <tr>
-                            <td style="font-size:smaller" colspan="2">
-                                Note: Criteria has effect on sorting and vice-versa
-                            </td>
-                        </tr>  
-                        <tr>
-                            <td colspan ="2">
-                                Sort Selection By: @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>
-                                    @Html.RadioButton("rgSortOrder", "Asc", true)
-                                    Ascending
-                                </label>
-                            </td>
-                            <td>
-                                <label>
-                                    @Html.RadioButton("rgSortOrder", "Desc")
-                                    Descending
-                                </label>
-                            </td> 
-                        </tr>
-                 </table>
-            </td>
-        </tr>
-        <tr>
-            <td colspan ="4" align ="center"><button id = "btnFilter" type ="button" class="btn btn-small">Apply Criteria</button>  </td>
-        </tr>
-       </table>
-      
-      <div>
-            @* ////---- 'txtselected' name is required ----------/////*@
-            @Html.Hidden("txtselected", "", new { id = "txtselected" })  
-      </div>
+
+                             <br />
+                            <button id = "btnFilter" type ="button" class="btn btn-small">Apply Criteria</button> 
+                 </div>
+                 <div class="span6" style="">
+                         <div><h5>Result Filter / Sorting:</h5></div>
+
+                         @Html.Label("Set Signatory:")
+                        <div class="controls">  
+                        <div class="input-append">
+                        @Html.DropDownList("Signatory", ViewBag.Signatory as SelectList, "", new { id = "lueSignatory" })         
+                        <button id = "clearlueSignatory" type ="button" class="btn">x</button> 
+                        </div></div>          
+   
+                </div>
+                <div>
+                @* ////---- 'txtselected' name is required ----------/////*@
+                @Html.Hidden("txtselected", "", new { id = "txtselected" })  
+                </div>
+            </div>
+      </fieldset>
   }
-</fieldset>
+
 
 
 <script type="text/javascript">
