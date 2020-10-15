@@ -45,9 +45,7 @@ h5 {
                              <button id = "clearlueCompany" type ="button" class="btn">x</button>                 
                             </div></div>
 
-                            <br />
-
-                            @Html.Label("Sort Selection By:", new { @class = "control-label" })
+                            @Html.Label("Sort by:", new { @class = "control-label" })
                             <label class="control-label" style="font-size:smaller" >(Result sorting also affected.)</label>
 
                             @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
@@ -63,7 +61,7 @@ h5 {
                             </div>
 
                              <br />
-                            <button id = "btnFilter" type ="button" class="btn btn-small">Apply Criteria</button> 
+                            <button id = "btnFilter" type ="button" class="btn btn-small">Apply Filter</button> 
                  </div>
                  <div class="span6" style="">
                          <div><h5>Result Filter / Sorting:</h5></div>

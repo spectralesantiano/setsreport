@@ -593,6 +593,12 @@
   <ItemGroup>
     <Content Include="Views\rptIndividualTestStatistic\viewFilter.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptAvgScoring\xxxviewFilter.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\rptAvgScoringPerNat\xxxiewFilter.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -609,7 +615,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53560</DevelopmentServerPort>
+          <DevelopmentServerPort>58191</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

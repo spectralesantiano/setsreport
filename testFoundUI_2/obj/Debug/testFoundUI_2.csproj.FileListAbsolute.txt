@@ -31,3 +31,4 @@ C:\VUE\MvcApplication3\testFoundUI_2\bin\System.Web.WebPages.Deployment.xml
 C:\VUE\MvcApplication3\testFoundUI_2\bin\System.Web.WebPages.Razor.xml
 C:\VUE\MvcApplication3\testFoundUI_2\obj\Debug\testFoundUI_2.dll
 C:\VUE\MvcApplication3\testFoundUI_2\obj\Debug\testFoundUI_2.pdb
+C:\VUE\MvcApplication3\testFoundUI_2\obj\Debug\testFoundUI_2.csprojResolveAssemblyReference.cache
