@@ -11,102 +11,93 @@
 
 .FilterHeader
 {
-    font-family:Arial;
+@*    font-family:Arial;
     text-align:left;
     border:1px solid;
     font-size:medium;
     font-weight:bold;
-    padding: 5px;
+    padding: 5px;*@
 } 
 
+h5 {
+   border-bottom: 1px solid #000;
+   width:100%;
+}
 </style>
 
-<div class="FilterHeader">Individual Test Results - Detailed Question Statistics</div>
-<fieldset>
+<h4 style="font:arial" class="FIlterHeader">ADMIN - Detailed Question Statistics</h4>
+
 
    @{string rptname = "rptAdmDetailedQStats";}
 
   @using (Ajax.BeginForm("DocumentViewerPartial", rptname, null,
                             null, new { id = rptname }))
   {
-       <table>
-       @* <tr><td colspan ="2"><h4 class="FilterHeader">Individual Test Results - Test Certificates</h4></td></tr>*@
-        <tr>
-            <td class="tblTDcontent">
-                <table>
-                    <tr><th colspan="2">Criteria</th></tr>
-                    <tr>
-                        <td> @Html.Label("Test Name:")</td>
-                        <td>
+      <fieldset>
+            <div class="row-fluid">
+                    <div class="span6" style="">
+                           <div><h5>Selection Filter / Sorting</h5></div>
+
+                            @Html.Label("Test Name:", new { @class = "control-label" })
+                             <div class="controls">
                             <div class="input-append">
                              @Html.DropDownList("TestName", ViewBag.TestNameQuery as SelectList, "", new { id = "lueTestName" })    
                              <button id = "clearlueTestName" type ="button" class="btn">x</button>                 
+                            </div></div>
+
+                            <br />
+                             <button id = "btnFilter" type ="button" class="btn btn-small">Apply Criteria</button>  
+
+                    </div>
+                    <div class="span6" style="">
+                         <div><h5>Result Filter / Sorting:</h5></div>
+
+                          @Html.Label("Display only Questions that has been correctly answered by", new { @class = "control-label" })
+                             <div class="controls">
+                            @Html.TextBox("Min",0 , new {type = "number", min = "0", step = "1" ,id="Min", style ="width:50px"})  
+                            % to 
+                            @Html.TextBox("Max", 100, new { type = "number", max = "100" , step = "1", id = "Max", style = "width:50px" })
+                            % 
                             </div>
-                        </td>
-                    </tr>
-                   @* <tr>
-                        <td> @Html.Label("Subject:")</td>
-                        <td>
+
+                            @Html.Label("Sort By:", new { @class = "control-label" })
+                            <div class="controls">
+                            @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
+                            <div>
+                                <label>
+                                @Html.RadioButton("rgSortOrder", "Asc", true)
+                                Ascending
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                @Html.RadioButton("rgSortOrder", "Desc")
+                                Descending
+                                </label>
+                            </div></div>
+                    </div>
+
+                     <div>
+                    @* ////---- 'txtselected' name is required ----------/////*@
+                    @Html.Hidden("SortedByText", "", new { id = "SortedByText" })  
+                    @Html.Hidden("txtselected", "", new { id = "txtselected" })  
+                    </div>
+     
+                  </div>
+            </fieldset>      
+        }
+           
+                    
+                   @* 
+                         @Html.Label("Subject:")
+                        
                              <div class="input-append">
                              @Html.DropDownList("SubjectName", ViewBag.SubjectName as SelectList, "", new { id = "lueSubjectName" })         
                              <button id = "clearlueSubjectName" type ="button" class="btn">x</button> 
                              </div>                
-                        </td>
-                    </tr>*@
-                    <tr>
-                       <td colspan="2"> @Html.Label("Display only Questions that has been correctly answered by")</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            @Html.TextBox("Min",0 , new {type = "number", min = "0", step = "1" ,id="Min", style ="width:50px"})  
-                            %   
-                        to 
-                            @Html.TextBox("Max", 100, new { type = "number", max = "100" , step = "1", id = "Max", style = "width:50px" })
-                            % 
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                 <table>
-                        <tr>
-                            <th colspan="2">Sorting</th>
-                        </tr>
                         
-                        <tr>
-                            <td colspan ="2">
-                                Sort Detail By: @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>
-                                    @Html.RadioButton("rgSortOrder", "Asc", true)
-                                    Ascending
-                                </label>
-                            </td>
-                            <td>
-                                <label>
-                                    @Html.RadioButton("rgSortOrder", "Desc")
-                                    Descending
-                                </label>
-                            </td> 
-                        </tr>
-                 </table>
-            </td>
-        </tr>
-        <tr>
-            <td colspan ="4" align ="center"><button id = "btnFilter" type ="button" class="btn btn-small">Apply Criteria</button>  </td>
-        </tr>
-       </table>
-      
-      <div>
-            @* ////---- 'txtselected' name is required ----------/////*@
-            @Html.Hidden("SortedByText", "", new { id = "SortedByText" })  
-            @Html.Hidden("txtselected", "", new { id = "txtselected" })  
-      </div>
-  }
-</fieldset>
+                    *@
+                    
 
 
 <script type="text/javascript">
