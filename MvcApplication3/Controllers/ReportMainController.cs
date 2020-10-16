@@ -97,8 +97,8 @@ namespace SETSReport.Controllers
                 Text = "- No Data -",
                 Value = ""
             });
-            ViewBag.selectionlist = new SelectList(dummylist, "Value", "Text"); 
-            
+            ViewBag.selectionlist = new SelectList(dummylist, "Value", "Text");
+
             return View();
         }
 

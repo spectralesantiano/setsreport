@@ -10,3 +10,8 @@
 
 	open cmd as administrator -> go to "C:\Windows\Microsoft.NET\Framework\v4.0.30319" (depending on installation path)
 	type aspnet_regiis -i then enter
+
+*some i did on windows 10 IIS
+	make sure all feature under windows features -> iis-> world wide web services -> application development features -> are all checked like framework 4.5
+	add default.aspx to default page settins
+	copy all devexpress dll to bin folder if not included in the publish files
