@@ -82,7 +82,15 @@
   width: 180px;
   float: right;
 }
+
+
 *@
+body { padding-top: 70px; }
+
+.imglogo {
+  height: 35px;
+  margin: 0px;
+}
 
 </style>
 
@@ -90,17 +98,29 @@
 
 <body>
 
-<div class="container">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <a class="brand" href="#"><img class="imglogo" src="~/Content/Images/logo.jpeg" alt=""/> Reports</a>
+    @*<ul class="nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>*@
+  </div>
+</div>
+
+
+<div class="container" >
     <div class="grid-container">  
-         <div class="grid-item item1">  
+         <div class="grid-item item1"  style="background-color:White">  
              @Html.Action("ShowRptList")
               <input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />
          </div>
-         <div class="grid-item item2 definetbL" id = "filterview" >  
+         <div class="grid-item item2 definetbL" id = "filterview"  style="background-color:White">  
             @* @{Html.RenderAction("ShowRptFilter");}  *@
             @Html.Partial("ShowRptFilter")
          </div>
-         <div class="grid-item item3 definetC" id = "SelectionView">
+         <div class="grid-item item3 definetC" id = "SelectionView"  style="background-color:White">
             @Html.Partial("SelectionList")
             @*<br />
              <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-primary"  />*@
@@ -110,7 +130,7 @@
           </div>  
 
           @* <div class="col-md-offset-2 col-md-10">  *@
-          <div class="grid-item item5">  
+          <div class="grid-item item5" style="background-color:White">  
                 <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-primary"  />
           </div>  
       </div>

@@ -99,7 +99,34 @@ namespace SETSReport.Controllers
             });
             ViewBag.selectionlist = new SelectList(dummylist, "Value", "Text");
 
-            return View();
+            string frURI = ConfigurationManager.AppSettings["SetRefererURI"] == null ? "" : ConfigurationManager.AppSettings["SetRefererURI"].ToString();
+            string referURI; //= Request.UrlReferrer.AbsoluteUri == null ? "" : Request.UrlReferrer.AbsoluteUri.ToString();
+            
+            if (Request.UrlReferrer == null)
+            { 
+                referURI = "";
+            }
+            else {
+                referURI = Request.UrlReferrer.AbsoluteUri.ToString();
+            }
+            
+
+            if (frURI != "")
+            {
+                if (referURI.Contains(frURI))
+                {
+                    return View();
+                }
+                else
+                {
+                   return View("noReferer");
+                }
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         [NonAction]

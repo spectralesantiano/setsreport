@@ -6,10 +6,13 @@
 *Port should not be 80 as this is already taken
 
 *Error encountered
-	"Handler "ExtensionlessUrlHandler-Integrated-4.0" has a bad module "ManagedPipelineHandler" in its module list"
+	-"Handler "ExtensionlessUrlHandler-Integrated-4.0" has a bad module "ManagedPipelineHandler" in its module list"
 
 	open cmd as administrator -> go to "C:\Windows\Microsoft.NET\Framework\v4.0.30319" (depending on installation path)
 	type aspnet_regiis -i then enter
+
+	-Unrecognized attribute 'targetFramework'. Note that attribute names are case-sensitive.
+	Go to IIS -> application pool. double click the webpage..change application pool to framework 4
 
 *some i did on windows 10 IIS
 	make sure all feature under windows features -> iis-> world wide web services -> application development features -> are all checked like framework 4.5
