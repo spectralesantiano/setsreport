@@ -108,7 +108,7 @@
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.XrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableRow16 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.XrTableCell18 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtRptTitle = new DevExpress.XtraReports.UI.XRTableCell();
             this.txtCompanyName = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableRow4 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -887,19 +887,19 @@
             // XrTableRow16
             // 
             this.XrTableRow16.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.XrTableCell18});
+            this.txtRptTitle});
             this.XrTableRow16.Name = "XrTableRow16";
             this.XrTableRow16.Weight = 1.25D;
             // 
-            // XrTableCell18
+            // txtRptTitle
             // 
-            this.XrTableCell18.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.XrTableCell18.Name = "XrTableCell18";
-            this.XrTableCell18.StylePriority.UseFont = false;
-            this.XrTableCell18.StylePriority.UseTextAlignment = false;
-            this.XrTableCell18.Text = "SETS Test Result";
-            this.XrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.XrTableCell18.Weight = 1D;
+            this.txtRptTitle.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.txtRptTitle.Name = "txtRptTitle";
+            this.txtRptTitle.StylePriority.UseFont = false;
+            this.txtRptTitle.StylePriority.UseTextAlignment = false;
+            this.txtRptTitle.Text = "Test Result";
+            this.txtRptTitle.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtRptTitle.Weight = 1D;
             // 
             // txtCompanyName
             // 
@@ -1143,7 +1143,7 @@
         public DevExpress.XtraReports.UI.DetailBand Detail;
         public DevExpress.XtraReports.UI.XRTableCell XrTableCell3;
         public DevExpress.XtraReports.UI.XRTableRow XrTableRow16;
-        public DevExpress.XtraReports.UI.XRTableCell XrTableCell18;
+        public DevExpress.XtraReports.UI.XRTableCell txtRptTitle;
         public DevExpress.XtraReports.UI.XRTableCell txtCompanyName;
         public DevExpress.XtraReports.UI.XRTableCell XrTableCell5;
         public DevExpress.XtraReports.UI.XRTableRow XrTableRow4;

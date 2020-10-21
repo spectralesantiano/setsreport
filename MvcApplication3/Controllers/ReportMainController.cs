@@ -25,7 +25,7 @@ namespace SETSReport.Controllers
         [ChildActionOnly]
         public ActionResult ShowRptList()
         {
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
             //SqlDataAdapter _da = new SqlDataAdapter("Select * From [view_ReportGroups]", constr);
             DataTable _dt = new DataTable();
@@ -109,7 +109,8 @@ namespace SETSReport.Controllers
             else {
                 referURI = Request.UrlReferrer.AbsoluteUri.ToString();
             }
-            
+
+            ViewBag.logopath = Util.GetReportLogoPath().Replace("~",""); //string "~" are not processed inside <img src>
 
             if (frURI != "")
             {

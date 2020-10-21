@@ -116,7 +116,7 @@ namespace SETSReport.Controllers.ReportPS
 
         public ActionResult viewFilter()
         {
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
             SqlDataAdapter _da = new SqlDataAdapter("Select * From [tbladmrank]", constr);
             DataTable _dt = new DataTable();
@@ -164,7 +164,7 @@ namespace SETSReport.Controllers.ReportPS
             //    filterCriteria = " where " + filterCriteria;
             //}
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             String sql = "SELECT DISTINCT SubjectName, s.SubjectID, 0 IsSelected FROM tblAdmSubject s INNER JOIN tblAdmTestTemplateSubjects tts ON s.SubjectID = tts.SubjectID INNER JOIN tblAdmTestTemplates tt ON tt.TestID = tts.TestID INNER JOIN tblActualTest at ON at.TestID = tt.TestID ";
@@ -208,7 +208,7 @@ namespace SETSReport.Controllers.ReportPS
                 "GROUP BY SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName" +
                 ") T WHERE SubjectID IN ({0}) {1}", selectedIDs, filterCriteria !=""? " And " + filterCriteria:""); //SubjectName to SubjectID...
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             SqlDataAdapter _da = new SqlDataAdapter(sql, _con);
@@ -222,6 +222,7 @@ namespace SETSReport.Controllers.ReportPS
             MainReport.txtPrintDate.Text = "Print Date: " + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
             MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
             MainReport.pbLogo.ImageUrl = Util.GetReportLogoPath();
+            MainReport.txtRptTitle.Text = Util.GetConfig("APP_ABBRV") + " " + MainReport.txtRptTitle.Text;
 
             MainReport.SubjectHeader.GroupFields.Add(new GroupField("SubjectName", Request["rgSortOrder"] == "ASC" ? XRColumnSortOrder.Ascending : XRColumnSortOrder.Descending));
             MainReport.Detail.SortFields.Add(new GroupField(Request["SortReportBy"], Request["rptSortdOrder"] ==  "ASC" ? XRColumnSortOrder.Ascending : XRColumnSortOrder.Descending));

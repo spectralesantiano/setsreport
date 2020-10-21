@@ -127,7 +127,7 @@ namespace SETSReport.Controllers.ReportPS
                                 "FROM view_FullExamineeResults WHERE ActualTestID IN ({0}) " +
                                 "ORDER BY Fullname ASC", selectedIDs);
 
-        string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+        string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
         SqlConnection _con = new SqlConnection(constr);
         SqlDataAdapter _da = new SqlDataAdapter(sql, _con);
             
@@ -137,6 +137,8 @@ namespace SETSReport.Controllers.ReportPS
         MainReport.DataSource = ds;
    
         MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
+        MainReport.txtRptTitleLong.Text = Util.GetConfig("APP_NAME").ToUpper();
+        MainReport.txtRptTitle.Text = "(" + Util.GetConfig("APP_ABBRV") + ")";
 
         if (Request["Signatory"] != null && Request["Signatory"] != "")
         {
@@ -159,7 +161,7 @@ namespace SETSReport.Controllers.ReportPS
 
         public ActionResult viewFilter()
         {
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
             DataTable _dt = new DataTable();
 
@@ -194,7 +196,7 @@ namespace SETSReport.Controllers.ReportPS
                 filterCriteria = " where " + filterCriteria;
             }
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults " + filterCriteria;

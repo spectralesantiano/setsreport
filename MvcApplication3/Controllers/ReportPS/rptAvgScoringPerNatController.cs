@@ -117,7 +117,7 @@ namespace SETSReport.Controllers.ReportPS
 
         public ActionResult viewFilter()
         {
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
             SqlDataAdapter _da = new SqlDataAdapter(Controllers.GlobalVar.CompanyNameQuery, constr);
             DataTable _dt = new DataTable();
@@ -153,7 +153,7 @@ namespace SETSReport.Controllers.ReportPS
                 filterCriteria = " where " + filterCriteria;
             }
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM view_ExamineeResults r INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
@@ -264,7 +264,7 @@ namespace SETSReport.Controllers.ReportPS
             string logoPath = Util.GetReportLogoPath();
             string dateNow = DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             String selectedsql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM view_ExamineeResults r INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
@@ -314,6 +314,7 @@ namespace SETSReport.Controllers.ReportPS
                 tempReport.Average.Text = row["Average"].ToString();
                 tempReport.CompanyName.Text = row["CompanyName"].ToString();
                 tempReport.CreateDocument();
+                tempReport.txtRptTitle.Text = Util.GetConfig("APP_ABBRV") + " " + tempReport.txtRptTitle.Text;
 
                 //MainReport.Pages.AddRange(tempReport.Pages);
                 // MainReport = tempReport;

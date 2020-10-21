@@ -120,7 +120,7 @@ namespace SETSReport.Controllers.ReportPS
         // set filter data
         public ActionResult viewFilter()
         {
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
             SqlDataAdapter _da = new SqlDataAdapter("Select * From [tbladmrank]", constr);
             DataTable _dt = new DataTable();
@@ -173,7 +173,7 @@ namespace SETSReport.Controllers.ReportPS
                 filterCriteria = " where " + filterCriteria;
             }
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             // sql come from db [view_ReportGroups].SelctionSource
@@ -200,7 +200,7 @@ namespace SETSReport.Controllers.ReportPS
 
         public JsonResult GetSubjects(string SubjCategoryID)
         {
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             SqlDataAdapter _da = new SqlDataAdapter("SELECT * from tblAdmSubject where SubjCategoryID =" + SubjCategoryID, constr);
@@ -234,7 +234,7 @@ namespace SETSReport.Controllers.ReportPS
              string sql = String.Format("SELECT * FROM view_FullExamineeResultsWithQuestions WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
 
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             //SqlDataAdapter _da = new SqlDataAdapter("SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] where actualtestid in(" + Session["selected"] + ") ORDER BY LastFirstMiddle ASC", _con);
@@ -255,6 +255,7 @@ namespace SETSReport.Controllers.ReportPS
             MainReport.txtPrintDate.Text = "Print Date: "   + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
             MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
             MainReport.pbLogo.ImageUrl = Util.GetReportLogoPath();
+            MainReport.txtRptTitle.Text = Util.GetConfig("APP_ABBRV") + " " + MainReport.txtRptTitle.Text;
             
             GroupField item = new GroupField();
             item.FieldName = "ActualTestID";

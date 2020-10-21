@@ -115,7 +115,7 @@ namespace SETSReport.Controllers.ReportPS
 
         public ActionResult viewFilter()
         {
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
             SqlDataAdapter _da = new SqlDataAdapter(Controllers.GlobalVar.TestGroupQuery, constr);
             DataTable _dt = new DataTable();
@@ -143,7 +143,7 @@ namespace SETSReport.Controllers.ReportPS
                 filterCriteria = " where " + filterCriteria;
             }
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             String sql = "SELECT DISTINCT t.TestID, TestName, dbo.GetTestGroupNames(t.TestID) TestGroupNames, 0 IsSelected FROM tblAdmTestTemplates t INNER JOIN tblAdmTestTemplateSubjects ts ON t.TestID = ts.TestID WHERE t.IsActive=1 AND ts.IsActive=1";
@@ -179,7 +179,7 @@ namespace SETSReport.Controllers.ReportPS
 
             string sql = String.Format("SELECT * FROM view_ListOfTests WHERE TestID IN ({0}) ", selectedIDs);
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             SqlDataAdapter _da = new SqlDataAdapter(sql, _con);
@@ -195,6 +195,7 @@ namespace SETSReport.Controllers.ReportPS
             MainReport.txtPrintDate.Text = "Print Date: " + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
             MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
             MainReport.pbLogo.ImageUrl = Util.GetReportLogoPath();
+            MainReport.txtRptTitle.Text = Util.GetConfig("APP_ABBRV") + " " + MainReport.txtRptTitle.Text;
 
             GroupField item = new GroupField();
             item.FieldName = "TestName";

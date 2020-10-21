@@ -22,7 +22,7 @@ namespace SETSReport.Controllers
           {
               string defaultvalue="";
 
-              string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+              string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
               SqlConnection sqlcon = new SqlConnection(constr);
 
               try{
@@ -71,7 +71,7 @@ namespace SETSReport.Controllers
               string path = "";
 
 
-              path = "~/images/heroAccent.png";
+              path = "~/Content/images/" + ConfigurationManager.AppSettings["LogoFileName"];
               return path;
           }
 
@@ -80,7 +80,7 @@ namespace SETSReport.Controllers
               string path = "";
 
 
-              path = "~/images/heroAccent.png";
+              path = "~/" + ConfigurationManager.AppSettings["MediaFolderName"];
               return path;
           }
 

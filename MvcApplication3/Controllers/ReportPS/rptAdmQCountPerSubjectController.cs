@@ -115,7 +115,7 @@ namespace SETSReport.Controllers.ReportPS
 
         public ActionResult viewFilter()
         {
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
             DataTable _dt = new DataTable();
 
@@ -156,7 +156,7 @@ namespace SETSReport.Controllers.ReportPS
                 filterCriteria = " and " + filterCriteria;
             }
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             String sql = string.Format("SELECT s.SubjectID, SubjectName, 0 IsSelected, s.SubjCategoryID, s.SubjGroupID, s.SubjLevelID FROM tblAdmQuestionSubject qs INNER JOIN tblAdmQuestions q ON q.QuestionID = qs.QuestionID INNER JOIN tblAdmSubject s ON qs.SubjectID = s.SubjectID WHERE s.IsActive=1 {0} GROUP BY s.SubjectID, s.SubjectName, s.SubjCategoryID, s.SubjGroupID, s.SubjLevelID " ,filterCriteria);
@@ -184,7 +184,7 @@ namespace SETSReport.Controllers.ReportPS
 
             string sql = String.Format("SELECT *, TotalNumberOfQuestions - BlockedQuestions AvailableQuestions FROM view_ListOfSubjects WHERE SubjectID IN ({0}) ORDER BY {1} {2}", selectedIDs, sortby, Request["rgSortOrder"]);
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
             SqlDataAdapter _da = new SqlDataAdapter(sql, _con);
 
@@ -205,6 +205,8 @@ namespace SETSReport.Controllers.ReportPS
             MainReport.txtSubjCategory.Text = "Category: " + category != null? category: "All";
             MainReport.txtSubjGroup.Text = "Group: " + group !=null? group: "All";
             MainReport.txtSubjLevel.Text = "Level: " + level != null ?  level: "All";
+
+            MainReport.txtRptTitle.Text = Util.GetConfig("APP_ABBRV") + " " + MainReport.txtRptTitle.Text;
 
             MainReport.txtPrintDate.Text = DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
             MainReport.pbLogo.ImageUrl = Util.GetReportLogoPath();

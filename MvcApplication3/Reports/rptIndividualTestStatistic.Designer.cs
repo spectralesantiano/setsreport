@@ -31,7 +31,7 @@
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             this.SubjectName = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.XrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtRptTitle = new DevExpress.XtraReports.UI.XRTableCell();
             this.TSupport = new DevExpress.XtraReports.UI.XRTableCell();
             this.TotalPercentBar = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTable4 = new DevExpress.XtraReports.UI.XRTable();
@@ -153,19 +153,19 @@
             // XrTableRow2
             // 
             this.XrTableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.XrTableCell1});
+            this.txtRptTitle});
             this.XrTableRow2.Name = "XrTableRow2";
             this.XrTableRow2.Weight = 1.25D;
             // 
-            // XrTableCell1
+            // txtRptTitle
             // 
-            this.XrTableCell1.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.XrTableCell1.Name = "XrTableCell1";
-            this.XrTableCell1.StylePriority.UseFont = false;
-            this.XrTableCell1.StylePriority.UseTextAlignment = false;
-            this.XrTableCell1.Text = "SETS Test Result";
-            this.XrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.XrTableCell1.Weight = 1D;
+            this.txtRptTitle.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.txtRptTitle.Name = "txtRptTitle";
+            this.txtRptTitle.StylePriority.UseFont = false;
+            this.txtRptTitle.StylePriority.UseTextAlignment = false;
+            this.txtRptTitle.Text = "Test Result";
+            this.txtRptTitle.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.txtRptTitle.Weight = 1D;
             // 
             // TSupport
             // 
@@ -1272,7 +1272,7 @@
 
         public DevExpress.XtraReports.UI.XRTableCell SubjectName;
         public DevExpress.XtraReports.UI.XRTableRow XrTableRow2;
-        public DevExpress.XtraReports.UI.XRTableCell XrTableCell1;
+        public DevExpress.XtraReports.UI.XRTableCell txtRptTitle;
         public DevExpress.XtraReports.UI.XRTableCell TSupport;
         public DevExpress.XtraReports.UI.XRTableCell TotalPercentBar;
         public DevExpress.XtraReports.UI.XRTable XrTable4;

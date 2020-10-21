@@ -115,7 +115,7 @@ namespace SETSReport.Controllers.ReportPS
 
         public ActionResult viewFilter()
         {
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
             DataTable _dt = new DataTable();
 
@@ -151,7 +151,7 @@ namespace SETSReport.Controllers.ReportPS
                 filterCriteria = " where " + filterCriteria;
             }
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             String sql = string.Format("SELECT DISTINCT 0 IsSelected, SubjectName, dbo.GetSubjectTestNames(SubjectID) TestName FROM view_FullExamineeResultsWithQuestions {0} ORDER BY SubjectName ASC ", filterCriteria);
@@ -177,7 +177,7 @@ namespace SETSReport.Controllers.ReportPS
 
             string sql = String.Format("SELECT * FROM view_QuestionStatistics WHERE SubjectName IN ({0}) {1} ORDER BY {2} {3}", selectedIDs, conditions, Request["cbeSortBy"], Request["rgSortOrder"]);
 
-            string constr = ConfigurationManager.ConnectionStrings["dropdownconn"].ToString();
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
             SqlDataAdapter _da = new SqlDataAdapter(sql, _con);
 
@@ -187,6 +187,7 @@ namespace SETSReport.Controllers.ReportPS
             MainReport.DataSource = ds;
 
             MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
+            MainReport.txtRptTitle.Text = Util.GetConfig("APP_ABBRV") + " " + MainReport.txtRptTitle.Text;
 
             MainReport.txtPrintDate.Text = "Print Date: " + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
             MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");

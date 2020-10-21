@@ -53,7 +53,7 @@
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.XrTable5 = new DevExpress.XtraReports.UI.XRTable();
             this.XrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.XrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.txtRptTitle = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
             this.txtSortedBy = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -385,19 +385,19 @@
             // XrTableRow2
             // 
             this.XrTableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.XrTableCell3});
+            this.txtRptTitle});
             this.XrTableRow2.Name = "XrTableRow2";
             this.XrTableRow2.Weight = 1.0416667175292969D;
             // 
-            // XrTableCell3
+            // txtRptTitle
             // 
-            this.XrTableCell3.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.XrTableCell3.Name = "XrTableCell3";
-            this.XrTableCell3.StylePriority.UseFont = false;
-            this.XrTableCell3.StylePriority.UseTextAlignment = false;
-            this.XrTableCell3.Text = "SETS Test Results Summary";
-            this.XrTableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            this.XrTableCell3.Weight = 1D;
+            this.txtRptTitle.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRptTitle.Name = "txtRptTitle";
+            this.txtRptTitle.StylePriority.UseFont = false;
+            this.txtRptTitle.StylePriority.UseTextAlignment = false;
+            this.txtRptTitle.Text = "Test Results Summary";
+            this.txtRptTitle.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.txtRptTitle.Weight = 1D;
             // 
             // XrTableRow1
             // 
@@ -722,7 +722,7 @@
         public DevExpress.XtraReports.UI.DetailBand Detail;
         public DevExpress.XtraReports.UI.XRTable XrTable5;
         public DevExpress.XtraReports.UI.XRTableRow XrTableRow2;
-        public DevExpress.XtraReports.UI.XRTableCell XrTableCell3;
+        public DevExpress.XtraReports.UI.XRTableCell txtRptTitle;
         public DevExpress.XtraReports.UI.XRTableRow XrTableRow1;
         public DevExpress.XtraReports.UI.XRTableCell txtSortedBy;
         public DevExpress.XtraReports.UI.XRTableCell XrTableCell1;
