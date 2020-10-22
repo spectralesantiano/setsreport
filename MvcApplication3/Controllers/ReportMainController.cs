@@ -89,7 +89,7 @@ namespace SETSReport.Controllers
         //
         // GET: /ReportMain/
 
-        public ActionResult Index()
+        public ActionResult Index() //Index([FromQuery] string id)
         {
             List<SelectListItem> dummylist = new List<SelectListItem>();
             dummylist.Add(new SelectListItem()

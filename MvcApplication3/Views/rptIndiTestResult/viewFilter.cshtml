@@ -87,12 +87,17 @@ h5 {
   grid-template-columns: 1fr 3fr;
 }*@
 
+.leftcol{
+    overflow-y: scroll;
+    height: 300px;
+}
+
 </style>
 
 
-<h4 style="font:arial" class="FIlterHeader">Individual Test Results - Individual Test Results</h4>  
+@*<h4 style="font:arial" class="FIlterHeader">Individual Test Results - Individual Test Results</h4>*@
 
-<fieldset>  
+
         @*<legend></legend>  *@
 
        @*////// The sent button must be hide or do not add. Because theres already a generic button on the print selection(reportmain/index.cshtml) *@
@@ -105,94 +110,95 @@ h5 {
                             null, new { id = rptname, @class = "form-inline" }))
       {  
           <fieldset>  
-            <div class="row-fluid">
-                    <div class="span6" style="">
+                <div class="row-fluid">@*  leftcol">*@
+                    <div class="span6">
+                           
                            <div><h5>Selection Filter / Sorting</h5></div>
-                  
-                            @* <div class="control-group">*@
-                                 @Html.Label("Test Name:", new { @class = "control-label" })
-                               @*   <label class="control-label" for="lueTestName">Test Name:</label>*@
-                                 <div class="controls">
-                                <div class="input-append">
+                              
+                                    @* <div class="control-group">*@
+                                         @Html.Label("Test Name:", new { @class = "control-label" })
+                                       @*   <label class="control-label" for="lueTestName">Test Name:</label>*@
+                                         <div class="controls">
+                                        <div class="input-append">
                                    
                                         @Html.DropDownList("TestName", ViewBag.TestName as SelectList,"" , new { id = "lueTestName" } )  
-                                          <button id = "clearlueTestName" type ="button" class="btn">x</button>  
-                            </div></div>@*</div>*@
+                                        <button id = "clearlueTestName" type ="button" class="btn">x</button>  
+                                     </div></div>@*</div>*@
           
-                              @Html.Label("Rank:", new { @class = "control-label" })
-                                 <div class="controls">
-                                 <div class="input-append">
-                                @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, "", new { id = "lueRank" })  
-                                 <button id = "clearlueRank" type ="button" class="btn">x</button>  
-                                 </div></div>
+                                      @Html.Label("Rank:", new { @class = "control-label" })
+                                         <div class="controls">
+                                         <div class="input-append">
+                                        @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, "", new { id = "lueRank" })  
+                                         <button id = "clearlueRank" type ="button" class="btn">x</button>  
+                                         </div></div>
 
-                                   @Html.Label("From Date:", new { @class = "control-label" }) 
-                                <div class="controls">
-                                 <div class="input-append">
-                               @Html.TextBox("deFromDate", "", new { @class = "datepicker", autocomplete = "off" })
-                                <button id = "cleardeFromDate" type ="button" class="btn">x</button>
-                                </div></div>
+                                           @Html.Label("From Date:", new { @class = "control-label" }) 
+                                        <div class="controls">
+                                         <div class="input-append">
+                                       @Html.TextBox("deFromDate", "", new { @class = "datepicker", autocomplete = "off" })
+                                        <button id = "cleardeFromDate" type ="button" class="btn">x</button>
+                                        </div></div>
 
-                                   @Html.Label("To Date:", new { @class = "control-label" })    
-                             <div class="controls">
-                                 <div class="input-append">
-                               @Html.TextBox("deToDate", "", new { @class = "datepicker", autocomplete = "off" })
-                                <button id = "cleardeToDate" type ="button" class="btn">x</button>
-                                </div></div>
+                                           @Html.Label("To Date:", new { @class = "control-label" })    
+                                     <div class="controls">
+                                         <div class="input-append">
+                                       @Html.TextBox("deToDate", "", new { @class = "datepicker", autocomplete = "off" })
+                                        <button id = "cleardeToDate" type ="button" class="btn">x</button>
+                                        </div></div>
                             
-                              @Html.Label("First Name:", new { @class = "control-label" })
-                                @*@Html.DropDownList("SubjCategoryID", ViewBag.SubjectCat as SelectList,new { id = "subjectcat" })*@
-                                <div class="controls">
-                                <div class="input-append">
-                                @Html.TextBox("teFirstName", "", new { id = "teFirstName" })
-                                <button id = "clearteFirstName" type ="button" class="btn">x</button>
-                              </div></div>
+                                      @Html.Label("First Name:", new { @class = "control-label" })
+                                        @*@Html.DropDownList("SubjCategoryID", ViewBag.SubjectCat as SelectList,new { id = "subjectcat" })*@
+                                        <div class="controls">
+                                        <div class="input-append">
+                                        @Html.TextBox("teFirstName", "", new { id = "teFirstName" })
+                                        <button id = "clearteFirstName" type ="button" class="btn">x</button>
+                                      </div></div>
                     
-                                @Html.Label("Last Name:", new { @class = "control-label" })  
-                                @* @Html.DropDownList("SubjectID", ViewBag.SubjectList as SelectList, new { id = "subjects" })*@
-                                @*@Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects", style = "min-width: 250px;" })*@
-                                <div class="controls">
-                                <div class="input-append">
-                                 @Html.TextBox("teLastName", "", new { id = "teLastName" })
-                                 <button id = "clearteLastName" type ="button" class="btn">x</button>
-                                 </div></div>
+                                        @Html.Label("Last Name:", new { @class = "control-label" })  
+                                        @* @Html.DropDownList("SubjectID", ViewBag.SubjectList as SelectList, new { id = "subjects" })*@
+                                        @*@Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects", style = "min-width: 250px;" })*@
+                                        <div class="controls">
+                                        <div class="input-append">
+                                         @Html.TextBox("teLastName", "", new { id = "teLastName" })
+                                         <button id = "clearteLastName" type ="button" class="btn">x</button>
+                                         </div></div>
                     
-                                @Html.Label("Nationality:", new { @class = "control-label" })
-                                <div class="controls">
-                                 <div class="input-append">
-                                @Html.DropDownList("lueNat", ViewBag.Nationality as SelectList, "", new { id = "lueNat" })
-                                <button id = "clearlueNat" type ="button" class="btn">x</button>  
-                                </div></div>
+                                        @Html.Label("Nationality:", new { @class = "control-label" })
+                                        <div class="controls">
+                                         <div class="input-append">
+                                        @Html.DropDownList("lueNat", ViewBag.Nationality as SelectList, "", new { id = "lueNat" })
+                                        <button id = "clearlueNat" type ="button" class="btn">x</button>  
+                                        </div></div>
                     
-                             @Html.Label("Taken at:", new { @class = "control-label" })    
-                             <div class="controls">  
-                                 <div class="input-append">
-                                 @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "", new { id = "lueCompany" })
-                                <button id = "clearlueCompany" type ="button" class="btn">x</button>                              
-                            </div></div>
+                                     @Html.Label("Taken at:", new { @class = "control-label" })    
+                                     <div class="controls">  
+                                         <div class="input-append">
+                                         @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "", new { id = "lueCompany" })
+                                        <button id = "clearlueCompany" type ="button" class="btn">x</button>                              
+                                    </div></div>
                         
-                              @*  @Html.Label("Sorting")*@
+                                      @*  @Html.Label("Sorting")*@
                         
-                            <br />
+                                    <br />
                             
-                                @Html.Label("Sort by:", new { @class = "control-label" })
-                                <label class="control-label" style="font-size:smaller" >(Result sorting also affected.)</label>
+                                    @Html.Label("Sort by:", new { @class = "control-label" })
+                                    <label class="control-label" style="font-size:smaller" >(Result sorting also affected.)</label>
                               
-                                 @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
-                                <div class="controls">
-                                <label>
-                                    @Html.RadioButton("rgSortOrder", "Asc", true)
-                                    Ascending
-                                </label>
+                                        @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
+                                    <div class="controls">
+                                    <label>
+                                        @Html.RadioButton("rgSortOrder", "Asc", true)
+                                        Ascending
+                                    </label>
                     
-                                <label>
-                                    @Html.RadioButton("rgSortOrder", "Desc")
-                                    Descending
-                                </label></div>
-            
-                        <br />
-                        <button id = "btnFilter" type ="button" class="btn">Apply Filter</button>  
-                     
+                                    <label>
+                                        @Html.RadioButton("rgSortOrder", "Desc")
+                                        Descending
+                                    </label></div>
+                           
+                           <br />
+                           <button id = "btnfilter" type ="button" class="btn">Apply filter</button>  
+                           
                      </div>
                     <div class="span6">
                          <div><h5>Result Filter / Sorting:</h5></div>   
@@ -217,8 +223,10 @@ h5 {
                                 </div>
                           </div>
                     </div>
-            </div>
 
+                     </div>
+               @* <br />
+                <button id = "btnFilter" type ="button" class="btn">Apply Filter</button>  *@
          </fieldset>                
           
                     
@@ -313,7 +321,6 @@ h5 {
     @*<button id = "btncalc">Calculate</button>  *@
       }     
    @*   <button id = "btnselected">selected</button>  *@
-</fieldset>  
 
 <script type ="text/javascript">
 
