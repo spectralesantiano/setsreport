@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
-  <publishProfile publishUrl="C:\VUE\PulishSETSReport" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="SETSReport" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+  <publishProfile publishUrl="C:\VUE\PulishSETSReport2" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="SETSReport" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
     <file relUrl="Views/rptAdmQCountPerTest/viewFilter.cshtml" publishTime="10/22/2020 21:37:09" />
     <file relUrl="bin/MvcCheckBoxList.dll" publishTime="10/01/2020 16:14:32" />
     <file relUrl="bin/Antlr3.Runtime.dll" publishTime="08/20/2020 11:44:19" />
@@ -42,10 +42,10 @@
     <file relUrl="Views/rptAdmQCountPerSubject/viewFilter.cshtml" publishTime="10/22/2020 21:37:09" />
     <file relUrl="Views/ReportMain/ShowRptList.cshtml" publishTime="10/22/2020 21:37:08" />
     <file relUrl="Content/bootstrap-glyphicons.css" publishTime="10/22/2020 21:37:02" />
-    <file relUrl="bin/SETSReport.pdb" publishTime="10/23/2020 13:17:44" />
+    <file relUrl="bin/SETSReport.pdb" publishTime="10/23/2020 16:56:55" />
     <file relUrl="bin/System.Web.WebPages.xml" publishTime="08/20/2020 11:44:12" />
     <file relUrl="Scripts/knockout-2.1.0.debug.js" publishTime="08/20/2020 11:44:20" />
-    <file relUrl="bin/SETSReport.dll" publishTime="10/23/2020 13:17:44" />
+    <file relUrl="bin/SETSReport.dll" publishTime="10/23/2020 16:56:55" />
     <file relUrl="Images/orderedList1.png" publishTime="08/20/2020 11:43:56" />
     <file relUrl="Scripts/bootstrap.js" publishTime="10/22/2020 21:37:08" />
     <file relUrl="Views/Home/Contact.cshtml" publishTime="08/20/2020 11:43:56" />
@@ -63,7 +63,7 @@
     <file relUrl="Scripts/bootstrap.min.js" publishTime="10/22/2020 21:37:08" />
     <file relUrl="Images/orderedList3.png" publishTime="08/20/2020 11:43:56" />
     <file relUrl="Content/bootstrap.min.css" publishTime="10/22/2020 21:37:02" />
-    <file relUrl="Web.config" publishTime="10/23/2020 16:10:59" />
+    <file relUrl="Web.config" publishTime="10/23/2020 17:00:22" />
     <file relUrl="Scripts/jquery-1.7.1.js" publishTime="08/20/2020 11:44:03" />
     <file relUrl="Views/Account/_SetPasswordPartial.cshtml" publishTime="09/25/2020 10:38:48" />
     <file relUrl="Images/orderedList8.png" publishTime="08/20/2020 11:43:56" />
@@ -132,7 +132,7 @@
     <file relUrl="Views/rptSubjectResultSummary/_DocumentViewer1Partial.cshtml" publishTime="10/22/2020 21:37:09" />
     <file relUrl="Scripts/jquery.validate.unobtrusive.js" publishTime="08/20/2020 11:44:09" />
     <file relUrl="Views/rptIndiTestResult_wAnsOptions/viewFilter.cshtml" publishTime="10/22/2020 21:37:09" />
-    <file relUrl="Views/rptIndiTestResult/viewFilter.cshtml" publishTime="10/22/2020 21:37:09" />
+    <file relUrl="Views/rptIndiTestResult/viewFilter.cshtml" publishTime="10/23/2020 16:55:40" />
     <file relUrl="Views/rptAvgScoring/_DocumentViewer1Partial.cshtml" publishTime="10/22/2020 21:37:09" />
     <file relUrl="Views/rptSubjectResultSummary/viewFilter.cshtml" publishTime="10/22/2020 21:37:09" />
     <file relUrl="bin/EntityFramework.dll" publishTime="08/20/2020 11:44:01" />

@@ -18,7 +18,7 @@
     float: left;
     width: 50%;
 }*@
-
+    
 h5 {
    border-bottom: 1px solid #000;
    width:100%;
@@ -44,13 +44,7 @@ h5 {
                           @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList,  new { id = "lueCompany" })  
                       </div>    
 
-                      <div>Nationality:</div>
-                      <div class="controls">
-                          <div class="input-append">
-                              @Html.DropDownList("lueNat", ViewBag.Nationality as SelectList, new { id = "lueNat", @size = "8", @multiple = "multiple", @class = "Listbox" })
-                               <button id = "clearlueNat" type ="button" class="btn">x</button>    
-                          </div>   
-                      </div>      
+                      
 
                       <br />
                      @Html.Label("Sort by:", new { @class = "control-label" })
@@ -71,7 +65,15 @@ h5 {
 
                 <div class="span6">
                     <div><h5>Result Filter / Sorting:</h5></div>
-                                             
+                    
+                    <div>Nationality:</div>
+                      <div class="controls">
+                          <div class="input-append">
+                              @Html.DropDownList("lueNat", ViewBag.Nationality as SelectList, new { id = "lueNat", @size = "8", @multiple = "multiple", @class = "Listbox" })
+                               <button id = "clearlueNat" type ="button" class="btn">x</button>    
+                          </div>   
+                      </div>      
+
                     <div class="control-group">
                         @Html.Label("Sort by:", new { @class = "control-label" })
                        <div class="controls">
