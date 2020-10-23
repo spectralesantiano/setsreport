@@ -145,7 +145,7 @@ namespace SETSReport.Controllers
                 //_da.Fill(_dt);
                 //ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
 
-                SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "'", constr);
+                SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'", constr);
                 //_dt.Clear();
                 //_dt.Columns.Clear();
                 _da.Fill(_dt);
@@ -180,6 +180,7 @@ namespace SETSReport.Controllers
                             }
                             else
                             {
+                                //Response.Write(GetIp());
                                 return View();
                             }
                 
@@ -297,6 +298,17 @@ namespace SETSReport.Controllers
                 return View();
             }
         }
+
+        public string GetIp()  
+            {  
+            string ip = System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];  
+            if (string.IsNullOrEmpty(ip))  
+            {  
+               ip = System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];  
+            }  
+            return ip;  
+            }  
+
 
     }
 }
