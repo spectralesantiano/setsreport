@@ -192,7 +192,7 @@ namespace SETSReport.Controllers
                 }
                 else
                 {
-                   return View("noReferer");
+                   return View();
                 }
         }
 
