@@ -31,3 +31,4 @@ C:\VUE\MvcApplication3\testBootStrapUI\bin\System.Web.WebPages.Deployment.xml
 C:\VUE\MvcApplication3\testBootStrapUI\bin\System.Web.WebPages.Razor.xml
 C:\VUE\MvcApplication3\testBootStrapUI\obj\Debug\testBootStrapUI.dll
 C:\VUE\MvcApplication3\testBootStrapUI\obj\Debug\testBootStrapUI.pdb
+C:\VUE\MvcApplication3\testBootStrapUI\obj\Debug\testBootStrapUI.csprojResolveAssemblyReference.cache

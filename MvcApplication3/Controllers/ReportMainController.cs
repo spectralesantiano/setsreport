@@ -13,6 +13,14 @@ namespace SETSReport.Controllers
 {
     public class ReportMainController : Controller
     {
+        internal enum DurationTypes { 
+            Second,
+            Minute,
+            Hour,
+            Day,
+            Month,
+            Year
+        }
 
         public ActionResult showSelectionList(string fieldname,string fieldvalue)
         {
@@ -88,8 +96,7 @@ namespace SETSReport.Controllers
         
         //
         // GET: /ReportMain/
-
-        public ActionResult Index() //Index([FromQuery] string id)
+        public ActionResult Index(string id)
         {
             List<SelectListItem> dummylist = new List<SelectListItem>();
             dummylist.Add(new SelectListItem()
@@ -97,37 +104,95 @@ namespace SETSReport.Controllers
                 Text = "- No Data -",
                 Value = ""
             });
+
             ViewBag.selectionlist = new SelectList(dummylist, "Value", "Text");
+            ViewBag.logopath = Util.GetReportLogoPath().Replace("~", ""); //string "~" are not processed inside <img src>
 
-            string frURI = ConfigurationManager.AppSettings["SetRefererURI"] == null ? "" : ConfigurationManager.AppSettings["SetRefererURI"].ToString();
-            string referURI; //= Request.UrlReferrer.AbsoluteUri == null ? "" : Request.UrlReferrer.AbsoluteUri.ToString();
+            //--- code to check referer
+            //string frURI = ConfigurationManager.AppSettings["SetRefererURI"] == null ? "" : ConfigurationManager.AppSettings["SetRefererURI"].ToString();
+            //string referURI; //= Request.UrlReferrer.AbsoluteUri == null ? "" : Request.UrlReferrer.AbsoluteUri.ToString();
             
-            if (Request.UrlReferrer == null)
-            { 
-                referURI = "";
-            }
-            else {
-                referURI = Request.UrlReferrer.AbsoluteUri.ToString();
-            }
+            //if (Request.UrlReferrer == null)
+            //{ 
+            //    referURI = "";
+            //}
+            //else {
+            //    referURI = Request.UrlReferrer.AbsoluteUri.ToString();
+            //}
 
-            ViewBag.logopath = Util.GetReportLogoPath().Replace("~",""); //string "~" are not processed inside <img src>
+            //if (frURI != "")
+            //{
+            //    if (referURI.Contains(frURI))
+            //    {
+            //        return View();
+            //    }
+            //    else
+            //    {
+            //       return View("noReferer");
+            //    }
+            //}
+            //else
+            //{
+            //    return View();
+            //}
 
-            if (frURI != "")
+            if (ConfigurationManager.AppSettings["CheckParam"] == "1")
             {
-                if (referURI.Contains(frURI))
-                {
-                    return View();
+                string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
+                SqlConnection _con = new SqlConnection(constr);
+                //SqlDataAdapter _da = new SqlDataAdapter("Select * From [view_ReportGroups]", constr);
+                DataTable _dt = new DataTable();
+                //_da.Fill(_dt);
+                //ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
+
+                SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "'", constr);
+                //_dt.Clear();
+                //_dt.Columns.Clear();
+                _da.Fill(_dt);
+
+                if (_dt.Rows.Count > 0 ){
+
+                            DateTime sdate = (DateTime)_dt.Rows[0]["serverDate"];
+                            DateTime logdate = (DateTime)_dt.Rows[0]["DateLoggedIn"];
+                            int validityt = Convert.ToInt32(_dt.Rows[0]["ValidityType"]);
+                            DateTime newdate;
+
+                            switch (validityt)
+                            {
+                                case 0:
+                                        newdate = logdate.AddSeconds((int)_dt.Rows[0]["Validity"]); break;
+                                case 1:
+                                        newdate = logdate.AddMinutes((int)_dt.Rows[0]["Validity"]); break;
+                                case 2:
+                                        newdate = logdate.AddHours((int)_dt.Rows[0]["Validity"]); break;
+                                case 3:
+                                        newdate = logdate.AddDays((int)_dt.Rows[0]["Validity"]); break;
+                                case 4:
+                                        newdate = logdate.AddMonths((int)_dt.Rows[0]["Validity"]); break;
+                                case 5:
+                                        newdate = logdate.AddYears((int)_dt.Rows[0]["Validity"]); break;
+                                default: newdate = sdate; break;
+                            }
+
+                            if (newdate < sdate)
+                            {
+                                return View("noReferer");
+                            }
+                            else
+                            {
+                                return View();
+                            }
+                
+                        }
+                        else
+                        {
+                            return View("noReferer");
+                        }
                 }
                 else
                 {
                    return View("noReferer");
                 }
-            }
-            else
-            {
-                return View();
-            }
-            
         }
 
         [NonAction]

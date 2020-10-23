@@ -313,8 +313,8 @@ namespace SETSReport.Controllers.ReportPS
                 tempReport.Highest.Text = row["Highest"].ToString();
                 tempReport.Average.Text = row["Average"].ToString();
                 tempReport.CompanyName.Text = row["CompanyName"].ToString();
-                tempReport.CreateDocument();
                 tempReport.txtRptTitle.Text = Util.GetConfig("APP_ABBRV") + " " + tempReport.txtRptTitle.Text;
+                tempReport.CreateDocument();
 
                 //MainReport.Pages.AddRange(tempReport.Pages);
                 // MainReport = tempReport;
