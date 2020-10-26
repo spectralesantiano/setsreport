@@ -7,20 +7,21 @@ using SETSReport.Models;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Configuration;
 
 
 namespace SETSReport.Controllers
 {
     public class ReportMainController : Controller
     {
-        internal enum DurationTypes { 
-            Second,
-            Minute,
-            Hour,
-            Day,
-            Month,
-            Year
-        }
+        //internal enum DurationTypes { 
+        //    Second,
+        //    Minute,
+        //    Hour,
+        //    Day,
+        //    Month,
+        //    Year
+        //}
 
         public ActionResult showSelectionList(string fieldname,string fieldvalue)
         {
@@ -105,6 +106,7 @@ namespace SETSReport.Controllers
                 Value = ""
             });
 
+            //Encrypt();
             ViewBag.selectionlist = new SelectList(dummylist, "Value", "Text");
             ViewBag.logopath = Util.GetReportLogoPath().Replace("~", ""); //string "~" are not processed inside <img src>
 
@@ -145,7 +147,9 @@ namespace SETSReport.Controllers
                 //_da.Fill(_dt);
                 //ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
 
-                SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'", constr);
+                //SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'", constr);
+                SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "'", constr);
+
                 //_dt.Clear();
                 //_dt.Columns.Clear();
                 _da.Fill(_dt);
@@ -307,7 +311,32 @@ namespace SETSReport.Controllers
                ip = System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];  
             }  
             return ip;  
-            }  
+            }
+
+
+        //public ActionResult Encrypt()
+        //{
+        //    ProtectSection("connectionString", "RSAProtectedConfigurationProvider");
+
+        //    return View();
+        //} 
+
+        //private void ProtectSection(string sectionName,
+        //                string provider)
+        //{
+        //    Configuration config =
+        //       WebConfigurationManager.
+        //            OpenWebConfiguration(Request.ApplicationPath);
+        //    ConfigurationSection section =
+        //                 config.GetSection(sectionName);
+
+        //    if (section != null &&
+        //              !section.SectionInformation.IsProtected)
+        //    {
+        //        section.SectionInformation.ProtectSection(provider);
+        //        config.Save();
+        //    }
+        //}
 
 
     }
