@@ -147,8 +147,8 @@ namespace SETSReport.Controllers
                 //_da.Fill(_dt);
                 //ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
 
-                //SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'", constr);
-                SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "'", constr);
+                SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'", constr);
+                //SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "'", constr);
 
                 //_dt.Clear();
                 //_dt.Columns.Clear();
