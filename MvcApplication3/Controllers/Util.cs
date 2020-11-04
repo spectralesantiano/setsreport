@@ -30,7 +30,8 @@ namespace SETSReport.Controllers
                    SqlCommand sqlcmd = new SqlCommand("SELECT [TextValue] FROM SETS.dbo.tblconfig  WHERE Code='" + cCode + "'", sqlcon);
                   object tmpval;
                   tmpval = sqlcmd.ExecuteScalar();
-                  if (tmpval == System.DBNull.Value)
+                 // if (tmpval == System.DBNull.Value)
+                  if (tmpval == null)
                   {
                     defaultvalue = "";
                   }
