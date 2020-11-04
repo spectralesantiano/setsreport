@@ -1,0 +1,352 @@
+﻿@*//////// ---------------- name 'viewFilter.cshtml' is mandatory --------------/// *@
+@*//////// ---------------- as well as _DocumentViewer1Partial.cshtml --------------/// *@
+
+@model SETSReport.Models.RankModel
+@*@model SETSReport.Models.ExamineeRankModel*@
+
+@{
+    Layout = null;// "~/views/shared/_layout.cshtml";
+}
+
+   <link href="@Url.Content("~/Content/bootstrap-datepicker.css")" rel="stylesheet" type="text/css" />
+  <link href="@Url.Content("~/Content/bootstrap-datepicker.min.css")" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+<script type="text/javascript" src="/Scripts/bootstrap.js">      </script>
+<script type="text/javascript" src="/Scripts/bootstrap-datepicker.js">      </script>
+<script type="text/javascript" src="/Scripts/bootstrap-datepicker.min.js">      </script>
+
+<style>
+ fieldset {
+  padding: 1px;
+}
+.row {
+    background: #f6f6f6;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    padding: 3px;
+}
+.col {
+    float: left;
+    text-align:left;
+    padding: 10px;
+    white-space: nowrap
+}
+.collabel {
+    float: left;
+    text-align:left;
+    padding: 5px;
+    font-size :small;
+    white-space: nowrap;
+    padding-top:1px;
+    font-family:Arial
+}
+
+#filterview select{
+   @* width: 160px;
+    float: right;
+    clear: both;*@
+}
+
+#filterview input{
+   @*width: 180px;
+ float: right;
+  clear: both;*@
+}
+
+h5 {
+   border-bottom: 1px solid #000;
+   width:100%;
+}
+
+</style>
+
+@*<h4 style="font:arial" class="FIlterHeader">Test Result Summary</h4> *@
+
+
+       @*<legend></legend>  *@
+
+       @{string rptname = "rptTestResultSummaryForm";}
+    
+          
+      @using (Ajax.BeginForm("DocumentViewerPartial", rptname, null,
+                            null, new { id = rptname, @class = "form-inline"}))
+      {  
+        <fieldset>  
+            <div class="row-fluid">
+                   <div class="span6">
+                             <div><h5>Selection Filter / Sorting</h5></div>
+                  
+                            @* <div class="control-group">*@
+                                 @Html.Label("Test Name:", new { @class = "control-label" })
+                               @*   <label class="control-label" for="lueTestName">Test Name:</label>*@
+                                 <div class="controls">
+                                <div class="input-append">
+                                   
+                            @Html.DropDownList("TestName", ViewBag.TestName as SelectList,"" , new { id = "lueTestName" } )  
+                                <button id = "clearlueTestName" type ="button" class="btn">x</button>  
+                             </div></div>@*</div>*@
+          
+                              @Html.Label("Rank:", new { @class = "control-label" })
+                                 <div class="controls">
+                                 <div class="input-append">
+                                @Html.DropDownListFor(r => r.PositionID, ViewBag.RankList as SelectList, "", new { id = "lueRank" })  
+                                 <button id = "clearlueRank" type ="button" class="btn">x</button>  
+                                 </div></div>
+
+                                   @Html.Label("From Date:", new { @class = "control-label" }) 
+                                <div class="controls">
+                                 <div class="input-append">
+                               @Html.TextBox("deFromDate", "", new { @class = "datepicker", autocomplete = "off" })
+                                <button id = "cleardeFromDate" type ="button" class="btn">x</button>
+                                </div></div>
+
+                                   @Html.Label("To Date:", new { @class = "control-label" })    
+                             <div class="controls">
+                                 <div class="input-append">
+                               @Html.TextBox("deToDate", "", new { @class = "datepicker", autocomplete = "off" })
+                                <button id = "cleardeToDate" type ="button" class="btn">x</button>
+                                </div></div>
+                            
+                              @Html.Label("First Name:", new { @class = "control-label" })
+                                @*@Html.DropDownList("SubjCategoryID", ViewBag.SubjectCat as SelectList,new { id = "subjectcat" })*@
+                                <div class="controls">
+                                <div class="input-append">
+                                @Html.TextBox("teFirstName", "", new { id = "teFirstName" })
+                                <button id = "clearteFirstName" type ="button" class="btn">x</button>
+                              </div></div>
+                    
+                                @Html.Label("Last Name:", new { @class = "control-label" })  
+                                @* @Html.DropDownList("SubjectID", ViewBag.SubjectList as SelectList, new { id = "subjects" })*@
+                                @*@Html.DropDownList("SubjectID", Enumerable.Empty<SelectListItem>(), new { id = "subjects", style = "min-width: 250px;" })*@
+                                <div class="controls">
+                                <div class="input-append">
+                                 @Html.TextBox("teLastName", "", new { id = "teLastName" })
+                                 <button id = "clearteLastName" type ="button" class="btn">x</button>
+                                 </div></div>
+                    
+                                @Html.Label("Nationality:", new { @class = "control-label" })
+                                <div class="controls">
+                                 <div class="input-append">
+                                @Html.DropDownList("lueNat", ViewBag.Nationality as SelectList, "", new { id = "lueNat" })
+                                <button id = "clearlueNat" type ="button" class="btn">x</button>  
+                                </div></div>
+                    
+                             @Html.Label("Taken at:", new { @class = "control-label" })    
+                             <div class="controls">  
+                                 <div class="input-append">
+                                 @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "", new { id = "lueCompany" })
+                                <button id = "clearlueCompany" type ="button" class="btn">x</button>                              
+                            </div></div>
+                        
+                              @*  @Html.Label("Sorting")*@
+                        
+                               <br />
+                            
+                                @Html.Label("Sort by:", new { @class = "control-label" })
+                              
+                                 @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
+                                <div class="controls">
+                                <label>
+                                    @Html.RadioButton("rgSortOrder", "Asc", true)
+                                    Ascending
+                                </label>
+                                <label>
+                                    @Html.RadioButton("rgSortOrder", "Desc")
+                                    Descending
+                                </label></div>
+            
+                                <br />
+                                <button id = "btnFilter" type ="button" class="btn">Apply Filter</button>  
+
+                         </div>  
+                         <div class="span6">
+                                <div><h5>Result Filter / Sorting:</h5></div>
+                                
+                                 @Html.Label("Include:", new { @class = "control-label" }) 
+                    
+                                <div class="control-group">
+                                    <div><label>
+                                        @Html.RadioButton("rgSortedBy", "LastFirstMiddle", true) Sorted by Examinee Name
+                                    </label></div>
+                    
+                                    <div><label>
+                                        @Html.RadioButton("rgSortedBy", "TotalPercent") Sorted by Score
+                                    </label></div>
+                   
+                                    <div><label>
+                                        @Html.RadioButton("rgSortedBy", "DateTaken") Sorted by Date Taken
+                                    </label></div>
+                           
+                                    <div><label>
+                                        @Html.RadioButton("rgSortedBy", "TestName") Sorted by Test Name
+                                    </label></div>
+                
+                                    <div><label>
+                                        @Html.RadioButton("rgSortedBy", "RankName") Sorted by Rank
+                                    </label></div>
+                                </div>
+
+                                <div>
+                                    <label>
+                                        @Html.RadioButton("rptSortdOrder", "Asc", true) Ascending
+                                    </label>
+                    
+                                    <label>
+                                        @Html.RadioButton("rptSortdOrder", "Desc") Descending
+                                    </label>
+                                 </div>
+                        
+                        </div>
+
+                       
+
+                        @Html.Hidden("SortedDesc", "", new { id = "SortedDesc" }) 
+
+          
+                        @* ////---- this div is required ----------/////*@
+                        <div>
+                            @* ////---- 'txtselected' name is required ----------/////*@
+                            @Html.Hidden("txtselected", "", new { id = "txtselected" })  
+                        </div>
+          
+               </div>
+           </fieldset>  
+      }     
+
+    @*<button id = "btnselected">selected</button>  *@
+
+
+
+<script type ="text/javascript">
+
+    var rpt = 'rptTestResultSummaryForm';
+
+    $("#btnFilter").click(
+    function () {
+        //        var ss = $("#testname option:selected").val();
+        var dict = new Object();
+
+        dict["FName"] = $("#teFirstName").val();
+        dict["LName"] = $("#teLastName").val(); 
+        dict["PositionID"] = $("#lueRank").val();
+        dict["TestName"] = $("#lueTestName").val();
+        dict["DateTaken"] = $("#deFromDate").val();
+        dict["ToDate"] = $("#deToDate").val();
+        // dict["AnswerFilter"] = $("[name='AnswerFilter']:checked").val();
+        dict["Nat"] = $("#lueNat").val();
+        dict["CompanyName"] = $("#lueCompany").val();
+
+        // --- required ---//
+        $("#SelectionView").load("/" + rpt + "/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
+
+    }
+    )
+
+
+    $("input[name='rgSortedBy']").click(
+    function () {
+        //        alert("test");
+        var SortedDesc = $("input[name='rgSortedBy']:checked").parent().text();
+        $("#SortedDesc").val($.trim(SortedDesc));
+    }
+    )
+
+//    $("input[type='button']").click(function () {
+//        var radioValue = $("input[name='gender']:checked").val();
+//        if (radioValue) {
+//            alert("Your are a - " + radioValue);
+//        }
+//    });
+
+    $.fn.addItems = function (data) {
+        return this.each(function () {
+            var list = this;
+            $.each(data, function (index, itemData) {
+                alert(itemData);
+                var option = new Option(itemData.Text, itemData.Value);
+                list.add(option);
+            });
+        });
+    };
+
+    $("#clearlueTestName").click(
+        function () {
+//            alert($("#lueTestName option:selected").val());
+            $("#lueTestName").val("");
+//            $("#lueTestName option:selected").removeAttr('selected');
+        }
+    )
+
+    $("#clearlueRank").click(
+        function () {
+            //            alert($("#lueTestName option:selected").val());
+            $("#lueRank").val("");
+            //            $("#lueTestName option:selected").removeAttr('selected');
+        }
+    )
+
+    $("#clearlueNat").click(
+        function () {
+            //            alert($("#lueTestName option:selected").val());
+            $("#lueNat").val("");
+            //            $("#lueTestName option:selected").removeAttr('selected');
+        }
+    )
+
+        $("#clearlueCompany").click(
+        function () {
+            //            alert($("#lueTestName option:selected").val());
+            $("#lueCompany").val("");
+            //            $("#lueTestName option:selected").removeAttr('selected');
+        }
+    )
+
+//    $("#deFromDate").datepicker();
+//    $("#deToDate").datepicker();
+
+        $("#deFromDate").datepicker(
+             {
+                 format: 'dd-M-yyyy',
+                 todayHighlight: 1,
+                 autoclose: true,
+                 todayBtn: true,
+                 todayBtn: "linked"
+             }
+        );
+
+        $("#deToDate").datepicker(
+             {
+                 format: 'dd-M-yyyy',
+                 todayHighlight: 1,
+                 autoclose: true,
+                 todayBtn: true,
+                 todayBtn: "linked"
+             }
+        );
+
+             $("#clearteFirstName").click(
+        function () {
+            $("#teFirstName").val("");
+        }
+    )
+
+             $("#clearteLastName").click(
+        function () {
+            $("#teLastName").val("");
+        }
+    )
+
+             $("#cleardeFromDate").click(
+        function () {
+            $("#deFromDate").val("");
+        }
+    )
+
+             $("#cleardeToDate").click(
+        function () {
+            $("#deToDate").val("");
+        }
+    )
+</script>
+

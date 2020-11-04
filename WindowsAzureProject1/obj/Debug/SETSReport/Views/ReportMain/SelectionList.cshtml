@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "SelectionList";
+}
+
+
+<script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+
+@*<h3>Selection List</h3>*@
+<table border="1"  width = "100%" class ="list">
+    <tr>
+        <th>Selection List</th>
+    </tr>
+    <tr>
+        <td>
+            <div>
+              @Html.ListBox("-No Data-", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "width:70%;overflow:scroll;", size = 15, id = "lstselect" })            
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td> @Html.Label("Records", new { id="reccount"}) </td>
+    </tr>
+    <tr>
+        <td><button id = "btnSelAll" type ="button" class ="btn">Select All</button> <button id = "btnDeSelAll" type ="button" class ="btn">De-Select All</button>   </td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+
+    $("#btnSelAll").click(function () {
+        $("option", "#lstselect").prop("selected", true);
+
+        var count = $("#lstselect").children('option').length;
+        $("#reccount").text(count + "/" + count + " Record(s)");
+    }
+    );
+
+    $("#btnDeSelAll").click(function () {
+        $("option", "#lstselect").prop("selected", false);
+
+        $("#reccount").text("0/"+ $("#lstselect").children('option').length + " Record(s)");
+    }
+    );
+
+    $("#lstselect").ready(function () {
+        //alert("ready");
+        if (($("#lstselect option:first").text() != "- No Data -") && ($("#lstselect").children('option').length >0 )) {
+            $("#reccount").text($("#lstselect").children('option').length + " Record(s)");
+        }
+         else {
+            $("#reccount").text("0 Record(s)");
+        }
+    }
+    )
+
+    $("#lstselect").change(function () {
+        //alert("change");
+        if ($("#lstselect option:first").text() != "- No Data -") {
+            var count = $("#lstselect :selected").length;
+            // alert(count);
+            $("#reccount").text(count + "/" + $("#lstselect").children('option').length + " Record(s)");
+        }
+        else {
+            $("#reccount").text("0 Record(s)");
+        }
+    })
+
+    $("#lstselect").on(function () {
+       // alert("on");
+    }
+      )
+
+    $("#lstselect").select(function () {
+       // alert("select");
+    }
+      )
+</script>

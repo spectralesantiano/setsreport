@@ -1,0 +1,264 @@
+﻿@{
+    //Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @*<meta name="viewport" content="width=device-width" />*@
+    <title>Index</title>
+
+    
+    
+<script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
+@*<script src="/Scriptsjquery-ui-1.8.20.js">   </script>
+<script src="/Scripts/jquery.validate.js">   </script>*@
+
+<style type="text/css">
+.grid-container {
+  display: grid;
+  grid-template-columns: 40% 30% 30%;
+  @*background-color: #2196F3;*@
+  padding: 10px;
+
+}
+.grid-item {
+  @*background-color: rgba(255, 255, 255, 0.8);*@
+ @* border: 1px solid rgba(0, 0, 0, 0.8);*@
+  padding: 10px;
+  @*font-size: 20px;*@
+  text-align: center;
+}
+.item1 {
+  grid-column: 1;
+  grid-row: 2 / span 3;
+ @* min-width: 300px;*@
+}
+.item2 {
+  grid-column: 2 / span 3;
+  grid-row: 2;
+  overflow: auto;
+}
+.item3 {
+  grid-column: 2 / span 3;
+  grid-row: 3;
+}
+.item4 {
+  grid-column: 1;
+  grid-row: 4;
+}
+.item5 {
+  grid-column: 2 / span 3;
+  grid-row: 4;
+}
+
+.item6{
+  grid-column: 1;
+  grid-row: 1 ;
+}
+
+.item7{
+  grid-column: 2  / span 3 ;
+  grid-row: 1;
+}
+
+.definetbC    {
+     @*   font-size:small;*@
+        text-align:center;
+        padding: 10px;
+    }
+
+.definetbL    {
+       @* font-size:small;*@
+        text-align:left;
+    }
+
+@*#filterview td{
+   padding-right: 5px;
+   vertical-align: text-top;
+   font-size:small;
+   text-align:left;
+}*@
+
+
+@*#filterview select{
+    width: 160px;
+    float: right;
+
+#filterview input {
+  width: 180px;
+  float: right;
+}
+
+*@
+
+body { padding-top: 70px; }
+
+.imglogo {
+  height: 40px;
+  margin: 0px;
+}
+
+.leftcol{
+    overflow-y: scroll;
+   @* min-height: 30px;*@
+    height: 300px;
+}
+
+ .headlabel
+    {
+        font-family:Arial;
+        font-size:large;
+        font-weight:bold;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <a class="brand" href="#"><img class="imglogo" src= "@ViewBag.logopath" alt=""/> Reports</a>
+    @*<ul class="nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>*@
+  </div>
+</div>
+
+
+<div class="container" >
+    <div class="grid-container" >  
+         <div class="grid-item item6 " style="background-color:White">
+            @Html.Label("List of Reports", new { @class="headlabel" })
+         </div>
+          <div class="grid-item item7 " style="background-color:White">
+            @Html.Label("Report Name", new { id = "rptname", @class = "headlabel" , style="color:blue" })
+         </div>
+         <div class="grid-item item1"  style="background-color:White">  
+             @Html.Action("ShowRptList")
+              <input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />
+         </div>
+        
+         <div class="grid-item item2 definetbL leftcol" id = "filterview"  style="background-color:White">  
+            @* @{Html.RenderAction("ShowRptFilter");}  *@
+            @Html.Partial("ShowRptFilter")
+         </div>
+         <div class="grid-item item3 definetC" id = "SelectionView"  style="background-color:White">
+            @Html.Partial("SelectionList")
+            @*<br />
+             <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-primary"  />*@
+         </div>
+          <div class="grid-item item4">  
+              @*  <input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />*@
+          </div>  
+
+          @* <div class="col-md-offset-2 col-md-10">  *@
+          <div class="grid-item item5" style="background-color:White">  
+                <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-primary"  />
+          </div>  
+      </div>
+</div>
+   @* <button onclick="myFunction()">Try it</button>
+    <p>Click on this paragraph.</p>*@
+
+</body>
+</html>
+    
+
+<script type="text/javascript">
+
+ 
+//       $("#btncreate").click(function (e) {
+//            $('#form').submit();
+//            $('#filterview').load('/ReportMain/Index');
+//        });
+
+    function loadfilter() {
+        alert("test");
+
+    }
+
+
+//    $("btncreate").click(function () {
+//        alert("sdfd")
+//        $.ajax({
+//            url: "/ReportMain/ShowRptFilter",
+//            type: "POST",
+//            data: $("form").serialize(), //if you need to post Model data, use this
+//            success: function (result) {
+//                $("filterview").html(result);
+//            }
+//        });
+//    })
+    
+    function myFunction() {
+  alert("I am an alert box!");
+}
+</script>
+
+<script type="text/javascript">
+
+    $("#ObjectID").dblclick(function () {
+        //alert($("#ObjectID option:selected").val());
+        showfilter();
+    });
+
+    $("input#btnShowFilter").click(function () {
+        showfilter();
+    });
+
+    function showfilter() {
+        //        alert($("#ObjectID option:selected").val());
+        var res = $("#ObjectID option:selected").val();
+        var ee = res.replace(/ /g, "+");
+        //        alert(ee);
+        $("#lstselect").empty();
+        $("#reccount").text("0 Record(s)");
+        $("#filterview").load("/ReportMain/ShowNoRptFilter")
+        $("#filterview").load("/ReportMain/ShowRptFilter?ObjectID='" + ee + "'")
+        $("#rptname").text($("#ObjectID option:selected").text());
+    }
+
+    $("input#btnShowReport").click(function () {
+        // alert($("#fname").val());
+        setSelected();
+
+        if ($("#txtselected").val() != "") { 
+              var res = $("#ObjectID option:selected").val();
+            var ee = res.replace(/ /g, "+");
+            //var ea = res.replace(/ /g, "+");
+            //var ee = ea + "/" + ea;
+            //alert(ee);
+            //alert($("#PreviewCriteria").val());
+            $('#' + ee).attr("target", "_blank");
+            $('#' + ee).submit();
+        }
+        else {
+                alert("You have not selected any from the list yet!.")
+      
+         }
+
+    });
+
+//    $("#btnselected").click(function () {
+     function setSelected () {
+         var rr = [];
+
+         /// 'lstselect' name of listbox in view SelectionList.cshtml ///////////
+        $("#lstselect :selected").each(function (i, selected) {
+            rr[i] = "'" + $(selected).val() + "'";
+        });
+        //alert(rr);
+        //alert(rr[0]);
+        var s = rr.toString();
+        $("#txtselected").val(s); /// 'txtselected' name of hidden textbox in your viewFilter.cshtml ///////////
+        //alert(s);
+
+       }
+
+</script>

@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testFoundUI_2", "testFoundU
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testBootStrapUI", "testBootStrapUI\testBootStrapUI.csproj", "{DD37B6C8-3902-4D36-8F71-840E6655A3A6}"
 EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "WindowsAzureProject1", "WindowsAzureProject1\WindowsAzureProject1.ccproj", "{352848A7-AC8A-459F-A433-AB8CA89BEE67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebRole1", "WebRole1\WebRole1.csproj", "{7A2413AB-955E-490B-B617-2C8321F6EA55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{DD37B6C8-3902-4D36-8F71-840E6655A3A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD37B6C8-3902-4D36-8F71-840E6655A3A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD37B6C8-3902-4D36-8F71-840E6655A3A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{352848A7-AC8A-459F-A433-AB8CA89BEE67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{352848A7-AC8A-459F-A433-AB8CA89BEE67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{352848A7-AC8A-459F-A433-AB8CA89BEE67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{352848A7-AC8A-459F-A433-AB8CA89BEE67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A2413AB-955E-490B-B617-2C8321F6EA55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A2413AB-955E-490B-B617-2C8321F6EA55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A2413AB-955E-490B-B617-2C8321F6EA55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A2413AB-955E-490B-B617-2C8321F6EA55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

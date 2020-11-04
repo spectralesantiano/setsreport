@@ -154,12 +154,19 @@ namespace SETSReport.Controllers
                 //_dt.Columns.Clear();
                 _da.Fill(_dt);
 
+                ViewBag.clientip = GetIp();
+               
+
                 if (_dt.Rows.Count > 0 ){
+                    //ViewBag.ekek = "ekek";
 
                             DateTime sdate = (DateTime)_dt.Rows[0]["serverDate"];
                             DateTime logdate = (DateTime)_dt.Rows[0]["DateLoggedIn"];
                             int validityt = Convert.ToInt32(_dt.Rows[0]["ValidityType"]);
                             DateTime newdate;
+
+                            ViewBag.logdate = logdate;
+                            ViewBag.serverdate = sdate;
 
                             switch (validityt)
                             {
@@ -177,6 +184,8 @@ namespace SETSReport.Controllers
                                         newdate = logdate.AddYears((int)_dt.Rows[0]["Validity"]); break;
                                 default: newdate = sdate; break;
                             }
+
+                            ViewBag.newdate = newdate;        
 
                             if (newdate < sdate)
                             {
