@@ -177,7 +177,7 @@ namespace SETSReport.Controllers.ReportPS
             SqlConnection _con = new SqlConnection(constr);
 
             // sql come from db [view_ReportGroups].SelctionSource
-            String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults " + filterCriteria;
+            String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM (select * from view_FullExamineeResults where SiteID='"+ GlobalVar.SiteID +"') vfe " + filterCriteria;
 
             sql += " order by " + sortbyname + " " + sortby;
 

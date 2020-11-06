@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WindowsAzureProject1" generation="1" functional="0" release="0" Id="fefd5931-96bd-4ab7-b35e-fa58d07f5a7d" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WindowsAzureProject1" generation="1" functional="0" release="0" Id="8a1abbf8-7d06-4264-9506-5aa9dc4b4241" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="WindowsAzureProject1Group" generation="1" functional="0" release="0">
       <componentports>
@@ -196,14 +196,14 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="85e1c741-aeb1-49e4-aa8f-a20de042ecda" ref="Microsoft.RedDog.Contract\ServiceContract\WindowsAzureProject1Contract@ServiceDefinition.build">
+    <implementation Id="9577b47a-2846-4ff6-8fb1-b1244cd29784" ref="Microsoft.RedDog.Contract\ServiceContract\WindowsAzureProject1Contract@ServiceDefinition.build">
       <interfacereferences>
-        <interfaceReference Id="d13611da-3313-461c-a591-d769a2b2d71f" ref="Microsoft.RedDog.Contract\Interface\SETSReport:Endpoint1@ServiceDefinition.build">
+        <interfaceReference Id="c4165c5d-a508-49f9-8e47-fba8417ec861" ref="Microsoft.RedDog.Contract\Interface\SETSReport:Endpoint1@ServiceDefinition.build">
           <inPort>
             <inPortMoniker name="/WindowsAzureProject1/WindowsAzureProject1Group/SETSReport:Endpoint1" />
           </inPort>
         </interfaceReference>
-        <interfaceReference Id="3e7eef7e-0820-4683-9364-d27cd05425e9" ref="Microsoft.RedDog.Contract\Interface\SETSReport:Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput@ServiceDefinition.build">
+        <interfaceReference Id="5473de6d-ae7f-45f5-8399-d4b27cf16e82" ref="Microsoft.RedDog.Contract\Interface\SETSReport:Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput@ServiceDefinition.build">
           <inPort>
             <inPortMoniker name="/WindowsAzureProject1/WindowsAzureProject1Group/SETSReport:Microsoft.WindowsAzure.Plugins.RemoteForwarder.RdpInput" />
           </inPort>

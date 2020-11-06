@@ -175,9 +175,17 @@ namespace SETSReport.Controllers.ReportPS
 
             conditions = " AND t.CompanyName = '" + Request["CompanyName"] + "' " ;
 
+            //string sql = String.Format("SELECT DISTINCT TestNameDate, TestName, DateCreated, t.* " +
+            //    "FROM view_TestScoreStatistics t " +
+            //    "INNER JOIN view_ExamineeResults er ON er.TestID=t.TestID AND er.CompanyName = t.CompanyName " +
+            //    "WHERE t.TestID IN ({0}) {1}" +
+            //    "ORDER BY {2}", selectedIDs, conditions, Request["SortReportBy"] + " " + Request["rgSortReportOrder"]);
+
             string sql = String.Format("SELECT DISTINCT TestNameDate, TestName, DateCreated, t.* " +
                 "FROM view_TestScoreStatistics t " +
-                "INNER JOIN view_ExamineeResults er ON er.TestID=t.TestID AND er.CompanyName = t.CompanyName " +
+                "INNER JOIN " +
+                "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID where siteid ='" + GlobalVar.SiteID + "') " +
+                " er ON er.TestID=t.TestID AND er.CompanyName = t.CompanyName " +
                 "WHERE t.TestID IN ({0}) {1}" +
                 "ORDER BY {2}", selectedIDs, conditions, Request["SortReportBy"] + " " + Request["rgSortReportOrder"]);
 

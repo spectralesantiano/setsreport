@@ -289,11 +289,17 @@ namespace SETSReport.Controllers.ReportPS
                                                                         { "Average", "AVG(AvgScore) / AVG(AvgTotal)" },
                                                                         { "Highest", "MAX(MaxScore) / MAX(MaxTotal)" } })
                 {
+                    //string sql = String.Format("SELECT CASE WHEN NoOfTimesTaken IS NULL THEN a.Nat ELSE CONCAT(a.Nat, ' (', NoOfTimesTaken, ')') END Argument, " +
+                    //       "ROUND(({0}) * 100, 2) Value " +
+                    //       "FROM view_AllTestNationality a " +
+                    //       "LEFT JOIN view_TestScoreStatisticsPerNat b ON b.NatID = a.PKey AND TestID = '{1}' AND CompanyName = '{2}' {3}" +
+                    //       "GROUP BY a.Nat, NoOfTimesTaken", item.Value, testID, CompanyName, selectedNat);
+
                     string sql = String.Format("SELECT CASE WHEN NoOfTimesTaken IS NULL THEN a.Nat ELSE CONCAT(a.Nat, ' (', NoOfTimesTaken, ')') END Argument, " +
-                           "ROUND(({0}) * 100, 2) Value " +
-                           "FROM view_AllTestNationality a " +
-                           "LEFT JOIN view_TestScoreStatisticsPerNat b ON b.NatID = a.PKey AND TestID = '{1}' AND CompanyName = '{2}' {3}" +
-                           "GROUP BY a.Nat, NoOfTimesTaken", item.Value, testID, CompanyName, selectedNat);
+                          "ROUND(({0}) * 100, 2) Value " +
+                          "FROM (select * from view_AllTestNationality where SiteID='" + GlobalVar.SiteID + "') a " +
+                          "LEFT JOIN view_TestScoreStatisticsPerNat b ON b.NatID = a.PKey AND TestID = '{1}' AND CompanyName = '{2}' {3}" +
+                          "GROUP BY a.Nat, NoOfTimesTaken", item.Value, testID, CompanyName, selectedNat);
 
                     _da = new SqlDataAdapter(sql, _con);
                     DataSet ds = new DataSet();

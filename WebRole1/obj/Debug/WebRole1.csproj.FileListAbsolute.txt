@@ -1,0 +1,8 @@
+C:\VUE\MvcApplication3\WebRole1\bin\WebRole1.dll
+C:\VUE\MvcApplication3\WebRole1\bin\WebRole1.pdb
+C:\VUE\MvcApplication3\WebRole1\bin\Microsoft.WindowsAzure.Diagnostics.dll
+C:\VUE\MvcApplication3\WebRole1\bin\Microsoft.WindowsAzure.StorageClient.dll
+C:\VUE\MvcApplication3\WebRole1\bin\MonAgentListener.dll
+C:\VUE\MvcApplication3\WebRole1\bin\Microsoft.WindowsAzure.StorageClient.xml
+C:\VUE\MvcApplication3\WebRole1\obj\Debug\WebRole1.dll
+C:\VUE\MvcApplication3\WebRole1\obj\Debug\WebRole1.pdb

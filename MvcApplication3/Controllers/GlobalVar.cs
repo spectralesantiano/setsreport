@@ -20,6 +20,7 @@ namespace SETSReport.Controllers
         public static readonly String SignatoryQuery = "SELECT SignatoryID, DisplayAs, JobTitle, CONCAT(DisplayAs, ' - ', JobTitle) DisplayValue FROM tblAdmSignatory ORDER BY DisplayValue ASC";
         public static readonly String CompanyNameQuery = "SELECT DISTINCT CompanyName FROM view_FullExamineeResults ORDER BY CompanyName ASC";
 
+        public static String SiteID;
     }
 
 

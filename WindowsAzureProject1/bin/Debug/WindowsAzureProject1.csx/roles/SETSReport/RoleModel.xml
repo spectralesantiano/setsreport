@@ -11,10 +11,30 @@
         <Variable name="WaRoleType" value="IISWebRole" />
       </Environment>
     </Task>
+    <Task commandLine="RemoteAccessAgent.exe" executionContext="elevated" taskType="background" relativePath="plugins\RemoteAccess">
+      <Environment>
+        <Variable name="WaRoleType" value="IISWebRole" />
+      </Environment>
+    </Task>
+    <Task commandLine="RemoteAccessAgent.exe /blockStartup" executionContext="elevated" relativePath="plugins\RemoteAccess">
+      <Environment>
+        <Variable name="WaRoleType" value="IISWebRole" />
+      </Environment>
+    </Task>
+    <Task commandLine="RemoteForwarderAgent.exe" executionContext="elevated" relativePath="plugins\RemoteForwarder">
+      <Environment>
+        <Variable name="WaRoleType" value="IISWebRole" />
+      </Environment>
+    </Task>
   </Startup>
   <Runtime />
   <ConfigurationSettings>
     <Setting name="ConnectionString" nameSpace="Microsoft.WindowsAzure.Plugins.Diagnostics" />
+    <Setting name="Enabled" nameSpace="Microsoft.WindowsAzure.Plugins.RemoteAccess" />
+    <Setting name="AccountUsername" nameSpace="Microsoft.WindowsAzure.Plugins.RemoteAccess" />
+    <Setting name="AccountEncryptedPassword" nameSpace="Microsoft.WindowsAzure.Plugins.RemoteAccess" />
+    <Setting name="AccountExpiration" nameSpace="Microsoft.WindowsAzure.Plugins.RemoteAccess" />
+    <Setting name="Enabled" nameSpace="Microsoft.WindowsAzure.Plugins.RemoteForwarder" />
   </ConfigurationSettings>
   <Properties>
     <Property name="RoleType" value="Web" />
@@ -26,7 +46,7 @@
     <Property name="EntryPoint" value="SETSReport.dll" />
     <Property name="SourceDir" value="C:\VUE\MvcApplication3\MvcApplication3\" />
     <Property name="RoleTargetFramework" value="v4.0" />
-    <Property name="SitePhysicalPath" value="C:\VUE\MvcApplication3\WindowsAzureProject1\obj\Debug\SETSReport\" />
+    <Property name="SitePhysicalPath" value="C:\VUE\MvcApplication3\MvcApplication3\" />
     <Property name="OriginalItemSpec" value="C:\VUE\MvcApplication3\WindowsAzureProject1\WindowsAzureProject1.ccproj" />
     <Property name="MSBuildSourceProjectFile" value="C:\VUE\MvcApplication3\WindowsAzureProject1\WindowsAzureProject1.ccproj" />
     <Property name="MSBuildSourceTargetName" value="ResolveSingleWebRoleReference" />
@@ -34,7 +54,7 @@
     <Property name="TargetRuntimeVersion" value="v4.0" />
   </Properties>
   <Sites>
-    <Site name="Web" physicalDirectory="C:\VUE\MvcApplication3\WindowsAzureProject1\obj\Debug\SETSReport\">
+    <Site name="Web" physicalDirectory="C:\VUE\MvcApplication3\MvcApplication3\">
       <Bindings>
         <Binding name="Endpoint1" endpointName="Endpoint1" />
       </Bindings>

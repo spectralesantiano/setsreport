@@ -147,19 +147,19 @@ namespace SETSReport.Controllers
                 //_da.Fill(_dt);
                 //ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
 
-                SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'", constr);
-                //SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "'", constr);
-
-                //_dt.Clear();
-                //_dt.Columns.Clear();
-                _da.Fill(_dt);
+                //SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'", constr);
+                string ssql = "SELECT dbo.tblWebSession.*, dbo.tblSiteUsers.SiteID, getdate() as serverDate " +
+                              " FROM  dbo.tblSiteUsers RIGHT OUTER JOIN " +
+                              " dbo.tblWebSession ON dbo.tblSiteUsers.UserID = dbo.tblWebSession.UserID  where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'";
+               SqlDataAdapter _da = new SqlDataAdapter(ssql, constr);
+               _da.Fill(_dt);
 
                 ViewBag.clientip = GetIp();
                
 
                 if (_dt.Rows.Count > 0 ){
                     //ViewBag.ekek = "ekek";
-
+                            GlobalVar.SiteID = (string)_dt.Rows[0]["SiteID"];                            
                             DateTime sdate = (DateTime)_dt.Rows[0]["serverDate"];
                             DateTime logdate = (DateTime)_dt.Rows[0]["DateLoggedIn"];
                             int validityt = Convert.ToInt32(_dt.Rows[0]["ValidityType"]);
