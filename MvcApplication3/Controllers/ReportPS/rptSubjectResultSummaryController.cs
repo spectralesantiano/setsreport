@@ -167,7 +167,11 @@ namespace SETSReport.Controllers.ReportPS
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
-            String sql = "SELECT DISTINCT SubjectName, s.SubjectID, 0 IsSelected FROM tblAdmSubject s INNER JOIN tblAdmTestTemplateSubjects tts ON s.SubjectID = tts.SubjectID INNER JOIN tblAdmTestTemplates tt ON tt.TestID = tts.TestID INNER JOIN tblActualTest at ON at.TestID = tt.TestID ";
+            //String sql = "SELECT DISTINCT SubjectName, s.SubjectID, 0 IsSelected FROM tblAdmSubject s INNER JOIN tblAdmTestTemplateSubjects tts ON s.SubjectID = tts.SubjectID INNER JOIN tblAdmTestTemplates tt ON tt.TestID = tts.TestID INNER JOIN tblActualTest at ON at.TestID = tt.TestID ";
+            String sql = "SELECT DISTINCT SubjectName, s.SubjectID, 0 IsSelected FROM tblAdmSubject s INNER JOIN tblAdmTestTemplateSubjects tts ON s.SubjectID = tts.SubjectID INNER JOIN tblAdmTestTemplates tt ON tt.TestID = tts.TestID INNER JOIN " +
+                "(select tblActualTest.*,tblexaminee.SiteID from tblActualTest inner join tblexaminee on tblactualtest.examineeid = tblexaminee.examineeid where Siteid = '" + GlobalVar.SiteID  + "') " +
+                " at ON at.TestID = tt.TestID ";
+
 
             sql = "select * from (" + sql + ") tb "; //+ filterCriteria;
             sql += " order by SubjectName " + sortby ;
