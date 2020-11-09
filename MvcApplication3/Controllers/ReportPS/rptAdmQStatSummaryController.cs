@@ -154,7 +154,8 @@ namespace SETSReport.Controllers.ReportPS
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
-            String sql = string.Format("SELECT DISTINCT 0 IsSelected, SubjectName, dbo.GetSubjectTestNames(SubjectID) TestName FROM view_FullExamineeResultsWithQuestions {0} ORDER BY SubjectName ASC ", filterCriteria);
+            //String sql = string.Format("SELECT DISTINCT 0 IsSelected, SubjectName, dbo.GetSubjectTestNames(SubjectID) TestName FROM view_FullExamineeResultsWithQuestions {0} ORDER BY SubjectName ASC ", filterCriteria);
+            String sql = string.Format("SELECT DISTINCT 0 IsSelected, SubjectName, dbo.GetSubjectTestNames(SubjectID) TestName FROM (view_FullExamineeResultsWithQuestions) {0} ORDER BY SubjectName ASC ", filterCriteria);
 
             //sql += " order by " + sortbyname + " " + sortby;
 
@@ -175,7 +176,8 @@ namespace SETSReport.Controllers.ReportPS
             string selectedIDs = Request["txtselected"].ToString();
             string conditions = String.Format("AND PercentRight >= {0} AND PercentRight <= {1}", Request["Min"], Request["Max"]);
 
-            string sql = String.Format("SELECT * FROM view_QuestionStatistics WHERE SubjectName IN ({0}) {1} ORDER BY {2} {3}", selectedIDs, conditions, Request["cbeSortBy"], Request["rgSortOrder"]);
+            //string sql = String.Format("SELECT * FROM view_QuestionStatistics WHERE SubjectName IN ({0}) {1} ORDER BY {2} {3}", selectedIDs, conditions, Request["cbeSortBy"], Request["rgSortOrder"]);
+            string sql = String.Format("SELECT * FROM view_QuestionStatistics WHERE SiteID = '" + GlobalVar.SiteID + "' and SubjectName IN ({0}) {1} ORDER BY {2} {3}", selectedIDs, conditions, Request["cbeSortBy"], Request["rgSortOrder"]);
 
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);

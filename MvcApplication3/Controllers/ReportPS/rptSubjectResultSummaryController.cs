@@ -203,14 +203,23 @@ namespace SETSReport.Controllers.ReportPS
 
             string filterCriteria = ApplyCriteria(previewcriteria);
 
+            //string sql = String.Format(
+            //"SELECT *, CAST((CAST(UserScore AS FLOAT) / TotalScore) * 100 AS FLOAT) TotalPercent, " +
+            //    "CONCAT(CONVERT(DECIMAL(10,2), CAST((CAST(UserScore AS FLOAT) / TotalScore) * 100 AS FLOAT)), ' % (', UserScore, '/', TotalScore, ')') SubjectScore " +
+            //"FROM (" +
+            //    "SELECT SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName, COUNT(CASE WHEN IsCorrect = 1 THEN 1 ELSE NULL END) UserScore, COUNT(Answer) TotalScore " +
+            //    "FROM view_FullExamineeResultsWithQuestions " +
+            //    "GROUP BY SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName" +
+            //    ") T WHERE SubjectID IN ({0}) {1}", selectedIDs, filterCriteria !=""? " And " + filterCriteria:""); //SubjectName to SubjectID...
+            
             string sql = String.Format(
             "SELECT *, CAST((CAST(UserScore AS FLOAT) / TotalScore) * 100 AS FLOAT) TotalPercent, " +
                 "CONCAT(CONVERT(DECIMAL(10,2), CAST((CAST(UserScore AS FLOAT) / TotalScore) * 100 AS FLOAT)), ' % (', UserScore, '/', TotalScore, ')') SubjectScore " +
             "FROM (" +
                 "SELECT SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName, COUNT(CASE WHEN IsCorrect = 1 THEN 1 ELSE NULL END) UserScore, COUNT(Answer) TotalScore " +
-                "FROM view_FullExamineeResultsWithQuestions " +
+                "FROM (select * from view_FullExamineeResultsWithQuestions where SiteID ='"+ GlobalVar.SiteID +"') vfe " +
                 "GROUP BY SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName" +
-                ") T WHERE SubjectID IN ({0}) {1}", selectedIDs, filterCriteria !=""? " And " + filterCriteria:""); //SubjectName to SubjectID...
+                ") T WHERE SubjectID IN ({0}) {1}", selectedIDs, filterCriteria != "" ? " And " + filterCriteria : ""); //SubjectName to SubjectID...
 
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
