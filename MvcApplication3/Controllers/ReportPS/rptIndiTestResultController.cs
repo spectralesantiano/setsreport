@@ -231,7 +231,7 @@ namespace SETSReport.Controllers.ReportPS
              }
 
             //sql from report class. which from desktop sets
-             string sql = String.Format("SELECT * FROM view_FullExamineeResultsWithQuestions WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
+             string sql = String.Format("SELECT * FROM view_FullExamineeResultsWithQuestions WHERE SiteID ='"+ GlobalVar.SiteID +"' and ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
 
 
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();

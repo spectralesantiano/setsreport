@@ -224,7 +224,7 @@ namespace SETSReport.Controllers.ReportPS
                 conditions = String.Format("AND Answer {0} UserAns ", ((Request["AnswerFilter"].ToString()) == "0") ? "!=" : "=");
             }
 
-            string sql = String.Format("SELECT * FROM view_FullExamineeResultsWithQuestions WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
+            string sql = String.Format("SELECT * FROM view_FullExamineeResultsWithQuestions WHERE SiteID ='" + GlobalVar.SiteID + "' and ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
 
 
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();

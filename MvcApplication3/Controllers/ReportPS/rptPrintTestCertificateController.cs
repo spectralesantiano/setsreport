@@ -122,11 +122,16 @@ namespace SETSReport.Controllers.ReportPS
              string selectedIDs = Request["txtselected"].ToString();
              string conditions = "";
 
+          //string sql = String.Format("SELECT FullName, RankName, FORMAT(DateTaken, 'MMMM dd, yyyy', 'en-us') DateTaken, TestName, UserScore, TotalScore, " +
+          //                          "CONCAT('with a rating of ', CONVERT(DECIMAL(10,2), CAST((CAST(UserScore AS FLOAT) / TotalScore) * 100 AS FLOAT)), '%') ScoreRating " +
+          //                      "FROM view_FullExamineeResults WHERE ActualTestID IN ({0}) " +
+          //                      "ORDER BY Fullname ASC", selectedIDs);
           string sql = String.Format("SELECT FullName, RankName, FORMAT(DateTaken, 'MMMM dd, yyyy', 'en-us') DateTaken, TestName, UserScore, TotalScore, " +
-                                    "CONCAT('with a rating of ', CONVERT(DECIMAL(10,2), CAST((CAST(UserScore AS FLOAT) / TotalScore) * 100 AS FLOAT)), '%') ScoreRating " +
-                                "FROM view_FullExamineeResults WHERE ActualTestID IN ({0}) " +
-                                "ORDER BY Fullname ASC", selectedIDs);
-
+                                 "CONCAT('with a rating of ', CONVERT(DECIMAL(10,2), CAST((CAST(UserScore AS FLOAT) / TotalScore) * 100 AS FLOAT)), '%') ScoreRating " +
+                                 "FROM (select * from view_FullExamineeResults where SiteID='" + GlobalVar.SiteID + "') vfe "+ 
+                                 "WHERE ActualTestID IN ({0}) " +
+                                 "ORDER BY Fullname ASC", selectedIDs);
+         
         string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
         SqlConnection _con = new SqlConnection(constr);
         SqlDataAdapter _da = new SqlDataAdapter(sql, _con);

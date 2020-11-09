@@ -155,7 +155,7 @@ namespace SETSReport.Controllers.ReportPS
             SqlConnection _con = new SqlConnection(constr);
 
             //String sql = string.Format("SELECT DISTINCT 0 IsSelected, SubjectName, dbo.GetSubjectTestNames(SubjectID) TestName FROM view_FullExamineeResultsWithQuestions {0} ORDER BY SubjectName ASC ", filterCriteria);
-            String sql = string.Format("SELECT DISTINCT 0 IsSelected, SubjectName, dbo.GetSubjectTestNames(SubjectID) TestName FROM (view_FullExamineeResultsWithQuestions) {0} ORDER BY SubjectName ASC ", filterCriteria);
+            String sql = string.Format("SELECT DISTINCT 0 IsSelected, SubjectName, dbo.GetSubjectTestNames(SubjectID) TestName FROM (select * from view_FullExamineeResultsWithQuestions) vferwq {0} ORDER BY SubjectName ASC ", filterCriteria);
 
             //sql += " order by " + sortbyname + " " + sortby;
 

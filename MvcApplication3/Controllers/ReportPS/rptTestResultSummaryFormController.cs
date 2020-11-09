@@ -193,8 +193,8 @@ namespace SETSReport.Controllers.ReportPS
         {
             string selectedIDs = Request["txtselected"].ToString();
 
-            string sql = String.Format("SELECT * FROM view_FullExamineeResults WHERE ActualTestID IN ({0}) ORDER BY {1} {2}", selectedIDs, Request["rgSortedBy"], Request["rptSortdOrder"]);
-
+            //string sql = String.Format("SELECT * FROM view_FullExamineeResults WHERE ActualTestID IN ({0}) ORDER BY {1} {2}", selectedIDs, Request["rgSortedBy"], Request["rptSortdOrder"]);
+            string sql = String.Format("SELECT * FROM (select * from view_FullExamineeResults where SiteID='" + GlobalVar.SiteID + "') vfe WHERE ActualTestID IN ({0}) ORDER BY {1} {2}", selectedIDs, Request["rgSortedBy"], Request["rptSortdOrder"]);
 
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);

@@ -220,15 +220,25 @@ namespace SETSReport.Controllers.ReportPS
                 conditions = String.Format("AND Answer {0} UserAns ", ((Request["AnswerFilter"].ToString()) == "0") ? "!=" : "=");
             }
 
+            //string sql = String.Format("SELECT LastFirstMiddle, RefID, CompanyName, RankName, DateTaken, TestName, TestStatusName, TimeLimit, TimeTakenSec, ActualTestID, SubjectName, Level2MarkMin, Level3MarkMin, Average, TestScore, TotalPercent, " +
+            //    "COUNT(CASE WHEN Difficulty = 'SYSMANAGEMENT' THEN 1 ELSE NULL END) TManagement, " +
+            //    "COUNT(CASE WHEN Difficulty = 'SYSOPERATIONAL' THEN 1 ELSE NULL END) TOperational, " +
+            //    "COUNT(CASE WHEN Difficulty = 'SYSSUPPORT' THEN 1 ELSE NULL END) TSupport, " +
+            //    "COUNT(CASE WHEN IsCorrect = 1 THEN 1 ELSE NULL END) UserScore, COUNT(Answer) TotalScore " +
+            //"FROM view_FullExamineeResultsWithQuestions " +
+            //"WHERE ActualTestID IN ({0}) " +
+            //"GROUP BY LastFirstMiddle, RefID, CompanyName, RankName, DateTaken, TestName, TestStatusName, TimeLimit, TimeTakenSec, ActualTestID, SubjectName, Level2MarkMin, Level3MarkMin, Average, TestScore, TotalPercent " +
+            //"ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
+
             string sql = String.Format("SELECT LastFirstMiddle, RefID, CompanyName, RankName, DateTaken, TestName, TestStatusName, TimeLimit, TimeTakenSec, ActualTestID, SubjectName, Level2MarkMin, Level3MarkMin, Average, TestScore, TotalPercent, " +
-                "COUNT(CASE WHEN Difficulty = 'SYSMANAGEMENT' THEN 1 ELSE NULL END) TManagement, " +
-                "COUNT(CASE WHEN Difficulty = 'SYSOPERATIONAL' THEN 1 ELSE NULL END) TOperational, " +
-                "COUNT(CASE WHEN Difficulty = 'SYSSUPPORT' THEN 1 ELSE NULL END) TSupport, " +
-                "COUNT(CASE WHEN IsCorrect = 1 THEN 1 ELSE NULL END) UserScore, COUNT(Answer) TotalScore " +
-            "FROM view_FullExamineeResultsWithQuestions " +
-            "WHERE ActualTestID IN ({0}) " +
-            "GROUP BY LastFirstMiddle, RefID, CompanyName, RankName, DateTaken, TestName, TestStatusName, TimeLimit, TimeTakenSec, ActualTestID, SubjectName, Level2MarkMin, Level3MarkMin, Average, TestScore, TotalPercent " +
-            "ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
+               "COUNT(CASE WHEN Difficulty = 'SYSMANAGEMENT' THEN 1 ELSE NULL END) TManagement, " +
+               "COUNT(CASE WHEN Difficulty = 'SYSOPERATIONAL' THEN 1 ELSE NULL END) TOperational, " +
+               "COUNT(CASE WHEN Difficulty = 'SYSSUPPORT' THEN 1 ELSE NULL END) TSupport, " +
+               "COUNT(CASE WHEN IsCorrect = 1 THEN 1 ELSE NULL END) UserScore, COUNT(Answer) TotalScore " +
+           "FROM (select * FROM view_FullExamineeResultsWithQuestions where SiteID = '"+ GlobalVar.SiteID +"') vferwq " +
+           "WHERE ActualTestID IN ({0}) " +
+           "GROUP BY LastFirstMiddle, RefID, CompanyName, RankName, DateTaken, TestName, TestStatusName, TimeLimit, TimeTakenSec, ActualTestID, SubjectName, Level2MarkMin, Level3MarkMin, Average, TestScore, TotalPercent " +
+           "ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
 
 
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
