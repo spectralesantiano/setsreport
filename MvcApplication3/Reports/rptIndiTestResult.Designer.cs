@@ -81,7 +81,6 @@
             this.IsContested = new DevExpress.XtraReports.UI.XRTableCell();
             this.ContestedIcon = new DevExpress.XtraReports.UI.XRPictureBox();
             this.QuestionDesc = new DevExpress.XtraReports.UI.XRTableCell();
-            this.XrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrLabel2 = new DevExpress.XtraReports.UI.XRLabel();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.XrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -89,9 +88,6 @@
             this.XrTable3 = new DevExpress.XtraReports.UI.XRTable();
             this.XrTableRow4 = new DevExpress.XtraReports.UI.XRTableRow();
             this.XrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.XrTableRow5 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.XrTableRow6 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.XrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableRow7 = new DevExpress.XtraReports.UI.XRTableRow();
             this.XrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -614,24 +610,11 @@
             this.QuestionDesc.StylePriority.UsePadding = false;
             this.QuestionDesc.Weight = 5.7700000000000005D;
             // 
-            // XrTableCell5
-            // 
-            this.XrTableCell5.Font = new System.Drawing.Font("Arial", 7F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.XrTableCell5.Multiline = true;
-            this.XrTableCell5.Name = "XrTableCell5";
-            this.XrTableCell5.Padding = new DevExpress.XtraPrinting.PaddingInfo(3, 0, 0, 0, 100F);
-            this.XrTableCell5.StylePriority.UseFont = false;
-            this.XrTableCell5.StylePriority.UsePadding = false;
-            this.XrTableCell5.StylePriority.UseTextAlignment = false;
-            this.XrTableCell5.Text = "(2) Questions answered correctly will have a check-mark, OR a \"Y\" (yes) mark\r\n";
-            this.XrTableCell5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.XrTableCell5.Weight = 1D;
-            // 
             // XrLabel2
             // 
             this.XrLabel2.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.XrLabel2.BorderWidth = 3F;
-            this.XrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 160.3298F);
+            this.XrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 138.3298F);
             this.XrLabel2.Name = "XrLabel2";
             this.XrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.XrLabel2.SizeF = new System.Drawing.SizeF(747F, 3F);
@@ -651,12 +634,13 @@
             // XrTableCell8
             // 
             this.XrTableCell8.Font = new System.Drawing.Font("Arial", 7F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.XrTableCell8.Multiline = true;
             this.XrTableCell8.Name = "XrTableCell8";
             this.XrTableCell8.Padding = new DevExpress.XtraPrinting.PaddingInfo(3, 0, 0, 0, 100F);
             this.XrTableCell8.StylePriority.UseFont = false;
             this.XrTableCell8.StylePriority.UsePadding = false;
             this.XrTableCell8.StylePriority.UseTextAlignment = false;
-            this.XrTableCell8.Text = "(4) The right answer will have a \">\" to the left of the option letter";
+            this.XrTableCell8.Text = "(2) Questions answered correctly will have a check-mark, OR a \"Y\" (yes) mark\r\n";
             this.XrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.XrTableCell8.Weight = 0.72838688230356485D;
             // 
@@ -674,10 +658,8 @@
             this.XrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.XrTableRow3,
             this.XrTableRow4,
-            this.XrTableRow5,
-            this.XrTableRow6,
             this.XrTableRow7});
-            this.XrTable3.SizeF = new System.Drawing.SizeF(745.9166F, 60.32989F);
+            this.XrTable3.SizeF = new System.Drawing.SizeF(745.9166F, 36.19793F);
             // 
             // XrTableRow4
             // 
@@ -698,33 +680,6 @@
             this.XrTableCell4.Text = "(1) Questions are grouped by subject\r\n";
             this.XrTableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.XrTableCell4.Weight = 1D;
-            // 
-            // XrTableRow5
-            // 
-            this.XrTableRow5.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.XrTableCell5});
-            this.XrTableRow5.Name = "XrTableRow5";
-            this.XrTableRow5.Weight = 1.25D;
-            // 
-            // XrTableRow6
-            // 
-            this.XrTableRow6.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.XrTableCell6});
-            this.XrTableRow6.Name = "XrTableRow6";
-            this.XrTableRow6.Weight = 1.25D;
-            // 
-            // XrTableCell6
-            // 
-            this.XrTableCell6.Font = new System.Drawing.Font("Arial", 7F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.XrTableCell6.Multiline = true;
-            this.XrTableCell6.Name = "XrTableCell6";
-            this.XrTableCell6.Padding = new DevExpress.XtraPrinting.PaddingInfo(3, 0, 0, 0, 100F);
-            this.XrTableCell6.StylePriority.UseFont = false;
-            this.XrTableCell6.StylePriority.UsePadding = false;
-            this.XrTableCell6.StylePriority.UseTextAlignment = false;
-            this.XrTableCell6.Text = "(3) The user\'s answer will have a square border around the option letter\r\n";
-            this.XrTableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.XrTableCell6.Weight = 1D;
             // 
             // XrTableRow7
             // 
@@ -802,7 +757,7 @@
             this.XrLabel1,
             this.XrTable3,
             this.XrTable1});
-            this.PageHeader.HeightF = 164F;
+            this.PageHeader.HeightF = 141.3298F;
             this.PageHeader.Name = "PageHeader";
             // 
             // pbLogo
@@ -904,7 +859,6 @@
        public DevExpress.XtraReports.UI.XRTableCell IsContested;
        public DevExpress.XtraReports.UI.XRPictureBox ContestedIcon;
        public DevExpress.XtraReports.UI.XRTableCell QuestionDesc;
-       public DevExpress.XtraReports.UI.XRTableCell XrTableCell5;
        public DevExpress.XtraReports.UI.XRLabel XrLabel2;
        public DevExpress.XtraReports.UI.DetailBand Detail;
        public DevExpress.XtraReports.UI.XRTableCell XrTableCell8;
@@ -912,9 +866,6 @@
        public DevExpress.XtraReports.UI.XRTable XrTable3;
        public DevExpress.XtraReports.UI.XRTableRow XrTableRow4;
        public DevExpress.XtraReports.UI.XRTableCell XrTableCell4;
-       public DevExpress.XtraReports.UI.XRTableRow XrTableRow5;
-       public DevExpress.XtraReports.UI.XRTableRow XrTableRow6;
-       public DevExpress.XtraReports.UI.XRTableCell XrTableCell6;
        public DevExpress.XtraReports.UI.XRTableRow XrTableRow7;
        public DevExpress.XtraReports.UI.XRTableCell XrTableCell1;
        public DevExpress.XtraReports.UI.XRTableRow XrTableRow2;

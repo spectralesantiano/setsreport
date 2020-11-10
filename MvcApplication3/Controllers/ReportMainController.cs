@@ -89,6 +89,11 @@ namespace SETSReport.Controllers
             return PartialView("ReportFilters/NoReportFilter");
         }
 
+        public ActionResult ShowRptFilterLoading()
+        {
+            return PartialView("ReportFilters/ReportLoading");
+        }
+
         private bool ViewExists(string name)
         {
             ViewEngineResult result = ViewEngines.Engines.FindView(ControllerContext, name, null);

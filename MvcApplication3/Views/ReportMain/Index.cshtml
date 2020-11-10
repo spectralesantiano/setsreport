@@ -219,7 +219,8 @@ body { padding-top: 70px; }
         //        alert(ee);
         $("#lstselect").empty();
         $("#reccount").text("0 Record(s)");
-        $("#filterview").load("/ReportMain/ShowNoRptFilter")
+        //$("#filterview").load("/ReportMain/ShowNoRptFilter")
+        $("#filterview").load("/ReportMain/ShowRptFilterLoading")
         $("#filterview").load("/ReportMain/ShowRptFilter?ObjectID='" + ee + "'")
         $("#rptname").text($("#ObjectID option:selected").text());
     }

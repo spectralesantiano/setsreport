@@ -151,6 +151,7 @@ namespace SETSReport.Controllers.ReportPS
             {
                 new { cbeSortBy = "LName", Text = "Name" },
                 new { cbeSortBy = "DateTaken", Text = "Date" },
+                new { cbeSortBy = "TestScore", Text = "Score" },
             }, "cbeSortBy", "Text", 1);
             ViewBag.sortitems = list;
 
