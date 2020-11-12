@@ -36,7 +36,7 @@
                @Html.ValidationMessageFor(model => model.ObjectID, "", new { @class = "text-danger" })  *@
             </div>  
            <div> 
-             @Html.Label("Choose a Report : ", new { @class = "control-label" })
+             @Html.Label("Choose a Report :  ", new { @class = "control-label" , style="font-weight:bold" })
             @* <option value="@dr["ObjectID"].ToString()">@dr["Caption"].ToString()</option>*@
           
            @Html.Raw("<select class='Select' id ='ObjectID' overflow='scroll' style='height: 100%; width: 400px; object-fit: contain; overflow:scroll'>")
