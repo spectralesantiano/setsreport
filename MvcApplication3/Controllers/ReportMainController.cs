@@ -152,11 +152,11 @@ namespace SETSReport.Controllers
                 //_da.Fill(_dt);
                 //ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
 
-                //SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'", constr);
-                string ssql = "SELECT dbo.tblWebSession.*, dbo.tblSiteUsers.SiteID, getdate() as serverDate " +
-                              " FROM  dbo.tblSiteUsers RIGHT OUTER JOIN " +
-                              " dbo.tblWebSession ON dbo.tblSiteUsers.UserID = dbo.tblWebSession.UserID  where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'";
-               SqlDataAdapter _da = new SqlDataAdapter(ssql, constr);
+                SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'", constr);
+                //string ssql = "SELECT dbo.tblWebSession.*, dbo.tblSiteUsers.SiteID, getdate() as serverDate " +
+                //              " FROM  dbo.tblSiteUsers RIGHT OUTER JOIN " +
+                //              " dbo.tblWebSession ON dbo.tblSiteUsers.UserID = dbo.tblWebSession.UserID  where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'";
+               //SqlDataAdapter _da = new SqlDataAdapter(ssql, constr);
                _da.Fill(_dt);
 
                 ViewBag.clientip = GetIp();
@@ -164,7 +164,7 @@ namespace SETSReport.Controllers
 
                 if (_dt.Rows.Count > 0 ){
                     //ViewBag.ekek = "ekek";
-                            GlobalVar.SiteID = (string)_dt.Rows[0]["SiteID"];                            
+                            GlobalVar.SiteID = getSiteIDs((Int64) _dt.Rows[0]["UserID"]);                            
                             DateTime sdate = (DateTime)_dt.Rows[0]["serverDate"];
                             DateTime logdate = (DateTime)_dt.Rows[0]["DateLoggedIn"];
                             int validityt = Convert.ToInt32(_dt.Rows[0]["ValidityType"]);
@@ -229,6 +229,26 @@ namespace SETSReport.Controllers
             }
 
             return new SelectList(list, "Value", "Text");
+        }
+
+        [NonAction]
+        public String getSiteIDs(long UserID)
+        {
+            string ret="";
+            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
+            SqlConnection _con = new SqlConnection(constr);
+            DataTable _dt = new DataTable();
+
+            string ssql = "select SiteID from tblSiteUsers where UserID="+ UserID ;
+            SqlDataAdapter _da = new SqlDataAdapter(ssql, constr);
+            _da.Fill(_dt);
+
+            foreach (DataRow row in _dt.Rows)
+            {
+                ret = ret + "'" + row["SiteID"] + "',"; 
+            }
+
+            return ret.Substring(0,ret.Length - 1);
         }
 
         //

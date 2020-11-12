@@ -128,7 +128,7 @@ namespace SETSReport.Controllers.ReportPS
           //                      "ORDER BY Fullname ASC", selectedIDs);
           string sql = String.Format("SELECT FullName, RankName, FORMAT(DateTaken, 'MMMM dd, yyyy', 'en-us') DateTaken, TestName, UserScore, TotalScore, " +
                                  "CONCAT('with a rating of ', CONVERT(DECIMAL(10,2), CAST((CAST(UserScore AS FLOAT) / TotalScore) * 100 AS FLOAT)), '%') ScoreRating " +
-                                 "FROM (select * from view_FullExamineeResults where SiteID='" + GlobalVar.SiteID + "') vfe "+ 
+                                 "FROM (select * from view_FullExamineeResults where SiteID in (" + GlobalVar.SiteID + ")) vfe "+ 
                                  "WHERE ActualTestID IN ({0}) " +
                                  "ORDER BY Fullname ASC", selectedIDs);
          
@@ -205,7 +205,7 @@ namespace SETSReport.Controllers.ReportPS
             SqlConnection _con = new SqlConnection(constr);
 
             //String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults " + filterCriteria;
-            String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM (select * from view_FullExamineeResults where SiteID='" + GlobalVar.SiteID + "') vfe " + filterCriteria;
+            String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM (select * from view_FullExamineeResults where SiteID in (" + GlobalVar.SiteID + ")) vfe " + filterCriteria;
 
             sql += " order by " + sortbyname + " " + sortby;
 
