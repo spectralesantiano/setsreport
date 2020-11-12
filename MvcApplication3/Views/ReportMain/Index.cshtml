@@ -19,9 +19,11 @@
 <style type="text/css">
 .grid-container {
   display: grid;
-  grid-template-columns: 40% 30% 30%;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows:10% 80% 10%;
   @*background-color: #2196F3;*@
   padding: 10px;
+  max-height:500px;
 
 }
 .grid-item {
@@ -32,24 +34,26 @@
   text-align: center;
 }
 .item1 {
-  grid-column: 1;
-  grid-row: 2 / span 3;
+  grid-column: 1 / span 4;
+  grid-row: 1 ;
  @* min-width: 300px;*@
+ height:100% !important;
+ text-align:left;
 }
 .item2 {
-  grid-column: 2 / span 3;
-  grid-row: 2;
+  grid-column: 1 / span 2;
+  grid-row: 2 / span 3;
   overflow: auto;
 }
 .item3 {
-  grid-column: 2 / span 3;
-  grid-row: 3;
+  grid-column: 3 / span 4;
+  grid-row: 2;
 }
 .item4 {
-  grid-column: 1;
-  grid-row: 4;
+  grid-column: 3 / span 4;
+  grid-row: 3;
 }
-.item5 {
+@*.item5 {
   grid-column: 2 / span 3;
   grid-row: 4;
 }
@@ -62,7 +66,7 @@
 .item7{
   grid-column: 2  / span 3 ;
   grid-row: 1;
-}
+}*@
 
 .definetbC    {
      @*   font-size:small;*@
@@ -104,7 +108,7 @@ body { padding-top: 70px; }
 .leftcol{
     overflow-y: scroll;
    @* min-height: 30px;*@
-    height: 300px;
+   @* height: 417px;*@
 }
 
  .headlabel
@@ -133,15 +137,15 @@ body { padding-top: 70px; }
 
 <div class="container" >
     <div class="grid-container" >  
-         <div class="grid-item item6 " style="background-color:White">
+        @* <div class="grid-item item6 " style="background-color:White">
             @Html.Label("List of Reports", new { @class="headlabel" })
          </div>
           <div class="grid-item item7 " style="background-color:White">
             @Html.Label("Report Name", new { id = "rptname", @class = "headlabel" , style="color:blue" })
-         </div>
+         </div>*@
          <div class="grid-item item1"  style="background-color:White">  
              @Html.Action("ShowRptList")
-              <input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />
+              @*<input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />*@
          </div>
         
          <div class="grid-item item2 definetbL leftcol" id = "filterview"  style="background-color:White">  
@@ -153,12 +157,12 @@ body { padding-top: 70px; }
             @*<br />
              <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-primary"  />*@
          </div>
-          <div class="grid-item item4">  
-              @*  <input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />*@
-          </div>  
+          @*<div class="grid-item item4">  
+                <input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />
+          </div>  *@
 
           @* <div class="col-md-offset-2 col-md-10">  *@
-          <div class="grid-item item5" style="background-color:White">  
+          <div class="grid-item item4" style="background-color:White">  
                 <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-primary"  />
           </div>  
       </div>
@@ -204,6 +208,11 @@ body { padding-top: 70px; }
 <script type="text/javascript">
 
     $("#ObjectID").dblclick(function () {
+        //alert($("#ObjectID option:selected").val());
+        showfilter();
+    });
+
+    $("#ObjectID").change(function () {
         //alert($("#ObjectID option:selected").val());
         showfilter();
     });
