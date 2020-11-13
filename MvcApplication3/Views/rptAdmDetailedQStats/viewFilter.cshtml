@@ -36,7 +36,7 @@ h5 {
       <fieldset>
             <div class="row-fluid">
                     <div class="span6" style="">
-                           <div><h5>Selection Filter / Sorting</h5></div>
+                           <div><h5>Criteria</h5></div>
 
                             @Html.Label("Test Name:", new { @class = "control-label" })
                              <div class="controls">
@@ -46,13 +46,7 @@ h5 {
                             </div></div>
 
                             <br />
-                             <button id = "btnFilter" type ="button" class="btn">Apply Filter</button>  
-
-                    </div>
-                    <div class="span6" style="">
-                         <div><h5>Result Filter / Sorting:</h5></div>
-
-                          @Html.Label("Display only Questions that has been correctly answered by", new { @class = "control-label" })
+                              @Html.Label("Display only Questions that has been correctly answered by", new { @class = "control-label" })
                              <div class="controls">
                             @Html.TextBox("Min",0 , new {type = "number", min = "0", step = "1" ,id="Min", style ="width:50px"})  
                             % to 
@@ -60,7 +54,15 @@ h5 {
                             % 
                             </div>
 
-                            @Html.Label("Sort By:", new { @class = "control-label" })
+                            <br />
+                             <button id = "btnFilter" type ="button" class="btn">Apply Criteria</button>  
+
+                    </div>
+                    <div class="span6" style="">
+                         <div><h5>Sorting</h5></div>
+
+
+                            @Html.Label("Sort Report:", new { @class = "control-label" })
                             <div class="controls">
                             @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
                             <div>

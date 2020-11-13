@@ -75,7 +75,7 @@ h5 {
         <fieldset>  
             <div class="row-fluid">
                    <div class="span6">
-                             <div><h5>Selection Filter / Sorting</h5></div>
+                             <div><h5>Criteria</h5></div>
                   
                             @* <div class="control-group">*@
                                  @Html.Label("Test Name:", new { @class = "control-label" })
@@ -141,9 +141,17 @@ h5 {
                         
                               @*  @Html.Label("Sorting")*@
                         
-                               <br />
+                              
+            
+                              
+
+                         </div>  
+                         <div class="span6">
+                                <div><h5>Sorting</h5></div>
+
+                                 <br />
                             
-                                @Html.Label("Sort by:", new { @class = "control-label" })
+                                @Html.Label("Sort Selection:", new { @class = "control-label" })
                               
                                  @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
                                 <div class="controls">
@@ -155,15 +163,9 @@ h5 {
                                     @Html.RadioButton("rgSortOrder", "Desc")
                                     Descending
                                 </label></div>
-            
-                                <br />
-                                <button id = "btnFilter" type ="button" class="btn">Apply Filter</button>  
-
-                         </div>  
-                         <div class="span6">
-                                <div><h5>Result Filter / Sorting:</h5></div>
+                                 <br />
                                 
-                                 @Html.Label("Include:", new { @class = "control-label" }) 
+                                 @Html.Label("Sort Report:", new { @class = "control-label" }) 
                     
                                 <div class="control-group">
                                     <div><label>
@@ -196,7 +198,9 @@ h5 {
                                         @Html.RadioButton("rptSortdOrder", "Desc") Descending
                                     </label>
                                  </div>
-                        
+                             <br />
+                                <button id = "btnFilter" type ="button" class="btn">Apply Criteria</button>  
+
                         </div>
 
                        

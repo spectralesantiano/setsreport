@@ -29,7 +29,7 @@ h5 {
           <fieldset>  
                  <div class="row-fluid">
                        <div class="span6">
-                               <div><h5>Selection Filter / Sorting</h5></div>
+                               <div><h5>Criteria</h5></div>
                                             
                                         @Html.Label("Test Group:", new { @class = "control-label" })
                                         <div class="controls">
@@ -38,9 +38,25 @@ h5 {
                                             <button id = "clearlueTestGroup" type ="button" class="btn">x</button>                                                     
                                         </div></div>
                                             
-                                       
+                                 <div>
+                                    <label class="checkbox">
+                                    <input type="checkbox" id="ShowRevDates" value="true" name="ShowRevDates"/>Display History Revision Date
+                                    @*  <input name="ShowRevDates" type="hidden" value="false" />*@
+                                    </label>
+                                </div>
+                            
+                                <br />
                            
-                                        <br />
+                                     
+                                    <br />
+                                   <button id = "btnFilter" type ="button" class="btn">Apply Criteria</button>  
+
+                       </div>
+
+                        <div class="span6">
+                           <div><h5>Sorting</h5></div>
+                              <br />
+                                      @Html.Label("Sort Selection:", new { @class = "control-label" })
                                          <div class="controls">                
                                         <label>@Html.RadioButton("rgSortOrder", "Asc", true)
                                                 Ascending 
@@ -49,24 +65,10 @@ h5 {
                                             @Html.RadioButton("rgSortOrder", "Desc")
                                             Descending
                                         </label></div>
+                             <br />
+                               
 
-                                    <br />
-                                   <button id = "btnFilter" type ="button" class="btn">Apply Filter</button>  
-
-                       </div>
-
-                        <div class="span6">
-                           <div><h5>Result Filter / Sorting:</h5></div>
-                                <div>
-                                    <label class="checkbox">
-                                    <input type="checkbox" id="ShowRevDates" value="true" name="ShowRevDates"/>Display History Revision Date
-                                    @*  <input name="ShowRevDates" type="hidden" value="false" />*@
-                                    </label>
-                                </div>
-                            
-                                <br />
-
-                                 @Html.Label("Sort by:", new { @class = "control-label" })
+                                 @Html.Label("Sort Report:", new { @class = "control-label" })
                                 <div class="controls">
                                 <div class="input-append">
                                     @Html.DropDownList("SortReportBy", ViewBag.sortitems as SelectList, new { id = "lueSortReportBy" })    

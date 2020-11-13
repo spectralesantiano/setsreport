@@ -36,7 +36,7 @@ h5 {
       <fieldset>
           <div class="row-fluid">
                     <div class="span6" style="">
-                           <div><h5>Selection Filter / Sorting</h5></div>
+                           <div><h5>Criteria</h5></div>
                     
                             @Html.Label("Company Name:")
                              <div class="controls">  
@@ -45,8 +45,21 @@ h5 {
                              <button id = "clearlueCompany" type ="button" class="btn">x</button>                 
                             </div></div>
 
-                            @Html.Label("Sort by:", new { @class = "control-label" })
-                            <label class="control-label" style="font-size:smaller" >(Result sorting also affected.)</label>
+                             @Html.Label("Set Signatory:")
+                            <div class="controls">  
+                            <div class="input-append">
+                            @Html.DropDownList("Signatory", ViewBag.Signatory as SelectList, "", new { id = "lueSignatory" })         
+                            <button id = "clearlueSignatory" type ="button" class="btn">x</button> 
+                            </div></div>   
+
+                             <br />
+                            <button id = "btnFilter" type ="button" class="btn">Apply Criteria</button> 
+                 </div>
+                 <div class="span6" style="">
+                         <div><h5>Sorting</h5></div>
+
+                           @Html.Label("Sort by:", new { @class = "control-label" })
+                            <label class="control-label" style="font-size:smaller" >(Report sorting also affected.)</label>
 
                             @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
                             <div class="controls">
@@ -59,19 +72,10 @@ h5 {
                                 Descending
                             </label>
                             </div>
-
                              <br />
-                            <button id = "btnFilter" type ="button" class="btn">Apply Filter</button> 
-                 </div>
-                 <div class="span6" style="">
-                         <div><h5>Result Filter / Sorting:</h5></div>
 
-                         @Html.Label("Set Signatory:")
-                        <div class="controls">  
-                        <div class="input-append">
-                        @Html.DropDownList("Signatory", ViewBag.Signatory as SelectList, "", new { id = "lueSignatory" })         
-                        <button id = "clearlueSignatory" type ="button" class="btn">x</button> 
-                        </div></div>          
+
+                             
    
                 </div>
                 <div>

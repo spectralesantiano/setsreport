@@ -37,17 +37,35 @@ h5 {
        
           <div class="row-fluid">
                 <div class="span6">
-                     <div><h5>Selection Filter / Sorting</h5></div>
+                     <div><h5>Criteria</h5></div>
 
                       @Html.Label("Taken at:", new { @class = "control-label" })
                       <div class="controls">
                           @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList,  new { id = "lueCompany" })  
                       </div>    
 
-                      
+                       <div>Nationality:</div>
+                      <div class="controls">
+                          <div class="input-append">
+                              @Html.DropDownList("lueNat", ViewBag.Nationality as SelectList, new { id = "lueNat", @size = "8", @multiple = "multiple", @class = "Listbox" })
+                               <button id = "clearlueNat" type ="button" class="btn">x</button>    
+                          </div>   
+                      </div>      
+
 
                       <br />
-                     @Html.Label("Sort by:", new { @class = "control-label" })
+                      <div >
+                         <button id = "btnFilter" type ="button" class="btn">Apply Criteria</button>
+                      </div>
+                </div>
+
+                <div class="span6">
+                    <div><h5>Sorting</h5></div>
+                    
+                   
+
+                      <br />
+                     @Html.Label("Sort Selection:", new { @class = "control-label" })
                       <div class="controls">
                              <div>
                                 <label>@Html.RadioButton("rgSortOrder", "Asc", true) Ascending</label>
@@ -56,26 +74,10 @@ h5 {
                                  <label>@Html.RadioButton("rgSortOrder", "Desc") Descending</label>
                              </div>
                       </div>
-
-                      <br />
-                      <div >
-                         <button id = "btnFilter" type ="button" class="btn">Apply Filter</button>
-                      </div>
-                </div>
-
-                <div class="span6">
-                    <div><h5>Result Filter / Sorting:</h5></div>
-                    
-                    <div>Nationality:</div>
-                      <div class="controls">
-                          <div class="input-append">
-                              @Html.DropDownList("lueNat", ViewBag.Nationality as SelectList, new { id = "lueNat", @size = "8", @multiple = "multiple", @class = "Listbox" })
-                               <button id = "clearlueNat" type ="button" class="btn">x</button>    
-                          </div>   
-                      </div>      
+                       <br />
 
                     <div class="control-group">
-                        @Html.Label("Sort by:", new { @class = "control-label" })
+                        @Html.Label("Sort Report:", new { @class = "control-label" })
                        <div class="controls">
                               @Html.DropDownList("SortReportBy", ViewBag.SortReportBy as SelectList, new { id = "lueSortReportBy" })
                                 <div>

@@ -28,7 +28,7 @@ h5 {
           <fieldset>  
                 <div class="row-fluid">
                     <div class="span6" style="">
-                           <div><h5>Selection Filter / Sorting</h5></div>
+                           <div><h5>Criteria</h5></div>
 
                              @Html.Label("Taken at:", new { @class = "control-label" })
                             <div class="controls">                
@@ -36,7 +36,18 @@ h5 {
                                 @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList,  new { id = "lueCompany" })    
                             </div></div>
 
-                             @Html.Label("Sort by:", new { @class = "control-label" })
+                            
+                    
+                         <br />
+
+                          <button id = "btnFilter" type ="button" class="btn">Apply Criteria</button>  
+                    </div>
+
+                    <div class="span6" style="">
+
+                         <div><h5>Sorting</h5></div>
+                       
+                        @Html.Label("Sort Selection:", new { @class = "control-label" })
                             <div class="controls">                   
                             <label>@Html.RadioButton("rgSortOrder", "Asc", true)
                                     Ascending 
@@ -45,17 +56,9 @@ h5 {
                                 @Html.RadioButton("rgSortOrder", "Desc")
                                 Descending
                             </label></div>
-                    
-                         <br />
+                            <br />
 
-                          <button id = "btnFilter" type ="button" class="btn">Apply Filter</button>  
-                    </div>
-
-                    <div class="span6" style="">
-
-                         <div><h5>Result Filter / Sorting:</h5></div>
-                       
-                          @Html.Label("Sort by:", new { @class = "control-label" })
+                          @Html.Label("Sort Report:", new { @class = "control-label" })
                                             
                         <div class="input-append">
                             @Html.DropDownList("SortReportBy", ViewBag.SortReportBy as SelectList, new { id = "lueSortReportBy" })    
