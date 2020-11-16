@@ -53,10 +53,7 @@ h5 {
                       </div>      
 
 
-                      <br />
-                      <div >
-                         <button id = "btnFilter" type ="button" class="btn btn-primary">Apply Criteria</button>
-                      </div>
+                     
                 </div>
 
                 <div class="span6">
@@ -64,7 +61,7 @@ h5 {
                     
                    
 
-                      <br />
+                      <div style="display:none"><br />
                      @Html.Label("Sort Selection:", new { @class = "control-label" })
                       <div class="controls">
                              <div>
@@ -74,7 +71,7 @@ h5 {
                                  <label>@Html.RadioButton("rgSortOrder", "Desc") Descending</label>
                              </div>
                       </div>
-                       <br />
+                       <br /></div>
 
                     <div class="control-group">
                         @Html.Label("Sort Report:", new { @class = "control-label" })
@@ -88,6 +85,11 @@ h5 {
                                 </div>
                         </div>
                     </div>
+
+                     <br />
+                      <div >
+                         <button id = "btnFilter" type ="button" class="btn btn-primary">Apply Criteria</button>
+                      </div>
               </div>
 
               
