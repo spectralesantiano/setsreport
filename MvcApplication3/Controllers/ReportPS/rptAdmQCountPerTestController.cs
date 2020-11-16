@@ -134,7 +134,7 @@ namespace SETSReport.Controllers.ReportPS
         }
 
 
-        public ActionResult SelectionList(string criteria, string sortby)
+        public ActionResult SelectionList(string criteria, string sortby = "asc")
         {
             string filterCriteria = ApplyCriteria(criteria); ;
 

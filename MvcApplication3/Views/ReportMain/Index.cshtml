@@ -20,7 +20,7 @@
 .grid-container {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows:10% 80% 10%;
+  grid-template-rows:10% 82% 8%;
   @*background-color: #2196F3;*@
   padding: 5px;
   max-height:500px;
@@ -149,11 +149,11 @@ body { padding-top: 60px; }
               @*<input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />*@
          </div>
         
-         <div class="grid-item item2 definetbL leftcol" id = "filterview"  style="background-color:White">  
+         <div class="grid-item item2 definetbL leftcol" id = "filterview"  style="background-color:White; visibility: hidden; height:100px">  
             @* @{Html.RenderAction("ShowRptFilter");}  *@
             @Html.Partial("ShowRptFilter")
          </div>
-         <div class="grid-item item3 definetC" id = "SelectionView"  style="background-color:White">
+         <div class="grid-item item3 definetC" id = "SelectionView"  style="background-color:White; visibility: hidden">
             @Html.Partial("SelectionList")
             @*<br />
              <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-primary"  />*@
@@ -163,7 +163,7 @@ body { padding-top: 60px; }
           </div>  *@
 
           @* <div class="col-md-offset-2 col-md-10">  *@
-          <div class="grid-item item4" style="background-color:White">  
+          <div class="grid-item item4" style="background-color:white ; visibility: hidden"  id ="divbtnpreview">  
                 <input type="button" value="Preview Report"  id = "btnShowReport" class="btn btn-primary"  />
           </div>  
       </div>
@@ -215,6 +215,25 @@ body { padding-top: 60px; }
 
     $("#ObjectID").change(function () {
         //alert($("#ObjectID option:selected").val());
+
+        //if ($("#SelectionView").is(":visible")) 
+        if ($("#filterview").css("visibility") == "hidden") {
+
+            $('#filterview').css({opacity: 0.0, 
+                visibility: 'visible'
+            }).animate({height: '100%', opacity: 1 }, 650);
+
+            $('#SelectionView').css({ opacity: 0.0, 
+                visibility: 'visible'
+            }).animate({ height: '100%', opacity: 1 }, 650);
+
+            $('#divbtnpreview').css({ opacity: 0.0, 
+                visibility: 'visible'
+            }).animate({ height: '100%', opacity: 1 }, 650); 
+
+        } 
+
+
         showfilter();
     });
 

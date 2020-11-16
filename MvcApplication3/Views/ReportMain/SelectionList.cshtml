@@ -14,7 +14,7 @@
     <tr>
         <td>
             <div>
-              @Html.ListBox("-No Data-", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "width:95%;overflow:scroll;", size = 15, id = "lstselect" })            
+              @Html.ListBox("-No Data-", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "width:95%;overflow:scroll;", size = 17, id = "lstselect" })            
             </div>
         </td>
     </tr>
@@ -22,7 +22,7 @@
         <td> @Html.Label("Records", new { id="reccount"}) </td>
     </tr>
     <tr>
-        <td><button id = "btnSelAll" type ="button" class ="btn">Select All</button> <button id = "btnDeSelAll" type ="button" class ="btn">De-Select All</button>   </td>
+        <td><button id = "btnSelAll" type ="button" class ="btn btn-small">Select All</button> <button id = "btnDeSelAll" type ="button" class ="btn btn-small">De-Select All</button>   </td>
     </tr>
 </table>
 

@@ -155,6 +155,15 @@ namespace SETSReport.Controllers.ReportPS
             }, "cbeSortBy", "Text", 1);
             ViewBag.sortitems = list;
 
+            var listrpt = new SelectList(new[] 
+            {
+               new { Text = "Rank", SortReportBy = "RankName" },
+               new { Text = "Examinee Name", SortReportBy = "LastFirstMiddle" },
+               new { Text = "Date Taken", SortReportBy = "DateTaken" },
+               new { Text = "Test Name", SortReportBy = "TestName" },
+               new { Text = "Score", SortReportBy = "TotalPercent" },
+            }, "SortReportBy", "Text", 1);
+            ViewBag.SortReportBy = listrpt;
 
             return PartialView();
             //return View();

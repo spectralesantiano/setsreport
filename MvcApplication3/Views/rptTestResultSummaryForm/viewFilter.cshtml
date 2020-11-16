@@ -167,7 +167,7 @@ h5 {
                                 
                                  @Html.Label("Sort Report:", new { @class = "control-label" }) 
                     
-                                <div class="control-group">
+                               @* <div class="control-group">
                                     <div><label>
                                         @Html.RadioButton("rgSortedBy", "LastFirstMiddle", true) Sorted by Examinee Name
                                     </label></div>
@@ -187,6 +187,10 @@ h5 {
                                     <div><label>
                                         @Html.RadioButton("rgSortedBy", "RankName") Sorted by Rank
                                     </label></div>
+                                </div>*@
+
+                                <div class="control-group">
+                                       @Html.DropDownList("rgSortedBy", ViewBag.SortReportBy as SelectList, new { id = "rgSortedBy" })
                                 </div>
 
                                 <div>
@@ -199,7 +203,7 @@ h5 {
                                     </label>
                                  </div>
                              <br />
-                                <button id = "btnFilter" type ="button" class="btn">Apply Criteria</button>  
+                                <button id = "btnFilter" type ="button" class="btn btn-primary">Apply Criteria</button>  
 
                         </div>
 
