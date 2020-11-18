@@ -4,25 +4,38 @@
 }
 
 
+
 <script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
 
+<style type="text/css">
+    th.clstd, td.clstd
+    {
+        display: block;
+        max-height:20px; 
+        vertical-align:top;
+         text-align:center;
+         padding:0; 
+    }
+</style>
+
 @*<h3>Selection List</h3>*@
-<table border="1"  width = "100%" class ="list">
+<table border="1"  width = "100%" class ="table table-bordered" style="text-align:center; height="100%">
     <tr>
-        <th>Selection List</th>
+        <th class="clstd">Selection List</th>
     </tr>
     <tr>
-        <td>
+        <td style="padding:0">
             <div>
-              @Html.ListBox("-No Data-", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "width:95%;overflow:scroll;", size = 17, id = "lstselect" })            
+              @Html.ListBox("-No Data-", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "width:100%; height:100%; overflow:scroll; padding-left:10", size = 16, id = "lstselect" })            
+              <label style="font-style:italic; font-size:smaller; text-align:left; padding-left:5px; max-height:15px; padding-bottom:0; padding-top:0">Press Ctrl+click for multi-select</label>              
             </div>
         </td>
     </tr>
     <tr>
-        <td> @Html.Label("Records", new { id="reccount"}) </td>
+        <td class="clstd">@Html.Label("Records", new { id="reccount"})</td>
     </tr>
     <tr>
-        <td><button id = "btnSelAll" type ="button" class ="btn btn-small">Select All</button> <button id = "btnDeSelAll" type ="button" class ="btn btn-small">De-Select All</button>   </td>
+        <td class="clstd" style="max-height:30px;"><button id = "btnSelAll" type ="button" class ="btn btn-small">Select All</button> <button id = "btnDeSelAll" type ="button" class ="btn btn-small">De-Select All</button>   </td>
     </tr>
 </table>
 

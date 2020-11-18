@@ -153,7 +153,7 @@ h5 {
                             
                                 @Html.Label("Sort Selection:", new { @class = "control-label" })
                               
-                                 <div style="display:none"> @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
+                                 @Html.DropDownList("cbeSortBy", ViewBag.sortitems as SelectList, new { id = "cbeSortBy" })
                                 <div class="controls">
                                 <label>
                                     @Html.RadioButton("rgSortOrder", "Asc", true)
@@ -163,7 +163,7 @@ h5 {
                                     @Html.RadioButton("rgSortOrder", "Desc")
                                     Descending
                                 </label></div>
-                                 <br /></div>
+                                 <br />
                                 
                                  @Html.Label("Sort Report:", new { @class = "control-label" }) 
                     
