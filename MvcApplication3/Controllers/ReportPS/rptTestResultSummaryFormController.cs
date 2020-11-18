@@ -182,7 +182,7 @@ namespace SETSReport.Controllers.ReportPS
             SqlConnection _con = new SqlConnection(constr);
 
             //String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults " + filterCriteria;
-            String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM (select * from view_FullExamineeResults where SiteID in (" + GlobalVar.SiteID + ")) vfe " + filterCriteria;
+            String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM (select * from view_FullExamineeResults   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) vfe " + filterCriteria;
 
 
             sql += " order by " + sortbyname + " " + sortby;
@@ -204,7 +204,7 @@ namespace SETSReport.Controllers.ReportPS
             string selectedIDs = Request["txtselected"].ToString();
 
             //string sql = String.Format("SELECT * FROM view_FullExamineeResults WHERE ActualTestID IN ({0}) ORDER BY {1} {2}", selectedIDs, Request["rgSortedBy"], Request["rptSortdOrder"]);
-            string sql = String.Format("SELECT * FROM (select * from view_FullExamineeResults where SiteID in (" + GlobalVar.SiteID + ")) vfe WHERE ActualTestID IN ({0}) ORDER BY {1} {2}", selectedIDs, Request["rgSortedBy"], Request["rptSortdOrder"]);
+            string sql = String.Format("SELECT * FROM (select * from view_FullExamineeResults   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) vfe WHERE ActualTestID IN ({0}) ORDER BY {1} {2}", selectedIDs, Request["rgSortedBy"], Request["rptSortdOrder"]);
 
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);

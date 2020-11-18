@@ -169,7 +169,7 @@ namespace SETSReport.Controllers.ReportPS
 
             //String sql = "SELECT DISTINCT SubjectName, s.SubjectID, 0 IsSelected FROM tblAdmSubject s INNER JOIN tblAdmTestTemplateSubjects tts ON s.SubjectID = tts.SubjectID INNER JOIN tblAdmTestTemplates tt ON tt.TestID = tts.TestID INNER JOIN tblActualTest at ON at.TestID = tt.TestID ";
             String sql = "SELECT DISTINCT SubjectName, s.SubjectID, 0 IsSelected FROM tblAdmSubject s INNER JOIN tblAdmTestTemplateSubjects tts ON s.SubjectID = tts.SubjectID INNER JOIN tblAdmTestTemplates tt ON tt.TestID = tts.TestID INNER JOIN " +
-                "(select tblActualTest.*,tblexaminee.SiteID from tblActualTest inner join tblexaminee on tblactualtest.examineeid = tblexaminee.examineeid where SiteID in (" + GlobalVar.SiteID + ")) " +
+                "(select tblActualTest.*,tblexaminee.SiteID from tblActualTest inner join tblexaminee on tblactualtest.examineeid = tblexaminee.examineeid   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) " +
                 " at ON at.TestID = tt.TestID ";
 
 
@@ -217,7 +217,7 @@ namespace SETSReport.Controllers.ReportPS
                 "CONCAT(CONVERT(DECIMAL(10,2), CAST((CAST(UserScore AS FLOAT) / TotalScore) * 100 AS FLOAT)), ' % (', UserScore, '/', TotalScore, ')') SubjectScore " +
             "FROM (" +
                 "SELECT SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName, COUNT(CASE WHEN IsCorrect = 1 THEN 1 ELSE NULL END) UserScore, COUNT(Answer) TotalScore " +
-                "FROM (select * from view_FullExamineeResultsWithQuestions where SiteID in (" + GlobalVar.SiteID + ")) vfe " +
+                "FROM (select * from view_FullExamineeResultsWithQuestions   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) vfe " +
                 "GROUP BY SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName" +
                 ") T WHERE SubjectID IN ({0}) {1}", selectedIDs, filterCriteria != "" ? " And " + filterCriteria : ""); //SubjectName to SubjectID...
 

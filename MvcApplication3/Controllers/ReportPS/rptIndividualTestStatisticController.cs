@@ -172,7 +172,7 @@ namespace SETSReport.Controllers.ReportPS
             SqlConnection _con = new SqlConnection(constr);
 
             //String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM view_FullExamineeResults " + filterCriteria;
-            String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM (select * from view_FullExamineeResults where SiteID in (" + GlobalVar.SiteID + ")) vfe " + filterCriteria;
+            String sql = "SELECT *, 0 IsSelected, CONCAT(LastFirstMiddle, ' - ', FORMAT(DateTaken, 'dd-MMM-yyyy hh:mm tt', 'en-us'), ' - ', TestNameDate) DisplayField FROM (select * from view_FullExamineeResults   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) vfe " + filterCriteria;
 
             sql += " order by " + sortbyname + " " + sortby;
 
@@ -235,7 +235,7 @@ namespace SETSReport.Controllers.ReportPS
                "COUNT(CASE WHEN Difficulty = 'SYSOPERATIONAL' THEN 1 ELSE NULL END) TOperational, " +
                "COUNT(CASE WHEN Difficulty = 'SYSSUPPORT' THEN 1 ELSE NULL END) TSupport, " +
                "COUNT(CASE WHEN IsCorrect = 1 THEN 1 ELSE NULL END) UserScore, COUNT(Answer) TotalScore " +
-           "FROM (select * FROM view_FullExamineeResultsWithQuestions where SiteID in (" + GlobalVar.SiteID + ")) vferwq " +
+           "FROM (select * FROM view_FullExamineeResultsWithQuestions   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) vferwq " +
            "WHERE ActualTestID IN ({0}) " +
            "GROUP BY LastFirstMiddle, RefID, CompanyName, RankName, DateTaken, TestName, TestStatusName, TimeLimit, TimeTakenSec, ActualTestID, SubjectName, Level2MarkMin, Level3MarkMin, Average, TestScore, TotalPercent " +
            "ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);

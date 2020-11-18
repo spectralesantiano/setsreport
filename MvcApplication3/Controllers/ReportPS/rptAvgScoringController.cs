@@ -151,7 +151,7 @@ namespace SETSReport.Controllers.ReportPS
 
             //String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM view_ExamineeResults r INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
             String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM " + 
-                        "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID where SiteID in (" + GlobalVar.SiteID + ")) r "+ 
+                        "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) r "+ 
                         "INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
            
              sql = "select * from (" + sql + ") tb " + filterCriteria;
@@ -186,7 +186,7 @@ namespace SETSReport.Controllers.ReportPS
             string sql = String.Format("SELECT DISTINCT TestNameDate, TestName, DateCreated, t.* " +
                 "FROM view_TestScoreStatistics t " +
                 "INNER JOIN " +
-                "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID where SiteID in (" + GlobalVar.SiteID + ")) " +
+                "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) " +
                 " er ON er.TestID=t.TestID AND er.CompanyName = t.CompanyName " +
                 "WHERE t.TestID IN ({0}) {1}" +
                 "ORDER BY {2}", selectedIDs, conditions, Request["SortReportBy"] + " " + Request["rgSortReportOrder"]);

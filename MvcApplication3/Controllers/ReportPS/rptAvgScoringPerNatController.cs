@@ -158,7 +158,7 @@ namespace SETSReport.Controllers.ReportPS
 
             //String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM view_ExamineeResults r INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
             String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM " +
-                      "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID where SiteID in (" + GlobalVar.SiteID + ")) r " +
+                      "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) r " +
                       "INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
 
 
@@ -272,7 +272,7 @@ namespace SETSReport.Controllers.ReportPS
 
             //String selectedsql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM view_ExamineeResults r INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
             String selectedsql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM " +
-                       "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID where SiteID in (" + GlobalVar.SiteID + ")) r " +
+                       "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) r " +
                        "INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
 
             selectedsql = "select * from (" + selectedsql + ") tb where TestID in (" + selectedIDs + ")";
@@ -303,7 +303,7 @@ namespace SETSReport.Controllers.ReportPS
 
                     string sql = String.Format("SELECT CASE WHEN NoOfTimesTaken IS NULL THEN a.Nat ELSE CONCAT(a.Nat, ' (', NoOfTimesTaken, ')') END Argument, " +
                           "ROUND(({0}) * 100, 2) Value " +
-                          "FROM (select * from view_AllTestNationality where SiteID in (" + GlobalVar.SiteID + ")) a " +
+                          "FROM (select * from view_AllTestNationality   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) a " +
                           "LEFT JOIN view_TestScoreStatisticsPerNat b ON b.NatID = a.PKey AND TestID = '{1}' AND CompanyName = '{2}' {3}" +
                           "GROUP BY a.Nat, NoOfTimesTaken", item.Value, testID, CompanyName, selectedNat);
 

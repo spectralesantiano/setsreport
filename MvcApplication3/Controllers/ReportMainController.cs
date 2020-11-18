@@ -142,75 +142,87 @@ namespace SETSReport.Controllers
             //{
             //    return View();
             //}
+             try
+             {
+               
+                    if (ConfigurationManager.AppSettings["CheckParam"] == "1")
+                    {
+                
 
-            if (ConfigurationManager.AppSettings["CheckParam"] == "1")
-            {
-                string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
-                SqlConnection _con = new SqlConnection(constr);
-                //SqlDataAdapter _da = new SqlDataAdapter("Select * From [view_ReportGroups]", constr);
-                DataTable _dt = new DataTable();
-                //_da.Fill(_dt);
-                //ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
+                        string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
+                        SqlConnection _con = new SqlConnection(constr);
+                        //SqlDataAdapter _da = new SqlDataAdapter("Select * From [view_ReportGroups]", constr);
+                        DataTable _dt = new DataTable();
+                        //_da.Fill(_dt);
+                        //ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
 
-                SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'", constr);
-                //string ssql = "SELECT dbo.tblWebSession.*, dbo.tblSiteUsers.SiteID, getdate() as serverDate " +
-                //              " FROM  dbo.tblSiteUsers RIGHT OUTER JOIN " +
-                //              " dbo.tblWebSession ON dbo.tblSiteUsers.UserID = dbo.tblWebSession.UserID  where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'";
-               //SqlDataAdapter _da = new SqlDataAdapter(ssql, constr);
-               _da.Fill(_dt);
+                        SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'", constr);
+                        //string ssql = "SELECT dbo.tblWebSession.*, dbo.tblSiteUsers.SiteID, getdate() as serverDate " +
+                        //              " FROM  dbo.tblSiteUsers RIGHT OUTER JOIN " +
+                        //              " dbo.tblWebSession ON dbo.tblSiteUsers.UserID = dbo.tblWebSession.UserID  where UniqueID='" + id + "' and IPAddress ='" + GetIp() + "'";
+                       //SqlDataAdapter _da = new SqlDataAdapter(ssql, constr);
+                       _da.Fill(_dt);
 
-                ViewBag.clientip = GetIp();
+                        ViewBag.clientip = GetIp();
                
 
-                if (_dt.Rows.Count > 0 ){
-                    //ViewBag.ekek = "ekek";
-                            GlobalVar.SiteID = getSiteIDs((Int64) _dt.Rows[0]["UserID"]);                            
-                            DateTime sdate = (DateTime)_dt.Rows[0]["serverDate"];
-                            DateTime logdate = (DateTime)_dt.Rows[0]["DateLoggedIn"];
-                            int validityt = Convert.ToInt32(_dt.Rows[0]["ValidityType"]);
-                            DateTime newdate;
+                        if (_dt.Rows.Count > 0 ){
+                            //ViewBag.ekek = "ekek";
+                                    GlobalVar.SiteID = getSiteIDs((Int64) _dt.Rows[0]["UserID"]);                            
+                                    DateTime sdate = (DateTime)_dt.Rows[0]["serverDate"];
+                                    DateTime logdate = (DateTime)_dt.Rows[0]["DateLoggedIn"];
+                                    int validityt = Convert.ToInt32(_dt.Rows[0]["ValidityType"]);
+                                    DateTime newdate;
 
-                            ViewBag.logdate = logdate;
-                            ViewBag.serverdate = sdate;
+                                    ViewBag.logdate = logdate;
+                                    ViewBag.serverdate = sdate;
 
-                            switch (validityt)
-                            {
-                                case 0:
-                                        newdate = logdate.AddSeconds((int)_dt.Rows[0]["Validity"]); break;
-                                case 1:
-                                        newdate = logdate.AddMinutes((int)_dt.Rows[0]["Validity"]); break;
-                                case 2:
-                                        newdate = logdate.AddHours((int)_dt.Rows[0]["Validity"]); break;
-                                case 3:
-                                        newdate = logdate.AddDays((int)_dt.Rows[0]["Validity"]); break;
-                                case 4:
-                                        newdate = logdate.AddMonths((int)_dt.Rows[0]["Validity"]); break;
-                                case 5:
-                                        newdate = logdate.AddYears((int)_dt.Rows[0]["Validity"]); break;
-                                default: newdate = sdate; break;
-                            }
+                                    switch (validityt)
+                                    {
+                                        case 0:
+                                                newdate = logdate.AddSeconds((int)_dt.Rows[0]["Validity"]); break;
+                                        case 1:
+                                                newdate = logdate.AddMinutes((int)_dt.Rows[0]["Validity"]); break;
+                                        case 2:
+                                                newdate = logdate.AddHours((int)_dt.Rows[0]["Validity"]); break;
+                                        case 3:
+                                                newdate = logdate.AddDays((int)_dt.Rows[0]["Validity"]); break;
+                                        case 4:
+                                                newdate = logdate.AddMonths((int)_dt.Rows[0]["Validity"]); break;
+                                        case 5:
+                                                newdate = logdate.AddYears((int)_dt.Rows[0]["Validity"]); break;
+                                        default: newdate = sdate; break;
+                                    }
 
-                            ViewBag.newdate = newdate;        
+                                    ViewBag.newdate = newdate;        
 
-                            if (newdate < sdate)
-                            {
-                                return View("noReferer");
-                            }
-                            else
-                            {
-                                //Response.Write(GetIp());
-                                return View();
-                            }
+                                    if (newdate < sdate)
+                                    {
+                                        return View("noReferer");
+                                    }
+                                    else
+                                    {
+                                        //Response.Write(GetIp());
+                                        return View();
+                                    }
                 
+                                }
+                                else
+                                {
+                                    return View("noReferer");
+                                }
                         }
                         else
                         {
-                            return View("noReferer");
+                           return View();
                         }
-                }
-                else
+
+                 }
+
+                catch (Exception ex)
                 {
-                   return View();
+                    Response.Write(ex.Message);
+                    return View("noReferer");
                 }
         }
 
@@ -234,21 +246,33 @@ namespace SETSReport.Controllers
         [NonAction]
         public String getSiteIDs(long UserID)
         {
-            string ret="";
-            string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
-            SqlConnection _con = new SqlConnection(constr);
-            DataTable _dt = new DataTable();
-
-            string ssql = "select SiteID from tblSiteUsers where UserID="+ UserID ;
-            SqlDataAdapter _da = new SqlDataAdapter(ssql, constr);
-            _da.Fill(_dt);
-
-            foreach (DataRow row in _dt.Rows)
+            string ret = ""; //admin userid is 1..
+            if(UserID != 1)
             {
-                ret = ret + "'" + row["SiteID"] + "',"; 
+                string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
+                SqlConnection _con = new SqlConnection(constr);
+                DataTable _dt = new DataTable();
+
+                string ssql = "select SiteID from tblSiteUsers where UserID="+ UserID ;
+                SqlDataAdapter _da = new SqlDataAdapter(ssql, constr);
+                _da.Fill(_dt);
+
+                if (_dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in _dt.Rows)
+                    {
+                        ret = ret + "'" + row["SiteID"] + "',";
+                    }
+
+                    ret = "SiteID in (" + ret.Substring(0, ret.Length - 1) + ")";
+                }
+                else
+                {
+                    ret = "UserID Error";
+                }
             }
 
-            return ret.Substring(0,ret.Length - 1);
+            return ret;
         }
 
         //
