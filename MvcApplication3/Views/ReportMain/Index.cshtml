@@ -21,17 +21,24 @@
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows:10% 82% 8%;
+ @* grid-template-rows:50px auto 50px;*@
   @*background-color: #2196F3;*@
   padding: 5px;
   max-height:500px;
-
+    @*  grid-auto-flow: column;
+    .element {
+    height: 100%;
+  }*@
+  @*grid-auto-rows:auto;*@
 }
+
 .grid-item {
   @*background-color: rgba(255, 255, 255, 0.8);*@
  @* border: 1px solid rgba(0, 0, 0, 0.8);*@
   padding: 10px;
   @*font-size: 20px;*@
   text-align: center;
+   
 }
 .item1 {
   grid-column: 1 / span 4;
@@ -45,6 +52,7 @@
   grid-column: 1 / span 2;
   grid-row: 2 / span 3;
   overflow: auto;
+   
 }
 .item3 {
   grid-column: 3 / span 4;
@@ -144,16 +152,16 @@ body { padding-top: 60px; }
           <div class="grid-item item7 " style="background-color:White">
             @Html.Label("Report Name", new { id = "rptname", @class = "headlabel" , style="color:blue" })
          </div>*@
-         <div class="grid-item item1"  style="background-color:White">  
+         <div class="grid-item item1"  style="background-color:White;">  
              @Html.Action("ShowRptList")
               @*<input type="button" value="Show Filter"  id = "btnShowFilter" class="btn btn-primary"  />*@
          </div>
         
-         <div class="grid-item item2 definetbL leftcol" id = "filterview"  style="background-color:white; visibility: hidden">  
+         <div class="grid-item item2 definetbL leftcol" id = "filterview"  style="background-color:white; visibility: hidden;">  
             @* @{Html.RenderAction("ShowRptFilter");}  *@
             @Html.Partial("ShowRptFilter")
          </div>
-         <div class="grid-item item3 definetC" id = "SelectionView"  style="background-color:White; visibility: hidden">
+         <div class="grid-item item3 definetC" id = "SelectionView"  style="background-color:White; visibility: hidden ;padding-bottom:0;padding-left:5px;padding-top:0;padding-right:5px;">
             @Html.Partial("SelectionList")
             @*<br />
              <input type="button" value="Show Report"  id = "btnShowReport" class="btn btn-primary"  />*@
@@ -163,7 +171,7 @@ body { padding-top: 60px; }
           </div>  *@
 
           @* <div class="col-md-offset-2 col-md-10">  *@
-          <div class="grid-item item4" style="background-color:white ; visibility: hidden"  id ="divbtnpreview">  
+          <div class="grid-item item4" style="background-color:white; visibility: hidden;"  id ="divbtnpreview">  
                 <input type="button" value="Preview Report"  id = "btnShowReport" class="btn btn-primary"  />
           </div>  
       </div>
