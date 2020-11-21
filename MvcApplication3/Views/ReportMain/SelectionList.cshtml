@@ -49,6 +49,8 @@
     </tr>
 </table>
 
+
+
 <script type="text/javascript">
 
     $("#btnSelAll").click(function () {
@@ -74,6 +76,10 @@
          else {
             $("#reccount").text("0 Record(s)");
         }
+
+        $('#spin').css({ opacity: 0.0,
+            visibility: 'hidden'
+        }).animate({ height: '100%', opacity: 1 }, 650); 
     }
     )
 
@@ -119,4 +125,5 @@
 //        }
 //    }
 
+   
 </script>

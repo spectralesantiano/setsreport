@@ -135,6 +135,17 @@ body { padding-top: 60px; }
         font-size:large;
         font-weight:bold;
     }
+
+@*//////////////// spinner*@
+.clsspin {
+   position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px; //Half of the height of the loading graphic
+  margin-left: -50px; //Half of the width of the loading graphic
+ }
+@*////////*@
+
 </style>
 
 </head>
@@ -151,6 +162,8 @@ body { padding-top: 60px; }
     </ul>*@
   </div>
 </div>
+
+<div class="clsspin" id="spin" style="visibility: hidden;"><img src="~/Content/images/spin.gif" alt="this slowpoke moves"  width="100"/></div>
 
 
 <div class="container" >

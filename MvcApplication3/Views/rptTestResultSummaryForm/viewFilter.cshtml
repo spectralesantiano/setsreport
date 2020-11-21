@@ -245,6 +245,10 @@ h5 {
         dict["Nat"] = $("#lueNat").val();
         dict["CompanyName"] = $("#lueCompany").val();
 
+        $("#spin").css({ opacity: 0.0,
+            visibility: 'visible'
+        }).animate({ height: '100%', opacity: 1 }, 650); 
+
         // --- required ---//
         $("#SelectionView").load("/" + rpt + "/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
 

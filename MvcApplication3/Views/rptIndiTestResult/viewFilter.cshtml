@@ -92,6 +92,13 @@ h5 {
     @*height: 300px;*@
 }
 
+@*.mydivclass {
+   position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px; //Half of the height of the loading graphic
+  margin-left: -50px; //Half of the width of the loading graphic
+ }*@
 </style>
 
 
@@ -225,7 +232,9 @@ h5 {
                                     </label></div>
                               <br />
 
-                               <button id = "btnFilter" type ="button" class="btn btn-primary">Apply Criteria</button>  
+                               <button id = "btnFilter" type ="button" class="btn btn-primary">Apply Criteria</button>
+                                 
+                             @*  <div class="mydivclass" id="spin" style="visibility: hidden;"><img src="~/Content/images/spin.gif" alt="this slowpoke moves"  width="150"/></div>*@
                        </div>
 
                      </div>
@@ -354,11 +363,17 @@ h5 {
         //        alert(encodeURIComponent(JSON.stringify(dict)));
         // $("#selectlist").load("/rptIndiTestResult/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) )
 
+        $("#spin").css({ opacity: 0.0,
+            visibility: 'visible'
+        }).animate({ height: '100%', opacity: 1 }, 650); 
+
         // --- required ---//
         $("#SelectionView").load("/" + rpt + "/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())
 
+      
     }
     )
+
 
     $("#subjectcat").change(function () {
         var ss = this.value;
