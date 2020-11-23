@@ -70,7 +70,7 @@
             this.ActualTestID = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableRow15 = new DevExpress.XtraReports.UI.XRTableRow();
             this.XrTableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.CompanyName = new DevExpress.XtraReports.UI.XRTableCell();
+            this.SiteName = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
             this.txtPrintDate = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTable6 = new DevExpress.XtraReports.UI.XRTable();
@@ -471,7 +471,7 @@
             // 
             this.XrTableRow15.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
             this.XrTableCell9,
-            this.CompanyName,
+            this.SiteName,
             this.XrTableCell12,
             this.XrTableCell14});
             this.XrTableRow15.Name = "XrTableRow15";
@@ -484,17 +484,17 @@
             this.XrTableCell9.Name = "XrTableCell9";
             this.XrTableCell9.StylePriority.UseBorders = false;
             this.XrTableCell9.StylePriority.UseFont = false;
-            this.XrTableCell9.Text = "Taken At:";
+            this.XrTableCell9.Text = "CSC:";
             this.XrTableCell9.Weight = 0.67108353033898727D;
             // 
-            // CompanyName
+            // SiteName
             // 
-            this.CompanyName.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
-            this.CompanyName.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.CompanyName.Name = "CompanyName";
-            this.CompanyName.StylePriority.UseBorders = false;
-            this.CompanyName.StylePriority.UseFont = false;
-            this.CompanyName.Weight = 3.6922008338221057D;
+            this.SiteName.Borders = DevExpress.XtraPrinting.BorderSide.Bottom;
+            this.SiteName.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.SiteName.Name = "SiteName";
+            this.SiteName.StylePriority.UseBorders = false;
+            this.SiteName.StylePriority.UseFont = false;
+            this.SiteName.Weight = 3.6922008338221057D;
             // 
             // XrTableCell14
             // 
@@ -848,7 +848,7 @@
        public DevExpress.XtraReports.UI.XRTableCell ActualTestID;
        public DevExpress.XtraReports.UI.XRTableRow XrTableRow15;
        public DevExpress.XtraReports.UI.XRTableCell XrTableCell9;
-       public DevExpress.XtraReports.UI.XRTableCell CompanyName;
+       public DevExpress.XtraReports.UI.XRTableCell SiteName;
        public DevExpress.XtraReports.UI.XRTableCell XrTableCell14;
        public DevExpress.XtraReports.UI.XRTableCell txtPrintDate;
        public DevExpress.XtraReports.UI.XRTable XrTable6;
