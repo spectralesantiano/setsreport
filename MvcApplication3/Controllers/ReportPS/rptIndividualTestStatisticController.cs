@@ -230,14 +230,14 @@ namespace SETSReport.Controllers.ReportPS
             //"GROUP BY LastFirstMiddle, RefID, CompanyName, RankName, DateTaken, TestName, TestStatusName, TimeLimit, TimeTakenSec, ActualTestID, SubjectName, Level2MarkMin, Level3MarkMin, Average, TestScore, TotalPercent " +
             //"ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
 
-            string sql = String.Format("SELECT LastFirstMiddle, RefID, CompanyName, RankName, DateTaken, TestName, TestStatusName, TimeLimit, TimeTakenSec, ActualTestID, SubjectName, Level2MarkMin, Level3MarkMin, Average, TestScore, TotalPercent, " +
+            string sql = String.Format("SELECT SiteName, LastFirstMiddle, RefID, CompanyName, RankName, DateTaken, TestName, TestStatusName, TimeLimit, TimeTakenSec, ActualTestID, SubjectName, Level2MarkMin, Level3MarkMin, Average, TestScore, TotalPercent, " +
                "COUNT(CASE WHEN Difficulty = 'SYSMANAGEMENT' THEN 1 ELSE NULL END) TManagement, " +
                "COUNT(CASE WHEN Difficulty = 'SYSOPERATIONAL' THEN 1 ELSE NULL END) TOperational, " +
                "COUNT(CASE WHEN Difficulty = 'SYSSUPPORT' THEN 1 ELSE NULL END) TSupport, " +
                "COUNT(CASE WHEN IsCorrect = 1 THEN 1 ELSE NULL END) UserScore, COUNT(Answer) TotalScore " +
            "FROM (select * FROM view_FullExamineeResultsWithQuestions   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) vferwq " +
            "WHERE ActualTestID IN ({0}) " +
-           "GROUP BY LastFirstMiddle, RefID, CompanyName, RankName, DateTaken, TestName, TestStatusName, TimeLimit, TimeTakenSec, ActualTestID, SubjectName, Level2MarkMin, Level3MarkMin, Average, TestScore, TotalPercent " +
+           "GROUP BY SiteName,LastFirstMiddle, RefID, CompanyName, RankName, DateTaken, TestName, TestStatusName, TimeLimit, TimeTakenSec, ActualTestID, SubjectName, Level2MarkMin, Level3MarkMin, Average, TestScore, TotalPercent " +
            "ORDER BY LastFirstMiddle ASC", selectedIDs, conditions);
 
 
