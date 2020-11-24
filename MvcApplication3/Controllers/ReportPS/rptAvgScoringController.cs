@@ -22,6 +22,8 @@ namespace SETSReport.Controllers.ReportPS
         //
         // GET: /rptAvgScoring/
 
+        string maySiteID ="";
+
         public ActionResult Index()
         {
             return View();
@@ -117,11 +119,11 @@ namespace SETSReport.Controllers.ReportPS
         {
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
-            SqlDataAdapter _da = new SqlDataAdapter(Controllers.GlobalVar.CompanyNameQuery, constr);
+            SqlDataAdapter _da = new SqlDataAdapter(Controllers.GlobalVar.SiteNameQuery, constr);
             DataTable _dt = new DataTable();
             _da.Fill(_dt);
 
-            ViewBag.CompanyName = Util.ToSelectList(_dt, "CompanyName", "CompanyName");
+            ViewBag.CompanyName = Util.ToSelectList(_dt, "SiteID", "SiteName");
 
             //ViewBag.SortReportBy = new List<object>(new object[] { new { Display = "Test Name", Value = "TestNameDate" }, new { Display = "Number of times taken", Value = "NoOfTimesTaken" }, new { Display = "Lowest Score", Value = "MinPercent" }, new { Display = "Highest Score", Value = "MaxPercent" }, new { Display = "Average Score", Value = "AvgPercent" } });
             var list = new SelectList(new[] 
@@ -150,10 +152,23 @@ namespace SETSReport.Controllers.ReportPS
             SqlConnection _con = new SqlConnection(constr);
 
             //String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM view_ExamineeResults r INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
-            String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM " + 
-                        "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) r "+ 
-                        "INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
-           
+            //String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM " + 
+            //            "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) r "+ 
+            //            "INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
+
+            if (maySiteID != "")
+            {
+                maySiteID = " where SiteID = '" + maySiteID + "'";
+            }
+            else
+            {
+                maySiteID = (GlobalVar.SiteID == "" ? "" : " where " + GlobalVar.SiteID);
+            }
+
+            String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM " +
+                       "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + maySiteID + " ) r " +
+                       "INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
+
              sql = "select * from (" + sql + ") tb " + filterCriteria;
              sql += " order by TestName " + sortby + ", DateCreated DESC ";
 
@@ -175,7 +190,7 @@ namespace SETSReport.Controllers.ReportPS
             string selectedIDs = Request["txtselected"].ToString();
             string conditions = "";
 
-            conditions = " AND t.CompanyName = '" + Request["CompanyName"] + "' " ;
+            //conditions = " AND t.CompanyName = '" + Request["CompanyName"] + "' " ;
 
             //string sql = String.Format("SELECT DISTINCT TestNameDate, TestName, DateCreated, t.* " +
             //    "FROM view_TestScoreStatistics t " +
@@ -183,13 +198,23 @@ namespace SETSReport.Controllers.ReportPS
             //    "WHERE t.TestID IN ({0}) {1}" +
             //    "ORDER BY {2}", selectedIDs, conditions, Request["SortReportBy"] + " " + Request["rgSortReportOrder"]);
 
+            if (maySiteID != "")
+            {
+                maySiteID = " where SiteID = '" + maySiteID + "'";
+            }
+            else
+            {
+                maySiteID = (GlobalVar.SiteID == "" ? "" : " where " + GlobalVar.SiteID);
+            }
+
             string sql = String.Format("SELECT DISTINCT TestNameDate, TestName, DateCreated, t.* " +
                 "FROM view_TestScoreStatistics t " +
                 "INNER JOIN " +
-                "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) " +
+                "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + maySiteID + " ) " +
                 " er ON er.TestID=t.TestID AND er.CompanyName = t.CompanyName " +
                 "WHERE t.TestID IN ({0}) {1}" +
                 "ORDER BY {2}", selectedIDs, conditions, Request["SortReportBy"] + " " + Request["rgSortReportOrder"]);
+
 
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
@@ -262,9 +287,10 @@ namespace SETSReport.Controllers.ReportPS
                         //case "Nat":
                         //    searchText += String.Format("{0} = '{1}'", namem, valuen);
                         //    break;
-                        //case "CompanyName":
-                        //    searchText += String.Format("{0} = '{1}'", namem, valuen);
-                        //    break;
+                        case "SiteName":
+                            //searchText += String.Format("{0} = '{1}'", namem, valuen);
+                            maySiteID = valuen;
+                            break;
                         default:
                             searchText += String.Format("{0} = '{1}'", namem, valuen);
                             break;

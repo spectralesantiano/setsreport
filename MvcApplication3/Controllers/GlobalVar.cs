@@ -19,7 +19,7 @@ namespace SETSReport.Controllers
         public static readonly String VesselTypeQuery = "SELECT DISTINCT vt.VesselTypeID, VesselType FROM tblAdmTestVslTypeTag vtt INNER JOIN tblAdmVslType vt ON vt.VesselTypeID=vtt.VesselTypeID ORDER BY VesselType ASC";
         public static readonly String SignatoryQuery = "SELECT SignatoryID, DisplayAs, JobTitle, CONCAT(DisplayAs, ' - ', JobTitle) DisplayValue FROM tblAdmSignatory ORDER BY DisplayValue ASC";
         public static readonly String CompanyNameQuery = "SELECT DISTINCT CompanyName FROM view_FullExamineeResults ORDER BY CompanyName ASC";
-        public static readonly String SiteNameQuery = "SELECT DISTINCT SiteName FROM tblsites ORDER BY SiteName ASC"; //"SELECT DISTINCT SiteName FROM view_FullExamineeResults ORDER BY SiteName ASC";
+        public static String SiteNameQuery = "SELECT DISTINCT SiteName, SiteID FROM tblsites ORDER BY SiteName ASC"; //"SELECT DISTINCT SiteName FROM view_FullExamineeResults ORDER BY SiteName ASC";
 
         public static String SiteID;
     }

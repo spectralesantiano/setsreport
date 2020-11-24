@@ -300,7 +300,7 @@ namespace SETSReport.Controllers.ReportPS
                         //case "Nat":
                         //    searchText += String.Format("{0} = '{1}'", namem, valuen);
                         //    break;
-                        //case "CompanyName":
+                        //case "SiteName":
                         //    searchText += String.Format("{0} = '{1}'", namem, valuen);
                         //    break;
                         default:

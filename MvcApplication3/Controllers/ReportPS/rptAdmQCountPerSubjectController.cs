@@ -260,7 +260,7 @@ namespace SETSReport.Controllers.ReportPS
                     searchText = (searchText != "") ? searchText += " AND " : "";
                     switch (namem)
                     {
-                        case "CompanyName":
+                        case "SiteName":
                             searchText += String.Format("{0} = '{1}'", namem, valuen);
                             break;
                         default:

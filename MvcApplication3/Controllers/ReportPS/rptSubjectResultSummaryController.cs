@@ -135,11 +135,11 @@ namespace SETSReport.Controllers.ReportPS
             _da.Fill(_dt);
             ViewBag.VesselType = Util.ToSelectList(_dt, "VesselTypeID", "VesselType");
 
-            _da = new SqlDataAdapter(Controllers.GlobalVar.CompanyNameQuery, constr);
+            _da = new SqlDataAdapter(Controllers.GlobalVar.SiteNameQuery, constr);
             _dt.Clear();
             _dt.Columns.Clear();
             _da.Fill(_dt);
-            ViewBag.CompanyName = Util.ToSelectList(_dt, "CompanyName", "CompanyName");
+            ViewBag.CompanyName = Util.ToSelectList(_dt, "SiteName", "SiteName");
 
             var list = new SelectList(new[] 
             {
@@ -196,7 +196,8 @@ namespace SETSReport.Controllers.ReportPS
             previewcriteria.Add("PositionID", Request["PositionID"].ToString());
             previewcriteria.Add("VesselTypeID"        ,  Request[  "VesselTypeID" ] .ToString()   );
             previewcriteria.Add("TestName"            ,  Request[  "TestName" ]     .ToString()   );
-            previewcriteria.Add("CompanyName"         , Request["CompanyName"].ToString());
+            //previewcriteria.Add("CompanyName"         , Request["CompanyName"].ToString());
+            previewcriteria.Add("SiteName", Request["SiteName"].ToString());
             previewcriteria.Add("FromDate"            ,  Request[  "deFromDate" ]     .ToString()   );
             previewcriteria.Add("ToDate"              ,  Request[  "deToDate" ]       .ToString()   );
            
@@ -216,9 +217,9 @@ namespace SETSReport.Controllers.ReportPS
             "SELECT *, CAST((CAST(UserScore AS FLOAT) / TotalScore) * 100 AS FLOAT) TotalPercent, " +
                 "CONCAT(CONVERT(DECIMAL(10,2), CAST((CAST(UserScore AS FLOAT) / TotalScore) * 100 AS FLOAT)), ' % (', UserScore, '/', TotalScore, ')') SubjectScore " +
             "FROM (" +
-                "SELECT SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName, COUNT(CASE WHEN IsCorrect = 1 THEN 1 ELSE NULL END) UserScore, COUNT(Answer) TotalScore " +
+                "SELECT SiteName, SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName, COUNT(CASE WHEN IsCorrect = 1 THEN 1 ELSE NULL END) UserScore, COUNT(Answer) TotalScore " +
                 "FROM (select * from view_FullExamineeResultsWithQuestions   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) vfe " +
-                "GROUP BY SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName" +
+                "GROUP BY SiteName, SubjectID, LastFirstMiddle, PositionID, RankName, DateTaken, TestID, TestName, TestStatusName, SubjectName, CompanyName" +
                 ") T WHERE SubjectID IN ({0}) {1}", selectedIDs, filterCriteria != "" ? " And " + filterCriteria : ""); //SubjectName to SubjectID...
 
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();

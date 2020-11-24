@@ -97,10 +97,10 @@ h5 {
                                     <button id = "clearlueTestName" type ="button" class="btn">x</button>
                                 </div></div>
                            
-                                @Html.Label("Taken at:", new { @class = "control-label" })      
+                                @Html.Label("CSC:", new { @class = "control-label" })      
                                   <div class="controls">
                                  <div class="input-append">
-                                     @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "", new { id = "lueCompany" })
+                                     @Html.DropDownList("SiteName", ViewBag.CompanyName as SelectList, "", new { id = "lueCompany" })
                                   <button id = "clearlueCompany" type ="button" class="btn">x</button>                              
                                </div></div>
                             
@@ -152,7 +152,7 @@ h5 {
                                  </div>
                                 
                                 <br />
-                                <button id = "btnFilter" type ="button" class="btn btn-primary">Apply Criteria</button> 
+                                <button id = "btnFilter" type ="button" class="btn btn-primary">Show Selection</button> 
                         </div>
 
                      
@@ -214,7 +214,7 @@ h5 {
             dictP["TestName"] = $("#lueTestName").val();
             dictP["FromDate"] = $("#deFromDate").val();
             dictP["ToDate"] = $("#deToDate").val();
-            dictP["CompanyName"] = $("#lueCompany").val();
+            dictP["SiteName"] = $("#lueCompany").val();
             alert(dictP);
             $("#PreviewCriteria").val(JSON.stringify(dictP));
 

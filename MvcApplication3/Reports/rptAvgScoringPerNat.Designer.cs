@@ -62,7 +62,7 @@
             this.XrTableRow6 = new DevExpress.XtraReports.UI.XRTableRow();
             this.NoOfTimesTaken = new DevExpress.XtraReports.UI.XRTableCell();
             this.Lowest = new DevExpress.XtraReports.UI.XRTableCell();
-            this.CompanyName = new DevExpress.XtraReports.UI.XRTableCell();
+            this.SiteName = new DevExpress.XtraReports.UI.XRTableCell();
             this.txtPrintDate = new DevExpress.XtraReports.UI.XRLabel();
             this.pbLogo = new DevExpress.XtraReports.UI.XRPictureBox();
             this.TestName = new DevExpress.XtraReports.UI.XRLabel();
@@ -332,7 +332,7 @@
             this.XrTableCell1.StylePriority.UseBorders = false;
             this.XrTableCell1.StylePriority.UseFont = false;
             this.XrTableCell1.StylePriority.UseTextAlignment = false;
-            this.XrTableCell1.Text = "Taken At";
+            this.XrTableCell1.Text = "CSC";
             this.XrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.XrTableCell1.Weight = 0.44901776816274774D;
             // 
@@ -382,7 +382,7 @@
             this.Lowest,
             this.Average,
             this.Highest,
-            this.CompanyName});
+            this.SiteName});
             this.XrTableRow6.Name = "XrTableRow6";
             this.XrTableRow6.Weight = 1.2D;
             // 
@@ -408,16 +408,16 @@
             this.Lowest.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.Lowest.Weight = 1.4968219679244625D;
             // 
-            // CompanyName
+            // SiteName
             // 
-            this.CompanyName.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
-            this.CompanyName.Font = new System.Drawing.Font("Arial", 8F);
-            this.CompanyName.Name = "CompanyName";
-            this.CompanyName.StylePriority.UseBorders = false;
-            this.CompanyName.StylePriority.UseFont = false;
-            this.CompanyName.StylePriority.UseTextAlignment = false;
-            this.CompanyName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.CompanyName.Weight = 1.4968218126952924D;
+            this.SiteName.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.SiteName.Font = new System.Drawing.Font("Arial", 8F);
+            this.SiteName.Name = "SiteName";
+            this.SiteName.StylePriority.UseBorders = false;
+            this.SiteName.StylePriority.UseFont = false;
+            this.SiteName.StylePriority.UseTextAlignment = false;
+            this.SiteName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.SiteName.Weight = 1.4968218126952924D;
             // 
             // txtPrintDate
             // 
@@ -533,7 +533,7 @@
         public DevExpress.XtraReports.UI.XRTableRow XrTableRow6;
         public DevExpress.XtraReports.UI.XRTableCell NoOfTimesTaken;
         public DevExpress.XtraReports.UI.XRTableCell Lowest;
-        public DevExpress.XtraReports.UI.XRTableCell CompanyName;
+        public DevExpress.XtraReports.UI.XRTableCell SiteName;
         public DevExpress.XtraReports.UI.XRLabel txtPrintDate;
         public DevExpress.XtraReports.UI.XRPictureBox pbLogo;
         public DevExpress.XtraReports.UI.XRLabel TestName;

@@ -202,7 +202,7 @@
         dict["ToDate"] = $("#deToDate").val();
         // dict["AnswerFilter"] = $("[name='AnswerFilter']:checked").val();
         dict["Nat"] = $("#lueNat").val();
-        dict["CompanyName"] = $("#lueCompany").val();
+        dict["SiteName"] = $("#lueCompany").val();
 
         // --- required ---//
         $("#SelectionView").load("/" + rpt + "/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())

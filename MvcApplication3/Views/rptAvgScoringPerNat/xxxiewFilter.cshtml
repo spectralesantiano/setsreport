@@ -192,8 +192,8 @@
 
             var dict = new Object();
 
-            dict["CompanyName"] = $("#lueCompany").val();
-            //dict["CompanyName"] = $("#lueSignatory").val();
+            dict["SiteName"] = $("#lueCompany").val();
+            //dict["SiteName"] = $("#lueSignatory").val();
 
             // --- required ---//
             $("#SelectionView").load("/" + rpt + "/SelectionList?criteria=" + encodeURIComponent(JSON.stringify(dict)) + "&sortbyname=" + $("#cbeSortBy").val() + "&sortby=" + $("[name='rgSortOrder']:checked").val())

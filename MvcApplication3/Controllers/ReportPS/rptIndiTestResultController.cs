@@ -145,7 +145,7 @@ namespace SETSReport.Controllers.ReportPS
             _da.Fill(_dt);
             ViewBag.Nationality = Util.ToSelectList(_dt, "PKey", "Nat");
 
-            //_da = new SqlDataAdapter(Controllers.GlobalVar.CompanyNameQuery, constr);
+            //_da = new SqlDataAdapter(Controllers.GlobalVar.SiteNameQuery, constr);
             _da = new SqlDataAdapter(Controllers.GlobalVar.SiteNameQuery, constr);
             _dt.Clear();
             _dt.Columns.Clear();
@@ -296,8 +296,8 @@ namespace SETSReport.Controllers.ReportPS
             {
                 namem = record.Name;
                 valuen = record.Value;
-                System.Diagnostics.Debug.WriteLine(namem);
-                System.Diagnostics.Debug.WriteLine(valuen);
+                //System.Diagnostics.Debug.WriteLine(namem);
+                //System.Diagnostics.Debug.WriteLine(valuen);
 
                 if (valuen != null && valuen != "")
                 {
@@ -329,7 +329,7 @@ namespace SETSReport.Controllers.ReportPS
                             case "Nat":
                                     searchText += String.Format("{0} = '{1}'", namem, valuen);
                                     break;
-                            case "CompanyName":
+                            case "SiteName":
                                     searchText += String.Format("{0} = '{1}'", namem, valuen);
                                     break;
                             default:

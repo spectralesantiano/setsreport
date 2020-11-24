@@ -38,7 +38,7 @@ h5 {
                     <div class="span6" style="">
                            <div><h5>Criteria</h5></div>
                     
-                            @Html.Label("Company Name:")
+                            @Html.Label("CSC:")
                              <div class="controls">  
                             <div class="input-append">
                              @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "",  new { id = "lueCompany" })    
@@ -98,8 +98,8 @@ h5 {
 
         var dict = new Object();
 
-        dict["CompanyName"] = $("#lueCompany").val();
-        //dict["CompanyName"] = $("#lueSignatory").val();
+        dict["SiteName"] = $("#lueCompany").val();
+        //dict["SiteName"] = $("#lueSignatory").val();
 
         $("#spin").css({ opacity: 0.0,
             visibility: 'visible'

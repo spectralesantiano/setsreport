@@ -170,11 +170,11 @@ namespace SETSReport.Controllers.ReportPS
             SqlConnection _con = new SqlConnection(constr);
             DataTable _dt = new DataTable();
 
-            SqlDataAdapter _da = new SqlDataAdapter(GlobalVar.CompanyNameQuery, constr);
+            SqlDataAdapter _da = new SqlDataAdapter(GlobalVar.SiteNameQuery, constr);
             _dt.Clear();
             _dt.Columns.Clear();
             _da.Fill(_dt);
-            ViewBag.CompanyName = Util.ToSelectList(_dt, "CompanyName", "CompanyName");
+            ViewBag.CompanyName = Util.ToSelectList(_dt, "SiteName", "SiteName");
 
             _da = new SqlDataAdapter(GlobalVar.SignatoryQuery, constr);
             _dt.Clear();
@@ -239,7 +239,7 @@ namespace SETSReport.Controllers.ReportPS
                     searchText = (searchText != "") ? searchText += " AND " : "";
                     switch (namem)
                     {
-                        case "CompanyName":
+                        case "SiteName":
                             searchText += String.Format("{0} = '{1}'", namem, valuen);
                             break;
                         default:

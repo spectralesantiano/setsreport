@@ -30,10 +30,11 @@ h5 {
                     <div class="span6" style="">
                            <div><h5>Criteria</h5></div>
 
-                             @Html.Label("Taken at:", new { @class = "control-label" })
+                             @Html.Label("CSC:", new { @class = "control-label" })
                             <div class="controls">                
                             <div class="input-append">
-                                @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList,  new { id = "lueCompany" })    
+                                @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "", new { id = "lueCompany" })    
+                                <button id = "clearlueCompany" type ="button" class="btn">x</button>
                             </div></div>
 
                             
@@ -97,8 +98,8 @@ h5 {
 
         var dict = new Object();
 
-        dict["CompanyName"] = $("#lueCompany").val();
-        //dict["CompanyName"] = $("#lueSignatory").val();
+        dict["SiteName"] = $("#lueCompany").val();
+        //dict["SiteName"] = $("#lueSignatory").val();
 
         $("#spin").css({ opacity: 0.0,
             visibility: 'visible'
@@ -110,5 +111,10 @@ h5 {
     }
     )
 
+    $("#clearlueCompany").click(
+        function () {
+            $("#lueCompany").val("");
+        }
+    )
 
 </script>

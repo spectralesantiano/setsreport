@@ -132,7 +132,7 @@ h5 {
                                 <button id = "clearlueNat" type ="button" class="btn">x</button>  
                                 </div></div>
                     
-                             @Html.Label("Taken at:", new { @class = "control-label" })    
+                             @Html.Label("CSC:", new { @class = "control-label" })    
                              <div class="controls">  
                                  <div class="input-append">
                                  @Html.DropDownList("CompanyName", ViewBag.CompanyName as SelectList, "", new { id = "lueCompany" })
@@ -243,7 +243,7 @@ h5 {
         dict["ToDate"] = $("#deToDate").val();
         // dict["AnswerFilter"] = $("[name='AnswerFilter']:checked").val();
         dict["Nat"] = $("#lueNat").val();
-        dict["CompanyName"] = $("#lueCompany").val();
+        dict["SiteName"] = $("#lueCompany").val();
 
         $("#spin").css({ opacity: 0.0,
             visibility: 'visible'

@@ -30,7 +30,7 @@
         {
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
-            this.CompanyName = new DevExpress.XtraReports.UI.XRTableCell();
+            this.SiteName = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
             this.XrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
             this.txtPrintDate = new DevExpress.XtraReports.UI.XRTableCell();
@@ -86,16 +86,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.XrTable6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
-            // CompanyName
+            // SiteName
             // 
-            this.CompanyName.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.CompanyName.Name = "CompanyName";
-            this.CompanyName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.CompanyName.StylePriority.UseFont = false;
-            this.CompanyName.StylePriority.UsePadding = false;
-            this.CompanyName.StylePriority.UseTextAlignment = false;
-            this.CompanyName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.CompanyName.Weight = 1.0004248510518932D;
+            this.SiteName.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.SiteName.Name = "SiteName";
+            this.SiteName.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.SiteName.StylePriority.UseFont = false;
+            this.SiteName.StylePriority.UsePadding = false;
+            this.SiteName.StylePriority.UseTextAlignment = false;
+            this.SiteName.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.SiteName.Weight = 1.0004248510518932D;
             // 
             // XrTableCell2
             // 
@@ -362,7 +362,7 @@
             this.TestStatusName,
             this.TestName,
             this.SubjectScore,
-            this.CompanyName});
+            this.SiteName});
             this.XrTableRow5.Name = "XrTableRow5";
             this.XrTableRow5.StylePriority.UseBorders = false;
             this.XrTableRow5.StylePriority.UseTextAlignment = false;
@@ -436,7 +436,7 @@
             this.XrTableCell1.StylePriority.UseFont = false;
             this.XrTableCell1.StylePriority.UsePadding = false;
             this.XrTableCell1.StylePriority.UseTextAlignment = false;
-            this.XrTableCell1.Text = "Taken At";
+            this.XrTableCell1.Text = "CSC";
             this.XrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.BottomCenter;
             this.XrTableCell1.Weight = 1.1580631537677126D;
             // 
@@ -614,7 +614,7 @@
 
         #endregion
 
-        public DevExpress.XtraReports.UI.XRTableCell CompanyName;
+        public DevExpress.XtraReports.UI.XRTableCell SiteName;
         public DevExpress.XtraReports.UI.XRTableCell XrTableCell2;
         public DevExpress.XtraReports.UI.XRTableRow XrTableRow3;
         public DevExpress.XtraReports.UI.XRTableCell txtPrintDate;

@@ -23,6 +23,7 @@ namespace SETSReport.Controllers.ReportPS
     {
         //
         // GET: /rptAvgScoringPerNat/
+        string maySiteID = "";
 
         public ActionResult Index()
         {
@@ -119,11 +120,11 @@ namespace SETSReport.Controllers.ReportPS
         {
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
-            SqlDataAdapter _da = new SqlDataAdapter(Controllers.GlobalVar.CompanyNameQuery, constr);
+            SqlDataAdapter _da = new SqlDataAdapter(Controllers.GlobalVar.SiteNameQuery, constr);
             DataTable _dt = new DataTable();
             _da.Fill(_dt);
 
-            ViewBag.CompanyName = Util.ToSelectList(_dt, "CompanyName", "CompanyName");
+            ViewBag.CompanyName = Util.ToSelectList(_dt, "SiteID", "SiteName");
 
             _da = new SqlDataAdapter(Controllers.GlobalVar.NationalityQuery, constr);
             _dt.Clear();
@@ -156,9 +157,18 @@ namespace SETSReport.Controllers.ReportPS
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
+            if (maySiteID != "")
+            {
+                maySiteID = " where SiteID = '" + maySiteID + "'";
+            }
+            else
+            {
+                maySiteID = (GlobalVar.SiteID == "" ? "" : " where " + GlobalVar.SiteID);
+            }
+
             //String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM view_ExamineeResults r INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
             String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM " +
-                      "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) r " +
+                      "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + maySiteID + " ) r " +
                       "INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
 
 
@@ -199,7 +209,7 @@ namespace SETSReport.Controllers.ReportPS
 
             rgSortReportOrder = Request["rgSortReportOrder"];
             luenat = Request["lueNat"];
-            CompanyName = Request["CompanyName"];
+            //CompanyName = Request["CompanyName"];
 
             MainReport.AfterPrint += rptDummy_afterPrint_method; //addhandler
 
@@ -247,9 +257,10 @@ namespace SETSReport.Controllers.ReportPS
                         case "Nat":
                             searchText += String.Format("{0} = '{1}'", namem, valuen);
                             break;
-                        //case "CompanyName":
-                        //    searchText += String.Format("{0} = '{1}'", namem, valuen);
-                        //    break;
+                        case "SiteName":
+                            //searchText += String.Format("{0} = '{1}'", namem, valuen);
+                            maySiteID = valuen;
+                            break;
                         default:
                             searchText += String.Format("{0} = '{1}'", namem, valuen);
                             break;
@@ -270,9 +281,18 @@ namespace SETSReport.Controllers.ReportPS
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
+            if (maySiteID != "")
+            {
+                maySiteID = " where SiteID = '" + maySiteID + "'";
+            }
+            else
+            {
+                maySiteID = (GlobalVar.SiteID == "" ? "" : " where " + GlobalVar.SiteID);
+            }
+
             //String selectedsql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM view_ExamineeResults r INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
             String selectedsql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM " +
-                       "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) r " +
+                       "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + maySiteID + " ) r " +
                        "INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
 
             selectedsql = "select * from (" + selectedsql + ") tb where TestID in (" + selectedIDs + ")";
@@ -303,9 +323,9 @@ namespace SETSReport.Controllers.ReportPS
 
                     string sql = String.Format("SELECT CASE WHEN NoOfTimesTaken IS NULL THEN a.Nat ELSE CONCAT(a.Nat, ' (', NoOfTimesTaken, ')') END Argument, " +
                           "ROUND(({0}) * 100, 2) Value " +
-                          "FROM (select * from view_AllTestNationality   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) a " +
-                          "LEFT JOIN view_TestScoreStatisticsPerNat b ON b.NatID = a.PKey AND TestID = '{1}' AND CompanyName = '{2}' {3}" +
-                          "GROUP BY a.Nat, NoOfTimesTaken", item.Value, testID, CompanyName, selectedNat);
+                          "FROM (select * from view_AllTestNationality   " + maySiteID + " ) a " +
+                          "LEFT JOIN view_TestScoreStatisticsPerNat b ON b.NatID = a.PKey AND TestID = '{1}' {2}" +
+                          "GROUP BY a.Nat, NoOfTimesTaken", item.Value, testID, selectedNat);
 
                     _da = new SqlDataAdapter(sql, _con);
                     DataSet ds = new DataSet();
@@ -324,7 +344,7 @@ namespace SETSReport.Controllers.ReportPS
                 tempReport.Lowest.Text = row["Lowest"].ToString();
                 tempReport.Highest.Text = row["Highest"].ToString();
                 tempReport.Average.Text = row["Average"].ToString();
-                tempReport.CompanyName.Text = row["CompanyName"].ToString();
+                tempReport.SiteName.Text = row["CompanyName"].ToString();
                 tempReport.txtRptTitle.Text = Util.GetConfig("APP_ABBRV") + " " + tempReport.txtRptTitle.Text;
                 tempReport.CreateDocument();
 
