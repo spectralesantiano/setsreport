@@ -169,7 +169,7 @@ namespace SETSReport.Controllers
                         if (_dt.Rows.Count > 0 ){
                             //ViewBag.ekek = "ekek";
                                     GlobalVar.SiteID = getSiteIDs((Int64) _dt.Rows[0]["UserID"]);
-                                    GlobalVar.SiteNameQuery = "SELECT DISTINCT SiteName, SiteID FROM tblsites where " + GlobalVar.SiteID + " ORDER BY SiteName ASC";
+                                    GlobalVar.SiteNameQuery = "SELECT DISTINCT SiteName, SiteID FROM tblsites " + (GlobalVar.SiteID == "" ? "" : " where " + GlobalVar.SiteID) + " ORDER BY SiteName ASC";
                                     
                                     DateTime sdate = (DateTime)_dt.Rows[0]["serverDate"];
                                     DateTime logdate = (DateTime)_dt.Rows[0]["DateLoggedIn"];

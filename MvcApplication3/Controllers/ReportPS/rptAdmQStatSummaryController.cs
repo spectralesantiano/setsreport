@@ -192,7 +192,7 @@ namespace SETSReport.Controllers.ReportPS
             MainReport.txtRptTitle.Text = Util.GetConfig("APP_ABBRV") + " " + MainReport.txtRptTitle.Text;
 
             MainReport.txtPrintDate.Text = "Print Date: " + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
-            MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
+            //MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
             MainReport.pbLogo.ImageUrl = Util.GetReportLogoPath();
             MainReport.txtSortedBy.Text = "Sorted by " + Request["SortedByText"];
             MainReport.txtRange.Text = String.Format("% Right ranges from {0}.00 % to {1}.00 %", Request["Min"], Request["Max"]);

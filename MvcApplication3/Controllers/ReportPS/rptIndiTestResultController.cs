@@ -255,7 +255,7 @@ namespace SETSReport.Controllers.ReportPS
             //--- !Declaration of controls in report's designer.cs should all be public change from private
             ViewBag.selection = Request["teFirstName"];
             MainReport.txtPrintDate.Text = "Print Date: "   + DateTime.Now.ToString("dd-MMM-yyyy hh:mm tt");
-            //MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
+            MainReport.txtCompanyName.Text = Util.GetConfig("COMPANY_NAME");
             MainReport.pbLogo.ImageUrl = Util.GetReportLogoPath();
             MainReport.txtRptTitle.Text = Util.GetConfig("APP_ABBRV") + " " + MainReport.txtRptTitle.Text;
             
