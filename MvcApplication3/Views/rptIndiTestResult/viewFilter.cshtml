@@ -87,10 +87,10 @@ h5 {
   grid-template-columns: 1fr 3fr;
 }*@
 
-.leftcol{
-    overflow-y: scroll;
+@*.leftcol{
+    overflow-y: scroll;*@
     @*height: 300px;*@
-}
+@*}*@
 
 @*.mydivclass {
    position: fixed;
@@ -118,7 +118,7 @@ h5 {
       {  
           <fieldset>  
                 <div class="row-fluid">@*  leftcol">*@
-                    <div class="span6">
+                    <div class="span6" style="overflow:auto">
                            
                            <div><h5>Criteria</h5></div>
                               
@@ -211,7 +211,7 @@ h5 {
                           
                            
                      </div>
-                    <div class="span6">
+                    <div class="span6" style="overflow:auto">
                          <div><h5>Sorting</h5></div>   
 
                             <br />

@@ -9,7 +9,7 @@ namespace SETSReport.Controllers
     {
         public static readonly String RankQuery = "SELECT DISTINCT PositionID, RankName Name FROM view_FullExamineeResults ORDER BY RankName ASC";
         public static readonly String TestNameDateQuery = "SELECT DISTINCT TestID, TestName, DateCreated, TestNameDate FROM view_FullExamineeResults ORDER BY TestName ASC, DateCreated DESC";
-        public static readonly String NationalityQuery = "SELECT PKey, Nat FROM view_AllTestNationality ORDER BY Nat ASC";
+        public static readonly String NationalityQuery = "SELECT distinct PKey, Nat FROM view_AllTestNationality ORDER BY Nat ASC";
         public static readonly String TestNameQuery = "SELECT DISTINCT TestName FROM view_FullExamineeResults ORDER BY TestName ASC";
         public static readonly String SubjNameQuery = "SELECT DISTINCT s.SubjectID, SubjectName FROM tblActualTestDetail atd INNER JOIN tblAdmSubject s ON atd.SubjectID=s.SubjectID ORDER BY SubjectName ASC";
         public static readonly String SubjCategoryQuery = "SELECT * FROM tblAdmSubjectCategory ORDER BY SubjCategoryName ASC";

@@ -283,17 +283,17 @@ namespace SETSReport.Controllers.ReportPS
 
             if (maySiteID != "")
             {
-                maySiteID = " where SiteID = '" + maySiteID + "'";
+                maySiteID = " where tblexaminee.SiteID = '" + maySiteID + "'";
             }
             else
             {
-                maySiteID = (GlobalVar.SiteID == "" ? "" : " where " + GlobalVar.SiteID);
+                maySiteID = (GlobalVar.SiteID == "" ? "" : " where tblexaminee." + GlobalVar.SiteID);
             }
 
             //String selectedsql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM view_ExamineeResults r INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
-            String selectedsql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM " +
-                       "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + maySiteID + " ) r " +
-                       "INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
+            String selectedsql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* ,r.sitename FROM " +
+                       "(select view_ExamineeResults.*,tblExaminee.SiteID, tblsites.SiteName from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID  left join tblSites on tblExaminee.SiteID = tblSites.SiteID " + maySiteID + " ) r " +
+                       "INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID";// AND r.CompanyName=t.CompanyName";
 
             selectedsql = "select * from (" + selectedsql + ") tb where TestID in (" + selectedIDs + ")";
             selectedsql += " order by TestName " + rgSortReportOrder + ", DateCreated DESC ";
@@ -344,7 +344,7 @@ namespace SETSReport.Controllers.ReportPS
                 tempReport.Lowest.Text = row["Lowest"].ToString();
                 tempReport.Highest.Text = row["Highest"].ToString();
                 tempReport.Average.Text = row["Average"].ToString();
-                tempReport.SiteName.Text = row["CompanyName"].ToString();
+                tempReport.SiteName.Text = row["SiteName"].ToString();
                 tempReport.txtRptTitle.Text = Util.GetConfig("APP_ABBRV") + " " + tempReport.txtRptTitle.Text;
                 tempReport.CreateDocument();
 
