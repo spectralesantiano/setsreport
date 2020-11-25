@@ -1,0 +1,3 @@
+2020.11.25 neil
+	removal of 'Taken at/Company Name' replace by CSC
+	Full screen stretch

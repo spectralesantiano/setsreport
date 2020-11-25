@@ -42,7 +42,23 @@
             new Script { ExtensionSuite = ExtensionSuite.SpellChecker }
         )
 
-
+        <style type="text/css"">
+            .version:hover {
+              color: yellow;
+               
+            }
+            
+            .version{
+               position: fixed;
+               left: 0;
+               bottom: 0;
+               width: 100%;
+               color: white;
+               text-align: left;
+               padding-left:10px;
+            }
+            
+        </style>
     </head>
     <body style="background-image:url('Content/images/background.jpg') ; background-position: center; background-repeat: no-repeat ;background-size: cover;"> @*background="~/Content/images/background.jpg"*@
         <header>
@@ -71,11 +87,13 @@
             </section>
         </div>
         <footer>
-            @*<div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Report Generation </p>
+            <div class="content-wrapper">
+                @*<div class="float-left version">*@
+                 <div class="version">
+                    @*<p>&copy; @DateTime.Now.Year - Report Generation </p>*@
+                     <p>Report Generation 2020.11.25</p>
                 </div>
-            </div>*@
+            </div>
         </footer>
 
       @*  @Scripts.Render("~/bundles/jquery")
