@@ -24,6 +24,7 @@ namespace SETSReport.Controllers.ReportPS
         //
         // GET: /rptAvgScoringPerNat/
         string maySiteID = "";
+        string maySiteID2 = "";
 
         public ActionResult Index()
         {
@@ -284,10 +285,12 @@ namespace SETSReport.Controllers.ReportPS
             if (maySiteID != "")
             {
                 maySiteID = " where tblexaminee.SiteID = '" + maySiteID + "'";
+                maySiteID2 = " where SiteID = '" + maySiteID + "'";
             }
             else
             {
                 maySiteID = (GlobalVar.SiteID == "" ? "" : " where tblexaminee." + GlobalVar.SiteID);
+                maySiteID2 = (GlobalVar.SiteID == "" ? "" : " where " + GlobalVar.SiteID);
             }
 
             //String selectedsql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM view_ExamineeResults r INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
@@ -323,7 +326,7 @@ namespace SETSReport.Controllers.ReportPS
 
                     string sql = String.Format("SELECT CASE WHEN NoOfTimesTaken IS NULL THEN a.Nat ELSE CONCAT(a.Nat, ' (', NoOfTimesTaken, ')') END Argument, " +
                           "ROUND(({0}) * 100, 2) Value " +
-                          "FROM (select * from view_AllTestNationality   " + maySiteID + " ) a " +
+                          "FROM (select * from view_AllTestNationality   " + maySiteID2 + " ) a " +
                           "LEFT JOIN view_TestScoreStatisticsPerNat b ON b.NatID = a.PKey AND TestID = '{1}' {2}" +
                           "GROUP BY a.Nat, NoOfTimesTaken", item.Value, testID, selectedNat);
 
