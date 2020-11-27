@@ -226,7 +226,7 @@ namespace SETSReport.Controllers.ReportPS
 
             if (!Util.isSessionValid())
             {
-                return View("noReferer");
+                return View("InvalidSession");
             }
 
             string selectedIDs = Request["txtselected"].ToString();
