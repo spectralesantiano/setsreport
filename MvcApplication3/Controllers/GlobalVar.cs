@@ -22,6 +22,8 @@ namespace SETSReport.Controllers
         public static String SiteNameQuery = "SELECT DISTINCT SiteName, SiteID FROM tblsites ORDER BY SiteName ASC"; //"SELECT DISTINCT SiteName FROM view_FullExamineeResults ORDER BY SiteName ASC";
 
         public static String SiteID;
+        public static String UniqueID;
+        public static String UserIP;
     }
 
 

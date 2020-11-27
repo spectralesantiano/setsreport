@@ -223,7 +223,13 @@ namespace SETSReport.Controllers.ReportPS
             //DevExpress.XtraReports.UI.XRLabel lbl = ((DevExpress.XtraReports.UI.XRLabel)report.FindControl("xrlabel1", true));
            // lbl.Text = Session["amount"].ToString();
             //report.DataSource = "SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] ";// where actualtestid in(" + Session["selected"] + ") ORDER BY LastFirstMiddle ASC"; //WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC";
-             string selectedIDs = Request["txtselected"].ToString();
+
+            if (!Util.isSessionValid())
+            {
+                return View("noReferer");
+            }
+
+            string selectedIDs = Request["txtselected"].ToString();
              string conditions = "";
 
              if (Request["AnswerFilter"].ToString() != "2") // "" in sets desktop..empty space causes error in view

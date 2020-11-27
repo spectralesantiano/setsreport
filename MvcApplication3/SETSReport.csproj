@@ -610,7 +610,7 @@
     <Content Include="Views\rptAvgScoringPerNat\xxxiewFilter.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\ReportMain\noReferer.cshtml" />
+    <Content Include="Views\Shared\noReferer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\ReportMain\ReportFilters\ReportLoading.cshtml" />
