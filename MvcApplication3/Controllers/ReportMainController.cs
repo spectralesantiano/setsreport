@@ -378,6 +378,9 @@ namespace SETSReport.Controllers
             return ip;  
             }
 
+        public ActionResult showSessionExpired(){
+            return View("InvalidSession");
+        }
 
         //public ActionResult Encrypt()
         //{

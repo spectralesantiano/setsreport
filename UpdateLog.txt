@@ -3,3 +3,7 @@
 	Full screen stretch
 	error message added when encountered on loading
 	added spinner
+
+2020.11.30 neil
+	added auto scroll bar 
+	checking session on preview

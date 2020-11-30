@@ -211,6 +211,11 @@ namespace SETSReport.Controllers.ReportPS
         [HttpPost]
         public ActionResult DocumentViewerPartial()
         {
+            if (!Util.isSessionValid())
+            {
+                return RedirectToAction("showSessionExpired","ReportMain");
+            }
+
             //SETSReport.Reports.XtraReport2 report = new SETSReport.Reports.XtraReport2();
             //DevExpress.XtraReports.UI.XRLabel lbl = ((DevExpress.XtraReports.UI.XRLabel)report.FindControl("xrlabel1", true));
             // lbl.Text = Session["amount"].ToString();

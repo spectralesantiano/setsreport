@@ -201,6 +201,11 @@ namespace SETSReport.Controllers.ReportPS
         [HttpPost]
         public ActionResult DocumentViewerPartial()
         {
+            if (!Util.isSessionValid())
+            {
+                return RedirectToAction("showSessionExpired","ReportMain");
+            }
+
             string selectedIDs = Request["txtselected"].ToString();
 
             //string sql = String.Format("SELECT * FROM view_FullExamineeResults WHERE ActualTestID IN ({0}) ORDER BY {1} {2}", selectedIDs, Request["rgSortedBy"], Request["rptSortdOrder"]);

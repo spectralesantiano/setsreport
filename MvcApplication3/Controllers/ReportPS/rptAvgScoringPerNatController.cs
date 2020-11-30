@@ -195,6 +195,11 @@ namespace SETSReport.Controllers.ReportPS
         [HttpPost]
         public ActionResult DocumentViewerPartial()
         {
+            if (!Util.isSessionValid())
+            {
+                return RedirectToAction("showSessionExpired","ReportMain");
+            }
+
              selectedIDs = Request["txtselected"].ToString();
 
             //XtraReport MainReport = new XtraReport();

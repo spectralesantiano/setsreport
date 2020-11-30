@@ -179,6 +179,11 @@ namespace SETSReport.Controllers.ReportPS
         [HttpPost]
         public ActionResult DocumentViewerPartial()
         {
+            if (!Util.isSessionValid())
+            {
+                return RedirectToAction("showSessionExpired","ReportMain");
+            }
+
             string selectedIDs = Request["txtselected"].ToString();
             string sortby = Request["cbeSortBy"] == "COUNT(q.QuestionID)" ? "TotalNumberOfQuestions" : Request["cbeSortBy"];
 

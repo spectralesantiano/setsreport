@@ -174,6 +174,11 @@ namespace SETSReport.Controllers.ReportPS
         [HttpPost]
         public ActionResult DocumentViewerPartial()
         {
+            if (!Util.isSessionValid())
+            {
+                return RedirectToAction("showSessionExpired","ReportMain");
+            }
+
             string selectedIDs = Request["txtselected"].ToString();
             string conditions = String.Format("AND PercentRight >= {0} AND PercentRight <= {1}", Request["Min"], Request["Max"]);
 
