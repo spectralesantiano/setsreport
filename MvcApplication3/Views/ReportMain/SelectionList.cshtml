@@ -26,15 +26,26 @@
         float: left;
         clear: left;
     }
+    
 </style>
 
 @*<h3>Selection List</h3>*@
 <table width = "100%" class ="tablex" style="text-align:center; height:100%">
     <tr>
-        <th class="clstd">Selection List</th>
+        <td style="width:33%; text-align:left; overflow:auto">
+            <div class="controls">
+            <div class="input-append">
+            <input type="text"  style="width:80%" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." />
+            <button id = "clearMyInput" type ="button" class="btn">x</button>
+            </div></div>
+        </td>
+        <td style="width:33%"><label style="font-size:medium; font-weight:bold ; text-align : center ; display:inline-block;" >Selection List</label></td>
+        @*</td>
+        <th class="clstd">Selection List</th>*@
+        <td style="width:33%"></td>
     </tr>
     <tr>
-        <td style="padding:0;height:100%;">
+        <td colspan="3" style="padding:0;height:100%;">
             <div style=" overflow-y: auto;height:100%;">
               @Html.ListBox("-No Data-", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "width:100%; height:90%; overflow:scroll; padding-left:10;", id = "lstselect", size = 16 })            
               <label style="font-style:italic; font-size:smaller; text-align:left; padding-left:5px; max-height:15px; padding-bottom:0; padding-top:0">Press Ctrl+click for multi-select</label>              
@@ -42,22 +53,52 @@
         </td>
     </tr>
     <tr>
-        <td class="clstd">@Html.Label("Records", new { id="reccount"})</td>
+        <td colspan="3">@Html.Label("Records", new { id="reccount"})</td>
     </tr>
     <tr>
-        <td class="clstd" style="max-height:30px;"><button id = "btnSelAll" type ="button" class ="btn btn-small">Select All</button> <button id = "btnDeSelAll" type ="button" class ="btn btn-small">De-Select All</button>   </td>
+        <td colspan="3" style="max-height:30px;"><button id = "btnSelAll" type ="button" class ="btn btn-small">Select All</button> <button id = "btnDeSelAll" type ="button" class ="btn btn-small">De-Select All</button>   </td>
     </tr>
 </table>
 
 
 
 <script type="text/javascript">
+    $("#clearMyInput").click(function () {
+        $("#myInput").val("");
+        myFunction();
+    })
+
+    function myFunction() {
+        // Declare variables
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById('myInput');
+        filter = input.value.toUpperCase();
+        //ul = document.getElementById("lstselect");
+        //li = ul.getElementsByTagName("option");
+
+        //alert(li.tagName);
+        $("#lstselect > option").each(function () {    
+            txtValue = this.textContent || this.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                this.style.display = "";
+            } else {
+                this.style.display = "none";
+            }
+        })
+    }
 
     $("#btnSelAll").click(function () {
-        $("option", "#lstselect").prop("selected", true);
+//        $("option", "#lstselect").prop("selected", true);
+
+        $("#lstselect option").each(function () {
+            if ($(this).css('display') != 'none') {
+                $(this).prop("selected", true);
+            }
+        });
 
         var count = $("#lstselect").children('option').length;
         $("#reccount").text(count + "/" + count + " Record(s)");
+
     }
     );
 
