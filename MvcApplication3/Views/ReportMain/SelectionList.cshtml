@@ -35,7 +35,7 @@
         <td style="width:33%; text-align:left; overflow:auto">
             <div class="controls">
             <div class="input-append">
-            <input type="text"  style="width:80%" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." />
+            <input type="text"  style="width:75%" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." />
             <button id = "clearMyInput" type ="button" class="btn">x</button>
             </div></div>
         </td>
@@ -85,6 +85,9 @@
                 this.style.display = "none";
             }
         })
+
+        var count = $("#lstselect").children('option').length;
+        $("#reccount").text(count + "/" + count + " Record(s)");
     }
 
     $("#btnSelAll").click(function () {
