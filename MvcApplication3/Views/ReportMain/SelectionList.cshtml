@@ -4,9 +4,7 @@
 }
 
 
-
 <script type="text/javascript" src="/Scripts/jquery-1.7.1.js">      </script>
-
 <style type="text/css">
     th.clstd, td.clstd
     {
@@ -27,6 +25,16 @@
         clear: left;
     }
     
+.select-checkbox option::before {
+  content: "\2610";
+  width: 1.3em;
+  text-align: center;
+  display: inline-block;
+}
+.select-checkbox option:checked::before {
+  content: "\2611";
+}
+
 </style>
 
 @*<h3>Selection List</h3>*@
@@ -35,7 +43,7 @@
         <td style="width:33%; text-align:left; overflow:auto">
             <div class="controls">
             <div class="input-append">
-            <input type="text"  style="width:75%" id="myInput" onkeyup="myFunction()" placeholder="Search here.." />
+            <input  type="text" style="width:75%;" id="myInput" onkeyup="myFunction()" placeholder="Search.." />
             <button id = "clearMyInput" type ="button" class="btn">x</button>
             </div></div>
         </td>
@@ -47,8 +55,8 @@
     <tr>
         <td colspan="3" style="padding:0;height:100%;">
             <div style="overflow: auto;height:100%;">
-              @Html.ListBox("-No Data-", ViewBag.selectionlist as SelectList, new { @class = "form-control", @style = "width:100%; height:90%; overflow:scroll; padding-left:10;", id = "lstselect", size = 16 })            
-              <label style="font-style:italic; font-size:smaller; text-align:left; padding-left:5px; max-height:15px; padding-bottom:0; padding-top:0">Press Ctrl+click for multi-select</label>              
+              @Html.ListBox("-No Data-", ViewBag.selectionlist as SelectList, new { @class = "form-control select-checkbox", @style = "width:100%; height:100%; overflow:auto; padding-left:10;", id = "lstselect", size = 16 })            
+              @*<label style="font-style:italic; font-size:smaller; text-align:left; padding-left:5px; max-height:15px; padding-bottom:0; padding-top:0">Press Ctrl+click for multi-select</label>              *@
             </div>
         </td>
     </tr>
@@ -91,21 +99,32 @@
     $("#btnSelAll").click(function () {
         //        $("option", "#lstselect").prop("selected", true);
 
-        var allsel;
 
-        allsel = 0;
         $("#lstselect option").each(function () {
             if ($(this).css('display') != 'none') {
                 $(this).prop("selected", true);
-                allsel = allsel + 1;
             }
         });
 
         var count = $("#lstselect").children('option').length;
-        $("#reccount").text(allsel + "/" + count + " Record(s)");
+        $("#reccount").text(countSelected() + "/" + count + " Record(s)");
 
     }
     );
+
+    function countSelected() {
+        var allsel;
+
+        allsel = 0;
+        $("#lstselect option").each(function () {
+            if ($(this).prop('selected')) {
+                allsel = allsel + 1;
+            }
+        });
+
+        return allsel;
+    };
+
 
     $("#btnDeSelAll").click(function () {
         $("option", "#lstselect").prop("selected", false);
@@ -171,13 +190,15 @@
 //        }
 //    }
 
+    $("#lstselect option").mousedown(function (event) {
+        event.preventDefault();
+        $(this).prop('selected', !$(this).prop('selected')); // on => off => on
 
-
-         $('#lstselect').multiselect({
-
-            includeSelectAllOption: true
-
-        });
+        var count = $("#lstselect").children('option').length;
+        $("#reccount").text(countSelected() + "/" + count + " Record(s)");
+        
+        return false;
+    });
 
 
    
