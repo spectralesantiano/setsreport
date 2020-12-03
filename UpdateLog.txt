@@ -7,3 +7,9 @@
 2020.11.30 neil
 	added auto scroll bar 
 	checking session on preview
+
+2020.12.03 neil
+	added search box on selection list 
+	added checkbox on selection list
+	multiple select without holding ctrl in selection list
+	change footer design
