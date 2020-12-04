@@ -135,5 +135,18 @@ namespace SETSReport.Controllers
               return path;
           }
 
+          public static string GetMEDIA_PATH_ONLINE()
+          {
+              string path = "";
+
+              path = ConfigurationManager.AppSettings["MediaFolderNameOnline"];
+              char last = path[path.Length - 1];
+              if (!last.Equals( "/") )
+              {
+                  path = path + "/";
+              }
+              return path;
+          }
+
     }
 }

@@ -13,3 +13,4 @@
 	added checkbox on selection list
 	multiple select without holding ctrl in selection list
 	change footer design
+	Update MEDIA_PATH source

@@ -4,7 +4,7 @@
   <publishProfile publishUrl="ftps://waws-prod-sg1-037.ftp.azurewebsites.windows.net/site/wwwroot" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="sets-reports - FTP" publishMethod="FTP" replaceMatchingFiles="True" userName="sets-reports\$sets-reports" savePWD="False" userPWD="" SelectedForPublish="False" />
   <publishProfile publishUrl="ftp://waws-prod-sg1-037dr.ftp.azurewebsites.windows.net/site/wwwroot" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="sets-reports - ReadOnly - FTP" publishMethod="FTP" replaceMatchingFiles="True" userName="sets-reports\$sets-reports" savePWD="False" userPWD="" SelectedForPublish="False" />
   <publishProfile publishUrl="C:\VUE\PulishSETSReport" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
-    <file relUrl="Views/rptAdmQCountPerTest/viewFilter.cshtml" publishTime="11/25/2020 18:28:02" />
+    <file relUrl="Views/rptAdmQCountPerTest/viewFilter.cshtml" publishTime="12/02/2020 18:39:22" />
     <file relUrl="bin/MvcCheckBoxList.dll" publishTime="10/01/2020 16:14:32" />
     <file relUrl="bin/Antlr3.Runtime.dll" publishTime="08/20/2020 11:44:19" />
     <file relUrl="bin/DotNetOpenAuth.AspNet.dll" publishTime="08/20/2020 11:44:17" />
@@ -18,11 +18,12 @@
     <file relUrl="Content/bootstrap-responsive.min.css" publishTime="10/22/2020 21:37:02" />
     <file relUrl="Views/ReportMain/ShowRptFilter.cshtml" publishTime="11/25/2020 17:14:17" />
     <file relUrl="bin/Microsoft.Web.Infrastructure.dll" publishTime="08/20/2020 11:44:11" />
-    <file relUrl="Views/rptAdmQStatSummary/viewFilter.cshtml" publishTime="11/25/2020 18:28:02" />
+    <file relUrl="Views/rptAdmQStatSummary/viewFilter.cshtml" publishTime="12/02/2020 18:39:22" />
     <file relUrl="bin/System.Web.WebPages.dll" publishTime="08/20/2020 11:44:12" />
     <file relUrl="Views/Web.config" publishTime="09/04/2020 14:17:46" />
-    <file relUrl="Views/rptAdmDetailedQStats/viewFilter.cshtml" publishTime="11/25/2020 18:28:02" />
+    <file relUrl="Views/rptAdmDetailedQStats/viewFilter.cshtml" publishTime="12/02/2020 18:39:22" />
     <file relUrl="Scripts/jquery.validate.js" publishTime="08/20/2020 11:44:06" />
+    <file relUrl="Views/rptIndividualTestStatistic/xxxviewFilter.cshtml" publishTime="11/24/2020 11:33:57" />
     <file relUrl="bin/DotNetOpenAuth.OpenId.RelyingParty.dll" publishTime="08/20/2020 11:44:19" />
     <file relUrl="bin/System.Web.Razor.xml" publishTime="08/20/2020 11:44:12" />
     <file relUrl="bin/System.Net.Http.xml" publishTime="08/20/2020 11:44:13" />
@@ -30,24 +31,24 @@
     <file relUrl="bin/System.Web.Razor.dll" publishTime="08/20/2020 11:44:12" />
     <file relUrl="bin/System.Web.WebPages.Razor.dll" publishTime="08/20/2020 11:44:12" />
     <file relUrl="Views/Home/Index.cshtml" publishTime="09/24/2020 13:49:44" />
-    <file relUrl="Views/rptAvgScoring/viewFilter.cshtml" publishTime="11/25/2020 18:28:02" />
+    <file relUrl="Views/rptAvgScoring/viewFilter.cshtml" publishTime="12/02/2020 18:39:22" />
     <file relUrl="bin/System.Net.Http.Formatting.xml" publishTime="08/20/2020 11:44:13" />
     <file relUrl="bin/Newtonsoft.Json.dll" publishTime="08/20/2020 11:44:11" />
     <file relUrl="Views/Shared/Error.cshtml" publishTime="08/20/2020 11:43:56" />
     <file relUrl="Views/Shared/_LoginPartial.cshtml" publishTime="08/20/2020 11:43:56" />
     <file relUrl="Scripts/jquery-1.7.1.min.js" publishTime="08/20/2020 11:44:03" />
     <file relUrl="bin/Microsoft.Web.WebPages.OAuth.xml" publishTime="08/20/2020 11:44:16" />
-    <file relUrl="Views/rptIndiTestResult_wAnsOptionsAndPics/viewFilter.cshtml" publishTime="11/25/2020 18:28:02" />
+    <file relUrl="Views/rptIndiTestResult_wAnsOptionsAndPics/viewFilter.cshtml" publishTime="12/02/2020 18:39:22" />
     <file relUrl="Views/rptAdmQCountPerSubject/_DocumentViewer1Partial.cshtml" publishTime="10/22/2020 21:37:09" />
-    <file relUrl="Views/rptTestResultSummaryForm/viewFilter.cshtml" publishTime="11/25/2020 18:28:02" />
+    <file relUrl="Views/rptTestResultSummaryForm/viewFilter.cshtml" publishTime="12/02/2020 18:39:22" />
     <file relUrl="Images/orderedList4.png" publishTime="08/20/2020 11:43:56" />
     <file relUrl="Views/ReportMain/ShowRptList.cshtml" publishTime="11/25/2020 17:14:17" />
     <file relUrl="Content/bootstrap-glyphicons.css" publishTime="10/22/2020 21:37:02" />
     <file relUrl="Content/images/spin.gif" publishTime="11/21/2020 14:27:34" />
-    <file relUrl="bin/SETSReport.pdb" publishTime="12/01/2020 13:16:21" />
+    <file relUrl="bin/SETSReport.pdb" publishTime="12/04/2020 16:09:04" />
     <file relUrl="bin/System.Web.WebPages.xml" publishTime="08/20/2020 11:44:12" />
     <file relUrl="Scripts/knockout-2.1.0.debug.js" publishTime="08/20/2020 11:44:20" />
-    <file relUrl="bin/SETSReport.dll" publishTime="12/01/2020 13:16:21" />
+    <file relUrl="bin/SETSReport.dll" publishTime="12/04/2020 16:09:04" />
     <file relUrl="Images/orderedList1.png" publishTime="08/20/2020 11:43:56" />
     <file relUrl="Scripts/bootstrap.js" publishTime="10/22/2020 21:37:08" />
     <file relUrl="Views/Home/Contact.cshtml" publishTime="08/20/2020 11:43:56" />
@@ -59,7 +60,6 @@
     <file relUrl="Images/heroAccent.png" publishTime="08/20/2020 11:43:56" />
     <file relUrl="Views/rptAdmQCountPerTest/_DocumentViewer1Partial.cshtml" publishTime="10/22/2020 21:37:09" />
     <file relUrl="Views/ReportMain/noReferer.cshtml" publishTime="11/27/2020 20:58:02" />
-    <file relUrl="Scripts/_references.js" publishTime="08/20/2020 11:43:56" />
     <file relUrl="Global.asax" publishTime="09/25/2020 10:35:40" />
     <file relUrl="bin/EntityFramework.xml" publishTime="08/20/2020 11:44:01" />
     <file relUrl="Views/rptAdmDetailedQStats/_DocumentViewer1Partial.cshtml" publishTime="10/22/2020 21:37:09" />
@@ -67,10 +67,9 @@
     <file relUrl="Scripts/bootstrap.min.js" publishTime="10/22/2020 21:37:08" />
     <file relUrl="Images/orderedList3.png" publishTime="08/20/2020 11:43:56" />
     <file relUrl="Content/bootstrap.min.css" publishTime="10/22/2020 21:37:02" />
-    <file relUrl="Web.config" publishTime="12/01/2020 13:17:05" />
+    <file relUrl="Web.config" publishTime="12/04/2020 16:12:53" />
     <file relUrl="Scripts/jquery-1.7.1.js" publishTime="08/20/2020 11:44:03" />
     <file relUrl="Views/Account/_SetPasswordPartial.cshtml" publishTime="09/25/2020 10:38:48" />
-    <file relUrl="Views/rptPrintTestCertificate/_DocumentViewer1Partial.cshtml" publishTime="09/19/2020 14:25:29" />
     <file relUrl="Images/orderedList8.png" publishTime="08/20/2020 11:43:56" />
     <file relUrl="Views/rptIndiTestResult/Index.cshtml" publishTime="08/31/2020 14:25:03" />
     <file relUrl="Views/ReportMain/ReportFilters/NoReportFilter.cshtml" publishTime="10/30/2020 13:36:32" />
@@ -81,6 +80,7 @@
     <file relUrl="Views/PrintSelection/Index.cshtml" publishTime="09/25/2020 10:38:48" />
     <file relUrl="bin/Newtonsoft.Json.xml" publishTime="08/20/2020 11:44:11" />
     <file relUrl="Views/ReportMain/ReportFilters/ReportLoading.cshtml" publishTime="11/21/2020 19:50:39" />
+    <file relUrl="bin/Microsoft.Web.WebPages.OAuth.dll" publishTime="08/20/2020 11:44:16" />
     <file relUrl="bin/WebMatrix.Data.dll" publishTime="08/20/2020 11:44:16" />
     <file relUrl="Views/Home/View1.cshtml" publishTime="08/31/2020 10:46:40" />
     <file relUrl="Views/rptIndiTestResult_wAnsOptions/xxxviewFilter.cshtml" publishTime="11/24/2020 11:33:57" />
@@ -102,10 +102,10 @@
     <file relUrl="Scripts/jquery.validate-vsdoc.js" publishTime="08/20/2020 11:44:06" />
     <file relUrl="Content/images/glyphicons-halflings-white.png" publishTime="10/22/2020 21:37:05" />
     <file relUrl="Scripts/jquery.unobtrusive-ajax.js" publishTime="08/20/2020 11:44:09" />
-    <file relUrl="Views/ReportMain/Index.cshtml" publishTime="11/30/2020 16:20:54" />
-    <file relUrl="Views/rptAdmQCountPerSubject/viewFilter.cshtml" publishTime="11/25/2020 18:28:02" />
+    <file relUrl="Views/ReportMain/Index.cshtml" publishTime="12/01/2020 23:29:46" />
     <file relUrl="Images/orderedList7.png" publishTime="08/20/2020 11:43:56" />
     <file relUrl="Scripts/jquery-1.7.1-vsdoc.js" publishTime="08/20/2020 11:44:03" />
+    <file relUrl="Images/orderedList6.png" publishTime="08/20/2020 11:43:56" />
     <file relUrl="bin/System.Net.Http.WebRequest.xml" publishTime="08/20/2020 11:44:13" />
     <file relUrl="Views/test/Index.cshtml" publishTime="08/25/2020 21:03:39" />
     <file relUrl="Content/images/logo.png" publishTime="10/22/2020 21:37:05" />
@@ -114,14 +114,14 @@
     <file relUrl="bin/System.Web.Mvc.xml" publishTime="08/20/2020 11:44:13" />
     <file relUrl="bin/System.Web.WebPages.Razor.xml" publishTime="08/20/2020 11:44:12" />
     <file relUrl="bin/WebMatrix.WebData.xml" publishTime="08/20/2020 11:44:16" />
-    <file relUrl="Views/Shared/_Layout.cshtml" publishTime="11/27/2020 21:05:17" />
+    <file relUrl="Views/Shared/_Layout.cshtml" publishTime="12/03/2020 18:56:34" />
     <file relUrl="Images/orderedList2.png" publishTime="08/20/2020 11:43:56" />
     <file relUrl="bin/DotNetOpenAuth.OAuth.dll" publishTime="08/20/2020 11:44:18" />
     <file relUrl="bin/WebGrease.dll" publishTime="08/20/2020 11:44:19" />
     <file relUrl="Images/orderedList9.png" publishTime="08/20/2020 11:43:56" />
     <file relUrl="bin/WebMatrix.WebData.dll" publishTime="08/20/2020 11:44:16" />
     <file relUrl="Views/Home/_DocumentViewerPartial.cshtml" publishTime="08/31/2020 12:39:26" />
-    <file relUrl="Views/rptIndividualTestStatistic/viewFilter.cshtml" publishTime="11/25/2020 18:28:02" />
+    <file relUrl="Views/rptIndividualTestStatistic/viewFilter.cshtml" publishTime="12/02/2020 18:39:22" />
     <file relUrl="Content/bootstrap-datepicker.min.css" publishTime="10/22/2020 21:37:02" />
     <file relUrl="Views/rptIndividualTestStatistic/_DocumentViewer1Partial.cshtml" publishTime="10/22/2020 21:37:09" />
     <file relUrl="Views/rptIndiTestResult_wAnsOptionsAndPics/xxxviewFilter.cshtml" publishTime="11/24/2020 11:33:57" />
@@ -131,15 +131,15 @@
     <file relUrl="Views/rptIndiTestResult/_DocumentViewer1Partial.cshtml" publishTime="09/05/2020 15:43:02" />
     <file relUrl="bin/DotNetOpenAuth.OpenId.dll" publishTime="08/20/2020 11:44:19" />
     <file relUrl="Content/bootstrap-responsive.css" publishTime="10/22/2020 21:37:02" />
-    <file relUrl="Views/rptAvgScoringPerNat/viewFilter.cshtml" publishTime="11/25/2020 18:28:02" />
+    <file relUrl="Views/rptAvgScoringPerNat/viewFilter.cshtml" publishTime="12/03/2020 16:36:19" />
     <file relUrl="Content/font-awesome.css" publishTime="10/22/2020 21:37:02" />
     <file relUrl="Content/Site.css" publishTime="09/25/2020 17:26:47" />
     <file relUrl="Views/rptSubjectResultSummary/_DocumentViewer1Partial.cshtml" publishTime="10/22/2020 21:37:09" />
     <file relUrl="Scripts/jquery.validate.unobtrusive.js" publishTime="08/20/2020 11:44:09" />
-    <file relUrl="Views/rptIndiTestResult_wAnsOptions/viewFilter.cshtml" publishTime="11/25/2020 18:28:02" />
-    <file relUrl="Views/rptIndiTestResult/viewFilter.cshtml" publishTime="11/25/2020 18:28:03" />
+    <file relUrl="Views/rptIndiTestResult_wAnsOptions/viewFilter.cshtml" publishTime="12/02/2020 18:39:22" />
+    <file relUrl="Views/rptIndiTestResult/viewFilter.cshtml" publishTime="12/02/2020 18:39:22" />
     <file relUrl="Views/rptAvgScoring/_DocumentViewer1Partial.cshtml" publishTime="10/22/2020 21:37:09" />
-    <file relUrl="Views/rptSubjectResultSummary/viewFilter.cshtml" publishTime="11/25/2020 18:28:02" />
+    <file relUrl="Views/rptSubjectResultSummary/viewFilter.cshtml" publishTime="12/02/2020 18:39:22" />
     <file relUrl="bin/EntityFramework.dll" publishTime="08/20/2020 11:44:01" />
     <file relUrl="Views/Shared/InvalidSession.cshtml" publishTime="11/30/2020 11:55:03" />
     <file relUrl="bin/System.Web.Http.WebHost.xml" publishTime="08/20/2020 11:44:14" />
@@ -153,13 +153,13 @@
     <file relUrl="Views/rptAdmQStatSummary/_DocumentViewer1Partial.cshtml" publishTime="10/22/2020 21:37:09" />
     <file relUrl="bin/System.Net.Http.Formatting.dll" publishTime="08/20/2020 11:44:13" />
     <file relUrl="Scripts/knockout-2.1.0.js" publishTime="08/20/2020 11:44:20" />
-    <file relUrl="Views/rptPrintTestCertificate/viewFilter.cshtml" publishTime="11/25/2020 18:28:02" />
+    <file relUrl="Views/rptPrintTestCertificate/viewFilter.cshtml" publishTime="12/02/2020 18:39:22" />
     <file relUrl="bin/System.Net.Http.WebRequest.dll" publishTime="08/20/2020 11:44:13" />
-    <file relUrl="Images/orderedList6.png" publishTime="08/20/2020 11:43:56" />
+    <file relUrl="Views/rptAdmQCountPerSubject/viewFilter.cshtml" publishTime="12/02/2020 18:39:22" />
     <file relUrl="bin/System.Web.Helpers.dll" publishTime="08/20/2020 11:44:12" />
     <file relUrl="bin/DotNetOpenAuth.OAuth.Consumer.xml" publishTime="08/20/2020 11:44:18" />
-    <file relUrl="bin/Microsoft.Web.WebPages.OAuth.dll" publishTime="08/20/2020 11:44:16" />
-    <file relUrl="Views/ReportMain/SelectionList.cshtml" publishTime="11/27/2020 11:05:56" />
+    <file relUrl="Scripts/_references.js" publishTime="08/20/2020 11:43:56" />
+    <file relUrl="Views/ReportMain/SelectionList.cshtml" publishTime="12/03/2020 16:36:19" />
     <file relUrl="Scripts/jquery.validate.min.js" publishTime="08/20/2020 11:44:06" />
     <file relUrl="Views/Account/Register.cshtml" publishTime="09/25/2020 10:38:48" />
     <file relUrl="bin/DotNetOpenAuth.OAuth.Consumer.dll" publishTime="08/20/2020 11:44:18" />
@@ -170,7 +170,7 @@
     <file relUrl="bin/DotNetOpenAuth.Core.dll" publishTime="08/20/2020 11:44:17" />
     <file relUrl="bin/System.Net.Http.dll" publishTime="08/20/2020 11:44:13" />
     <file relUrl="Images/orderedList0.png" publishTime="08/20/2020 11:43:56" />
-    <file relUrl="Views/rptIndividualTestStatistic/xxxviewFilter.cshtml" publishTime="11/24/2020 11:33:57" />
+    <file relUrl="Views/rptPrintTestCertificate/_DocumentViewer1Partial.cshtml" publishTime="09/19/2020 14:25:29" />
     <file relUrl="bin/System.Web.WebPages.Deployment.xml" publishTime="08/20/2020 11:44:12" />
   </publishProfile>
 </publishData>

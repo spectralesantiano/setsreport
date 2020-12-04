@@ -16,7 +16,7 @@ namespace SETSReport.Reports
         {
             InitializeComponent();
             //DefaultMediaPath = Util.GetConfig("MEDIA_PATH");
-            DefaultMediaPath = Util.GetMEDIA_PATH();
+            DefaultMediaPath = Util.GetMEDIA_PATH_ONLINE();
         }
 
         private void ClearText(params XRTableCell[] cells)
@@ -87,7 +87,7 @@ namespace SETSReport.Reports
                  if (Convert.ToInt32(GetCurrentColumnValue("SupportDocType")) == (int)SETSReportFunction.MediaType.Picture ||
                         Convert.ToInt32(GetCurrentColumnValue("SupportDocType")) == (int)SETSReportFunction.MediaType.PictureAudio ) {
 
-                    var doc = GetCurrentColumnValue("SupportDoc").ToString().Split(';', '|');
+                    var doc = GetCurrentColumnValue("SupportDoc").ToString().Split(';', '|')[0];
 
                     //pbQuestionImg.ImageUrl = IO.Path.Combine(DefaultMediaPath, doc);
                     pbQuestionImg.ImageUrl = DefaultMediaPath + doc;
