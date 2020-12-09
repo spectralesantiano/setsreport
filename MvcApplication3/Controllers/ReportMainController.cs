@@ -41,7 +41,7 @@ namespace SETSReport.Controllers
             //_da.Fill(_dt);
             //ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
 
-            SqlDataAdapter _da = new SqlDataAdapter("Select GroupName, ObjectID,Caption From [view_ReportGroups] where RowType ='REPORT' order by groupsortcode asc, SortCode ASC", constr);
+            SqlDataAdapter _da = new SqlDataAdapter("Select GroupName, ObjectID,Caption From [view_ReportGroups] where RowType ='REPORT' and ShowOnList = 1 order by groupsortcode asc, SortCode ASC", constr);
             _dt.Clear();
             _dt.Columns.Clear();
             _da.Fill(_dt);
@@ -157,6 +157,12 @@ namespace SETSReport.Controllers
                         //ViewBag.ReportList = ToSelectList(_dt, "ObjectID", "Caption");
 
                         GlobalVar.UserIP = GetIp();
+
+
+                        if (id == "spectral")
+                        {
+                            return RedirectToAction("Index", "debug");
+                        }
 
                         SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GlobalVar.UserIP + "'", constr);
                         //string ssql = "SELECT dbo.tblWebSession.*, dbo.tblSiteUsers.SiteID, getdate() as serverDate " +

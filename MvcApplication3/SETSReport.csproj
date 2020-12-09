@@ -201,6 +201,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\debugController.cs" />
     <Compile Include="Controllers\dropdownController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PrintSelectionController.cs" />
@@ -234,6 +235,12 @@
     <Compile Include="Models\RankModel.cs" />
     <Compile Include="Models\SubjectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\debugrpt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\debugrpt.Designer.cs">
+      <DependentUpon>debugrpt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\rptAdmDetailedQStats.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -428,6 +435,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Reports\debugrpt.resx">
+      <DependentUpon>debugrpt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptAdmDetailedQStats.resx">
       <DependentUpon>rptAdmDetailedQStats.cs</DependentUpon>
     </EmbeddedResource>
@@ -617,6 +627,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\ReportMain\noReferer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\debug\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\debug\_DocumentViewer1Partial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -139,7 +139,7 @@ namespace SETSReport.Controllers
           {
               string path = "";
 
-              path = ConfigurationManager.AppSettings["MediaFolderNameOnline"];
+              path = GetConfig("MEDIA_DIRECTORY");//ConfigurationManager.AppSettings["MediaFolderNameOnline"];
               char last = path[path.Length - 1];
               if (!last.Equals( "/") )
               {
