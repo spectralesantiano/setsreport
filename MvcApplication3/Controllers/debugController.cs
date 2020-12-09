@@ -24,8 +24,10 @@ namespace SETSReport.Controllers
 
         public ActionResult Index()
         {
-            //return View();
-            return PartialView("_DocumentViewer1Partial", MainReport);
+            Response.Write(Request.ServerVariables["SERVER_SOFTWARE"]);
+            Response.Write("tset");
+            return View();
+            //return PartialView("_DocumentViewer1Partial", MainReport);
         }
 
         //

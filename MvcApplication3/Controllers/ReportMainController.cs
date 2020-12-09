@@ -159,10 +159,10 @@ namespace SETSReport.Controllers
                         GlobalVar.UserIP = GetIp();
 
 
-                        if (id == "spectral")
-                        {
-                            return RedirectToAction("Index", "debug");
-                        }
+                        //if (id == "spectral")
+                        //{
+                        //    return RedirectToAction("Index", "debug");
+                        //}
 
                         SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + id + "' and IPAddress ='" + GlobalVar.UserIP + "'", constr);
                         //string ssql = "SELECT dbo.tblWebSession.*, dbo.tblSiteUsers.SiteID, getdate() as serverDate " +
