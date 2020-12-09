@@ -14,3 +14,7 @@
 	multiple select without holding ctrl in selection list
 	change footer design
 	Update MEDIA_PATH source
+
+2020.12.08 neil
+	enable cors in web.config
+	add debug page/report
