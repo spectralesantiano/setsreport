@@ -16,8 +16,8 @@ namespace SETSReport.Reports
         private void Detail_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
               if (RowCount > 0 ){
-                 int userScore = Convert.ToInt32(GetCurrentColumnValue("UserScore"));
-                 int totalScore = Convert.ToInt32(GetCurrentColumnValue("TotalScore"));
+                 double userScore = Convert.ToInt32(GetCurrentColumnValue("UserScore"));
+                 double totalScore = Convert.ToInt32(GetCurrentColumnValue("TotalScore"));
                  double percentScore = (userScore / totalScore) * 100;
                  txtScorePerSubject.Text = String.Format("{0:00.00}% ({1}/{2})", percentScore, userScore, totalScore);
                  PercentBar.Visible = percentScore > 0;

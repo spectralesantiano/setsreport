@@ -90,13 +90,13 @@ namespace SETSReport.Reports
                     var doc = GetCurrentColumnValue("SupportDoc").ToString().Split(';', '|')[0];
 
                     //pbQuestionImg.ImageUrl = IO.Path.Combine(DefaultMediaPath, doc);
-                    pbQuestionImg.ImageUrl = DefaultMediaPath + doc;
-                    pbQuestionImg.Visible = true;
+                    pbQuestionImg.ImageUrl = DefaultMediaPath + doc; 
+                     pbQuestionImg.Visible = true;
                  }
 
                 IsContested.WidthF = Convert.ToBoolean(GetCurrentColumnValue("IsContested")) ? ContestedIcon.WidthF : 0;
             }
-        }
+        } 
 
         private void DateTaken_EvaluateBinding(object sender, BindingEventArgs e)
         {

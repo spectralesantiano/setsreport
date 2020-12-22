@@ -18,3 +18,7 @@
 2020.12.08 neil
 	enable cors in web.config
 	add debug page/report
+
+2020.12.2 neil
+	correction on report Test Statistics. Computation of Score Per Subject.
+	update rptIndividualTestStatistic.cs. change Int to Double

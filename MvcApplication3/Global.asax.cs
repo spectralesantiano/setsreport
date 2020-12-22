@@ -14,7 +14,7 @@ namespace SETSReport
 
     public class MvcApplication : System.Web.HttpApplication
     {
-        protected void Application_Start()
+        protected void Application_Start( )
         {
             AreaRegistration.RegisterAllAreas();
 
@@ -23,6 +23,7 @@ namespace SETSReport
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            DevExpress.Web.BinaryStorageConfigurator.Mode = DevExpress.Web.BinaryStorageMode.Custom; 
         }
     }
 }
