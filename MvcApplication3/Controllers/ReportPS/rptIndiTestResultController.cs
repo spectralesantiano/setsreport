@@ -167,7 +167,6 @@ namespace SETSReport.Controllers.ReportPS
         // this where filter data is used to filter what will appear in the selection list
         public ActionResult SelectionList(string criteria, string sortbyname ,string sortby)
         {
-
             string filterCriteria = ApplyCriteria(criteria);
             if (filterCriteria != "")
             {
@@ -308,7 +307,13 @@ namespace SETSReport.Controllers.ReportPS
             foreach (var record in filter)
             {
                 namem = record.Name;
-                valuen = record.Value;
+                if (namem != "SiteName")
+                    valuen = record.Value;
+                else
+                {
+                    valuen = "DUMMY";
+                }
+
                 //System.Diagnostics.Debug.WriteLine(namem);
                 //System.Diagnostics.Debug.WriteLine(valuen);
 
@@ -343,7 +348,22 @@ namespace SETSReport.Controllers.ReportPS
                                     searchText += String.Format("{0} = '{1}'", namem, valuen);
                                     break;
                             case "SiteName":
-                                    searchText += String.Format("{0} = '{1}'", namem, valuen);
+                                    valuen = "";
+                                    if (record.Value != null)
+                                    {
+                                        foreach (string obj in record.Value)
+                                        {
+                                            if (obj.Trim() != "")
+                                              valuen = valuen + ",'" + obj + "'";
+                                        }
+
+                                        if (valuen.Length > 0)
+                                            searchText += String.Format("{0} in ({1})", namem, valuen.Remove(0, 1));
+                                        else
+                                            searchText = "";
+                                    }
+                                    else
+                                        searchText = "";
                                     break;
                             default:
                                     searchText += String.Format("{0} = '{1}'", namem, valuen);

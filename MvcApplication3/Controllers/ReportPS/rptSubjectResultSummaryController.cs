@@ -202,7 +202,7 @@ namespace SETSReport.Controllers.ReportPS
             previewcriteria.Add("VesselTypeID"        ,  Request[  "VesselTypeID" ] .ToString()   );
             previewcriteria.Add("TestName"            ,  Request[  "TestName" ]     .ToString()   );
             //previewcriteria.Add("CompanyName"         , Request["CompanyName"].ToString());
-            previewcriteria.Add("SiteName", Request["SiteName"].ToString());
+            previewcriteria.Add("SiteName", Request["SiteName"] == null? "" : Request["SiteName"].ToString());
             previewcriteria.Add("FromDate"            ,  Request[  "deFromDate" ]     .ToString()   );
             previewcriteria.Add("ToDate"              ,  Request[  "deToDate" ]       .ToString()   );
            
@@ -278,10 +278,11 @@ namespace SETSReport.Controllers.ReportPS
 
                 string namem = "";
                 var valuen = "";
-                foreach (var criteria in AllCriteria)
+                foreach (var record in AllCriteria)
                 {
-                    namem = criteria.Key;
-                    valuen = criteria.Value;
+                    namem = record.Key;
+                    valuen = record.Value;
+
                     System.Diagnostics.Debug.WriteLine(namem);
                     System.Diagnostics.Debug.WriteLine(valuen);
 
@@ -300,6 +301,12 @@ namespace SETSReport.Controllers.ReportPS
                                 break;
                             case "VesselTypeID":
                                 searchText += String.Format("{0} LIKE '%{1}%'", "[dbo].[GetVesselTypes](TestID)", valuen);
+                                break;
+                            case "SiteName":
+                                valuen = valuen.Replace(",", "','");
+                                searchText += String.Format("{0} in ({1})", namem, valuen);
+                                searchText = searchText.Replace("(", "('");
+                                searchText = searchText.Replace(")", "')");
                                 break;
                             default:
                                 searchText += String.Format("{0} = '{1}'", namem, valuen);

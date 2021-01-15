@@ -22,3 +22,8 @@
 2020.12.2 neil
 	correction on report Test Statistics. Computation of Score Per Subject.
 	update rptIndividualTestStatistic.cs. change Int to Double
+
+2021.01.15 neil
+	Modify CSC selection to multiple selection
+	Error occurred when processing your request
+	Session getting expired during printing of report

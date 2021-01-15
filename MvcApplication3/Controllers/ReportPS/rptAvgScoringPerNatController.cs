@@ -160,7 +160,8 @@ namespace SETSReport.Controllers.ReportPS
 
             if (maySiteID != "")
             {
-                maySiteID = " where SiteID = '" + maySiteID + "'";
+                //maySiteID = " where SiteID = '" + maySiteID + "'";
+                maySiteID = " where " + maySiteID;
             }
             else
             {
@@ -232,8 +233,16 @@ namespace SETSReport.Controllers.ReportPS
             var valuen = "";
             foreach (var record in filter)
             {
+                //namem = record.Name;
+                //valuen = record.Value;
+
                 namem = record.Name;
-                valuen = record.Value;
+                if (namem != "SiteName")
+                    valuen = record.Value;
+                else
+                {
+                    valuen = "DUMMY";
+                }
 
                 if (valuen != null && valuen != "")
                 {
@@ -265,7 +274,27 @@ namespace SETSReport.Controllers.ReportPS
                             break;
                         case "SiteName":
                             //searchText += String.Format("{0} = '{1}'", namem, valuen);
-                            maySiteID = valuen;
+                            //maySiteID = valuen;
+
+                            valuen = "";
+
+                            if (record.Value != null)
+                            {
+                                foreach (string obj in record.Value)
+                                {
+                                    if (obj.Trim() != "")
+                                        valuen = valuen + ",'" + obj + "'";
+                                }
+
+                                if (valuen.Length > 0)
+                                    searchText += String.Format("{0} in ({1})", namem, valuen.Remove(0, 1));
+                                else
+                                    searchText = "";
+                            }
+                            else
+                                searchText = "";
+
+                            maySiteID = searchText;
                             break;
                         default:
                             searchText += String.Format("{0} = '{1}'", namem, valuen);

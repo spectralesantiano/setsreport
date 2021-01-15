@@ -234,8 +234,17 @@ namespace SETSReport.Controllers.ReportPS
             var valuen = "";
             foreach (var record in filter)
             {
+                //namem = record.Name;
+                //valuen = record.Value;
+
                 namem = record.Name;
-                valuen = record.Value;
+                if (namem != "SiteName")
+                    valuen = record.Value;
+                else
+                {
+                    valuen = "DUMMY";
+                }
+
                 System.Diagnostics.Debug.WriteLine(namem);
                 System.Diagnostics.Debug.WriteLine(valuen);
 
@@ -245,7 +254,24 @@ namespace SETSReport.Controllers.ReportPS
                     switch (namem)
                     {
                         case "SiteName":
-                            searchText += String.Format("{0} = '{1}'", namem, valuen);
+                            //searchText += String.Format("{0} = '{1}'", namem, valuen);
+                             valuen = "";
+                            if (record.Value != null)
+                            {
+                                foreach (string obj in record.Value)
+                                {
+                                    if (obj.Trim() != "")
+                                        valuen = valuen + ",'" + obj + "'";
+                                }
+
+                                if (valuen.Length > 0)
+                                    searchText += String.Format("{0} in ({1})", namem, valuen.Remove(0, 1));
+                                else
+                                    searchText = "";
+                            }
+                            else
+                                searchText = "";
+
                             break;
                         default:
                             searchText += String.Format("{0} = '{1}'", namem, valuen);
