@@ -211,9 +211,10 @@ namespace SETSReport.Controllers.ReportPS
         [HttpPost]
         public ActionResult DocumentViewerPartial()
         {
-            if (!Util.isSessionValid())
+            string retreason = "";
+            if (!Util.isSessionValid(ref retreason))
             {
-                return RedirectToAction("showSessionExpired","ReportMain");
+                return RedirectToAction("showSessionExpired", "ReportMain", new { message = retreason });
             }
 
             //SETSReport.Reports.XtraReport2 report = new SETSReport.Reports.XtraReport2();

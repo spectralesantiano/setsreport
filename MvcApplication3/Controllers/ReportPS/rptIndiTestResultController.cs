@@ -219,9 +219,10 @@ namespace SETSReport.Controllers.ReportPS
         public ActionResult DocumentViewerPartial()
         {
             // required code checking if user is still logged
-            if (!Util.isSessionValid())
+            string retreason = "";
+            if (!Util.isSessionValid(ref retreason))
             {
-                return RedirectToAction("showSessionExpired","ReportMain");
+                return RedirectToAction("showSessionExpired", "ReportMain", new { message = retreason });
             }
             //////////////
 
@@ -229,11 +230,6 @@ namespace SETSReport.Controllers.ReportPS
             //DevExpress.XtraReports.UI.XRLabel lbl = ((DevExpress.XtraReports.UI.XRLabel)report.FindControl("xrlabel1", true));
            // lbl.Text = Session["amount"].ToString();
             //report.DataSource = "SELECT * FROM [SETS].[dbo].[view_FullExamineeResultsWithQuestions] ";// where actualtestid in(" + Session["selected"] + ") ORDER BY LastFirstMiddle ASC"; //WHERE ActualTestID IN ({0}) {1}ORDER BY LastFirstMiddle ASC";
-
-            if (!Util.isSessionValid())
-            {
-                return RedirectToAction("showSessionExpired","ReportMain");
-            }
 
             string selectedIDs = Request["txtselected"].ToString();
              string conditions = "";

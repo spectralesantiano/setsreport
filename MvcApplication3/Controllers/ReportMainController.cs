@@ -384,8 +384,10 @@ namespace SETSReport.Controllers
             return ip;  
             }
 
-        public ActionResult showSessionExpired(){
+        public ActionResult showSessionExpired(string message){
+            Response.Write("..[" + message + "]..");
             return View("InvalidSession");
+
         }
 
         //public ActionResult Encrypt()

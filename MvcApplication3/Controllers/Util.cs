@@ -51,54 +51,65 @@ namespace SETSReport.Controllers
           }
 
 
-          public static bool isSessionValid()
+          public static bool isSessionValid(ref string reason)
           {
                   string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
                     SqlConnection _con = new SqlConnection(constr);
                     DataTable _dt = new DataTable();
 
-                    SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + GlobalVar.UniqueID + "' and IPAddress ='" + GlobalVar.UserIP + "'", constr);
+                      try{
+                            SqlDataAdapter _da = new SqlDataAdapter("Select *,getdate() as serverDate from tblWebSession where UniqueID='" + GlobalVar.UniqueID + "' and IPAddress ='" + GlobalVar.UserIP + "'", constr);
               
-                    _da.Fill(_dt);
+                            _da.Fill(_dt);
 
-                    if (_dt.Rows.Count > 0 ){
+                            if (_dt.Rows.Count > 0 ){
                         
-                                DateTime sdate = (DateTime)_dt.Rows[0]["serverDate"];
-                                DateTime logdate = (DateTime)_dt.Rows[0]["DateLoggedIn"];
-                                int validityt = Convert.ToInt32(_dt.Rows[0]["ValidityType"]);
-                                DateTime newdate;
+                                        DateTime sdate = (DateTime)_dt.Rows[0]["serverDate"];
+                                        DateTime logdate = (DateTime)_dt.Rows[0]["DateLoggedIn"];
+                                        int validityt = Convert.ToInt32(_dt.Rows[0]["ValidityType"]);
+                                        DateTime newdate;
 
-                                switch (validityt)
-                                {
-                                    case 0:
-                                            newdate = logdate.AddSeconds((int)_dt.Rows[0]["Validity"]); break;
-                                    case 1:
-                                            newdate = logdate.AddMinutes((int)_dt.Rows[0]["Validity"]); break;
-                                    case 2:
-                                            newdate = logdate.AddHours((int)_dt.Rows[0]["Validity"]); break;
-                                    case 3:
-                                            newdate = logdate.AddDays((int)_dt.Rows[0]["Validity"]); break;
-                                    case 4:
-                                            newdate = logdate.AddMonths((int)_dt.Rows[0]["Validity"]); break;
-                                    case 5:
-                                            newdate = logdate.AddYears((int)_dt.Rows[0]["Validity"]); break;
-                                    default: newdate = sdate; break;
-                                }
+                                        switch (validityt)
+                                        {
+                                            case 0:
+                                                    newdate = logdate.AddSeconds((int)_dt.Rows[0]["Validity"]); break;
+                                            case 1:
+                                                    newdate = logdate.AddMinutes((int)_dt.Rows[0]["Validity"]); break;
+                                            case 2:
+                                                    newdate = logdate.AddHours((int)_dt.Rows[0]["Validity"]); break;
+                                            case 3:
+                                                    newdate = logdate.AddDays((int)_dt.Rows[0]["Validity"]); break;
+                                            case 4:
+                                                    newdate = logdate.AddMonths((int)_dt.Rows[0]["Validity"]); break;
+                                            case 5:
+                                                    newdate = logdate.AddYears((int)_dt.Rows[0]["Validity"]); break;
+                                            default: newdate = sdate; break;
+                                        }
 
-                                if (newdate < sdate)
-                                {
-                                    return false;
+                                        if (newdate < sdate)
+                                        {
+                                            reason = "EXPIRED";
+                                            return false;
+                                        }
+                                        else
+                                        {
+                                            reason = "";
+                                            return true;
+                                        }
+                
                                 }
                                 else
                                 {
-                                    return true;
+                                    reason = "NO_RECORD";
+                                    return false;
                                 }
-                
-                        }
-                        else
-                        {
-                            return false;
-                        }
+                  
+                      }
+                      catch (InvalidCastException e)
+                      {
+                          reason = e.Message;
+                          return false;
+                      }
           }
 
           public static SelectList ToSelectList(DataTable table, string valueField, string textField)

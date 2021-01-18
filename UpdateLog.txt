@@ -25,5 +25,5 @@
 
 2021.01.15 neil
 	Modify CSC selection to multiple selection
-	Error occurred when processing your request
-	Session getting expired during printing of report
+	Error occurred when processing your request - rewrite query
+	Session getting expired during printing of report - add message

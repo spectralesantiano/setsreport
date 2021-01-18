@@ -169,7 +169,7 @@ namespace SETSReport.Controllers.ReportPS
             }
 
             //String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM view_ExamineeResults r INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
-            String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM " +
+            String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.*,SiteID FROM " +
                       "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + maySiteID + " ) r " +
                       "INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
 
@@ -196,9 +196,10 @@ namespace SETSReport.Controllers.ReportPS
         [HttpPost]
         public ActionResult DocumentViewerPartial()
         {
-            if (!Util.isSessionValid())
+            string retreason="";
+            if (!Util.isSessionValid(ref retreason))
             {
-                return RedirectToAction("showSessionExpired","ReportMain");
+                return RedirectToAction("showSessionExpired", "ReportMain", new { message = retreason });
             }
 
              selectedIDs = Request["txtselected"].ToString();
@@ -287,7 +288,7 @@ namespace SETSReport.Controllers.ReportPS
                                 }
 
                                 if (valuen.Length > 0)
-                                    searchText += String.Format("{0} in ({1})", namem, valuen.Remove(0, 1));
+                                    searchText += String.Format("{0} in ({1})", "SiteID", valuen.Remove(0, 1));
                                 else
                                     searchText = "";
                             }

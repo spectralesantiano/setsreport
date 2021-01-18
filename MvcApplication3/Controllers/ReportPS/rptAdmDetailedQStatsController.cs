@@ -146,16 +146,69 @@ namespace SETSReport.Controllers.ReportPS
         {
 
             string filterCriteria = ApplyCriteria(criteria);
-            if (filterCriteria != "")
-            {
-                filterCriteria = " where " + filterCriteria;
-            }
+            //if (filterCriteria != "")
+            //{
+            //    filterCriteria = " where " + filterCriteria;
+            //}
 
             string constr = ConfigurationManager.ConnectionStrings["dbconn"].ToString();
             SqlConnection _con = new SqlConnection(constr);
 
             //String sql = string.Format("SELECT DISTINCT 0 IsSelected, SubjectName, dbo.GetSubjectTestNames(SubjectID) TestName FROM view_FullExamineeResultsWithQuestions {0} ORDER BY SubjectName ASC " , filterCriteria);
-            String sql = string.Format("SELECT DISTINCT 0 IsSelected, SubjectName, dbo.GetSubjectTestNames(SubjectID) TestName FROM (select * from view_FullExamineeResultsWithQuestions   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) vfe {0} ORDER BY SubjectName ASC ", filterCriteria);
+            //String sql = string.Format("SELECT DISTINCT 0 IsSelected, SubjectName, dbo.GetSubjectTestNames(SubjectID) TestName FROM (select * from view_FullExamineeResultsWithQuestions   " + (GlobalVar.SiteID==""?"": " where " + GlobalVar.SiteID) + " ) vfe {0} ORDER BY SubjectName ASC ", filterCriteria);
+            String sql = string.Format("SELECT DISTINCT 0 IsSelected, SubjectName, dbo.GetSubjectTestNames(SubjectID) TestName FROM (select [LName] " +
+                                         " ,[FName]                                                           "          +
+                                         " ,[MName]                                                           "          +
+                                         " ,[DOB]                                                             "          +
+                                         " ,[RefID]                                                           "          +
+                                         " ,[Nat]                                                             "          +
+                                         " ,[NatName]                                                         "          +
+                                         " ,[FullName]                                                        "          +
+                                         " ,[LastFirstMiddle]                                                 "          +
+                                         " ,[view_FullExamineeResultsWithQuestions].[SiteID]                  "          +
+                                         " ,[SiteName]                                                        "          +
+                                         " ,[ActualTestID]                                                    "          +
+                                         " ,[TestID]                                                          "          +
+                                         " ,[TestName]                                                        "          +
+                                         " ,[DateCreated]                                                     "          +
+                                         " ,[Level2MarkMin]                                                   "          +
+                                         " ,[Level3MarkMin]                                                   "          +
+                                         " ,[DateTaken]                                                       "          +
+                                         " ,[PositionID]                                                      "          +
+                                         " ,[TestStatus]                                                      "          +
+                                         " ,[ExamineeID]                                                      "          +
+                                         " ,[TimeLimit]                                                       "          +
+                                         " ,[TimeTakenSec]                                                    "          +
+                                         " ,[CompanyName]                                                     "          +
+                                         " ,[LocationID]                                                      "          +
+                                         " ,[TimeTakenMins]                                                   "          +
+                                         " ,[TestNameDate]                                                    "          +
+                                         " ,[UserScore]                                                       "          +
+                                         " ,[TotalScore]                                                      "          +
+                                         " ,[TotalPercent]                                                    "          +
+                                         " ,[TimeTaken]                                                       "          +
+                                         " ,[ScoreLevel]                                                      "          +
+                                         " ,[TestStatusName]                                                  "          +
+                                         " ,[RankName]                                                        "          +
+                                         " ,[TestScore]                                                       "          +
+                                         " ,[Average]                                                         "          +
+                                         " ,[SubjectID]                                                       "          +
+                                         " ,[SubjectName]                                                     "          +
+                                         " ,[QuestionID]                                                      "          +
+                                         " ,[QuestionCode]                                                    "          +
+                                         " ,[QuestionDesc]                                                    "          +
+                                         " ,[Option1]                                                         "          +
+                                         " ,[Option2]                                                         "          +
+                                         " ,[Option3]                                                         "          +
+                                         " ,[Option4]                                                         "          +
+                                         " ,[SupportDoc]                                                      "          +
+                                         " ,[SupportDocType]                                                  "          +
+                                         " ,[Difficulty]                                                      "          +
+                                         " ,[Answer]                                                          "          +
+                                         " ,[UserAns]                                                         "          +
+                                         " ,[QStatus]                                                         "          +
+                                         " ,[IsCorrect]                                                       "          +
+                                         " ,[IsContested] from view_FullExamineeResultsWithQuestions INNER JOIN tblsiteusers on tblsiteusers.siteid = [view_FullExamineeResultsWithQuestions].SiteID where tblsiteusers.UserID = 25) vfe  ORDER BY SubjectName ASC ");
             
             
             //sql += " order by " + sortbyname + " " + sortby;
@@ -163,9 +216,11 @@ namespace SETSReport.Controllers.ReportPS
             SqlDataAdapter _da = new SqlDataAdapter(sql, constr);
             DataTable _dt = new DataTable();
             _da.Fill(_dt);
-
+            DataTable dt2 = _dt.Select(filterCriteria).CopyToDataTable();
             //// ----- required : to send the selectionlist ----///////////////
-            TempData["SelecionLIst"] = _dt; //get the value in the reportmain/showSelectionlist , should be datatable
+            //TempData["SelecionLIst"] = _dt; //get the value in the reportmain/showSelectionlist , should be datatable
+            TempData["SelecionLIst"] = dt2; //get the value in the reportmain/showSelectionlist , should be datatable
+
             return RedirectToAction("showSelectionList", "ReportMain", new { fieldname = "SubjectName", fieldvalue = "SubjectName" });
         }
 
@@ -174,9 +229,10 @@ namespace SETSReport.Controllers.ReportPS
         [HttpPost]
         public ActionResult DocumentViewerPartial()
         {
-            if (!Util.isSessionValid())
+            string retreason = "";
+            if (!Util.isSessionValid(ref retreason))
             {
-                return RedirectToAction("showSessionExpired","ReportMain");
+                return RedirectToAction("showSessionExpired", "ReportMain", new { message = retreason });
             }
 
             string selectedIDs = Request["txtselected"].ToString();
