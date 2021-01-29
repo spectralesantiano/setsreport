@@ -436,7 +436,7 @@
             this.XrTableCell1.StylePriority.UseFont = false;
             this.XrTableCell1.StylePriority.UsePadding = false;
             this.XrTableCell1.StylePriority.UseTextAlignment = false;
-            this.XrTableCell1.Text = "CSC";
+            this.XrTableCell1.Text = "CSC / SMC";
             this.XrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.BottomCenter;
             this.XrTableCell1.Weight = 1.1580631537677126D;
             // 

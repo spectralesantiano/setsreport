@@ -166,7 +166,7 @@ namespace SETSReport.Controllers.ReportPS
                 maySiteID = (GlobalVar.SiteID == "" ? "" : " where " + GlobalVar.SiteID);
             }
 
-            String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.* FROM " +
+            String sql = "SELECT DISTINCT 0 IsSelected, TestNameDate, TestName, DateCreated, t.*,siteid FROM " +
                        "(select view_ExamineeResults.*,tblExaminee.SiteID from view_ExamineeResults left join tblExaminee on view_ExamineeResults.ExamineeID = tblExaminee.ExamineeID   " + maySiteID + " ) r " +
                        "INNER JOIN view_TestScoreStatistics t ON t.TestID=r.TestID AND r.CompanyName=t.CompanyName";
 
@@ -268,7 +268,7 @@ namespace SETSReport.Controllers.ReportPS
                 //valuen = record.Value;
 
                 namem = record.Name;
-                if (namem != "SiteID")
+                if (namem != "SiteName")
                     valuen = record.Value;
                 else
                 {
@@ -303,7 +303,7 @@ namespace SETSReport.Controllers.ReportPS
                         //case "Nat":
                         //    searchText += String.Format("{0} = '{1}'", namem, valuen);
                         //    break;
-                        case "SiteID":
+                        case "SiteName":
                             //searchText += String.Format("{0} = '{1}'", namem, valuen);
                             //maySiteID = valuen;
                             valuen = "";
@@ -317,7 +317,7 @@ namespace SETSReport.Controllers.ReportPS
                                 }
 
                                 if (valuen.Length > 0)
-                                    searchText += String.Format("{0} in ({1})", namem, valuen.Remove(0, 1));
+                                    searchText += String.Format("{0} in ({1})", "SiteID", valuen.Remove(0, 1));
                                 else
                                     searchText = "";
                             }

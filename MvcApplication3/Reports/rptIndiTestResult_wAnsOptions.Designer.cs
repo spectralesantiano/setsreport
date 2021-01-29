@@ -822,7 +822,7 @@
             this.XrTableCell10.Name = "XrTableCell10";
             this.XrTableCell10.StylePriority.UseBorders = false;
             this.XrTableCell10.StylePriority.UseFont = false;
-            this.XrTableCell10.Text = "CSC:";
+            this.XrTableCell10.Text = "CSC / SMC:";
             this.XrTableCell10.Weight = 0.67105042420670835D;
             // 
             // SiteName

@@ -27,3 +27,6 @@
 	Modify CSC selection to multiple selection
 	Error occurred when processing your request - rewrite query
 	Session getting expired during printing of report - add message
+
+2021.01.29 neil
+	Modiy CSc Labels to CSC / SMC. Filters and Reports
