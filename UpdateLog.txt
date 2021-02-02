@@ -30,3 +30,10 @@
 
 2021.01.29 neil
 	Modiy CSc Labels to CSC / SMC. Filters and Reports
+
+2021.02.02 neil
+	correction on Subject Result Summary and Admin - Question Statistics Summary
+	Special Characters error. 
+	Update MvcApplication3/Views/ReportMain/Index.cshtml - function setSelected
+	update MvcApplication3/Controllers/ReportPS/rptSubjectResultSummaryController.cs - function ApplyCriteria
+

@@ -305,9 +305,8 @@ namespace SETSReport.Controllers.ReportPS
                                 break;
                             case "SiteName":
                                 valuen = valuen.Replace(",", "','");
-                                searchText += String.Format("{0} in ({1})", namem, valuen);
-                                searchText = searchText.Replace("(", "('");
-                                searchText = searchText.Replace(")", "')");
+                                searchText += String.Format("{0} in ('{1}')", namem, valuen);
+                                
                                 break;
                             default:
                                 searchText += String.Format("{0} = '{1}'", namem, valuen);

@@ -311,7 +311,7 @@ body {margin-bottom: 100px; @* padding-top: 60px;*@ }
 
          /// 'lstselect' name of listbox in view SelectionList.cshtml ///////////
         $("#lstselect :selected").each(function (i, selected) {
-            rr[i] = "'" + $(selected).val() + "'";
+            rr[i] = "'" + $(selected).val().replaceAll("'","''") + "'";
         });
         //alert(rr);
         //alert(rr[0]);
